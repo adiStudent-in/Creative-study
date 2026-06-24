@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SST &mdash; StudyHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0C0C14;
+  --surface: #181825;
+  --text: #E8E6E3;
+  --text-muted: #8B8FA3;
+  --text-dim: #5C5F72;
+  --accent: #6C8EBF;
+  --border: #2A2A3E;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;overflow-x:hidden}
+body{
+  font-family:'Sora',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;min-height:100vh;
+}
+::selection{background:var(--accent);color:var(--bg)}
+body::after{
+  content:'';position:fixed;inset:0;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px 256px;
+  pointer-events:none;z-index:9999;
+}
+.ambient{
+  position:fixed;top:-30vh;right:-20vw;
+  width:70vmax;height:70vmax;
+  background:radial-gradient(circle, rgba(108,142,191,0.04) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+  animation:ambientPulse 8s ease-in-out infinite alternate;
+}
+@keyframes ambientPulse{
+  0%{opacity:0.6;transform:scale(1)}
+  100%{opacity:1;transform:scale(1.1)}
+}
+header{
+  position:sticky;top:0;z-index:100;
+  padding:1.15rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(12,12,20,0.7);
+  border-bottom:1px solid rgba(42,42,62,0.5);
+}
+.header-left{display:flex;align-items:center;gap:1rem}
+.back-btn{font-size:0.85rem;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;border-radius:var(--radius-sm);transition:all 0.2s}
+.back-btn:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.logo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text)}
+.logo span{color:var(--accent)}
+
+.content{max-width:800px;margin:0 auto;padding:3rem 2rem 4rem;position:relative;z-index:1}
+
+.subject-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2.5rem}
+.subject-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:rgba(108,142,191,0.1);border:1px solid rgba(108,142,191,0.15)}
+.subject-info h1{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.2rem}
+.subject-info .subtitle{font-size:0.85rem;color:var(--text-muted)}
+.subject-info .subtitle strong{color:var(--accent)}
+
+.progress-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
+.progress-ring{width:60px;height:60px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct)*1%), rgba(255,255,255,0.06) 0);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.progress-ring .inner{width:48px;height:48px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--accent)}
+.progress-stats{flex:1}
+.progress-stats .stat-row{display:flex;gap:1.5rem}
+.progress-stats .stat .num{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
+.progress-stats .stat .lbl{font-size:0.72rem;color:var(--text-dim)}
+
+.section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.75rem;margin-top:1.5rem}
+.section-label:first-of-type{margin-top:0}
+
+.chapter-list{display:flex;flex-direction:column;gap:0.5rem}
+.chapter-item{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;color:var(--text);transition:all 0.3s cubic-bezier(0.22,1,0.36,1)}
+.chapter-item .ch-info{flex:1}
+.chapter-item .ch-num{font-size:0.68rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-dim)}
+.chapter-item .ch-title{font-size:0.9rem;font-weight:600;margin-top:0.05rem}
+.chapter-item .ch-action{font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:var(--radius-sm);flex-shrink:0}
+.chapter-item .ch-action.coming{background:rgba(255,255,255,0.03);color:var(--text-dim);font-size:0.65rem}
+
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  header{padding:1rem 1.25rem}
+  .content{padding:2rem 1.25rem}
+  .subject-info h1{font-size:1.5rem}
+  .progress-card{flex-direction:column;align-items:flex-start;gap:1rem}
+}
+@media(max-width:600px){
+  .content{padding:1.5rem 1rem}
+  .subject-icon{width:46px;height:46px;font-size:1.2rem}
+  .subject-info h1{font-size:1.3rem}
+  .chapter-item{padding:0.85rem 1rem}
+  header nav a{padding:0.3rem 0.6rem;font-size:0.75rem}
+}
+@media(prefers-reduced-motion){
+  *{animation:none!important;transition:none!important}
+  .fade-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient"></div>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="back-btn">&larr; Back</a>
+    <a href="index.html" class="logo">&#x25B3; <span>study</span>hub</a>
+  </div>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="#" class="active">SST</a>
+  </nav>
+</header>
+
+<div class="content">
+
+  <div class="subject-header fade-in">
+    <div class="subject-icon">&#x1F30D;</div>
+    <div class="subject-info">
+      <h1>Social Studies</h1>
+      <div class="subtitle"><strong>0</strong> of <strong>18</strong> chapters covered &middot; notes in progress</div>
+    </div>
+  </div>
+
+  <div class="progress-card fade-in" style="--pct:0">
+    <div class="progress-ring"><div class="inner">0%</div></div>
+    <div class="progress-stats">
+      <div class="stat-row">
+        <div class="stat"><div class="num">0</div><div class="lbl">Notes ready</div></div>
+        <div class="stat"><div class="num">18</div><div class="lbl">Ahead</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label fade-in">History &mdash; India and the Contemporary World I</div>
+  <div class="chapter-list fade-in">
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">The French Revolution</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Socialism in Europe and the Russian Revolution</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Nazism and the Rise of Hitler</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Forest Society and Colonialism</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Pastoralists in the Modern World</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+  </div>
+
+  <div class="section-label fade-in">Geography &mdash; Contemporary India I</div>
+  <div class="chapter-list fade-in">
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">India &mdash; Size and Location</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Physical Features of India</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Drainage</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Climate</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Natural Vegetation and Wildlife</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 6</div><div class="ch-title">Population</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+  </div>
+
+  <div class="section-label fade-in">Civics &mdash; Democratic Politics I</div>
+  <div class="chapter-list fade-in">
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">What is Democracy? Why Democracy?</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Constitutional Design</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Electoral Politics</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Working of Institutions</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Democratic Rights</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+  </div>
+
+  <div class="section-label fade-in">Economics</div>
+  <div class="chapter-list fade-in">
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">The Story of Village Palampur</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">People as Resource</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Poverty as a Challenge</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+    <div class="chapter-item" style="opacity:0.5;cursor:default">
+      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Food Security in India</div></div>
+      <span class="ch-action coming">Coming</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const fadeObs = new IntersectionObserver(function(e){
+  e.forEach(function(entry){
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(function(el){fadeObs.observe(el)});
+</script>
+</body>
+</html>
