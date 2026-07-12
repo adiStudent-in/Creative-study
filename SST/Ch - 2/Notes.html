@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 2 — Shaping of the Earth's Surface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4F0;
+  --surface: #FFFFFF;
+  --text: #2C241E;
+  --text-muted: #7A6B5D;
+  --accent: #A0714F;
+  --accent-light: #F0E8E0;
+  --accent2: #7A9B7A;
+  --accent2-light: #EDF3ED;
+  --border: #E0D8D0;
+  --sidebar-bg: #2C241E;
+  --sidebar-text: #C4B8AC;
+  --sidebar-active: #FFFFFF;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --radius: 8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
+}
+::selection{background:var(--accent);color:#fff}
+
+/* Layout */
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+/* Sidebar */
+.sidebar{
+  width:260px;flex-shrink:0;
+  background:var(--sidebar-bg);
+  color:var(--sidebar-text);
+  padding:2rem 1.5rem;
+  position:fixed;left:0;top:0;height:100vh;overflow-y:auto;
+  display:flex;flex-direction:column;
+  z-index:10;
+}
+.sidebar-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.1rem;color:#fff;margin-bottom:2rem;
+  letter-spacing:-0.01em;
+}
+.sidebar-logo small{
+  display:block;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.7rem;font-weight:400;
+  color:var(--sidebar-text);margin-top:0.15rem;
+  letter-spacing:0.02em;
+}
+.sidebar nav{flex:1}
+.sidebar nav a{
+  display:block;
+  color:var(--sidebar-text);text-decoration:none;
+  font-size:0.8rem;font-weight:500;
+  padding:0.4rem 0.75rem;margin-bottom:0.15rem;
+  border-radius:6px;
+  transition:all 0.2s;
+  line-height:1.4;
+}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,0.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,0.1);font-weight:600}
+.sidebar .meta{
+  font-size:0.7rem;color:rgba(255,255,255,0.3);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:1rem;margin-top:auto;
+}
+
+/* Main */
+.main{flex:1;min-width:0;width:1px;margin-left:260px}
+.content{padding:3rem 4rem 4rem;max-width:780px;margin:0 auto}
+
+/* Headings */
+h1{
+  font-family:'DM Serif Display',serif;
+  font-size:2.6rem;font-weight:400;
+  line-height:1.2;letter-spacing:-0.02em;
+  margin-bottom:0.25rem;color:var(--text);
+}
+.subtitle{
+  font-size:0.85rem;color:var(--text-muted);
+  margin-bottom:2.5rem;font-weight:400;
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.5rem;
+}
+h2{
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem;font-weight:400;
+  margin:2.5rem 0 1rem;letter-spacing:-0.01em;
+  line-height:1.3;color:var(--text);
+  scroll-margin-top:2rem;
+}
+h2 .num{color:var(--accent);margin-right:0.3rem;font-style:normal}
+h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1rem;font-weight:700;
+  margin:1.5rem 0 0.5rem;letter-spacing:-0.01em;
+  color:var(--text);
+}
+h4{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.9rem;font-weight:600;
+  margin:1.2rem 0 0.4rem;color:var(--text);
+}
+
+/* Paragraphs & lists */
+p{margin-bottom:0.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:0.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+
+/* Tables */
+.table-wrap{
+  width:100%;overflow-x:auto;
+  margin:1rem 0;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  -webkit-overflow-scrolling:touch;
+}
+.table-wrap table{margin:0;box-shadow:none;border-radius:0}
+table{
+  width:100%;border-collapse:collapse;
+  font-size:0.875rem;
+}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:0.55rem 0.75rem;text-align:left;font-weight:600;font-size:0.78rem;letter-spacing:0.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:0.5rem 0.75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(160,113,79,0.04)}
+tbody tr:nth-child(even){background:rgba(0,0,0,0.015)}
+@media(max-width:600px){
+  th,td{padding:0.4rem 0.5rem;font-size:0.8rem}
+  th{white-space:normal;font-size:0.7rem}
+}
+
+/* Blockquotes (Competency boxes) */
+blockquote{
+  margin:1.25rem 0;padding:1rem 1.25rem;
+  border-radius:var(--radius);
+  font-size:0.875rem;line-height:1.65;
+}
+blockquote:not(.special){
+  background:var(--accent2-light);
+  border-left:3px solid var(--accent2);
+}
+blockquote:not(.special) strong:first-child{color:var(--accent2)}
+blockquote.special{
+  background:var(--accent-light);
+  border-left:3px solid var(--accent);
+}
+
+/* Worked Example / Activity */
+.worked-example{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem 1.5rem;
+  margin:1rem 0;box-shadow:var(--card-shadow);
+}
+.worked-example .label{
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.35rem;
+}
+.worked-example p{margin-bottom:0.35rem}
+.worked-example p:last-child{margin-bottom:0}
+
+/* Highlight box */
+.highlight{
+  background:#FFFDF5;border:1px solid #E8DDB0;
+  border-radius:var(--radius);padding:0.75rem 1rem;
+  margin:0.75rem 0;font-size:0.85rem;
+}
+.highlight strong{color:#8B6F00}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Section dividers */
+.section-divider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+
+/* Mobile toggle */
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;
+  width:2.5rem;height:2.5rem;border:none;border-radius:8px;
+  background:var(--sidebar-bg);color:#fff;font-size:1.2rem;
+  cursor:pointer;align-items:center;justify-content:center;
+}
+
+/* Key Terms Grid */
+.terms-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:0.75rem;margin:1rem 0;
+}
+.term-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1rem 1.15rem;
+  box-shadow:var(--card-shadow);transition:box-shadow 0.3s;
+}
+.term-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.term-card .term{font-weight:700;font-size:0.9rem;color:var(--accent);margin-bottom:0.2rem}
+.term-card .def{font-size:0.82rem;color:var(--text-muted);line-height:1.55}
+
+/* Disaster cards */
+.disaster-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:0.75rem 0}
+.disaster-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--card-shadow)}
+.disaster-card h4{font-size:0.85rem;margin-top:0;margin-bottom:0.4rem;color:var(--accent)}
+.disaster-card ul{margin-bottom:0;font-size:0.83rem;padding-left:1rem}
+.disaster-card li{margin-bottom:0.15rem}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left 0.3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:flex}
+  .main{max-width:100%;margin-left:0}
+  .content{padding:2.5rem 1.5rem}
+  .disaster-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  .content{padding:1.5rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 0.75rem}
+  h3{font-size:0.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:0.75rem 1rem;font-size:0.82rem}
+  .worked-example{padding:1rem 1.15rem}
+  .terms-grid{grid-template-columns:1fr}
+  .disaster-grid{gap:0.5rem}
+  .disaster-card{padding:0.85rem}
+}
+
+@media(max-width:400px){
+  .content{padding:1rem 0.75rem}
+  h1{font-size:1.35rem}
+  h2{font-size:1.05rem}
+  .subtitle{font-size:0.78rem;margin-bottom:1.5rem;padding-bottom:1rem}
+  .sidebar{width:240px;left:-240px}
+  .sidebar.open{left:0}
+}
+
+@media print{
+  .sidebar,.sidebar-toggle{display:none}
+  .main{max-width:100%;margin-left:0}
+  .content{padding:1rem;max-width:100%}
+  .fade-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 SST
+    <small>Chapter 2 &middot; Geography</small>
+  </div>
+  <nav>
+    <a href="#big-q" data-section>Big Questions</a>
+    <a href="#layers" data-section>1. Layers of the Earth</a>
+    <a href="#tectonics" data-section>2. Plate Tectonics</a>
+    <a href="#boundaries" data-section>3. Plate Boundaries</a>
+    <a href="#weathering" data-section>4. Weathering</a>
+    <a href="#erosion" data-section>5. Erosion</a>
+    <a href="#gradation" data-section>6. Agents of Gradation</a>
+    <a href="#running-water" data-section>7. Landforms by Running Water</a>
+    <a href="#waves" data-section>8. Landforms by Waves &amp; Currents</a>
+    <a href="#glaciers" data-section>9. Landforms by Glaciers</a>
+    <a href="#wind" data-section>10. Landforms by Wind</a>
+    <a href="#groundwater" data-section>11. Karst Topography</a>
+    <a href="#disasters" data-section>12. Landforms &amp; Disasters</a>
+    <a href="#connection" data-section>13. Humans &amp; Landforms</a>
+    <a href="#recap" data-section>Quick Recap</a>
+    <a href="#glossary" data-section>Key Terms</a>
+    <a href="#questions" data-section>Practice Questions</a>
+  </nav>
+  <div class="meta">Revision Notes &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <!-- Header -->
+    <h1 class="fade-in">Shaping of the Earth's Surface</h1>
+    <p class="subtitle fade-in">Chapter 2 &mdash; Revision Notes</p>
+
+    <!-- Big Questions -->
+    <section id="big-q">
+      <h2 class="fade-in"><span class="num">&#x1F3AF;</span> Big Questions of the Chapter</h2>
+      <ol class="fade-in">
+        <li>What shapes the Earth's surface?</li>
+        <li>What is plate tectonics? Effects of plate movement?</li>
+        <li>How are landforms formed and classified?</li>
+        <li>How are humans connected to landforms?</li>
+        <li>How do landform-disasters impact human lives?</li>
+      </ol>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 1. Layers of the Earth -->
+    <section id="layers">
+      <h2 class="fade-in"><span class="num">1.</span> Layers of the Earth</h2>
+
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Layer</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Crust</strong></td><td>Outermost layer; 30–40 km thick under continents, 5–7 km under oceans</td></tr>
+          <tr><td><strong>Mantle</strong></td><td>Thick, hot layer below crust; mostly solid</td></tr>
+          <tr><td><strong>Core</strong></td><td>Innermost; extremely hot &amp; heavy; has <strong>Outer core</strong> (fluid, iron-nickel) and <strong>Inner core</strong> (solid, spinning, densest)</td></tr>
+          <tr><td><strong>Lithosphere</strong></td><td>Crust + upper mantle (rigid); broken into tectonic plates</td></tr>
+          <tr><td><strong>Asthenosphere</strong></td><td>Semi-molten layer below lithosphere; allows plates to move</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> If the asthenosphere suddenly became completely solid (instead of semi-molten), what would happen to plate movement and to phenomena like earthquakes and mountain building? Explain your reasoning.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 2. Plate Tectonics -->
+    <section id="tectonics">
+      <h2 class="fade-in"><span class="num">2.</span> Plate Tectonics</h2>
+
+      <ul class="fade-in">
+        <li><strong>Theory given by:</strong> W.J. Morgan</li>
+        <li>Earth's outer layer = broken into <strong>tectonic plates</strong> (large &amp; small) that move slowly (a few cm/year) over the asthenosphere.</li>
+      </ul>
+
+      <h3 class="fade-in">Types of plates:</h3>
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Type</th><th>Carries</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Continental plates</td><td>Continents</td></tr>
+          <tr><td>Oceanic plates</td><td>Ocean floors</td></tr>
+          <tr><td>Mixed plates</td><td>Both continents and oceans</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p class="fade-in"><strong>Major plates:</strong> Pacific, Eurasian, African, North American, South American, Indo-Australian, Antarctic</p>
+
+      <p class="fade-in"><strong>Cause of movement:</strong> Convection currents in the mantle — heat from the core makes molten material rise, cooler material sinks → pushes/pulls plates.</p>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> Using the idea of convection currents, explain why tectonic plates don't move at the same speed or in the same direction everywhere on Earth.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 3. Plate Boundaries -->
+    <section id="boundaries">
+      <h2 class="fade-in"><span class="num">3.</span> Plate Boundaries</h2>
+
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Boundary Type</th><th>What Happens</th><th>Landform/Result</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Convergent</strong></td><td>Plates move towards each other</td><td>Continental-Continental → Fold mountains; Oceanic-Continental → oceanic plate sinks (subducts) → volcanoes &amp; earthquakes</td><td>Himalaya</td></tr>
+          <tr><td><strong>Divergent</strong></td><td>Plates move away from each other</td><td>Magma rises, forms new crust → mid-ocean ridges</td><td>Mid-Atlantic Ridge</td></tr>
+          <tr><td><strong>Transform</strong></td><td>Plates slide past each other (no crust made/destroyed)</td><td>Mainly earthquakes</td><td>San Andreas Fault (USA)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <ul class="fade-in">
+        <li><strong>Ring of Fire:</strong> Belt around the Pacific Ocean where most earthquakes &amp; volcanoes occur (because many plate boundaries lie here).</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A student says, "All plate boundaries cause volcanoes." Do you agree? Use the three boundary types to support or correct this statement.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 4. Weathering -->
+    <section id="weathering">
+      <h2 class="fade-in"><span class="num">4.</span> Weathering (Breaking Down — NO Movement)</h2>
+
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Type</th><th>Cause</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Physical</strong></td><td>Temperature change, frost, wind — rock breaks into pieces</td></tr>
+          <tr><td><strong>Chemical</strong></td><td>Reaction of minerals with water, air, acids → new substances</td></tr>
+          <tr><td><strong>Biological</strong></td><td>Plants, animals, micro-organisms (e.g., roots splitting rocks)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A rock in a hot desert and a rock in a humid forest both crumble over time, but by different processes. Identify and explain the weathering type most active in each location.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 5. Erosion -->
+    <section id="erosion">
+      <h2 class="fade-in"><span class="num">5.</span> Erosion (Breaking Down + MOVEMENT of material)</h2>
+
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Type</th><th>Caused By</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Water erosion</td><td>Rivers, rain, ocean waves</td></tr>
+          <tr><td>Wind erosion</td><td>Common in dry, sandy areas</td></tr>
+          <tr><td>Glacial erosion</td><td>Moving ice scrapes &amp; carries rock</td></tr>
+          <tr><td>Coastal erosion</td><td>Sea waves wearing shoreline</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 class="fade-in">Effect on human occupations:</h3>
+      <ul class="fade-in">
+        <li>Farmers → lose fertile topsoil → lower crop yield</li>
+        <li>River/coastal dwellers → lose land, houses, roads</li>
+        <li>Construction/mining → land becomes unstable, safety risk</li>
+        <li>Tourism &amp; fishing → beaches/rivers/fertile land destroyed</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A village near a river depends on farming, fishing, and tourism. Explain how a single event of severe water erosion could affect all three livelihoods together.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 6. Agents of Gradation -->
+    <section id="gradation">
+      <h2 class="fade-in"><span class="num">6.</span> Agents of Gradation</h2>
+
+      <p class="fade-in">(Forces that wear down, transport &amp; deposit material to level the Earth's surface)</p>
+
+      <ul class="fade-in">
+        <li><strong>Running water</strong> → erodes to form valleys &amp; plains</li>
+        <li><strong>Glaciers</strong> → carve U-shaped valleys</li>
+        <li><strong>Wind</strong> → shapes deserts (erosion + deposition of sand)</li>
+        <li><strong>Waves</strong> → erode coastlines (cliffs, beaches, bays)</li>
+        <li><strong>Groundwater</strong> → dissolves rock (limestone) → caves, sinkholes</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> Classify the following into agents of gradation and explain your choice: melting glacier carving a valley, sea waves forming a cliff, river depositing silt at its mouth.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 7. Landforms Made by Running Water -->
+    <section id="running-water">
+      <h2 class="fade-in"><span class="num">7.</span> Landforms Made by Running Water</h2>
+
+      <h3 class="fade-in">River course pattern:</h3>
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Course</th><th>Landforms Formed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Upper course (steep)</td><td>V-shaped valleys, waterfalls, rapids</td></tr>
+          <tr><td>Middle course</td><td>Meanders, floodplains</td></tr>
+          <tr><td>Lower course</td><td>Deltas, levees, alluvial fans</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <ul class="fade-in">
+        <li><strong>Waterfall:</strong> River flows over a steep drop; forms where hard rock resists erosion while softer rock below wears away. Uses: tourism, hydroelectric power, recreation, cultural/religious value.</li>
+        <li><strong>Meander:</strong> Winding bend in middle/lower course; outer bank eroded, inner bank gets deposition → large loops. Importance: fertile soil for farming, settlement sites, navigation/irrigation/tourism (e.g., Grand Anicut/Kallanai, Tamil Nadu).</li>
+        <li><strong>Delta:</strong> Fan/triangular landform at river mouth where sediments deposit into sea/ocean/lake. Highly fertile (rice, jute); supports fishing, trade, dense settlement; but flood-prone.</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A river forms a waterfall in its upper course and a delta at its mouth. Explain why these two very different landforms can be produced by the <em>same</em> river.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 8. Landforms Made by Waves and Currents -->
+    <section id="waves">
+      <h2 class="fade-in"><span class="num">8.</span> Landforms Made by Waves and Currents</h2>
+
+      <ul class="fade-in">
+        <li><strong>Beach:</strong> Sand/pebbles/rocks deposited by waves along shore. Importance: tourism, fishing, sand/shell collection, natural barrier against erosion.</li>
+      </ul>
+
+      <h3 class="fade-in">Coastal erosion landforms (sequence):</h3>
+      <p class="fade-in">Cliff (waves undercut coast) → Wave-cut platform (flat area left as cliff retreats) → Cave (waves erode weak rock) → Arch (caves from both sides of headland meet) → Stack (arch collapses, leaving isolated rock pillar)</p>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> Arrange the following in the correct order of formation and justify the sequence: sea stack, sea cave, sea cliff, sea arch.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 9. Landforms Made by Glaciers -->
+    <section id="glaciers">
+      <h2 class="fade-in"><span class="num">9.</span> Landforms Made by Glaciers</h2>
+
+      <h3 class="fade-in">Erosional landforms:</h3>
+      <ul class="fade-in">
+        <li>U-shaped valley – glacier widens/deepens a valley</li>
+        <li>Cirque – bowl-shaped depression at glacier's head</li>
+        <li>Arete – sharp ridge between two valleys</li>
+        <li>Hanging valley – where a small glacier meets a larger one</li>
+        <li>Fjord – sea floods a glacial valley (deep, narrow inlet)</li>
+      </ul>
+
+      <h3 class="fade-in">Depositional landforms — Moraines</h3>
+      <p class="fade-in">(deposited rock/soil/debris called <em>till</em>):</p>
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Type</th><th>Formed</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lateral moraine</td><td>Along the sides of a glacier</td></tr>
+          <tr><td>Terminal moraine</td><td>At the end of a glacier (marks furthest advance)</td></tr>
+          <tr><td>Medial moraine</td><td>Where two glaciers meet, lateral moraines join</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <ul class="fade-in">
+        <li>Human importance: tourism (trekking, skiing), fertile soil, natural dams/lakes for water supply, hydroelectric power, and glaciers as fresh water source for rivers.</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> If global warming causes a glacier to melt back rapidly, which glacial landform would help scientists identify exactly how far the glacier had originally advanced? Explain.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 10. Landforms Made by Wind -->
+    <section id="wind">
+      <h2 class="fade-in"><span class="num">10.</span> Landforms Made by Wind</h2>
+
+      <h3 class="fade-in">Erosional landforms:</h3>
+      <ul class="fade-in">
+        <li>Yardang – streamlined rock ridge carved by wind</li>
+        <li>Ventifact – rock polished/shaped by sandblasting</li>
+        <li>Deflation hollow/blowout – shallow depression where loose material removed</li>
+        <li>Desert pavement – flat surface left after fine particles blown away</li>
+      </ul>
+
+      <h3 class="fade-in">Depositional landforms — Dunes:</h3>
+      <div class="table-wrap fade-in"><table>
+        <thead>
+          <tr><th>Type</th><th>Shape/Cause</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Barchan</td><td>Crescent-shaped; limited sand, single wind direction</td></tr>
+          <tr><td>Longitudinal</td><td>Long ridges parallel to prevailing wind</td></tr>
+          <tr><td>Star</td><td>Multiple arms; winds from different directions</td></tr>
+          <tr><td>Parabolic</td><td>U-shaped, often stabilised by vegetation</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <ul class="fade-in">
+        <li>Human importance: barrier against desertification, tourism/adventure sports, coastal protection, construction sand.</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A desert region has wind blowing mainly from one direction with limited sand supply. Which type of dune is most likely to form there, and why?
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 11. Landforms Made by Underground Water -->
+    <section id="groundwater">
+      <h2 class="fade-in"><span class="num">11.</span> Landforms Made by Underground Water (Karst Topography)</h2>
+
+      <p class="fade-in">Formed by chemical weathering/erosion of soluble rocks (like limestone):</p>
+      <ul class="fade-in">
+        <li><strong>Caves</strong> – hollow spaces from acidic water dissolving rock</li>
+        <li><strong>Stalactites</strong> – icicle-shaped, hang from cave ceiling</li>
+        <li><strong>Stalagmites</strong> – rise from cave floor</li>
+        <li><strong>Sinkholes/dolines</strong> – depressions from ground collapsing into a cavity</li>
+        <li><strong>Underground rivers</strong> – flow through cave systems</li>
+      </ul>
+
+      <ul class="fade-in">
+        <li>Human importance: fresh water source, tourism, cultural/religious significance, geological study.</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> How would you distinguish a stalactite from a stalagmite just by looking at a cave photograph? Explain the difference in their formation.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 12. Landforms and Disasters -->
+    <section id="disasters">
+      <h2 class="fade-in"><span class="num">12.</span> Landforms and Disasters</h2>
+
+      <div class="disaster-grid fade-in">
+        <div class="disaster-card">
+          <h4>&#x1F4A5; Landslides</h4>
+          <ul>
+            <li>Heavy rainfall, earthquakes/volcanic eruptions, steep slopes with loose rock, deforestation, mining, unplanned construction, poor drainage</li>
+          </ul>
+        </div>
+        <div class="disaster-card">
+          <h4>&#x2744;&#xFE0F; Avalanches</h4>
+          <ul>
+            <li>Heavy snowfall in short time, weak/loose snow layers, sudden temperature rise (melting reduces friction), strong winds piling snow, earthquakes/vibrations, human activity (skiing, construction)</li>
+          </ul>
+        </div>
+        <div class="disaster-card">
+          <h4>&#x1F30A; GLOFs (Glacial Lake Outburst Floods)</h4>
+          <ul>
+            <li>Rapid glacier melting (rising temperature) increasing lake water/pressure, heavy rain/snowfall adding water, earthquakes/avalanches/landslides weakening the natural ice/moraine dam → sudden collapse</li>
+          </ul>
+        </div>
+        <div class="disaster-card">
+          <h4>&#x1F32A;&#xFE0F; Dust Storms</h4>
+          <ul>
+            <li>Strong winds lifting dry loose soil/sand, prolonged drought, low rainfall, sparse vegetation (deforestation/overgrazing/poor farming), climate change</li>
+          </ul>
+        </div>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> A hilly region experiences deforestation, followed by unusually heavy rainfall. Predict the disaster most likely to occur and explain the chain of causes leading to it.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 13. Humans and Landforms — Connection -->
+    <section id="connection">
+      <h2 class="fade-in"><span class="num">13.</span> Humans and Landforms — Connection</h2>
+
+      <ul class="fade-in">
+        <li><strong>Rivers/plains</strong> (Ganga, Nile, Brahmaputra, Indus) → gave rise to agriculture &amp; early cities</li>
+        <li><strong>Mountains</strong> → barriers <em>and</em> connectors (Himalayas shielded India from invasion but Khyber Pass allowed cultural exchange)</li>
+        <li><strong>Deserts</strong> (e.g., Thar) → limited settlements but encouraged trade routes (e.g., Silk Route)</li>
+        <li><strong>Coasts/harbours</strong> → supported trade, travel, cultural contact (helped south Indian kingdoms flourish)</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F4A1; Competency Question:</strong> "Landforms act as both barriers and bridges for human civilisation." Justify this statement with two examples from the chapter.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Quick Recap -->
+    <section id="recap">
+      <h2 class="fade-in"><span class="num">&#x26A1;</span> Quick Recap (Must Remember)</h2>
+
+      <ul class="fade-in">
+        <li>Earth's layers: <strong>crust, mantle, core</strong></li>
+        <li><strong>Internal forces</strong> (earthquakes, volcanoes, folding, faulting) → build up landforms</li>
+        <li><strong>External forces</strong> (weathering, erosion, deposition) → wear down/reshape landforms</li>
+        <li><strong>Agents of gradation:</strong> running water, waves/tides, glaciers, wind, groundwater</li>
+        <li><strong>Disasters linked to landforms:</strong> landslides, avalanches, GLOFs, dust storms</li>
+      </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Key Terms Glossary -->
+    <section id="glossary">
+      <h2 class="fade-in"><span class="num">&#x1F4D6;</span> Key Terms Glossary</h2>
+
+      <div class="terms-grid fade-in">
+        <div class="term-card">
+          <div class="term">Landform</div>
+          <div class="def">Natural feature on Earth's surface formed by weathering, erosion, deposition, and crustal movement</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Weathering</div>
+          <div class="def">Breaking down of rock <em>without</em> movement</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Erosion</div>
+          <div class="def">Breaking down <em>and</em> movement of material</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Contouring</div>
+          <div class="def">Trenches dug along hillside contours to slow/hold rainwater, prevent soil erosion, recharge groundwater</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Bunding</div>
+          <div class="def">Earthen embankments along contours to reduce run-off &amp; soil erosion</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Terracing</div>
+          <div class="def">Level steps cut into a hillside to prevent soil erosion</div>
+        </div>
+        <div class="term-card">
+          <div class="term">Till</div>
+          <div class="def">Rock/soil/debris carried and deposited by a glacier (forms moraines)</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Practice Questions -->
+    <section id="questions">
+      <h2 class="fade-in"><span class="num">&#x270D;&#xFE0F;</span> Practice: Chapter-End Style Questions</h2>
+
+      <ol class="fade-in" style="padding-left:1.5rem">
+        <li style="margin-bottom:0.75rem">What sources of energy drive the Earth's internal movements?</li>
+        <li style="margin-bottom:0.75rem">Why do earthquakes occur mostly along plate boundaries? Can they be predicted?</li>
+        <li style="margin-bottom:0.75rem">Explain: "Plate movements are responsible for the distribution of earthquakes and volcanoes."</li>
+        <li style="margin-bottom:0.75rem">How are deforestation and erosion related?</li>
+        <li style="margin-bottom:0.75rem">Suggest one mitigation measure each for landslides, avalanches, GLOFs, and dust storms.</li>
+      </ol>
+    </section>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+// Sidebar toggle
+document.getElementById('menuToggle').addEventListener('click', function(){
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Close sidebar on link click (mobile)
+document.querySelectorAll('.sidebar nav a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+// Intersection Observer for fade-in
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+
+// Active section highlighting
+var sections = document.querySelectorAll('section');
+var links = document.querySelectorAll('.sidebar nav a');
+
+window.addEventListener('scroll', function(){
+  var current = '';
+  sections.forEach(function(sec){
+    var top = sec.offsetTop - 120;
+    if(window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  links.forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+
+</body>
+</html>
