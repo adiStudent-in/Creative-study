@@ -3,258 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SST &mdash; StudyHub</title>
+<title>SST &mdash; StudyHub · Revision Index</title>
+<meta name="description" content="Social Studies revision index — Class 9. History, Geography, Civics, Economics filed for revision.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #0C0C14;
-  --surface: #181825;
-  --text: #E8E6E3;
-  --text-muted: #8B8FA3;
-  --text-dim: #5C5F72;
-  --accent: #6C8EBF;
-  --border: #2A2A3E;
-  --radius: 12px;
-  --radius-sm: 8px;
+:root{
+  --paper:#F4EFE1; --card:#EDE6D1; --card-hi:#E5DCC2;
+  --ink:#2B2416; --ink-soft:#6D6552; --ink-dim:#8A8270;
+  --rule:#CFC3A4; --rule-hi:#B4A984;
+  --c:#4E7696;              /* sst sky */
+  --c-weak:rgba(78,118,150,.20);
+  --red:#C5412B;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;overflow-x:hidden}
-body{
-  font-family:'Sora',system-ui,-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;min-height:100vh;
-}
-::selection{background:var(--accent);color:var(--bg)}
-body::after{
-  content:'';position:fixed;inset:0;
-  opacity:0.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:256px 256px;
-  pointer-events:none;z-index:9999;
-}
-.ambient{
-  position:fixed;top:-30vh;right:-20vw;
-  width:70vmax;height:70vmax;
-  background:radial-gradient(circle, rgba(108,142,191,0.04) 0%, transparent 60%);
-  pointer-events:none;z-index:0;
-  animation:ambientPulse 8s ease-in-out infinite alternate;
-}
-@keyframes ambientPulse{
-  0%{opacity:0.6;transform:scale(1)}
-  100%{opacity:1;transform:scale(1.1)}
-}
-header{
-  position:sticky;top:0;z-index:100;
-  padding:1.15rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  background:rgba(12,12,20,0.7);
-  border-bottom:1px solid rgba(42,42,62,0.5);
-}
-.header-left{display:flex;align-items:center;gap:1rem}
-.back-btn{font-size:0.85rem;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;border-radius:var(--radius-sm);transition:all 0.2s}
-.back-btn:hover{color:var(--text);background:rgba(255,255,255,0.04)}
-.logo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text)}
-.logo span{color:var(--accent)}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;min-height:100vh}
+::selection{background:var(--ink);color:var(--paper)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.05'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(130% 100% at 50% 0%,transparent 55%,rgba(43,36,22,.06))}
+.wrap{position:relative;z-index:1;padding:0 clamp(1.25rem,5vw,4.5rem);max-width:1240px;margin:0 auto}
 
-.content{max-width:800px;margin:0 auto;padding:3rem 2rem 4rem;position:relative;z-index:1}
+.mast{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;padding:clamp(1.3rem,3vw,2rem) 0 1.1rem;border-bottom:3px double var(--rule)}
+.brand{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--ink)}
+.brand .amp{color:var(--red);font-style:italic;font-weight:600;padding:0 .03em}
+nav.temple{display:flex;gap:1.4rem;flex-wrap:wrap}
+.temple a{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:.4rem 0;position:relative}
+.temple a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--c);transition:width .35s cubic-bezier(.22,1,.36,1)}
+.temple a:hover{color:var(--ink)}
+.temple a:hover::after{width:100%}
+.temple a.here{color:var(--ink)}
+.temple a.here::after{width:100%;background:var(--c)}
 
-.subject-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2.5rem}
-.subject-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:rgba(108,142,191,0.1);border:1px solid rgba(108,142,191,0.15)}
-.subject-info h1{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.2rem}
-.subject-info .subtitle{font-size:0.85rem;color:var(--text-muted)}
-.subject-info .subtitle strong{color:var(--accent)}
+.edition{position:relative;padding-top:clamp(2rem,5.5vw,3.4rem);display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.kicker{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:'';width:2.4rem;height:1px;background:var(--rule)}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.2rem,7vw,4rem);line-height:.98;letter-spacing:-.03em;margin:.6rem 0 .7rem}
+h1 .sw{display:inline-block;width:1.1em;height:.5em;border-radius:1px;background:var(--c);vertical-align:.18em;margin-right:.35em}
+.subtitle{font-family:'Fraunces',Georgia,serif;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--ink-soft)}
+.subtitle b{font-weight:600;color:var(--ink)}
+.stamp{text-align:center;color:var(--red);transform:rotate(3deg);border:2px solid currentColor;border-radius:3px;padding:.6rem .9rem .5rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;line-height:1.4;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px currentColor;-webkit-mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%);mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%)}
+.stamp .st-big{font-family:'Fraunces',serif;font-size:.9rem;letter-spacing:.03em;font-weight:700;display:block}
+.stamp .st-line{display:block;margin-top:.12rem;border-top:1px solid currentColor;padding-top:.1rem}
+@media(max-width:720px){.edition{flex-direction:column}.stamp{transform:rotate(-2deg)}}
 
-.progress-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1.5rem}
-.progress-ring{width:60px;height:60px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--pct)*1%), rgba(255,255,255,0.06) 0);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.progress-ring .inner{width:48px;height:48px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--accent)}
-.progress-stats{flex:1}
-.progress-stats .stat-row{display:flex;gap:1.5rem}
-.progress-stats .stat .num{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
-.progress-stats .stat .lbl{font-size:0.72rem;color:var(--text-dim)}
+.secline{display:flex;align-items:baseline;gap:1.1rem;margin:clamp(2.4rem,5vw,3.4rem) 0 1.1rem}
+.secline .n{font-family:'Fraunces',serif;font-style:italic;color:var(--c);font-size:1.05rem}
+.secline h2{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-.01em;font-size:clamp(1.15rem,2.4vw,1.6rem)}
+.secline .slug{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;margin-left:auto;text-align:right}
 
-.section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.75rem;margin-top:1.5rem}
-.section-label:first-of-type{margin-top:0}
+.clist{display:flex;flex-direction:column;gap:.55rem}
+.crow{position:relative;display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--rule-hi);border-radius:2px;padding:.95rem 1.25rem;box-shadow:0 1px 0 rgba(43,36,22,.05);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s}
+a.crow{text-decoration:none;color:var(--ink)}
+a.crow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);border-radius:2px 0 0 2px}
+a.crow:hover{transform:translateX(4px);border-color:var(--c);box-shadow:0 12px 26px -14px rgba(0,0,0,.28)}
+.crow .st{flex-shrink:0;width:.72rem;height:.72rem;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--c-weak)}
+.crow.locked{opacity:.55}
+.crow.locked .st{background:var(--rule);box-shadow:none}
+.crow .num{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;min-width:1rem}
+.crow .ttl{flex:1;font-size:.96rem;font-weight:500}
+.crow .ttl b{font-family:'Fraunces',serif;font-weight:600}
+.crow .act{margin-left:.4rem}
+.crow .lck-mark{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;border:1px dashed var(--rule-hi);padding:.28rem .7rem;border-radius:1px}
+.crow.open .open-mark{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);border:2px solid var(--red);border-radius:2px;padding:.22rem .6rem;box-shadow:inset 0 0 0 1px var(--paper);-webkit-mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%);mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%)}
 
-.chapter-list{display:flex;flex-direction:column;gap:0.5rem}
-.chapter-item{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;color:var(--text);transition:all 0.3s cubic-bezier(0.22,1,0.36,1)}
-.chapter-item .ch-info{flex:1}
-.chapter-item .ch-num{font-size:0.68rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-dim)}
-.chapter-item .ch-title{font-size:0.9rem;font-weight:600;margin-top:0.05rem}
-.chapter-item .ch-action{font-size:0.75rem;padding:0.3rem 0.7rem;border-radius:var(--radius-sm);flex-shrink:0}
-.chapter-item .ch-action.coming{background:rgba(255,255,255,0.03);color:var(--text-dim);font-size:0.65rem}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.v{opacity:1;transform:none}
+.r1{transition-delay:.05s}.r2{transition-delay:.1s}.r3{transition-delay:.15s}.r4{transition-delay:.2s}
 
-.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+.footline{margin-top:clamp(2.6rem,6vw,4rem);border-top:3px double var(--rule);padding:1.2rem 0 2.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.footline .mark{font-family:'Fraunces',serif;font-style:italic;text-transform:none;letter-spacing:.02em;font-size:.9rem;color:var(--ink)}
+.footline a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
 
-@media(max-width:768px){
-  header{padding:1rem 1.25rem}
-  .content{padding:2rem 1.25rem}
-  .subject-info h1{font-size:1.5rem}
-  .progress-card{flex-direction:column;align-items:flex-start;gap:1rem}
-}
-@media(max-width:600px){
-  .content{padding:1.5rem 1rem}
-  .subject-icon{width:46px;height:46px;font-size:1.2rem}
-  .subject-info h1{font-size:1.3rem}
-  .chapter-item{padding:0.85rem 1rem}
-  header nav a{padding:0.3rem 0.6rem;font-size:0.75rem}
-}
-@media(prefers-reduced-motion){
-  *{animation:none!important;transition:none!important}
-  .fade-in{opacity:1;transform:none}
-}
+@media(max-width:620px){.temple{gap:1rem}.crow .ttl{font-size:.88rem}}
 </style>
 </head>
 <body>
 
-<div class="ambient"></div>
+<div class="wrap">
+  <header class="mast">
+    <a class="brand" href="index.html">study<span class="amp">&amp;</span>hub</a>
+    <nav class="temple">
+      <a href="science.html">Science</a>
+      <a href="sst.html" class="here">SST</a>
+      <a href="english.html">English</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="header-left">
-    <a href="index.html" class="back-btn">&larr; Back</a>
-    <a href="index.html" class="logo">&#x25B3; <span>study</span>hub</a>
+  <section class="edition rv v">
+    <div>
+      <div class="kicker">Revision desk</div>
+      <h1><span class="sw"></span>Social Studies</h1>
+      <p class="subtitle"><b>1</b> file ready</p>
+    </div>
+    <div class="stamp" aria-hidden="true">
+      <span class="st-big">Open · 1 file</span>
+      <span class="st-line">sky desk</span>
+    </div>
+  </section>
+
+  <!-- Geography -->
+  <div class="secline rv r2">
+    <span class="n">§ II</span>
+    <h2>Geography</h2>
+    <span class="slug">contemporary india</span>
   </div>
-  <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="#" class="active">SST</a>
-  </nav>
-</header>
-
-<div class="content">
-
-  <div class="subject-header fade-in">
-    <div class="subject-icon">&#x1F30D;</div>
-    <div class="subject-info">
-      <h1>Social Studies</h1>
-      <div class="subtitle"><strong>0</strong> of <strong>18</strong> chapters covered &middot; notes in progress</div>
-    </div>
-  </div>
-
-  <div class="progress-card fade-in" style="--pct:0">
-    <div class="progress-ring"><div class="inner">0%</div></div>
-    <div class="progress-stats">
-      <div class="stat-row">
-        <div class="stat"><div class="num">0</div><div class="lbl">Notes ready</div></div>
-        <div class="stat"><div class="num">18</div><div class="lbl">Ahead</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-label fade-in">History &mdash; India and the Contemporary World I</div>
-  <div class="chapter-list fade-in">
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">The French Revolution</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Socialism in Europe and the Russian Revolution</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Nazism and the Rise of Hitler</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Forest Society and Colonialism</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Pastoralists in the Modern World</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-  </div>
-
-  <div class="section-label fade-in">Geography &mdash; Contemporary India I</div>
-  <div class="chapter-list fade-in">
-    <a href="SST/Ch%20-%202/Notes.html" class="chapter-item" style="border-color:rgba(108,142,191,0.2)">
-      <div class="ch-info"><div class="ch-num">Geography &middot; Chapter 2</div><div class="ch-title">Shaping of the Earth's Surface</div></div>
-      <span class="ch-action" style="background:rgba(108,142,191,0.12);color:var(--accent);font-weight:600;font-size:0.7rem">Notes ready</span>
+  <div class="clist rv r2">
+    <a class="crow open" href="SST/Ch%20-%202/Notes.html">
+      <span class="st"></span><span class="num">Ch 2</span>
+      <span class="ttl"><b>Shaping of the Earth&rsquo;s Surface</b> &middot; notes</span>
+      <span class="act open-mark">view →</span>
     </a>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">India &mdash; Size and Location</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Physical Features of India</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Drainage</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Climate</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Natural Vegetation and Wildlife</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 6</div><div class="ch-title">Population</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
   </div>
 
-  <div class="section-label fade-in">Civics &mdash; Democratic Politics I</div>
-  <div class="chapter-list fade-in">
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">What is Democracy? Why Democracy?</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">Constitutional Design</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Electoral Politics</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Working of Institutions</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 5</div><div class="ch-title">Democratic Rights</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-  </div>
-
-  <div class="section-label fade-in">Economics</div>
-  <div class="chapter-list fade-in">
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 1</div><div class="ch-title">The Story of Village Palampur</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 2</div><div class="ch-title">People as Resource</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 3</div><div class="ch-title">Poverty as a Challenge</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-    <div class="chapter-item" style="opacity:0.5;cursor:default">
-      <div class="ch-info"><div class="ch-num">Chapter 4</div><div class="ch-title">Food Security in India</div></div>
-      <span class="ch-action coming">Coming</span>
-    </div>
-  </div>
-
+  <footer class="footline">
+    <span class="mark">study&;hub · SST desk</span>
+    <span><a href="index.html">back to index</a></span>
+  </footer>
 </div>
 
 <script>
-const fadeObs = new IntersectionObserver(function(e){
-  e.forEach(function(entry){
-    if(entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, {threshold:0.08});
-document.querySelectorAll('.fade-in').forEach(function(el){fadeObs.observe(el)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 </script>
 </body>
 </html>
