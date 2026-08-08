@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 2 ·</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 2 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 2 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 2 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *The Pot Maker* (Prose · Temsula Ao) · **B)** *Gifts of Grace: Honouring Our Vocations* (Poem · Anonymous)</p>
+      <h1>🟣 PART A — THE POT MAKER</h1>
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Author</strong></td>
+  <td><strong>Temsula Ao</strong> (abridged version of her story)</td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>A village in the North-East; the potters fetch grey and red clay from a riverbank <strong>16 km away</strong>, climbing down a <strong>sheer drop</strong></td>
+</tr>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td><strong>Passion and perseverance</strong> — Sentila's love for pot-making survives against her mother's wish that she become a weaver</td>
+</tr>
+<tr>
+  <td><strong>Main characters</strong></td>
+  <td>Sentila (daughter), Arenla (mother), Mesoba (father), Onula (dormitory warden, &quot;Aunty&quot;)</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td>Skills and crafts belong to the whole community and must be passed on; dedication and practice turn talent into mastery — &quot;A new pot maker was born.&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-characters">👥 2. Characters</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Character</th>
+  <th>Role in the story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Sentila</strong></td>
+  <td>The young girl who dreams of becoming a pot maker like her mother and grandmother. She falls, fails, learns from Onula, and finally masters the craft. &quot;A new pot maker was born.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Arenla</strong></td>
+  <td>Sentila's mother, a pot maker. She finds the work tiring and poorly paid, so she wants Sentila to learn weaving instead. Yet, she secretly gives Sentila the final chance to make pots on her own.</td>
+</tr>
+<tr>
+  <td><strong>Mesoba</strong></td>
+  <td>Sentila's father. He answers the village council humbly and passes on its message to Arenla.</td>
+</tr>
+<tr>
+  <td><strong>Onula (Aunty)</strong></td>
+  <td>A kind, middle-aged widow who looks after the girls' dormitory. She notices Sentila's clumsy effort, encourages her, and teaches her to make a perfect pot. Her support turns Sentila's confidence.</td>
+</tr>
+<tr>
+  <td><strong>Village elders</strong></td>
+  <td>They meet Mesoba and declare that skills like pot making &quot;did not belong to any individual&quot; — they are the heritage of the people.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-3-summary-full-exam-version">📖 3. Summary (Full — exam version)</h2>
+<h3 id="rev-part-i-the-dream-and-the-family-s-opposition">Part I — The dream and the family's opposition</h3>
+<p>Ever since Sentila was old enough to follow her mother to the fields and forests, she <strong>dreamed of becoming a pot maker</strong> like her mother and grandmother. But her mother <strong>Arenla</strong> wanted her to become a <strong>weaver</strong>. On days when Sentila stayed home while her parents went out, she went to the <strong>expert potters</strong> and watched them at work. They were amused at first, thinking she would &quot;outgrow&quot; her childish passion.</p>
+<p>Sentila <strong>did not tell her family</strong> about her love for pot making, because she had <strong>overheard a conversation</strong> between her parents one night. Arenla was complaining about Sentila's indifference to weaving. She said she would not teach her daughter pot making, because it had brought her no joy and only a <strong>pittance</strong>. The riverbank where the grey and red clay is found is <strong>sixteen kilometres</strong> away; she had to climb <strong>down a sheer drop</strong> to the river, and her <strong>back ached</strong> from carrying the heavy load uphill. <strong>Pounding the stubborn clay</strong> inside bamboo cylinders was <strong>tedious</strong>. She often dropped the mould from exhaustion and had to start over. It took <strong>months</strong> to bring out a batch of pots, and the reward was only a few rupees. But weaving paid much better, provided cloth for the family, was <strong>not messy</strong>, and could be done <strong>indoors all seasons</strong> — and one shawl took far less time.</p>
+<p>Sentila continued to watch the potters. She saw how the clay was <strong>mixed with water and pounded</strong>, how the potters pushed in their <strong>left hand</strong> into the lump and turned the lump with a <strong>spatula</strong> in the <strong>right hand</strong>. The <strong>tap-tap</strong> of the spatula was like music to her ears. After two–three days the pots were given a final touch, dried in the sun, then placed in a <strong>kiln</strong> on a bed of hay and bamboo and covered. The fire had to be tended carefully, else over/under firing would harm the whole lot.</p>
+<p>Arenla <strong>pretended to be unaware</strong> of Sentila's visits; but deep down she noticed the girl. News spread, and the <strong>village council</strong> summoned <strong>Mesoba</strong> to ask why Arenla would not teach her daughter. Mesoba answered humbly: Arenla had never said she would not teach; they wanted Sentila to grow <strong>stronger after her illness</strong>. The elders said pot making <strong>catered to the needs of the people</strong> and <strong>symbolised the tradition and history of the people</strong> — the skill <strong>did not &quot;belong&quot; to any individual</strong>. Experts must pass on their skills both to their own children and to anyone who wished to learn. Mesoba went home and discussed it with Arenla.</p>
+<h3 id="rev-part-ii-the-real-learning">Part II — The real learning</h3>
+<p>The next year Arenla <strong>took Sentila to the riverbank</strong> and taught her to dig the clay with a <strong>dao</strong>, carry it in a load basket, soak it in the <strong>trough</strong>, and pound it in a <strong>bamboo cylinder</strong>. Sentila was a <strong>quick learner for the dough</strong>, but she could not shape it. When she tried, she could not even hold the lump. Arenla took over and shaped a beautiful pot; these sessions lasted almost a year, but Sentila could not master any of it.</p>
+<p>Then, when Sentila was of age, she was sent to sleep in the <strong>girls' dormitory</strong> supervised by a kind <strong>middle-aged widow</strong> whom the girls called <strong>Onula, or Aunty</strong>. Onula had heard of the discord in Sentila's family and decided to help. One evening, Onula watched Sentila trying to make a pot, clumsy and tense; the clay would not obey. When Sentila wearily dropped the misshapen lump, Onula said, &quot;Don't worry, little one, I shall teach you how to make a perfect pot.&quot; She demonstrated and gave instructions; Sentila repeated the attempt and <strong>created a beautiful pot</strong>. Onula said only &quot;the mouth is wrong,&quot; and told Sentila to watch her mother closely the next time. Sentila did — she watched how the upper hand and spatula moved, how the rhythm <em><strong>slackened</strong></em> when shaping the mouth, and how a strip of elongated dough made the rim.</p>
+<p>One bright day Arenla told Sentila to make as many pots as they could, saying they would not have many sunny days to dry them. As usual Arenla made a batch and asked Sentila to go on. Complaining of a headache and backache, she left — telling Sentila she would try. Sentila, surprised and a little reluctant, began to beat the dough in coordination, and before long she realised the pot was ready. Like a sprinter, she made pot after pot, until she had just <strong>one short of the mother's tally</strong>. She went in to join her mother for lunch — and found her lying on the floor, not breathing. She ran for help. The next morning, when Arenla's body was carried out, Sentila cried, &quot;Mother, I did not wish it to happen this way; it simply came to me. Please forgive me.&quot;</p>
+<p>On the way, Onula noticed the work-shed door slightly ajar. She stepped in and stopped: <strong>two neat rows of new pots</strong> stood side by side — she could not distinguish one batch from the other. She was sure it was not handiwork of one person. She had witnessed a profound revelation. <strong>A new pot maker was born.</strong></p>
+<hr />
+<h2 id="rev-4-difficult-words-from-the-text-glosses">🔑 4. Difficult Words (from the text glosses)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>outgrow</strong></td>
+  <td>to lose interest as one grows older</td>
+</tr>
+<tr>
+  <td><strong>indifference</strong></td>
+  <td>lack of interest</td>
+</tr>
+<tr>
+  <td><strong>pittance</strong></td>
+  <td>a very small amount of money</td>
+</tr>
+<tr>
+  <td><strong>pounding</strong></td>
+  <td>repeated beating</td>
+</tr>
+<tr>
+  <td><strong>tedious</strong></td>
+  <td>tiring; boring but long</td>
+</tr>
+<tr>
+  <td><strong>deftly</strong></td>
+  <td>skillfully</td>
+</tr>
+<tr>
+  <td><strong>spatula</strong></td>
+  <td>the tool potters use to shape a pot</td>
+</tr>
+<tr>
+  <td><strong>tend</strong></td>
+  <td>to take care of</td>
+</tr>
+<tr>
+  <td><strong>followed suit</strong></td>
+  <td>did the same as another</td>
+</tr>
+<tr>
+  <td><strong>dao</strong></td>
+  <td>an instrument used to dig</td>
+</tr>
+<tr>
+  <td><strong>malleable</strong></td>
+  <td>able to be shaped without cracking</td>
+</tr>
+<tr>
+  <td><strong>wearily</strong></td>
+  <td>tiredly</td>
+</tr>
+<tr>
+  <td><strong>slackened</strong></td>
+  <td>relaxed (the rhythm of beating)</td>
+</tr>
+<tr>
+  <td><strong>momentum</strong></td>
+  <td>driving force</td>
+</tr>
+<tr>
+  <td><strong>dexterity</strong></td>
+  <td>skill of the hands</td>
+</tr>
+<tr>
+  <td><strong>tally</strong></td>
+  <td>a total / count</td>
+</tr>
+<tr>
+  <td><strong>threshold</strong></td>
+  <td>the entrance of a room or house</td>
+</tr>
+<tr>
+  <td><strong>intuitively</strong></td>
+  <td>by hidden instinct, not reasoning</td>
+</tr>
+<tr>
+  <td><strong>momentous</strong></td>
+  <td>of great importance</td>
+</tr>
+<tr>
+  <td><strong>phenomenon</strong></td>
+  <td>an unusual event</td>
+</tr>
+<tr>
+  <td><strong>profound</strong></td>
+  <td>deep, powerful</td>
+</tr>
+<tr>
+  <td><strong>revelation</strong></td>
+  <td>a sudden realisation</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-check-your-understanding-answers">✅ 5. Check Your Understanding — Answers</h2>
+<h3 id="rev-part-i">Part I</h3>
+<ol>
+<li><strong>Is pot making easy?</strong> No — it demands manual labour (hauling clay from 16 km, a sheer drop, pounding, months per batch) and a single mistake can spoil it. <em>Evidence: Arenla's complaint.</em></li>
+<li><strong>Would Sentila fulfil her dream?</strong> Yes. She is determined; she learns from watching others, from Onula's guidance and finally from the chance given her by her mother.</li>
+<li><strong>Do Mesoba and Arenla support her?</strong> They do at last. Mesoba tells the council they want her strong; Arenla, in her own testing way, gives Sentila the final batch to make.</li>
+</ol>
+<h3 id="rev-part-ii-1-amp-2">Part II (1) &amp; (2)</h3>
+<ol>
+<li><strong>Onula's support helped Sentila?</strong> Yes — it gave her confidence and the right instructions; she taught her to watch close.</li>
+<li><strong>Sentila observes her mother making pots</strong> — it tells us she is <strong>appraising, observant, eager to learn</strong>; she watches, remembers and applies.</li>
+</ol>
+<hr />
+<h2 id="rev-5-the-sequence-exercise-page-42-correct-order">🔍 5. The sequence exercise (page 42) — correct order</h2>
+<p><strong>4 → 6 → 3 → 1 → 8 → 5 → 2 → 9 → 7</strong></p>
+<ol>
+<li>Sentila was passionate about pottery but did not share it with her mother. (4)</li>
+<li>Sentila overheard her mother saying that pot making was tiring and a small income. (6)</li>
+<li>Sentila observed how other expert potters crafted beautiful pots. (3)</li>
+<li>The village council called Mesoba about Arenla's unwillingness to teach. (1)</li>
+<li>Sentila learned for a year with her mother and was unsuccessful. (8)</li>
+<li>Onula guided Sentila in the craft. (5)</li>
+<li>Arenla made a new batch and asked Sentila to continue as she was unwell. (2)</li>
+<li>Sentila could make pots quickly, one less than her mother's. (9)</li>
+<li>Onula saw two rows of pots which she felt was the work of two people. (7)</li>
+</ol>
+<hr />
+<h2 id="rev-6-critical-reflection-extract-answers">📖 6. Critical Reflection — Extract answers</h2>
+<h3 id="rev-extract-1-arenla-s-speech">Extract 1 (Arenla's speech)</h3>
+<p><strong>(i)</strong> The effort is far greater than the returns — <strong>A. The pot making process is quite tiresome and long, and one hardly earns much.</strong>
+<strong>(ii)</strong> Arenla wants Sentila to learn weaving because it brings more money and cloth, is not messy, can be done indoors all seasons, and needs less time per piece.
+<strong>(iii)</strong> One advantage of weaving over pot making: <strong>it is not messy / can be done indoors in all seasons / return is handsome</strong>.
+<strong>(iv)</strong> 'handsome' as in the extract → <strong>B. They will make a handsome profit.</strong>
+<strong>(v)</strong> The question mark — <strong>expresses astonishment</strong>: the return·a pittance, compared to all that work, and emphasises the injustice.</p>
+<h3 id="rev-extract-2-onula-amp-sentila">Extract 2 (Onula &amp; Sentila)</h3>
+<p><strong>(i)</strong> Sentila's effort is clumsy because <strong>she is too tense</strong> — the clay does not yield the right shape.
+<strong>(ii)</strong> Onula is <strong>thoughtful and generous</strong> (C).
+<strong>(iii)</strong> The effect (of the clumsy-ness cause) is <strong>A. As a result, the clay seemed unable or unwilling to yield the right shape.</strong>
+<strong>(iv)</strong> 'Fashioned' here means <strong>created</strong> (made).
+<strong>(v)</strong> Sentila would feel defeated and embarrassed — she let the lump fall and was ready to avoid it, until Onula intercede.</p>
+<hr />
+<h2 id="rev-7-answer-the-following-model-answers">✍️ 7. Answer the following — model answers</h2>
+<ol>
+<li><p><strong>Describe process of pot making observed by Sentila:</strong> clay mixed with water, pounded; left hand into lump; right hand with spatula rotates &amp; shapes with tap-tap; final touch after 2–3 days ✓ consistency; dried in sun; loaded into kiln on hay/bamboo; covered; fired; care to avoid over/under firing.</p>
+</li>
+<li><p><strong>Warning given to Mesoba:</strong> the skill must be passed on — the craft is not owned by one person; if only pot makers stop it would be lost; he must remind Arenla to teach both her daughter and others in the community.</p>
+</li>
+<li><p><strong>Sentila felt</strong> — shame/frustration/humiliation; she hung her head, wanted not to face Arenla, but kept trying because of her passion.</p>
+</li>
+<li><p><strong>&quot;Onula stood to understand the new phenomenon&quot;</strong> — she realised that the two identical rows of pots meant Sentila could now truly make pots as well as her mother; it was a moment of wonder and of great discovery.</p>
+</li>
+<li><p><strong>&quot;The tradition and history of the people did not belong to any individual&quot;</strong> — the craft is the identity of the community, handed down the generations; each master is only a caretaker of it. Nobody can claim blocking it; it belongs to all.</p>
+</li>
+<li><p><strong>Significance of &quot;A new pot maker was born&quot;</strong> — that the craft has a successor; a wholesome new artisan emerges; the tradition will continue, and Sentila has finally achieved her identity. It also implies Arenla's memory lives on in it.</p>
+</li>
+<li><p><strong>Role of perseverance</strong> — Sentila's dream became real only after repeated failures, patient observation, and her determination. Dreams need hard work and persistence — example of Sentila.</p>
+</li>
+</ol>
+<hr />
+<h2 id="rev-8-grammar-clauses-amp-determiners-answers">📐 8. Grammar — Clauses &amp; Determiners (answers)</h2>
+<h3 id="rev-noun-clauses-fill">Noun clauses (fill)</h3>
+<ol>
+<li>The elders emphasised that <strong>the skill did not belong to any individual / must be passed on.</strong></li>
+<li>Mesoba explained why <strong>Arenla wanted Sentila to learn (the craft) later</strong>.</li>
+<li>Onula's promise was that <strong>she would teach Sentila to make a perfect pot</strong>.</li>
+<li>Sentila observed her mother carefully when she shaped the mouth, which <strong>helped Sentila finally learn the skill</strong>.</li>
+<li>The kiln, where <strong>the pots were fired / dried</strong>, needed very careful attention, absence of over/under firing.</li>
+</ol>
+<h3 id="rev-relative-clauses-example-answers">Relative clauses (example answers)</h3>
+<p>(i) <strong>whose hands</strong>
+(ii) <strong>where the elders</strong>
+(iii) <strong>which</strong>
+(iv) <strong>which</strong>
+(v) <strong>who humbly explained to Arenla</strong></p>
+<h3 id="rev-determiners-fill-in">Determiners fill-in</h3>
+<p>A. in an / the elegant floral shop
+B. crafted <strong>some</strong> unique tables, and <strong>one</strong> of them became the centrepiece in <strong>a</strong> antique collection
+C. <strong>Each</strong> of <strong>the</strong> apprentices in <strong>the</strong> culinary class demonstrated <strong>particular</strong> knife skills
+D. <strong>Several/Two</strong> of <strong>these</strong> sculptures showed <strong>the</strong> art exhibition's <strong>many</strong> faces</p>
+<p><em>(Note: these are example answers; a dictionary / teacher can settle.)</em></p>
+<hr />
+<h2 id="rev-9-extras-for-mcqs">🏺 9. Extras for MCQs</h2>
+<ul>
+<li><strong>Khurja pottery</strong> — Uttar Pradesh</li>
+<li><strong>Blue pottery</strong> — Jaipur</li>
+<li><strong>Terracotta</strong> — West Bengal</li>
+<li><strong>Andretta pottery</strong> — Himachal Pradesh</li>
+<li><strong>Karigari pottery</strong> — Tamil Nadu</li>
+<li><strong>Longpi Black pottery</strong> — Manipur</li>
+<li><strong>Haiku</strong>: Japanese 17-syllable verse, 5-7-5 pattern.</li>
+</ul>
+<hr />
+<h1>🟢 PART B — GIFTS OF GRACE: HONOURING OUR VOCATIONS</h1>
+<h2 id="rev-at-a-glance">🏁 At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Poem title</strong></td>
+  <td>Gifts of Grace: Honouring Our Vocations</td>
+</tr>
+<tr>
+  <td><strong>Author</strong></td>
+  <td>Anonymous</td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>Free-verse (no fixed rhyme scheme) patriotic tribute to India's workers</td>
+</tr>
+<tr>
+  <td><strong>Key idea</strong></td>
+  <td>Every worker's craft is a gift; &quot;the voice of their vocation is the voice of their identity&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="rev-the-text-as-in-the-book">📜 The Text (as in the book)</h2>
+<blockquote>
+<p>I hear Bharat celebrating, the varied vocations I hear;
+Those of craftsperson, each one celebrating their craft, woven with colours and myriad hues.
+The artisans with lutes, each hailing varied emotions and celebrating dreams, echoing in the streets.
+The carpenters celebrating; they create anything out of wood with mathematical precision,
+The electricians humming; they get ready for work, work with cables and wires to brighten our lives,
+The boatmen gathering their nets from the shore, sailing, and singing while at work, return to tell the tales of life at sea,
+The shoemakers affirming the quality of their work, for the feet that walk, dance, run, jump, return home.
+The delicious singing of the cook, or the rhythm of designer, mason, each celebrating what belongs to them and to none else,
+The voice of their vocation is the voice of their identity. I hear Bharat celebrating, the varied voices I hear!</p>
+</blockquote>
+<h2 id="rev-summary">📖 Summary</h2>
+<p>The poem is a joyful tribute to <strong>every worker of India</strong>. The craftspersons celebrate their colourful work, musicians (artisans with lutes) echo emotions in the streets, carpenters create with mathematical precision, electricians hum while working with cables and wires to brighten our lives, boatmen sing as they sail, shoemakers affirm the quality of their work, and the cook, designer and mason each celebrate what &quot;belongs to them and to none else.&quot; The refrain — &quot;I hear Bharat celebrating&quot; — opens and closes the poem, and the key line is: <strong>the voice of their vocation is the voice of their identity.</strong></p>
+<h2 id="rev-poetic-devices">🎨 Poetic Devices</h2>
+<ul>
+<li><strong>Free verse</strong> — no fixed rhyme scheme; music comes from <strong>repetition and rhythm</strong>.</li>
+<li><strong>Refrain</strong> — <em>&quot;I hear Bharat celebrating, the varied vocations I hear&quot;</em> opens and closes the poem.</li>
+<li><strong>Repetition</strong> — of &quot;the… voice&quot;, &quot;I hear&quot; — creates a chant-like quality.</li>
+<li><strong>Metaphor</strong> — &quot;the delicious singing of the cook&quot; (the singing is as pleasing as delicious food); &quot;the rhythm of designer, mason&quot; — work as music.</li>
+<li><strong>Personification</strong> — vocations are given human qualities (&quot;celebrating,&quot; &quot;hailing,&quot; &quot;humming&quot;); Bharat &quot;celebrating&quot;.</li>
+<li><strong>Sensory imagery (auditory &amp; visual)</strong> — lutes, humming, singing (sound); colours, hues, cables, nets, feet (sight).</li>
+<li><strong>Alliteration</strong> — e.g., &quot;<strong>v</strong>aried <strong>v</strong>oices&quot;, &quot;<strong>m</strong>athematical <strong>m</strong>otion/(precision)&quot;.</li>
+</ul>
+<h2 id="rev-poem-exercise-answers">📚 Poem Exercise Answers</h2>
+<h3 id="rev-check-your-understanding-true-false">Check Your Understanding — True/False</h3>
+<ol>
+<li>The poem highlights the skilled work of craftspersons. — <strong>True</strong></li>
+<li>The poet shares that musicians express emotions through their instruments. — <strong>True</strong> (&quot;artisans with lutes… hailing varied emotions&quot;)</li>
+<li>The carpenters are admired for their logical work. — <strong>True</strong> (&quot;create anything out of wood with mathematical precision&quot;)</li>
+<li>The electricians are recognised for their crucial role in lighting up lives. — <strong>True</strong></li>
+<li>The poem pays homage to shoemakers who manufacture quality footwear. — <strong>True</strong></li>
+<li>The poem celebrates the patriotism of the people of Bharat. — <strong>False</strong> — it celebrates the <strong>skills and vocations</strong> of the people, not their patriotism.</li>
+<li>The poet feels that each vocation deserves respect. — <strong>True</strong></li>
+</ol>
+<h3 id="rev-appreciating-the-poem">Appreciating the poem</h3>
+<ol>
+<li><strong>Rhyme scheme:</strong> the poem is in <strong>free verse</strong> (no fixed rhyme).</li>
+<li><strong>Impact of varying line length:</strong> long lines mirror the <strong>flow of each worker's story</strong>; the varied rhythm makes it song-like and lively.</li>
+<li><strong>Pattern in structure:</strong> most lines begin with <strong>&quot;The …&quot;</strong> (the workers) and <strong>end with an action/vocabulary</strong> celebrating them — an <strong>anaphora</strong> (repetition of the opening).</li>
+<li><strong>Speaker:</strong> likely a <strong>citizen / poet of India</strong> who listens to and celebrates all workers — a voice of appreciation.</li>
+</ol>
+<h3 id="rev-tone-and-mood-fill-in">Tone and Mood (fill in)</h3>
+<ul>
+<li>A. The tone is <strong>celebratory and reverential</strong>, depicting admiration and respect for the artisans.</li>
+<li>B. There is a <strong>joyful</strong> mood throughout.</li>
+</ul>
+<h3 id="rev-imagery">Imagery</h3>
+<ul>
+<li>(i) Two <strong>visual</strong> descriptions: <strong>&quot;woven with colours and myriad hues&quot;</strong>; <strong>&quot;gathering their nets from the shore&quot;</strong>.</li>
+<li>(ii) Auditory imagery fill-ins: mentions of artisans with lutes, <strong>the boatmen singing</strong>, <strong>the electricians humming</strong> (these are the sounds).</li>
+</ul>
+<h3 id="rev-metaphor-true-false">Metaphor (True/False)</h3>
+<ul>
+<li>&quot;The delicious singing of the cook is a metaphor&quot; — <strong>True</strong>. It implies the singing is so pleasing that it is like tasting something delicious — the quality of the singing = taste of food.</li>
+</ul>
+<h3 id="rev-personification">Personification</h3>
+<ul>
+<li>The line that personifies vocations: <strong>&quot;The delicious singing of the cook, or the rhythm of designer, mason, each celebrating what belongs to them&quot;</strong> — the crafts are given human actions (singing, celebrating) and human qualities (rhythm).</li>
+</ul>
+<h3 id="rev-vocabulary-in-context-match">Vocabulary in Context (match)</h3>
+<ol>
+<li><strong>horticulturist</strong> — grows garden plants (1)</li>
+<li><strong>ASHA worker</strong> — trained community health worker (2)</li>
+<li><strong>sericulturist</strong> — a producer of raw silk (3)</li>
+<li><strong>confectioner</strong> — a person who makes or sells sweets &amp; chocolates (4)</li>
+<li><strong>goldsmith</strong> — a maker of jewellery/precious metals (5)</li>
+<li><strong>welder</strong> — one who fuses materials together (6)</li>
+</ol>
+<h3 id="rev-synonym-odd-one-out">Synonym odd-one-out</h3>
+<ol>
+<li><strong>myriad</strong> — (i) &quot;countable&quot; is odd (innumerable/numerous/abundant are synonyms) → <strong>countable</strong></li>
+<li><strong>hues</strong> — &quot;drawing&quot; is odd (a drawing is a picture, not a colour) → <strong>drawing</strong></li>
+<li><strong>precision</strong> — &quot;calculation&quot; is odd (exactness/accuracy/correctness are precision) → <strong>calculation</strong></li>
+<li><strong>varied</strong> — &quot;uniform&quot; is odd (assorted/diverse/different are varied) → <strong>uniform</strong></li>
+<li><strong>delicious</strong> — &quot;inedible&quot; is odd (mouth-watering/tasty/flavourful are delicious) → <strong>inedible</strong></li>
+</ol>
+<hr />
+<p><em>Notes from the Class 9 English textbook, Chapter 2 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 2 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *The Pot Maker* (Prose · Temsula Ao) · **B)** *Gifts of Grace: Honouring Our Vocations* (Poem)</p>
+      <h1>🟣 PART A — THE POT MAKER</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<ol>
+<li><strong>Follow your passion</strong> — Sentila loves pot making even though her mother wants her to become a weaver. She keeps her dream alive quietly and finally fulfils it.</li>
+<li><strong>Perseverance pays</strong> — repeated failure, patient observation and gentle guidance turn Sentila's clumsy hands into the hands of a master potter.</li>
+<li><strong>Skills belong to the community</strong> — the village elders declare that a craft like pot making &quot;did not belong to any individual&quot;; it is the tradition and history of the people, and experts must pass it on.</li>
+</ol>
+<blockquote>
+<p>❤️ <strong>Message:</strong> <em>Talent combined with hard work and patience can overcome every obstacle, and a craft lives on only when it is passed from hand to hand with love.</em></p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary">📝 LONG ANSWER (Complete summary)</h2>
+<p><strong>&quot;The Pot Maker&quot; by Temsula Ao is the story of a girl who becomes a pot maker through her own determination.</strong></p>
+<p>Ever since she was old enough to go with her mother to the fields and forests, <strong>Sentila</strong> dreamed of becoming a <strong>pot maker</strong>, like her mother <strong>Arenla</strong> and grandmother. But Arenla wanted her to be a <strong>weaver</strong>, because pot making was hard and poorly paid. Arenla's complaints were these: the grey and red clay came from a riverbank <strong>sixteen kilometres</strong> away; she had to climb down a <strong>sheer drop</strong> to reach it; her back ached from carrying the heavy load uphill; <strong>pounding</strong> the clay inside bamboo cylinders was <strong>tedious</strong>; she often dropped the mould from exhaustion and had to start again; and a batch of pots took <strong>months</strong> — yet the reward was only a few rupees. Weaving, on the other hand, brought more money, provided cloth for the family, was <strong>not messy</strong>, could be done <strong>indoors in all seasons</strong>, and took less time.</p>
+<p>So Sentila did not tell her family about her love for pot making, because she had <strong>overheard</strong> this conversation one night. When her parents were away, she went to the <strong>expert potters</strong> and watched them at work. She saw how the clay was mixed with water and pounded, how a potter pushed in the left hand and rotated the lump while shaping it with a <strong>spatula</strong> in the right hand. The regular <strong>tap, tap</strong> of the spatula was like music to her. After two or three days the pots were given a final touch, dried in the sun, loaded into a <strong>kiln</strong> on a bed of hay and dried bamboo, covered, and fired carefully — for over or under firing would ruin the whole batch.</p>
+<p>Arenla came to know of these visits but <strong>pretended to be ignorant</strong>. The visits became village gossip, and the <strong>village council</strong> summoned <strong>Mesoba</strong>, Sentila's father. Mesoba answered humbly that Arenla had never refused — they only wanted Sentila to grow stronger after her illness. The elders replied that skills such as pot making, which served the needs of the people and symbolised their tradition and history, <strong>did not belong to any individual</strong>; experts were obliged to pass on their skills not only to their own children but to anyone who wished to learn. Mesoba went home and discussed the matter with Arenla.</p>
+<p>The next year, Arenla took Sentila to the riverbank and taught her to dig the clay with a <strong>dao</strong>, carry it in a basket, soak it in a <strong>trough</strong>, and pound it in a bamboo cylinder. Sentila turned the clay into fine <strong>malleable dough</strong> — but when she tried to shape it into a pot, she <strong>could not even hold the lump</strong> properly. The sessions continued for nearly a year, yet Sentila learned nothing from her mother and hung her head in shame and frustration.</p>
+<p>Then, as was the custom, Sentila was sent to stay in the <strong>girls' dormitory</strong>, supervised by a kind middle-aged widow called <strong>Onula</strong> (Aunty). One evening Onula watched Sentila's clumsy, tense attempts and said, <em>&quot;Don't worry, little one, I shall teach you how to make a perfect pot.&quot;</em> She demonstrated, and Sentila created a beautiful pot. Onula pointed out only that the mouth was wrong, and advised her to <strong>watch her mother carefully</strong> when she shaped the mouth of a pot.</p>
+<p>Sentila did exactly that. One bright sunny day, Arenla made a batch and then, complaining of a headache and backache, left Sentila to make pots on her own. Sentila beat the dough and, like a sprinter who had found momentum, made <strong>pot after pot</strong> — finishing just <strong>one short of her mother's tally</strong>. She went inside to join her mother for lunch and found her lying on the floor, <strong>not breathing</strong>. She ran for help. When Arenla's body was taken away the next morning, Sentila cried, <em>&quot;Mother, I did not wish it to happen this way; it simply came to me. Please forgive me.&quot;</em></p>
+<p>Only <strong>Onula</strong> understood what had happened. On her way back she noticed the work-shed door ajar, went in, and saw <strong>two neat rows of newly made pots</strong>, one batch indistinguishable from the other — clearly not the work of one person alone. She had witnessed a profound revelation. <strong>A new pot maker was born.</strong></p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Sentila</strong></td>
+  <td>the girl who dreams of becoming a pot maker</td>
+</tr>
+<tr>
+  <td><strong>Arenla</strong></td>
+  <td>Sentila's mother, a pot maker who wanted her daughter to weave</td>
+</tr>
+<tr>
+  <td><strong>Mesoba</strong></td>
+  <td>Sentila's father, who humbly answered the village council</td>
+</tr>
+<tr>
+  <td><strong>Onula / Aunty</strong></td>
+  <td>the kind widow who supervised the girls' dormitory and taught Sentila</td>
+</tr>
+<tr>
+  <td><strong>pittance</strong></td>
+  <td>a very small amount of money</td>
+</tr>
+<tr>
+  <td><strong>tedious</strong></td>
+  <td>tiring; long and boring</td>
+</tr>
+<tr>
+  <td><strong>pounding</strong></td>
+  <td>repeated beating (of clay)</td>
+</tr>
+<tr>
+  <td><strong>deftly</strong></td>
+  <td>skilfully</td>
+</tr>
+<tr>
+  <td><strong>spatula</strong></td>
+  <td>the potter's shaping tool</td>
+</tr>
+<tr>
+  <td><strong>dao</strong></td>
+  <td>an instrument used to dig</td>
+</tr>
+<tr>
+  <td><strong>malleable</strong></td>
+  <td>able to be shaped without cracking</td>
+</tr>
+<tr>
+  <td><strong>wearily</strong></td>
+  <td>tiredly</td>
+</tr>
+<tr>
+  <td><strong>slackened</strong></td>
+  <td>relaxed (the rhythm)</td>
+</tr>
+<tr>
+  <td><strong>momentum</strong></td>
+  <td>driving force</td>
+</tr>
+<tr>
+  <td><strong>dexterity</strong></td>
+  <td>skill</td>
+</tr>
+<tr>
+  <td><strong>tally</strong></td>
+  <td>a count / total</td>
+</tr>
+<tr>
+  <td><strong>threshold</strong></td>
+  <td>the entrance of a house</td>
+</tr>
+<tr>
+  <td><strong>intuitively</strong></td>
+  <td>by instinct, through feelings</td>
+</tr>
+<tr>
+  <td><strong>momentous</strong></td>
+  <td>of great importance</td>
+</tr>
+<tr>
+  <td><strong>phenomenon</strong></td>
+  <td>an unusual event</td>
+</tr>
+<tr>
+  <td><strong>profound</strong></td>
+  <td>deep and powerful</td>
+</tr>
+<tr>
+  <td><strong>revelation</strong></td>
+  <td>a moment of sudden realisation</td>
+</tr>
+<tr>
+  <td><strong>outgrow</strong></td>
+  <td>to lose interest as one grows older</td>
+</tr>
+<tr>
+  <td><strong>indifference</strong></td>
+  <td>lack of interest</td>
+</tr>
+<tr>
+  <td><strong>followed suit</strong></td>
+  <td>did the same thing as another</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-character-sketches">👥 CHARACTER SKETCHES</h2>
+<h3 id="sum-sentila">Sentila</h3>
+<p>A girl with a <strong>clear dream</strong> — to be a pot maker like her mother and grandmother. She is <strong>quiet and patient</strong>; she hides her passion because of her mother's wish, yet she never gives it up. She <strong>observes carefully</strong>, learns from the expert potters and from Onula, and keeps practising even after a year of failure. When finally given the chance, she makes pot after pot with <strong>speed and dexterity</strong>, finishing only one short of her mother's tally. She feels <strong>guilt and grief</strong> at her mother's death, but her new skill keeps the craft alive.</p>
+<h3 id="sum-arenla">Arenla</h3>
+<p>Sentila's mother, an <strong>exhausted pot maker</strong>. Pot making has given her &quot;no joy&quot; and only a pittance, so she wants a better life for her daughter through weaving. Yet beneath her firm words she is a <strong>loving mother</strong> — she secretly watches her daughter, gives her the final batch to make on her own, and dies knowing the craft has passed on.</p>
+<h3 id="sum-mesoba">Mesoba</h3>
+<p>Sentila's father — <strong>humble and wise</strong>. Before the village council he defends his wife without arguing, and he faithfully carries the elders' message back to Arenla.</p>
+<h3 id="sum-onula-aunty">Onula (Aunty)</h3>
+<p>A <strong>kind, observant widow</strong> who runs the girls' dormitory. She sees Sentila's tension, encourages her warmly, and teaches her the right way. Her <strong>gentle guidance</strong> is the turning point in Sentila's journey.</p>
+<h3 id="sum-the-village-elders">The village elders</h3>
+<p>They uphold the idea that <strong>skills belong to the community</strong>. A craft must be passed on to one's own children and to anyone who wishes to learn.</p>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>Do you think pot making is easy?</strong> No. The clay must be fetched from a riverbank sixteen kilometres away, down a sheer drop; it is carried uphill, pounded tediously, and a batch takes months — yet earns only a pittance. A single mistake (over or under firing) ruins the whole batch.</p>
+</li>
+<li><p><strong>Would Sentila be able to fulfil her dream? Explain.</strong> Yes — she is determined and keeps watching and learning despite failure. With Onula's guidance and the chance her mother gives her, she finally makes beautiful pots, and &quot;a new pot maker was born.&quot;</p>
+</li>
+<li><p><strong>Do Mesoba and Arenla support her?</strong> Yes, at last. Mesoba tells the council they have not refused to teach; and Arenla, though she wished for weaving, secretly gives Sentila the final opportunity to make the pots.</p>
+</li>
+<li><p><strong>Why did Arenla want Sentila to learn weaving?</strong> Because pot making was tiring, messy and poorly paid, while weaving brought more money, provided cloth for the family, was not messy, and could be done indoors in all seasons.</p>
+</li>
+<li><p><strong>&quot;Skills did not belong to any individual.&quot; What does this mean?</strong> A craft like pot making serves the people and carries their tradition and history; it is the community's heritage, so an expert must pass it on — to their own children and to anyone else who wishes to learn.</p>
+</li>
+<li><p><strong>Why did the village council summon Mesoba?</strong> Because Arenla was refusing to teach her daughter the skill, and the elders feared that if all pot makers refused, there would be no expert potters left to carry the craft forward.</p>
+</li>
+<li><p><strong>Why did Sentila fail to learn from her mother for a year?</strong> Because she was too tense and in awe; she could not even hold the lump of dough. Her mother simply sat and watched, and Sentila felt ashamed and frustrated.</p>
+</li>
+<li><p><strong>How did Onula help Sentila?</strong> She saw Sentila's clumsy, tense attempts, encouraged her warmly, demonstrated how to shape a pot, and advised her to watch her mother's hands carefully when forming the mouth. This built Sentila's confidence.</p>
+</li>
+<li><p><strong>What is the significance of the ending, &quot;A new pot maker was born&quot;?</strong> It marks the passing of the craft to a new generation — Sentila has mastered what her mother knew, so the tradition continues. It also honours Arenla, whose skill lives on through her daughter.</p>
+</li>
+<li><p><strong>What is the role of perseverance in pursuing dreams?</strong> Sentila failed for a whole year, yet kept observing and practising until she succeeded. Her example shows that dreams are achieved through patience, determination and constant effort, not through luck.</p>
+</li>
+</ol>
+<hr />
+<h1>🟢 PART B — GIFTS OF GRACE: HONOURING OUR VOCATIONS</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p>The poem is a <strong>joyful celebration of every worker of Bharat</strong> — craftspersons, artisans, carpenters, electricians, boatmen, shoemakers, cooks, designers and masons. Its theme is that <strong>every vocation is honourable and every worker's craft is a gift of grace</strong>. The poet says: <em>&quot;The voice of their vocation is the voice of their identity.&quot;</em></p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>India is rich not only in land and heritage but in the varied skills of its people.</strong> Each worker — the weaver of colours, the wood-worker, the electrician, the boatman, the shoemaker, the cook — adds to the nation's life and beauty. Every craft deserves <strong>respect, admiration and celebration</strong>, because a person's work is a part of who they are.</p>
+<hr />
+<h2 id="sum-stanza-wise-explanation-correct-amp-complete">📜 STANZA-WISE EXPLANATION (correct &amp; complete)</h2>
+<h3 id="sum-stanza-1-opening-lines-celebration-begins">Stanza 1 (opening lines — celebration begins)</h3>
+<blockquote>
+<p>I hear Bharat celebrating, the varied vocations I hear;
+Those of craftsperson, each one celebrating their craft, woven with colours and myriad hues.
+The artisans with lutes, each hailing varied emotions and celebrating dreams, echoing in the streets.
+The carpenters celebrating; they create anything out of wood with mathematical precision,</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>The poet <strong>&quot;hears&quot; Bharat celebrating</strong> — India itself seems to rejoice in its many workers.</li>
+<li><strong>Craftspersons</strong> celebrate their craft, described as being <em>&quot;woven with colours and myriad hues&quot;</em> — bright, varied and beautiful.</li>
+<li><strong>Artisans with lutes</strong> (musicians) express <strong>emotions and dreams</strong> whose music <strong>echoes in the streets</strong>.</li>
+<li><strong>Carpenters</strong> work with wood with <strong>mathematical precision</strong> — their skill is exact and admirable.</li>
+</ul>
+<h3 id="sum-stanza-2-more-workers">Stanza 2 (more workers)</h3>
+<blockquote>
+<p>The electricians humming; they get ready for work, work with cables and wires to brighten our lives,
+The boatmen gathering their nets from the shore, sailing, and singing while at work, return to tell the tales of life at sea,
+The shoemakers affirming the quality of their work, for the feet that walk, dance, run, jump, return home.
+The delicious singing of the cook, or the rhythm of designer, mason, each celebrating what belongs to them and to none else,</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li><strong>Electricians hum</strong> while preparing to work with cables and wires — their work <strong>&quot;brightens our lives&quot;</strong> (they give us light).</li>
+<li><strong>Boatmen</strong> gather their nets, sail, and <strong>sing while they work</strong>, then return with tales of life at sea.</li>
+<li><strong>Shoemakers</strong> confidently declare the quality of their footwear — shoes that serve feet which walk, dance, run and jump.</li>
+<li>The <strong>cook</strong> sings deliciously (a metaphor — the singing is as pleasing as tasty food); the <strong>designer and mason</strong> work in rhythm; each worker <strong>celebrates what belongs to them and to none else</strong> — their unique craft.</li>
+</ul>
+<h3 id="sum-stanza-3-closing">Stanza 3 (closing)</h3>
+<blockquote>
+<p>The voice of their vocation is the voice of their identity. I hear Bharat celebrating, the varied voices I hear!</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>A person's <strong>work (vocation) is a part of their identity</strong> — who they are is reflected in what they do.</li>
+<li>The poem <strong>begins and ends with the same refrain</strong>, &quot;I hear Bharat celebrating, the varied vocations/voices I hear!&quot;, creating a <strong>chant-like, circular structure</strong> and reinforcing the message that India is a land of many skilled and honoured workers.</li>
+</ul>
+<hr />
+<h2 id="sum-keywords-amp-meanings-2">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>vocations</strong></td>
+  <td>occupations / callings; jobs people do</td>
+</tr>
+<tr>
+  <td><strong>varied</strong></td>
+  <td>of many different kinds</td>
+</tr>
+<tr>
+  <td><strong>myriad</strong></td>
+  <td>countless; very many</td>
+</tr>
+<tr>
+  <td><strong>hues</strong></td>
+  <td>shades of colour</td>
+</tr>
+<tr>
+  <td><strong>artisan</strong></td>
+  <td>a skilled craftsperson</td>
+</tr>
+<tr>
+  <td><strong>lute</strong></td>
+  <td>a stringed musical instrument</td>
+</tr>
+<tr>
+  <td><strong>precision</strong></td>
+  <td>exactness; accuracy</td>
+</tr>
+<tr>
+  <td><strong>cables</strong></td>
+  <td>thick wires that carry electricity</td>
+</tr>
+<tr>
+  <td><strong>affirming</strong></td>
+  <td>declaring confidently; stating firmly</td>
+</tr>
+<tr>
+  <td><strong>rhythm</strong></td>
+  <td>a regular, repeated pattern of movement or sound</td>
+</tr>
+<tr>
+  <td><strong>vocation is identity</strong></td>
+  <td>a person's work tells who they are</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers-2">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>Why does the poet say &quot;I hear Bharat celebrating, the varied vocations I hear&quot;?</strong> Because the poet wants to honour every kind of worker in India — the craftspersons, carpenters, electricians, boatmen, shoemakers, cooks and masons. Their work is worth celebrating, and India itself seems to rejoice in their skills.</p>
+</li>
+<li><p><strong>What does the electrician &quot;humming&quot; while getting ready for work suggest?</strong> It suggests that the electrician is <strong>happy and content in his work</strong>. He hums while preparing — work done with joy is a sign of pride and satisfaction in one's vocation.</p>
+</li>
+<li><p><strong>Explain: &quot;The voice of their vocation is the voice of their identity.&quot;</strong> It means that a person's occupation is not separate from who they are. What they do — their craft, their skill — expresses their identity. So to respect someone's work is to respect the person.</p>
+</li>
+<li><p><strong>Do you think the role of all people in different vocations is important in our daily lives?</strong> Yes. We depend on workers every day — the electrician gives us light, the cook prepares our food, the shoemaker makes our footwear, the carpenter builds our furniture, the boatman connects us. Without any of them, daily life would be difficult.</p>
+</li>
+<li><p><strong>Why is the poet celebrating all the vocations?</strong> Because every worker contributes to the life and beauty of the nation, and every craft deserves respect. Work done with love and skill is a &quot;gift of grace&quot; — the poet wants us to see dignity and value in all kinds of work.</p>
+</li>
+<li><p><strong>How does the poet use sensory imagery to bring out the beauty of everyday work?</strong> The poem uses sound and sight: we hear the artisans' lutes, the boatmen singing, the electricians humming, the cook's delicious singing; we see colours and hues, cables and wires, nets gathered from the shore, feet that walk, dance, run and jump. This imagery makes everyday work vivid and beautiful.</p>
+</li>
+<li><p><strong>What is the impact of the varying length of lines in the poem?</strong> The long, flowing lines give the poem a <strong>song-like, celebratory rhythm</strong>, like a chant of praise, and allow each worker's picture to be painted fully.</p>
+</li>
+<li><p><strong>Is the poem in rhyme or free verse?</strong> It is in <strong>free verse</strong> — there is no fixed rhyme scheme. Its music comes from repetition and rhythm.</p>
+</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 2 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-characters", "t": "👥 2. Characters"}, {"h": "rev-3-summary-full-exam-version", "t": "📖 3. Summary (Full — exam version)"}, {"h": "rev-4-difficult-words-from-the-text-glosses", "t": "🔑 4. Difficult Words (from the text glosses)"}, {"h": "rev-5-check-your-understanding-answers", "t": "✅ 5. Check Your Understanding — Answers"}, {"h": "rev-5-the-sequence-exercise-page-42-correct-order", "t": "🔍 5. The sequence exercise (page 42) — correct order"}, {"h": "rev-6-critical-reflection-extract-answers", "t": "📖 6. Critical Reflection — Extract answers"}, {"h": "rev-7-answer-the-following-model-answers", "t": "✍️ 7. Answer the following — model answers"}, {"h": "rev-8-grammar-clauses-amp-determiners-answers", "t": "📐 8. Grammar — Clauses &amp; Determiners (answers)"}, {"h": "rev-9-extras-for-mcqs", "t": "🏺 9. Extras for MCQs"}, {"h": "rev-at-a-glance", "t": "🏁 At a Glance"}, {"h": "rev-the-text-as-in-the-book", "t": "📜 The Text (as in the book)"}, {"h": "rev-summary", "t": "📖 Summary"}, {"h": "rev-poetic-devices", "t": "🎨 Poetic Devices"}, {"h": "rev-poem-exercise-answers", "t": "📚 Poem Exercise Answers"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary", "t": "📝 LONG ANSWER (Complete summary)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-character-sketches", "t": "👥 CHARACTER SKETCHES"}, {"h": "sum-important-questions-competency-based-with-answers", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-stanza-wise-explanation-correct-amp-complete", "t": "📜 STANZA-WISE EXPLANATION (correct &amp; complete)"}, {"h": "sum-keywords-amp-meanings-2", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-important-questions-competency-based-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

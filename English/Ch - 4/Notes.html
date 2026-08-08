@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 4 ·</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 4 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 4 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 4 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Vitamin-M* (Story · Asha Nehemiah) · **B)** *I Cannot Remember My Mother* (Poem · Rabindranath Tagore)</p>
+      <h1>🟣 PART A — VITAMIN-M</h1>
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Author</strong></td>
+  <td><strong>Asha Nehemiah</strong></td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>A rented flat in a crowded city (Grandpa calls it &quot;poky&quot;); Grandpa lived earlier in a small brick house in a town with a mango tree in the garden</td>
+</tr>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td><strong>Caring for the elderly with respect</strong> — old age does not mean loss of memory, dignity or independence</td>
+</tr>
+<tr>
+  <td><strong>Main characters</strong></td>
+  <td>Ravi (schoolboy), Grandpa (75-year-old retired lawyer), Vidya (Ravi's mother), Ravi's father</td>
+</tr>
+<tr>
+  <td><strong>Central twist</strong></td>
+  <td>Grandpa's memory is perfectly fine, and it is the adults who forget (even the mother forgets Papa's birthday)</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td>Respect the elderly; don't treat them like children — their memory and wit are sharp</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-characters">👥 2. Characters</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Character</th>
+  <th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Grandpa</strong></td>
+  <td>A retired <strong>lawyer</strong>, <strong>seventy-five</strong> years old. He loved his quiet brick house with the mango tree, plays a cunning game of chess, slips out secretly, and gives gifts to everyone on his birthday. He is <strong>sharp, witty, generous and playful</strong>.</td>
+</tr>
+<tr>
+  <td><strong>Ravi</strong></td>
+  <td>The schoolboy narrator. His holidays begin and his mother leaves Grandpa in his care. He follows Grandpa secretly, gets embarrassed, but shows deep affection for Grandpa.</td>
+</tr>
+<tr>
+  <td><strong>Vidya (Mamma)</strong></td>
+  <td>Ravi's mother, Grandpa's daughter. She is <strong>overprotective, anxious and caring</strong>, but she speaks to Grandpa as if he were a child and forgets his birthday.</td>
+</tr>
+<tr>
+  <td><strong>Ravi's father</strong></td>
+  <td>Usually confused; he also receives a gift from Grandpa, who considers them all his &quot;babies&quot;.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-3-summary-full-exam-version">📖 3. Summary (Full — exam version)</h2>
+<h3 id="rev-part-i">Part I</h3>
+<p>Ravi's mother Vidya puts green, red and orange tablets on a saucer and wishes somebody would invent a memory pill — <strong>&quot;Vitamin-M&quot;</strong> — to help old people improve their memories. Ravi says &quot;Shh… Grandpa'll hear you,&quot; pointing to the frail old figure sitting in the rocking chair, holding the newspaper inches from his nose.</p>
+<p>Vidya says she doubts Grandpa can hear or see or remember well, and is glad Ravi's holidays have started so he can look after Grandpa. Last month was difficult: Grandpa had come to live with them because he was too old to live alone, and he had to be admitted to hospital after taking a <strong>double dose of medicine</strong>; and he had once <strong>got lost and forgot the way back</strong> home.</p>
+<p>Grandpa, however, was fiercely independent. He told Vidya he had looked after himself for the better part of his <strong>seventy-five years</strong> — after his wife died ten years ago he took over her duties, cooking, shopping and keeping house. He now resented being told (forbidden) not to go out alone in the &quot;poky little flat&quot; of a horrible, crowded city. He spoke, wistfully, of his <strong>small brick house in town</strong> with its big mango tree, where it was so quiet that at dusk &quot;you can even hear a leaf fall&quot;.</p>
+<p>He had been brought to the city because he <strong>slipped and fell in the garden</strong> while pottering around late one evening and lay outside all night since no one was home to help. So Vidya locked the house and brought him to the flat. Now she forbids him from going out alone, and speaks to him in an <strong>over-loud tone</strong> as though to a child. Ravi <strong>winces</strong> at this.</p>
+<p>Ravi promises to care for Grandpa. Grandpa suggests playing <strong>chess or watching the cricket match</strong>. Grandpa plays a great game: he recalls <strong>Karpov's opening move</strong>, and tells Ravi he's repeating &quot;the same mistake that <strong>Bobby Fischer</strong> made in his historic match against <strong>Spassky</strong>.&quot; Ravi wonders — <em>if he can remember thousands of chess games, how does he forget the names of people he meets often?</em></p>
+<p>Grandpa says he'll walk across to the corner shop to see if the <strong>Tamil newspaper</strong> has arrived. Ravi offers to fetch it, but Grandpa is suspicious — &quot;Told you to keep me a prisoner here, has she?&quot; Ravi says of course not. So Grandpa, craftily, says &quot;then you'll have no objection to my going out.&quot; He picks up his shiny-black <strong>mahogany walking stick with a brass handle carved like an eagle's head</strong>, puts on his <strong>bright-yellow cap</strong>, and declares he'll be back &quot;before you can even set up the board.&quot; He twirls the stick <strong>jauntily</strong> and leaves.</p>
+<p>Ravi is in a <strong>dilemma</strong>: if he interferes Grandpa will feel hurt; if he doesn't, his mother will be furious. So he decides to <strong>follow Grandpa secretly, at a safe distance</strong>.</p>
+<h3 id="rev-part-ii-grandpa-s-day-out">Part II — Grandpa's Day Out</h3>
+<ul>
+<li><strong>First stop:</strong> the <strong>children's park</strong> — the old man buys a <strong>paper-cone of peanuts</strong>, sits on a bench and watches the children. Ravi crouches behind a bush trimmed like an elephant. A little boy asks Ravi &quot;Are you playing hide and seek?&quot; and his mother shouts &quot;How dare you baby shoo my child?&quot;, brandishing an umbrella. Ravi is forced to <strong>crawl out of the park on all fours</strong>.</li>
+<li><strong>Next:</strong> the <strong>tea stall</strong> — Ravi hides behind a banyan tree. Vendors scold him; one says &quot;There's no room for any new vendors.&quot; Ravi shushes them, then hides behind a <strong>shiny silver car</strong>. Grandpa sips a <strong>sugary cup of tea</strong> (sugar is forbidden at home), eats <strong>two bananas</strong> (also banned), and then an <strong>ice cream</strong>. Ravi feels hot and faint watching.</li>
+<li>Grandpa <strong>zig-zags through traffic</strong> and enters a <strong>barber shop</strong>. Ravi, seeing Grandpa is bald, crosses and pops into the shop beside it — hoping to watch — but gets <strong>thrown out of the Ladies' Hairdressing Salon</strong> to a storm of shrieks.</li>
+<li>Grandpa proceeds <strong>briskly</strong> to the <strong>bus stop</strong> and boards a bus. Ravi sprints, jumps on, but when Grandpa removes his cap — Ravi discovers it's a <strong>total stranger</strong>, wearing Grandpa's standard white pyjama-and-shirt and identical cap. The stranger explains a <strong>kind old gentleman</strong> in the barber shop had insisted he take the cap because it was so hot. That's typical of Grandpa — <strong>always generous</strong>.</li>
+</ul>
+<h3 id="rev-part-iii-the-end">Part III — The End</h3>
+<p>Ravi rushes back — not at the barber, not at the park. Frantic, he dials his mother and father, both busy. When he reaches home he is <strong>overjoyed</strong> to hear the gentle <strong>whirr of Grandpa's snoring</strong> in the bedroom. He kneels, presses his cheek to Grandpa's lined face that smells of <strong>eucalyptus ointment and shaving cream</strong>, and hugs him. Grandpa only grunts.</p>
+<p>When Vidya returns and asks &quot;What did you both do today?&quot;, Grandpa answers <strong>coolly</strong>: &quot;I had a quiet morning, but I don't know about Ravi. He just disappeared.&quot; Ravi looks confused and embarrassed.</p>
+<p>Then the surprise: <strong>gift-wrapped parcels</strong>! Vidya exclaims &quot;Papa, Ravi's birthday was three months ago. Have you forgotten?&quot; Grandpa: &quot;No. But you know I always give a gift to <strong>every child in the house</strong> — on <strong>my birthday</strong>.&quot; Vidya turns red; on her calendar she had, at the start of the year, circled <strong>'Papa's birthday'</strong> in red. There are gifts for Vidya and Ravi's father as well, for Grandpa still considers them his <em>babies</em>.</p>
+<p>Ravi unwraps a <strong>thick hardcover book, *The Best Detective Stories***, with Grandpa's serious advice: &quot;Great stories, Ravi… How to avoid getting fooled when trailing a suspect, for instance.&quot; Ravi watches the **twinkle</strong> in Grandpa's eye, wondering if it is an innocent gleam or a mischievous one.</p>
+<p><strong>The title:</strong> a memory self-help pill called &quot;Vitamin-M&quot;. The irony is that <strong>Grandpa's memory is perfect</strong> — it is the adults who need to remember.</p>
+<hr />
+<h2 id="rev-4-difficult-words-amp-meanings">🔑 4. Difficult Words &amp; Meanings</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>bustle</strong></td>
+  <td>busy activity, noise</td>
+</tr>
+<tr>
+  <td><strong>poky</strong></td>
+  <td>small, cramped</td>
+</tr>
+<tr>
+  <td><strong>frail</strong></td>
+  <td>weak, delicate</td>
+</tr>
+<tr>
+  <td><strong>shuddered</strong></td>
+  <td>to show (remember moving with horror)</td>
+</tr>
+<tr>
+  <td><strong>forbid / forbidden</strong></td>
+  <td>to not allow</td>
+</tr>
+<tr>
+  <td><strong>winced</strong></td>
+  <td>to show embarrassment / made a face</td>
+</tr>
+<tr>
+  <td><strong>jaunty / jauntily</strong></td>
+  <td>happily and confidently</td>
+</tr>
+<tr>
+  <td><strong>pottering</strong></td>
+  <td>moving about doing small unimportant jobs</td>
+</tr>
+<tr>
+  <td><strong>crouch</strong></td>
+  <td>to bend low to hide</td>
+</tr>
+<tr>
+  <td><strong>ducking</strong></td>
+  <td>moving one's head/body down quickly</td>
+</tr>
+<tr>
+  <td><strong>a volley of</strong></td>
+  <td>a flood/lot of (e.g. shouts)</td>
+</tr>
+<tr>
+  <td><strong>deterred</strong></td>
+  <td>prevented (from doing)</td>
+</tr>
+<tr>
+  <td><strong>confront</strong></td>
+  <td>to face, to challenge</td>
+</tr>
+<tr>
+  <td><strong>frantic</strong></td>
+  <td>desperate, very worried</td>
+</tr>
+<tr>
+  <td><strong>creases</strong></td>
+  <td>lines</td>
+</tr>
+<tr>
+  <td><strong>darted</strong></td>
+  <td>looked quickly</td>
+</tr>
+<tr>
+  <td><strong>solemnly</strong></td>
+  <td>seriously</td>
+</tr>
+<tr>
+  <td><strong>dilemma</strong></td>
+  <td>a difficult choice between two options</td>
+</tr>
+<tr>
+  <td><strong>quizzical</strong></td>
+  <td>questioning, puzzled</td>
+</tr>
+<tr>
+  <td><strong>trailing</strong></td>
+  <td>following (like a detective)</td>
+</tr>
+<tr>
+  <td><strong>mischievous</strong></td>
+  <td>naughty; playful</td>
+</tr>
+<tr>
+  <td><strong>eucalyptus ointment</strong></td>
+  <td>a strong-smelling medicinal cream</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-check-your-understanding-answers">✅ 5. Check Your Understanding — Answers</h2>
+<h3 id="rev-part-i-2">Part I</h3>
+<ol>
+<li><strong>Why did Grandpa dislike living in the city?</strong> He hated the <strong>noise and bustle</strong> of the city and greatly missed his <strong>quiet town house</strong> with the mango tree, where at dusk &quot;you could even hear a leaf fall&quot;. The flat was small, poky and crowded.</li>
+<li><strong>Why did Vidya not want her father go out alone?</strong> Because he had <strong>taken a double dose of medicine</strong> and been hospitalised, and had also <strong>got lost</strong> once and forgot the way back — she didn't want him to come to harm.</li>
+<li><strong>Was Ravi in favour of his mother treating Grandpa like a child?</strong> No. He <strong>winced</strong> (&quot;showed embarrassment&quot;) when Vidya spoke in an over-loud voice to Grandpa as though to a child.</li>
+<li><strong>Could Ravi keep his promise?</strong> Not exactly — he <em>intends to</em>, but when Grandpa insists, he instead <strong>follows him secretly at a safe distance</strong> (rather than stopping him).</li>
+</ol>
+<h3 id="rev-part-ii-fill-in-the-flow-chart">Part II — Fill in the flow chart</h3>
+<p>Grandpa goes for the Tamil newspaper → <strong>1. stops at the children's park</strong> → <strong>2. buys peanuts</strong> and watches the children → <strong>3. goes to the tea stall</strong> → drinks <strong>5. tea</strong>, eats bananas and ice-cream → <strong>Ravi gets scolded by 4. the little boy's mother (or vendors)</strong> → Grandpa crosses the road → enters a <strong>6. barber shop</strong> → walks briskly to a <strong>7. bus stop and boards the bus</strong> → Ravi follows and finds he's been fooled (the man in the cap is a stranger).</p>
+<ul>
+<li><strong>Was Grandpa lost?</strong> <strong>No</strong> — he returned home safely and was found snoring in the bedroom.</li>
+<li><strong>How would Ravi feel?</strong> Delighted, relieved, full of affection (also sheepish at the trick).</li>
+<li><strong>Will his mother get to know?</strong> Yes — Grandpa himself coolly tells her what she did, and then gives the gifts.</li>
+</ul>
+<h3 id="rev-part-iii-of-quot-check-your-understanding-quot">Part III of &quot;Check your Understanding&quot;</h3>
+<ol>
+<li><strong>Ravi's reaction upon reaching Grandpa safe</strong> reveals he <strong>loves his grandfather deeply</strong> — he kneels, presses his cheek to his face, gives him a hug.</li>
+<li><strong>Grandpa's habit of giving gifts on his birthday means</strong> he considers his daughter and grandchildren his loving &quot;babies&quot;; he is generous, and it is more blessed to give.</li>
+<li><strong>The detective book</strong> shows Grandpa <strong>is fully aware</strong> Ravi had been trailing him all day — the gift is a gentle, teasing way to tell Ravi he knew, and to give him useful tips for future sleuthing.</li>
+</ol>
+<hr />
+<h2 id="rev-6-critical-reflection-answers-extracts">📖 6. Critical Reflection — Answers (extracts)</h2>
+<h3 id="rev-extract-1-grandpa-vs-city">Extract 1 (Grandpa vs city)</h3>
+<p><strong>(i)</strong> Emotion — <strong>C. nostalgic</strong> (he longs for the old quiet house).
+<strong>(ii)</strong> Grandpa hated the busy, noisy city life because <strong>he liked a quiet home and the freedom of his old house</strong>.
+<strong>(iii)</strong> He came to the city because <strong>he slipped and fell</strong> in the garden one evening, lay outside all night, and his daughter locked up the house and took him home to the flat to care for him.
+<strong>(iv)</strong> A phrase similar in meaning to &quot;you can even hear a leaf fall&quot; — <strong>D. pin-drop silence</strong>.
+<strong>(v)</strong> <em>Advantage</em> of Grandpa living in the town home — <strong>peace, quiet and independence</strong>; <em>disadvantage</em> — <strong>when he fell no one was there to help</strong> (risky to live alone at his age).</p>
+<h3 id="rev-extract-2-grandpa-s-reaction">Extract 2 (Grandpa's reaction)</h3>
+<p><strong>(i)</strong> Tone — <strong>C. calm</strong> (he answers coolly without showing annoyance).
+<strong>(ii)</strong> Ravi was confused and embarrassed because <strong>he knew he'd been following Grandpa all day</strong> and Grandpa seemed to know or hint at it — Ravi's own trick was found out.
+<strong>(iii)</strong> Vidya's impatience — <strong>because she thought Grandpa had forgotten Ravi's birthday</strong> (which was three months ago).
+<strong>(iv)</strong> True/False: Grandpa &quot;forgot Ravi's birthday&quot; — <strong>False</strong>. He remembered; the gift was for his <strong>own birthday</strong>.
+<strong>(v)</strong> Grandpa said he didn't know what kind of morning Ravi had — <strong>to tease Ravi conspiratorially</strong> and to hint <strong>he had seen through Ravi's surveillance</strong>.</p>
+<hr />
+<h2 id="rev-7-answer-the-following-model-answers">✍️ 7. Answer the Following — Model answers</h2>
+<ol>
+<li><strong>Evidence that disproves failing memory:</strong> (i) Grandpa recalls <strong>chess openings of Karpov and mistakes of Bobby Fischer</strong>; (ii) he remembers everyone's birthdays (Vidya's, Ravi's father's) and <strong>all the family gifts</strong> on his own birthday.</li>
+<li><strong>Character traits:</strong> (i) Grandfather — <strong>sharp memory, witty, generous, independent, loving</strong>. (ii) Ravi — <strong>loving, loyal to his mother, curious, shy detective, alert</strong>. (iii) Mother — <strong>caring over-protective, anxious, a little condescending</strong> — but she also respects Papa's birthdays.</li>
+<li><strong>Why worried about the tea-stall?</strong> Grandpa ate <strong>sugary tea, bananas and ice-cream</strong> — all things Vidya banned — Ravi feared for his health (and what mother would say).</li>
+<li><strong>Was it easy to follow him?</strong> No — Ravi was parked, caught at the park, scolded at the tea-stall, thrown out of the Ladies' salon, and boarded the wrong bus.</li>
+<li><strong>&quot;Ravi is a good detective&quot; — For:</strong> he tracks patiently, hides safely, follows through. <strong>Against:</strong> he followed the wrong cap-wearer to the end — got fooled.</li>
+<li><strong>Was Grandpa aware Ravi was following?</strong> Yes — he relates Ravi's absence at dinner, gives a detective book &quot;How to avoid getting fooled when trailing a suspect&quot;, and has a knowing <strong>twinkle</strong> in his eye.</li>
+<li><strong>Who needs Vitamin-M?</strong> In fact <strong>Vidya</strong> — she forgets Papa's birthday even after circling it on her calendar. The title ends the joke on the adults: they are the ones who forget.</li>
+<li><strong>Example of age bias —</strong> e.g., people assume old people forget everything; a child's opinion at dinner ignored &quot;kids don't understand&quot;; Grandpa's sharpness proves his judgement should not be dismissed because of age.</li>
+</ol>
+<hr />
+<h2 id="rev-8-grammar-answers-vocabulary-amp-structures">📕 8. Grammar — Answers (Vocabulary &amp; Structures)</h2>
+<h3 id="rev-a-movement-vs-sound-words">A. Movement vs Sound words</h3>
+<ul>
+<li><strong>(Column 1 — Movement):</strong> pottering, twirling, crouch, crawling, ducking (ducked), zig-zagging, briskly, sprinting, jumping, evicted, darting, trailing</li>
+<li><strong>(Column 2 — Sound):</strong> boomed, bustle, thudded, shrieks, whirr, grunted, snoring</li>
+</ul>
+<p><strong>Detective paragraph:</strong></p>
+<ol>
+<li><strong>trailing</strong> … quickened his pace <strong>briskly</strong>
+2.the suspect's footsteps <strong>thudded</strong></li>
+<li>Shankar <strong>crouched</strong> behind the (market stalls) → <strong>ducked</strong> behind them</li>
+<li>he <strong>zigzagged</strong> through the lanes</li>
+<li><strong>grunted</strong> as he hit the pole</li>
+<li>the suspect <strong>sprinted</strong> into the night</li>
+<li>leaving behind the distant <strong>bustle/whirr</strong> of the sleeping city</li>
+</ol>
+<h3 id="rev-b-synonyms-of-dilemma">B. Synonyms of 'dilemma'</h3>
+<p><strong>QUANDARY</strong>, <strong>PREDICAMENT</strong> (D I L E M M A → also <em>predicament, quandary</em>)</p>
+<h3 id="rev-c-word-table-fill-with-a-dictionary">C. Word table (fill with a dictionary)</h3>
+<p>Example:</p>
+<ul>
+<li><strong>craftily</strong> → adv., in a sly/cunning way, synonym &quot;slyly&quot;</li>
+<li><strong>dilemma</strong> → noun, a difficult choice, syn. quandary · ant. advantage</li>
+<li><strong>furious</strong> → adj., very angry, syn. mad · ant. calm</li>
+<li>(look up: boomed, humiliation, attire)</li>
+</ul>
+<h3 id="rev-d-emotions-matching">D. Emotions matching</h3>
+<ol>
+<li><strong>embarrassed</strong> → (v) felt uncomfortable</li>
+<li><strong>countered</strong> → (iv) replied to an argument</li>
+<li><strong>flushed</strong> → (vi) became red in the face</li>
+<li><strong>stricken</strong> → (i) affected severely by an unpleasant feeling</li>
+<li><strong>gleam</strong> → (iii) expression of emotion
+<em>(Extra meaning left unused: &quot;to be confused&quot;)</em></li>
+</ol>
+<h3 id="rev-e-prepositions-fill-in">E. Prepositions fill-in</h3>
+<p>(i) <strong>through</strong> the village
+(ii) crossed the bridge <strong>over</strong> the brook
+(iii) found a garden <strong>near</strong> a cottage
+(iv) sitting <strong>on</strong> the bench in the garden
+(v) strolled <strong>along</strong> the riverbank
+(vi) heading <strong>towards</strong> the unknown</p>
+<h3 id="rev-f-interrogatives">F. Interrogatives</h3>
+<p>A. The words in quotes are <strong>interrogative</strong> sentences.
+B. Sentences 1 (&quot;Shall we play…?&quot;), 4 (&quot;Have you forgotten?&quot;), 5 (&quot;Are you playing…?&quot;) are <strong>Yes/No type</strong>.
+C. Sentences 2 (&quot;Who are you?&quot;) and 3 (&quot;What did you both do…?&quot;) are <strong>Wh- type</strong>.
+D. So there are <strong>two</strong> kinds of interrogative sentences (Wh- and Yes/No).</p>
+<hr />
+<h2 id="rev-9-useful-extras-for-mcqs">🛠 9. Useful Extras (for MCQs)</h2>
+<ul>
+<li><strong>Vitamin-M</strong> : an imaginary memory medicine for old people to improve their memories.</li>
+<li><strong>Walking stick</strong>: shiny-black mahogany with a <strong>brass eagle-head</strong> handle.</li>
+<li><strong>Key irony</strong>: Grandpa's memory is fine — it is the adults who forget.</li>
+<li><strong>The title</strong> is ironic: it is the adults, not Grandpa, who need a memory cure.</li>
+</ul>
+<hr />
+<h1>🟢 PART B — I CANNOT REMEMBER MY MOTHER (POEM)</h1>
+<h2 id="rev-at-a-glance">🏁 At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Poet</strong></td>
+  <td><strong>Rabindranath Tagore</strong></td>
+</tr>
+<tr>
+  <td><strong>Form</strong></td>
+  <td>Free verse (no fixed rhyme scheme)</td>
+</tr>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td><strong>Memory, love and loss</strong> — the poet cannot literally remember his mother (who died when he was young), but feels her presence through the senses</td>
+</tr>
+<tr>
+  <td><strong>Structure</strong></td>
+  <td>Three stanzas, each beginning with the refrain <strong>&quot;I cannot remember my mother&quot;</strong></td>
+</tr>
+<tr>
+  <td><strong>Senses used</strong></td>
+  <td>Auditory (&quot;tune she used to hum&quot;), olfactory (smell of shiuli flowers), visual (the blue sky)</td>
+</tr>
+<tr>
+  <td><strong>Symbols</strong></td>
+  <td>The humming song (lullaby), the shiuli flowers, the sky (mother's gaze)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="rev-the-text-as-in-the-book">📜 The Text (as in the book)</h2>
+<blockquote>
+<p>I cannot remember my mother
+only sometimes in the midst of my play
+a tune seems to hover over my playthings,
+the tune of some song that she used to
+hum while rocking my cradle.</p>
+<p>I cannot remember my mother
+but when in the early autumn morning
+the smell of the shiuli flowers floats in the air
+the scent of the morning service in the temple
+comes to me as the scent of my mother.</p>
+<p>I cannot remember my mother
+only when from my bedroom window I send
+my eyes into the blue of the distant sky,
+I feel that the stillness of
+my mother's gaze on my face
+has spread all over the sky.</p>
+</blockquote>
+<hr />
+<h2 id="rev-5-check-your-understanding-answers-2">✅ 5. Check Your Understanding — Answers</h2>
+<ol>
+<li><strong>Stanza 1:</strong> The poet remembers his mother while he <strong>plays</strong>; he remembers the <strong>tune</strong> but not the <strong>mother</strong>. <em>(Setting: indoor/outdoor — play is outdoors.)</em></li>
+<li><strong>Stanza 2:</strong> He remembers his mother in <strong>autumn</strong>; by the <strong>smell of shiuli flowers</strong> (and the temple scent). <em>(Setting: outdoor — garden air.)</em></li>
+<li><strong>Stanza 3:</strong> He feels his mother <strong>gazes at him from the sky</strong>; the <strong>stillness</strong> of her gaze has spread over the sky. <em>(Setting: outdoor — window to the sky.)</em></li>
+</ol>
+<p><strong>Senses table:</strong></p>
+<ul>
+<li>Stanza 1: auditory → &quot;the tune that she used to hum&quot;</li>
+<li>Stanza 2: olfactory (smell) → &quot;the smell of the shiuli flowers / the scent of the temple&quot;</li>
+<li>Stanza 3: visual → &quot;the blue of the distant sky&quot;</li>
+</ul>
+<p><strong>Alliteration:</strong> two examples — (i) <strong>&quot;smell of the shiuli flowers&quot;</strong> (repeated 's'), (ii) <strong>&quot;stillness of my mother's gaze&quot;</strong> (repeated 's'). <em>(Any two such repeated initial consonant sounds.)</em></p>
+<p><strong>Onomatopoeia:</strong> <strong>&quot;hum&quot;</strong> (the soft singing sound).</p>
+<p><strong>Imagery is wide:</strong> the poem creates the mother in the reader's mind through <strong>the senses</strong> — the tune over the playthings, the autumn shiuli smell, the blue sky — not by her literal face. The images are fresh and tender.</p>
+<p><strong>Why enjoyable without a rhyme:</strong> because of its <strong>refrain, natural rhythm, beautiful imagery, and its universal emotion</strong> (child's love for mother).</p>
+<p><strong>Tone:</strong> <strong>melancholic / nostalgic and tender</strong> — gentle longing, calm and serene.</p>
+<p><strong>Title effect:</strong> the phrase &quot;I cannot remember my mother&quot; <strong>sets a sad yet tender mood</strong>, suggesting the loss of a mother but the memory of her presence; it draws the reader into the gentle sorrow.</p>
+<p><strong>Refrain's purpose:</strong> to <strong>emphasise the loss</strong>, mark the mother's absence, and <strong>frame each memory</strong> — an emotional anchor that makes us feel how a few fleeting sensations hold his connection to her.</p>
+<p><strong>Symbols the poet uses:</strong></p>
+<ul>
+<li>the <strong>humming lullaby</strong> → the memory of mother's presence/love,</li>
+<li>the <strong>shiuli flowers &amp; temple scent</strong> → her fragrance and her devotion,</li>
+<li>the <strong>blue sky → her peaceful, infinite gaze</strong> that watches over him.</li>
+</ul>
+<hr />
+<h2 id="rev-critical-reflection-answers">❓ Critical Reflection — Answers</h2>
+<h3 id="rev-extract-1-a-tune-hovering">Extract 1: (A tune hovering)</h3>
+<p><strong>(i)</strong> The poet is reminded of the mother during his <strong>play</strong>.
+<strong>(ii)</strong> Tone/emotion of the tune — <strong>C. It activates memories of the mother.</strong>
+<strong>(iii)</strong> The hovering tune is the <strong>memory of her love</strong> enveloping him during play — gentle, present, bittersweet; it links childhood joy to maternal care.
+<strong>(iv)</strong> &quot;The poet experiences the tune lingering over playthings only occasionally&quot; — <strong>True</strong> (the poem says &quot;only sometimes in the midst of my play&quot;).
+<strong>(v)</strong> He feels her presence <strong>through the sense, the sound of her hum</strong> — the echo she left in him, so the song becomes her presence.</p>
+<h3 id="rev-2-extract-2-quot-the-stillness-of-my-mother-s-gaze-spread-over-the-sky-quot">2. Extract 2 — &quot;the stillness of my mother's gaze… spread over the sky&quot;</h3>
+<p><strong>(i)</strong> The sky suggests <strong>B. the sky is a symbolic extension of the mother's presence</strong>.
+<strong>(ii)</strong> Emotion: <strong>D. a sense of serenity</strong> (calm).
+<strong>(iii)</strong> &quot;The mother's gaze has a tangible and visual effect on the sky&quot; — <strong>False</strong> (the sky is a symbol of her presence, not a physical effect).
+<strong>(iv)</strong> To make the mother's <strong>love feel vast, encompassing, restful</strong> — her love fills the sky.
+<strong>(v)</strong> Tone: <strong>serene, tender</strong>, because he <strong>finds comfort</strong> in the sky.</p>
+<hr />
+<h2 id="rev-8-answer-the-following-model-answers">✍️ 8. Answer the Following — Model answers</h2>
+<ol>
+<li><strong>Emotional impact of the refrain:</strong> it repeats <strong>the sad truth that the mother is lost to literal memory</strong>, yet each stanza after it holds the tender sense-presence — a sorrowful and gentle rhythm of loss and love.</li>
+<li><strong>(i)</strong> Mother–shiuli: the <strong>fragrance</strong> of sh'uli (autumn flowers) carries her scent; the mother is tied to the temple's devotion. <strong>(ii)</strong> Mother–humming tune the mother used to <strong>lull</strong> him to sleep; it is his <strong>lullaby memory</strong>.</li>
+<li><strong>Role of nature:</strong> nature is the bridge — the song, the flowers, the sky <strong>evoke and preserve the mother's presence</strong>, acting as her living memory.</li>
+<li><strong>Mother–child relationship inferred:</strong> a <strong>deep, tender bond</strong> — her humming, cradling and gazing — the poet was deeply loved and carries his mother within his senses for life.</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 4 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 4 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Vitamin-M* (Story · Asha Nehemiah) · **B)** *I Cannot Remember My Mother* (Poem · Rabindranath Tagore)</p>
+      <h1>🟣 PART A — VITAMIN-M</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<ol>
+<li><strong>Caring for the elderly with respect</strong> — old age does not mean loss of memory, dignity or independence.</li>
+<li><strong>Do not judge by age</strong> — Grandpa seems frail and forgetful, but his memory and wit are razor sharp.</li>
+<li><strong>Family love and humour</strong> — the story uses gentle irony to show that it is the adults, not Grandpa, who forget things (even Papa's own birthday!).</li>
+</ol>
+<blockquote>
+<p>❤️ <strong>Message:</strong> <em>Respect the elderly — they may need help, but never treat them as less than what they are: wise, sharp and full of love.</em></p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary">📝 LONG ANSWER (Complete summary)</h2>
+<p><strong>&quot;Vitamin-M&quot; by Asha Nehemiah is the story of Grandpa, a sharp and independent old man, and what happens when his family tries to &quot;look after&quot; him.</strong></p>
+<p>One day Ravi's mother Vidya wishes someone would invent a medicine called <strong>&quot;Vitamin-M&quot;</strong> to improve old people's memories. Grandpa is sitting in a rocking chair, frail, holding the newspaper inches from his nose. Vidya doubts he can hear, see or remember well, and is glad Ravi's holidays have started so he can take care of Grandpa. Last month had been difficult — Grandpa had come to live with them because he was too old to live alone; he had taken a <strong>double dose of medicines</strong> and been hospitalised, and once he <strong>got lost</strong> and forgot the way back.</p>
+<p>Grandpa, however, was fiercely independent. He had looked after himself for most of his <strong>seventy-five years</strong>, cooking, shopping and keeping house after his wife's death ten years ago. Now, living in a small, crowded, <strong>&quot;poky&quot;</strong> city flat, he hated being forbidden to go out. He missed his <strong>small brick house in town</strong> with the big mango tree, where it was so quiet you could hear a leaf fall at dusk. But he had slipped and fallen in that garden one evening and lain outside all night, so his daughter locked the house and brought him to live with her.</p>
+<p>Vidya speaks to Grandpa in an <strong>over-loud tone</strong>, like to a child, which makes Ravi <strong>wince</strong>. She leaves Ravi in charge and forbids Grandpa from going out alone. Grandpa and Ravi plan to play chess or watch cricket. Grandpa recalls <strong>Karpov's opening move</strong> and tells Ravi he is repeating &quot;the mistake <strong>Bobby Fischer</strong> made against <strong>Spassky</strong>,&quot; which makes Ravi wonder how Grandpa can remember thousands of chess games but forget people's names.</p>
+<p>Grandpa then decides to walk to the corner shop for the <strong>Tamil newspaper</strong>. Ravi offers to fetch it, but Grandpa, suspicious, says he's not a prisoner. He takes his <strong>mahogany walking stick</strong> with the brass eagle-head handle, puts on his <strong>bright-yellow cap</strong>, and says he'll be back before Ravi sets up the chessboard. Ravi is in a <strong>dilemma</strong> — if he stops Grandpa, Grandpa is hurt; if he lets him, his mother will be furious. So Ravi <strong>follows Grandpa secretly at a safe distance</strong>.</p>
+<p>The &quot;day out&quot; is comic: Grandpa buys peanuts in a children's park, sits and watches children; Ravi, hiding behind an elephant-shaped bush, is mistaken for a fool by a little boy and shouted at by his mother, and must crawl out on all fours. Grandpa goes to a tea stall, drinks a <strong>sugary tea</strong>, eats <strong>two bananas</strong> and an <strong>ice cream</strong> — all banned at home. Ravi hides behind a tree and a car. Grandpa crosses the road and enters a <strong>barber shop</strong>. Ravi steps into the shop beside it — which turns out to be a <strong>Ladies' Hairdressing Salon</strong> — and is thrown out. Grandpa boards a bus. Ravi jumps on, but the man wearing the yellow cap is a <strong>total stranger</strong>: Grandpa had given away his cap to him in the barber shop. That is &quot;generous Grandpa&quot;.</p>
+<p>Ravi is frantic, rushes home — and is overjoyed to find Grandpa <strong>snoring, safe in his bedroom</strong>. He hugs him. When Vidya comes home, Grandpa coolly says he had &quot;a quiet morning,&quot; hinting that Ravi had disappeared. Then the twist: Grandpa brings out <strong>gift-wrapped parcels</strong> for everyone. Vidya says, &quot;But Papa, Ravi's birthday was three months ago! Have you forgotten?&quot; Grandpa: &quot;It's my birthday today.&quot; Vidya had circled <em>Papa's birthday</em> in red on the calendar at the beginning of the year — and forgot it. Grandpa gives Ravi a hardcover book, <em>The Best Detective Stories</em>, &quot;… how to avoid getting fooled when trailing a suspect,&quot; saying it with a twinkle in his eye. It is clear Grandpa had <strong>known</strong> all along that Ravi was following him.</p>
+<p><strong>The central irony:</strong> It is <strong>not Grandpa</strong> who needs a memory pill (&quot;Vitamin-M&quot;) — it is the adults, especially <strong>Vidya</strong>, who forgot the birthday.</p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>bustle</strong></td>
+  <td>busy activity; noise</td>
+</tr>
+<tr>
+  <td><strong>poky</strong></td>
+  <td>small and cramped</td>
+</tr>
+<tr>
+  <td><strong>frail</strong></td>
+  <td>weak, delicate</td>
+</tr>
+<tr>
+  <td><strong>shuddered</strong></td>
+  <td>moved/witnessed with fear or disgust</td>
+</tr>
+<tr>
+  <td><strong>forbid / forbidden</strong></td>
+  <td>to not allow</td>
+</tr>
+<tr>
+  <td><strong>winced</strong></td>
+  <td>made a face; showed embarrassment</td>
+</tr>
+<tr>
+  <td><strong>jauntily</strong></td>
+  <td>in a happy, self-confident, spirited way</td>
+</tr>
+<tr>
+  <td><strong>pottering</strong></td>
+  <td>moving about doing small tasks</td>
+</tr>
+<tr>
+  <td><strong>crouch</strong></td>
+  <td>to bend low to hide</td>
+</tr>
+<tr>
+  <td><strong>ducking</strong></td>
+  <td>to move down quickly to hide</td>
+</tr>
+<tr>
+  <td><strong>deterred</strong></td>
+  <td>prevented (from doing)</td>
+</tr>
+<tr>
+  <td><strong>confront</strong></td>
+  <td>to face; to challenge</td>
+</tr>
+<tr>
+  <td><strong>frantic</strong></td>
+  <td>desperate with worry</td>
+</tr>
+<tr>
+  <td><strong>creases</strong></td>
+  <td>fine lines (on skin)</td>
+</tr>
+<tr>
+  <td><strong>darted</strong></td>
+  <td>looked quickly</td>
+</tr>
+<tr>
+  <td><strong>solemnly</strong></td>
+  <td>seriously, gravely</td>
+</tr>
+<tr>
+  <td><strong>dilemma</strong></td>
+  <td>a difficult choice</td>
+</tr>
+<tr>
+  <td><strong>quizzical</strong></td>
+  <td>questioning; puzzled</td>
+</tr>
+<tr>
+  <td><strong>trailing</strong></td>
+  <td>following (like a detective)</td>
+</tr>
+<tr>
+  <td><strong>mischievous</strong></td>
+  <td>naughty; playfully teasing</td>
+</tr>
+<tr>
+  <td><strong>Vitamin-M</strong></td>
+  <td>an imaginary memory medicine ('M' for memory)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-character-sketches">👥 CHARACTER SKETCHES</h2>
+<h3 id="sum-grandpa">Grandpa</h3>
+<p>A <strong>retired lawyer, seventy-five</strong>, who misses his quiet brick house with the mango tree. To his family he seems frail and forgetful (they whisper about his memory), but he is actually <strong>sharp-witted and playful</strong>: he remembers Karpov and Fischer, teases and deceives Ravi's surveillance with a swapped cap, and surprises everyone with gifts on <em>his own</em> birthday. He is <strong>loving, generous, independent, dignified and witty</strong> — never a child, always a master.</p>
+<h3 id="sum-ravi">Ravi</h3>
+<p>A <strong>thoughtful, caring boy</strong> given to his grandfather's care. He respects his mother yet <strong>dislikes treating Grandpa like a child</strong>. He follows Grandpa secretly like a <strong>good detective</strong>, endures embarrassment and danger, but is finally <strong>filled with relief and affection</strong>. His love for Grandpa shows in the hug at the end.</p>
+<h3 id="sum-vidya-mamma">Vidya (Mamma)</h3>
+<p>Ravi's mother and Grandpa's daughter. She is <strong>loving and responsible</strong> but also <strong>over-protective and a little condescending</strong> — she speaks to her father in a loud, childlike tone and forgets his birthday. The story's message — <em>the elderly deserve respect and not pity</em> — is addressed at her over-care.</p>
+<h3 id="sum-ravi-s-father">Ravi's father</h3>
+<p>A quiet, supportive man, usually in the background, part of the family that Grandpa provokes with his &quot;babies&quot; and gifts.</p>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>Why was this story 'Vitamin-M'?</strong> The mother wishes for a memory medicine (&quot;Vitamin-M&quot;) to give old people. The irony is that <strong>Grandpa's memory is fine</strong> — it is Vidya who forgets Papa's birthday. &quot;Vitamin-M&quot; is a symbol for the <strong>reminder, respect and care</strong> that our elders deserve.</p>
+</li>
+<li><p><strong>Why did Grandpa dislike the city?</strong> He <strong>hated the noise and bustle</strong> of the city, and <strong>longed for the quiet of his brick house in town</strong>, where he could even hear a leaf fall. It was the city that imprisoned him.</p>
+</li>
+<li><p><strong>Why did Vidya not let Grandpa go out alone?</strong> Because he had <strong>taken a double dose of medicine</strong> (hospitalised) and <strong>got lost once</strong>, forgot the way back. She was over-protective.</p>
+</li>
+<li><p><strong>When Grandpa was going out, why did he say &quot;Told you to keep me a prisoner here, has she?&quot;</strong> Because Grandpa, sharp-minded, <strong>guessed the mother's instruction</strong> to Ravi; he resented being treated like a prisoner.</p>
+</li>
+<li><p><strong>Was it easy for Ravi to follow Grandpa?</strong> No — he was spotted by a little boy and shouted at, caught at the park, scolded at tea-stall, thrown out of the Ladies' salon, and jumped on the wrong bus → he was an <strong>amateur detective</strong>.</p>
+</li>
+<li><p><strong>Was Grandpa aware that Ravi was following him?</strong> Yes — the knowing <strong>twinkle</strong> in his eye and the gift of the detective book (&quot;How to avoid getting fooled when trailing a suspect&quot;) prove that Grandpa had understood everything.</p>
+</li>
+<li><p><strong>Who needs a possibly mental 'Vitamin-M'?</strong> In the end — <strong>Vidya</strong>. She forgot her own father's birthday, though she had marked it on the calendar. The title is a gentle joke: it is adults who need to be mindful, not Grandpa.</p>
+</li>
+<li><p><strong>What does the gift of the detective book show?</strong> Grandpa wants to have a frank and playful reminder with Ravi — it shows that <strong>Grandpa had observed Ravi's trailing</strong> and was <strong>wise, not failing</strong>, and that he uses a humorous, loving way rather than an angry one.</p>
+</li>
+<li><p><strong>&quot;I had a quiet morning, but I don't know about Ravi&quot; — explain.</strong> Grandpa coolly tells his mother that he had a quiet morning while Ravi just &quot;disappeared.&quot; This is his cunning, teasing way of letting Ravi know that he had been fully aware of being followed all day — delivered without anger, only humour.</p>
+</li>
+<li><p><strong>What's the irony in the tale?</strong> The adults think Grandpa is old and forgetful and make a &quot;Vitamin-M&quot; joke — but at the end the strong contradiction is reversed: <strong>Grandpa's memory is perfect and the adults forget things</strong>.</p>
+</li>
+</ol>
+<hr />
+<h1>🟢 PART B — I CANNOT REMEMBER MY MOTHER (POEM)</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p>The poem is about <strong>the tender memory and loss of the mother's presence</strong>. The poet cannot recall his mother's face literally, since she passed away when he was young, yet he feels her <strong>presence in every gentle sensation</strong> — in the tune she hummed, in the scent of shiuli flowers and temple worship in autumn, and in the calm of the blue sky. The theme is the <strong>undying mother–child bond</strong>, carried through the senses.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>Even when the mother cannot be remembered, her presence is felt everywhere.</strong> The song she used to hum, the autumn fragrance that touched her temple, and the vast blue sky — these are the mediums that make the mother alive in the poet's senses, so she is lost but never gone. <strong>Love endures even when memory fades.</strong></p>
+<hr />
+<h2 id="sum-stanza-wise-explanation-correct-amp-complete">📜 STANZA-WISE EXPLANATION (correct &amp; complete)</h2>
+<h3 id="sum-stanza-1-the-humming-lullaby">Stanza 1 — The Humming Lullaby</h3>
+<blockquote>
+<p>I cannot remember my mother
+only sometimes in the midst of my play
+a tune seems to hover over my playthings,
+the tune of some song that she used to
+hum while rocking my cradle.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>The poet begins with the refrain <em>&quot;I cannot remember my mother&quot;</em> — he does not have any clear, literal memory of her face.</li>
+<li>However, <strong>&quot;only sometimes in the midst of my play&quot;</strong>, a <strong>tune seems to hover</strong> over his toys.</li>
+<li>That tune is the <strong>song she used to hum</strong> while rocking his cradle.</li>
+<li><strong>Sense used:</strong> auditory (he hears the hum).</li>
+<li><strong>Emotion:</strong> tender; the play becomes a doorway to her presence.</li>
+</ul>
+<h3 id="sum-stanza-2-the-fragrance-of-shiuli-and-temple">Stanza 2 — The Fragrance of Shiuli and Temple</h3>
+<blockquote>
+<p>I cannot remember my mother
+but when in the early autumn morning
+the smell of the shiuli flowers floats in the air
+the scent of the morning service in the temple
+comes to me as the scent of my mother.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>In the early <strong>autumn</strong> morning, the <strong>smell of shiuli flowers</strong> floats in the air.</li>
+<li>The <strong>scent</strong> of the morning service (the prayers, incense, marigolds) comes to him &quot;as the scent of my mother.&quot;</li>
+<li><strong>Sense used:</strong> olfactory — smell.</li>
+<li>The mother is associated with the fragrant, holy presence of the temple and the seasonal shiuli blooms.</li>
+</ul>
+<h3 id="sum-stanza-3-the-sky-and-the-mother-s-gaze">Stanza 3 — The Sky and the Mother's Gaze</h3>
+<blockquote>
+<p>I cannot remember my mother
+only when from my bedroom window I send
+my eyes into the blue of the distant sky,
+I feel that the stillness of
+my mother's gaze on my face
+has spread all over the sky.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>Looking from the <strong>window at the blue sky</strong>, the poet feels the <strong>&quot;stillness of my mother's gaze&quot;</strong> — the calm, attentive eyes of the mother watching over him.</li>
+<li>That gaze has <strong>&quot;spread all over the sky&quot;</strong> — her love is <strong>vast, serene and all-enveloping</strong> like the sky.</li>
+<li><strong>Sense used:</strong> visual — the blue, boundless sky; <strong>symbolism</strong>: the sky is the mother's endless, peaceful gaze.</li>
+</ul>
+<hr />
+<h2 id="sum-keywords-amp-meanings-2">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>refrain</strong></td>
+  <td>a line repeated at regular intervals in a poem (&quot;I cannot remember my mother&quot;)</td>
+</tr>
+<tr>
+  <td><strong>hover</strong></td>
+  <td>to float in / linger over</td>
+</tr>
+<tr>
+  <td><strong>cradle</strong></td>
+  <td>a baby's small bed</td>
+</tr>
+<tr>
+  <td><strong>hum</strong></td>
+  <td>to sing a soft tune with closed lips</td>
+</tr>
+<tr>
+  <td><strong>shiuli</strong> (shi-u-li)</td>
+  <td>(coral jasmine) — a white fragrant flower, common autumn bloom, associated with mother</td>
+</tr>
+<tr>
+  <td><strong>scent</strong></td>
+  <td>a pleasant smell</td>
+</tr>
+<tr>
+  <td><strong>stillness</strong></td>
+  <td>calm, restful peace</td>
+</tr>
+<tr>
+  <td><strong>gaze</strong></td>
+  <td>to look steadily at</td>
+</tr>
+<tr>
+  <td><strong>extract</strong></td>
+  <td>a small piece of the poem (used in questions)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers-2">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>What does the poet remember during play?</strong> — The <strong>tune of some song</strong> that his mother used to hum; not her face.</p>
+</li>
+<li><p><strong>In Stanza 2, what reminds the poet of his mother?</strong> — The <strong>smell of shiuli flowers</strong> and the <strong>scent of the morning service in the temple</strong> — in early autumn morning.</p>
+</li>
+<li><p><strong>'The stillness of my mother's gaze' — what does it suggest?</strong> — The stillness is <strong>the calm and peace of the mother's love</strong>, which suffuses the entire sky.</p>
+</li>
+<li><p><strong>Setting of each stanza —</strong> Stanza 1: play (outdoors / indoors). Stanza 2: autumn morning garden (outdoors). Stanza 3: bedroom window sky (outdoors). — (The sky suggests the <strong>element of the mother's presence</strong>, i.e., the vast sky as her symbol.)</p>
+</li>
+<li><p><strong>The refrain —</strong> &quot;I cannot remember my mother&quot; is repeated in every stanza — <strong>refrain</strong>. It reinforces the <strong>pervasive loss</strong> and the <strong>tender longing</strong>; it also creates <strong>musical rhythm</strong>.</p>
+</li>
+<li><p><strong>What is the poet's attitude/tone?</strong> — <strong>tender, nostalgic, melancholic, and serene</strong> — gentle sorrow, not harsh despair.</p>
+</li>
+<li><p><strong>Use of alliteration —</strong> e.g. (i) &quot;<strong>s</strong>mell of the <strong>s</strong>hiuli flowers&quot; (the repeated 's'), (ii) &quot;<strong>s</strong>tillness of my mother's gaze&quot; (the repeated 's').</p>
+</li>
+<li><p><strong>Onomatopoeia —</strong> &quot;<strong>hum</strong>ming&quot; (the word 'hum'imitates the soft singing sound).</p>
+</li>
+<li><p><strong>Imagery in the poem —</strong> the tune hovering over the playthings (auditory), the shiuli fragrance (olfactory), and the blue sky with the mother's gaze (visual) — powerful, sense-alive images that evoke the mother without showing her face.</p>
+</li>
+<li><p><strong>Why does the poet call it &quot;the scent of my mother&quot;?</strong> — The poet, having only fragments of memory of the mother, links her to the smell of the flowers and the temple — an odour-memory: the mother's scent is that of shiuli and the temple garlands.</p>
+</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 4 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-characters", "t": "👥 2. Characters"}, {"h": "rev-3-summary-full-exam-version", "t": "📖 3. Summary (Full — exam version)"}, {"h": "rev-4-difficult-words-amp-meanings", "t": "🔑 4. Difficult Words &amp; Meanings"}, {"h": "rev-5-check-your-understanding-answers", "t": "✅ 5. Check Your Understanding — Answers"}, {"h": "rev-6-critical-reflection-answers-extracts", "t": "📖 6. Critical Reflection — Answers (extracts)"}, {"h": "rev-7-answer-the-following-model-answers", "t": "✍️ 7. Answer the Following — Model answers"}, {"h": "rev-8-grammar-answers-vocabulary-amp-structures", "t": "📕 8. Grammar — Answers (Vocabulary &amp; Structures)"}, {"h": "rev-9-useful-extras-for-mcqs", "t": "🛠 9. Useful Extras (for MCQs)"}, {"h": "rev-at-a-glance", "t": "🏁 At a Glance"}, {"h": "rev-the-text-as-in-the-book", "t": "📜 The Text (as in the book)"}, {"h": "rev-5-check-your-understanding-answers-2", "t": "✅ 5. Check Your Understanding — Answers"}, {"h": "rev-critical-reflection-answers", "t": "❓ Critical Reflection — Answers"}, {"h": "rev-8-answer-the-following-model-answers", "t": "✍️ 8. Answer the Following — Model answers"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary", "t": "📝 LONG ANSWER (Complete summary)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-character-sketches", "t": "👥 CHARACTER SKETCHES"}, {"h": "sum-important-questions-competency-based-with-answers", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-stanza-wise-explanation-correct-amp-complete", "t": "📜 STANZA-WISE EXPLANATION (correct &amp; complete)"}, {"h": "sum-keywords-amp-meanings-2", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-important-questions-competency-based-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>
