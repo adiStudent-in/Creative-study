@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 7: Carrier of Words & Words —</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 7 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 7 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 7: Carrier of Words & Words —</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts in one chapter</p>
+      <div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Text</th>
+  <th>Type</th>
+  <th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><em>Carrier of Words</em></td>
+  <td>Essay/Non-fiction (about Khetaram, a Gramin Dak Sewak)</td>
+  <td>— (based on the real postman's story, Rajasthan)</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><em>Words</em></td>
+  <td>Poem</td>
+  <td>Charles Swain</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⏰ <strong>Exam Tip:</strong> Try to attempt <strong>Part A or Part B first</strong> — the one you feel more confident in — and manage time so both texts get equal attention. Prose answers need <strong>examples from the text</strong>; poem answers need <strong>one poetic-device quote</strong> each.</p>
+</blockquote>
+<hr />
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Aspect</th>
+  <th>Part A — <em>Carrier of Words</em></th>
+  <th>Part B — <em>Words</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Genre</strong></td>
+  <td>Essay / feature article</td>
+  <td>Lyrical poem</td>
+</tr>
+<tr>
+  <td><strong>Central figure</strong></td>
+  <td>Khetaram — Gramin Dak Sewak, Somarad Branch Post Office (Rajasthan)</td>
+  <td>The &quot;heart&quot; — every human heart</td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>Thar desert, ~2.5 km short of the Indo-Pakistan border; 120 km beyond the last railhead at Barmer</td>
+  <td>A universal, philosophical reflection</td>
+</tr>
+<tr>
+  <td><strong>Core idea</strong></td>
+  <td>A postman carrying words, money orders and news is a lifeline of trust in India's remotest corners</td>
+  <td>Words are hollow and fleeting; only &quot;a little said, and truly said&quot; touches the heart</td>
+</tr>
+<tr>
+  <td><strong>One key quote</strong></td>
+  <td>&quot;People like Khetaram are a part and parcel of our social fabric, and are a great support!&quot;</td>
+  <td>&quot;A little said, and truly said / Can deeper joy impart / Than hosts of words, which reach the head, / But never touch the heart.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Admiring, warm, respectful</td>
+  <td>Reflective, philosophical, wistful</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-about-khetaram-part-a">👤 2. About Khetaram (Part A)</h2>
+<ul>
+<li><strong>Who:</strong> Gramin Dak Sewak (GDS), the <strong>sole postman of Somarad Branch Post Office</strong>.</li>
+<li><strong>Where:</strong> near the <strong>Indo-Pakistan border</strong> · <strong>120 km beyond the last railhead at Barmer</strong> · <strong>50 km beyond the last phone</strong> · <strong>10 km beyond</strong> where the road crumbles into sand.</li>
+<li><strong>How long:</strong> <strong>15 years</strong> of service; his left shoulder <strong>slumped</strong> from carrying the mailbag.</li>
+<li><strong>Load &amp; distance:</strong> load cannot exceed <strong>28 kilos</strong>; <strong>20 km</strong> for even a single delivery.</li>
+<li><strong>Speed record:</strong> mail delivered at the border <strong>within 24 hours</strong> of dispatch from Jodhpur (~330 km away).</li>
+<li><strong>Record temperature:</strong> 49.9°C — because <strong>50°C would mean a state holiday</strong>.</li>
+<li><strong>Its customers:</strong> farm families, their <strong>money orders</strong> from relatives, the <strong>BSF</strong> camp, and news of births, weddings and deaths.</li>
+</ul>
+<hr />
+<h2 id="rev-3-carrier-of-words-read-amp-understand-key-points">📖 3. Carrier of Words — Read &amp; Understand (Key points)</h2>
+<ul>
+<li><strong>The world before internet:</strong> mail dropped in the post box → postal system → postman → our letter box.</li>
+<li><strong>GDS = the last-mile link:</strong> the &quot;oases of humanity&quot; in India's extremes (Thar, Ladakh, Lakshadweep, northeast riverine communities) stay connected only because of Gramin Dak Sewaks — <strong>more than 50% of India Post's workforce</strong>; many deliver in areas <strong>inaccessible by any means besides foot</strong> (Postmaster-General, Rajasthan Western Region).</li>
+<li><strong>Look, smell, sound of his world:</strong> sand beds and dunes; <strong>khejri trees</strong>; blazing sun; swirling sandstorms; a &quot;walking sandman&quot;.</li>
+<li><strong>The &quot;28-kilo rule&quot; and the &quot;5-hour rule&quot;:</strong> GDS work <strong>five hours a day</strong>; they may serve <strong>till 65</strong> (after 60); selection requires <strong>another means of livelihood</strong> — all so they can have an <strong>assured income</strong>, and India Post can &quot;retain a large workforce of Gramin Dak Sewaks to serve remote outposts.&quot;</li>
+<li><strong>Khetaram's motive:</strong> a &quot;<strong>new lease of life</strong>&quot;; &quot;Akaal or famine is a way of life here. In a good year, I get one crop of bajra. That cannot feed my family of five. We would starve without this job.&quot;</li>
+<li><strong>Legend of trust:</strong><ul>
+<li>money orders — families rely on sums &quot;<strong>remitted by a relative</strong>&quot;;</li>
+<li><strong>Mulk Raj Anand</strong>, <em>Story of the Indian Post Office</em>: absolute confidence Indians place in the post office;</li>
+<li>attempt to <strong>scrap the GDS</strong> and shift the job to <strong>patwaris</strong> was <strong>summarily rejected</strong> — &quot;We knew they would not be able to do the job&quot; (Budh Singh, village elder).</li>
+</ul>
+</li>
+<li><strong>A warmly received man:</strong> dwells on any <strong>threshold</strong>; reads letters aloud and <strong>drafts replies</strong> in his slightly shaky hand; <strong>BSF</strong> gives him a lift (and tea when he distributes their dak); villagers offer a piece of <strong>jaggery</strong> for news of a <strong>birth or weddings</strong>.</li>
+<li><strong>The letter he dreads:</strong> an envelope with the <strong>right corner torn off</strong> = news of death. He <strong>stands outside</strong>, reads the letter twice, then <strong>tears it to bits</strong> on the doorstep and mutters, &quot;Ashubh Samachar cannot be carried into the house… Bad news must be destroyed.&quot;</li>
+<li><strong>His future:</strong> &quot;spine is strong&quot;; waiting for phone lines &quot;now only 50 km away&quot; to become a <strong>Gramin Sanchar Sewak</strong> — his duty would then <strong>entail carrying a cell phone and the post</strong> from home to home. &quot;<strong>Main tayyar hoon</strong>&quot; (I'm ready).</li>
+<li><strong>Final salute:</strong> people like Khetaram &quot;are a part and parcel of our social fabric, and are a great support!&quot;</li>
+</ul>
+<hr />
+<h2 id="rev-4-key-figures-from-the-text">📊 4. Key Figures from the Text</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Fact</th>
+  <th>Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Years of Khetaram's service</td>
+  <td><strong>15</strong></td>
+</tr>
+<tr>
+  <td>Distance from the Indo-Pakistan border</td>
+  <td><strong>2.5 km</strong></td>
+</tr>
+<tr>
+  <td>Beyond the last railhead (Barmer)</td>
+  <td><strong>120 km</strong></td>
+</tr>
+<tr>
+  <td>Beyond the last phone</td>
+  <td><strong>50 km</strong></td>
+</tr>
+<tr>
+  <td>From Jodhpur</td>
+  <td><strong>330 km</strong></td>
+</tr>
+<tr>
+  <td>Load limit</td>
+  <td><strong>28 kilos</strong></td>
+</tr>
+<tr>
+  <td>Kms for a single delivery</td>
+  <td><strong>20 km</strong></td>
+</tr>
+<tr>
+  <td>Recorded temperature</td>
+  <td><strong>49.9°C</strong></td>
+</tr>
+<tr>
+  <td>Post offices in 1947</td>
+  <td><strong>25,000</strong></td>
+</tr>
+<tr>
+  <td>Post offices today</td>
+  <td><strong>more than a lakh and a half</strong></td>
+</tr>
+<tr>
+  <td>GDS share of the workforce</td>
+  <td><strong>more than 50%</strong></td>
+</tr>
+<tr>
+  <td>Daily working hours of a GDS</td>
+  <td><strong>5 hours</strong></td>
+</tr>
+<tr>
+  <td>Age till which a GDS may serve</td>
+  <td><strong>65 (after 60)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-grammar-corner">📝 5. Grammar Corner</h2>
+<h3 id="rev-present-perfect-tense">Present Perfect Tense</h3>
+<p><strong>Structure:</strong> <code>has/have + past participle (V3)</code> → &quot;I <strong>have studied</strong> in this school for six years.&quot;</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Usage</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>finished action (past event → present result)</td>
+  <td>She <strong>has found</strong> her book.</td>
+</tr>
+<tr>
+  <td>recently completed action</td>
+  <td>I <strong>have just eaten</strong> a mango.</td>
+</tr>
+<tr>
+  <td>life experience</td>
+  <td><strong>Have you ever seen</strong> a play before?</td>
+</tr>
+<tr>
+  <td>accomplishment</td>
+  <td>I <strong>have finished</strong> my project.</td>
+</tr>
+<tr>
+  <td>change over time</td>
+  <td>Ajay <strong>has become</strong> a good bowler in five years.</td>
+</tr>
+<tr>
+  <td>multiple actions at different times</td>
+  <td>I <strong>have seen</strong> this book many times.</td>
+</tr>
+<tr>
+  <td>past action with present impact</td>
+  <td>I <strong>have studied</strong> in this school for six years.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Fill in the blanks (answers):</strong></p>
+<ol>
+<li>I <strong>have</strong> just <strong>got</strong> a collection of postage stamps from my grandfather.</li>
+<li>He <strong>has collected</strong> these stamps over a period of 20 years.</li>
+<li>I <strong>have studied</strong> most of the stamps in his collection.</li>
+<li>I <strong>have begun</strong> my own collection of postage stamps.</li>
+<li>Grandfather <strong>has truly inspired</strong> me.</li>
+</ol>
+<h3 id="rev-active-passive-voice">Active ↔ Passive (Voice)</h3>
+<ul>
+<li><strong>Active:</strong> GDS delivers the mail at the border. <em>(subject does the action)</em></li>
+<li><strong>Passive:</strong> The mail is delivered by the GDS at the border. <em>(subject receives the action)</em></li>
+</ul>
+<p><strong>Khetaram's advice (passive paragraph — answers):</strong></p>
+<ul>
+<li>To begin with, a lot of stamina <strong>will be needed</strong> for this job.</li>
+<li>Next, reading clearly <strong>will be practised</strong>, as you <strong>will be expected</strong> to read out the letters by some of the villagers.</li>
+<li>Words <strong>will be written</strong> neatly, as you <strong>will be asked</strong> to draft replies by some villagers.</li>
+<li>Full-sleeved shirts and trousers <strong>will be worn</strong> to protect yourself from the heat.</li>
+</ul>
+<h3 id="rev-alliteration-amp-metaphor-exercise">Alliteration &amp; Metaphor (exercise)</h3>
+<ul>
+<li><strong>Alliteration</strong> (repetition of initial consonant sounds): &quot;<strong>K</strong>hetaram's <strong>k</strong>haki <strong>t</strong>urban…&quot;; &quot;<strong>s</strong>corching <strong>s</strong>ummer winds and <strong>s</strong>wirling <strong>s</strong>andstorms.&quot;</li>
+<li><strong>Metaphor</strong> (direct comparison without 'like/as'): &quot;the desert's <strong>furies</strong>&quot; (angry desert forces) · turns him into a &quot;<strong>walking sandman</strong>.&quot;</li>
+</ul>
+<h3 id="rev-matching-words-what-they-suggest">Matching (words → what they suggest)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Suggests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>arid</td>
+  <td>farmland without much yield</td>
+</tr>
+<tr>
+  <td>concessional</td>
+  <td>interest rate for the farmers</td>
+</tr>
+<tr>
+  <td>gaunt</td>
+  <td>farmer waiting for the rains</td>
+</tr>
+<tr>
+  <td>remote</td>
+  <td>corner of the world</td>
+</tr>
+<tr>
+  <td>desolate</td>
+  <td>desert stretching far and wide</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-phrase-match-vocabulary-amp-structures">Phrase match (Vocabulary &amp; Structures)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Phrase</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>crumbles into sand</td>
+  <td>disappears in the desert</td>
+</tr>
+<tr>
+  <td>give a new lease of life</td>
+  <td>get a chance to continue living</td>
+</tr>
+<tr>
+  <td>turn into a trickle before drying out</td>
+  <td>lessen gradually and then finally stop</td>
+</tr>
+<tr>
+  <td>bearing words across this desolate geography</td>
+  <td>carrying letters to less populated areas</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-6-writing-task-condolence-message">💬 6. Writing Task — Condolence Message</h2>
+<p><strong>What is it?</strong> A message that communicates your feelings to someone whose relative or close person has passed away — it mentions how sorry you feel for the loss and your <strong>prayers for strength</strong> to the family.</p>
+<p><strong>Model (Sawant Singh → cousin Bhawar Singh):</strong></p>
+<blockquote>
+<p>16 July 20XX
+Dear Bhawar Bhai,
+I am deeply saddened to hear about the loss of Kunwar uncle. Please accept my condolences. I extend my deepest sympathy to you and your family in this hour of grief. May God give eternal peace to the departed soul and courage to the family to bear the loss.
+Yours sincerely,
+Sawant Singh
+Bhawar Singh, Village: Veer Nagar, Jodhpur, Rajasthan 342001</p>
+</blockquote>
+<p><strong>Your task:</strong> on behalf of your parents, draft a <strong>condolence message</strong> for your aunt on the recent passing away of her father.</p>
+<hr />
+<h2 id="rev-7-beyond-the-text-worth-one-mark">🌟 7. Beyond the Text (worth one mark)</h2>
+<ul>
+<li><strong>Daakroom carnival</strong> — conceptualised by the <strong>Ministry of Culture</strong>; supported by <strong>India Post</strong> (competitions, workshops on letter writing; a &quot;digital detox&quot; to revive the art of letter writing in India).</li>
+<li><strong>Philately</strong> — the study of postage stamps and postal history; you can be a philatelist without owning any stamps (rare stamps may be found only in museums).</li>
+<li><strong>Telegram</strong> — old fast mode for short, precise messages (greetings, condolences); <strong>priced by number of words</strong>.</li>
+<li>Related reading — <em>Story of the Indian Post Office</em> (Mulk Raj Anand); <em>Weigh Your Words</em> (E. F. Hayward).</li>
+</ul>
+<hr />
+<h1>🟢 PART B — WORDS (POEM)</h1>
+<h2 id="rev-2-the-poem-full-text">📖 2. The Poem (full text)</h2>
+<blockquote>
+<p>If words could satisfy the heart,
+The heart might find less care;
+But words, like summer birds, depart,
+And leave but empty air.</p>
+<p>The heart, a pilgrim upon earth,
+Finds often, when it needs,
+That words are of as little worth
+As just so many weeds.</p>
+<p>A little said, and truly said,
+Can deeper joy impart
+Than hosts of words, which reach the head,
+But never touch the heart.</p>
+<p>The voice that wins its sunny way,
+A lonely home to cheer,
+Hath oft the fewest words to say;
+But, oh! those few, how dear!</p>
+<p>If words could satisfy the chest,
+The world might hold a feast;
+But words, when summoned to the test,
+Oft satisfy the least!</p>
+<p>Like plants that make a gaudy show,
+All blossom to the root;
+But whose poor nature cannot grow,
+One particle of fruit!</p>
+</blockquote>
+<p>— <em>Charles Swain</em></p>
+<hr />
+<h2 id="rev-3-theme-tone-mood">🎭 3. Theme, Tone, Mood</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>Words alone cannot satisfy the heart; hollow words are worthless — only a few truly spoken words bring deep joy</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Reflective, philosophical, wistful</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Thoughtful, slightly melancholic, truthful</td>
+</tr>
+<tr>
+  <td><strong>Central idea</strong></td>
+  <td>&quot;A little said, and truly said&quot; is worth more than hosts of words that never touch the heart</td>
+</tr>
+<tr>
+  <td><strong>Structure</strong></td>
+  <td>Six stanzas of four lines each (quatrains), with regular rhythm</td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td>Couplet/alternating rhymes (e.g. heart–depart, care–air; earth–worth, needs–weeds…)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-poetic-devices-with-examples">🛠 4. Poetic Devices (with examples)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Example</th>
+  <th>Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Simile</strong></td>
+  <td><em>&quot;words, like summer birds, depart&quot;</em></td>
+  <td>Words are fleeting, like birds of summer that leave nothing behind</td>
+</tr>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td><em>&quot;The heart, a pilgrim upon earth&quot;</em></td>
+  <td>The heart is a traveller on a quest, seeking fulfilment</td>
+</tr>
+<tr>
+  <td><strong>Simile</strong></td>
+  <td><em>&quot;words are of as little worth / As just so many weeds&quot;</em></td>
+  <td>Many words are as worthless as weeds</td>
+</tr>
+<tr>
+  <td><strong>Hyperbole</strong></td>
+  <td><em>&quot;If words could satisfy the chest, / The world might hold a feast&quot;</em></td>
+  <td>Exaggeration to show that words can never truly satisfy everyone</td>
+</tr>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td><em>&quot;Like plants that make a gaudy show… One particle of fruit&quot;</em></td>
+  <td>Showy, empty words are like flowerless plants — all blossom, no fruit</td>
+</tr>
+<tr>
+  <td><strong>Contrast/Antithesis</strong></td>
+  <td>&quot;reach the <strong>head</strong>, but never touch the <strong>heart</strong>&quot;</td>
+  <td>Mind vs heart; quantity vs sincerity</td>
+</tr>
+<tr>
+  <td><strong>Repetition</strong></td>
+  <td>the word <em>&quot;words&quot;</em> again and again</td>
+  <td>The poem is wholly about words — drives the point home</td>
+</tr>
+<tr>
+  <td><strong>Exclamations</strong></td>
+  <td>&quot;But, oh! those few, how dear!&quot; · &quot;Oft satisfy the least!&quot;</td>
+  <td>Emotion — admiration, frustration, disillusionment</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-exclamation-marks-in-stanzas-4-6-the-answer">Exclamation marks in stanzas 4–6 — the answer</h3>
+<p>The correct option is <strong>(ii) 4. frustration; 5. admiration; and 6. disillusionment.</strong></p>
+<hr />
+<h2 id="rev-5-exercise-answers">📋 5. Exercise Answers</h2>
+<p><strong>Fill in the blanks (one word from the poem):</strong></p>
+<ol>
+<li><strong>depart</strong> (summer birds) · 2. <strong>pilgrim</strong> · 3. <strong>weeds</strong> · 4. <strong>joy</strong> · 5. <strong>lonely</strong> place · 6. <strong>world</strong> would celebrate · 7. like a <strong>plant</strong> (that cannot produce anything valuable).</li>
+</ol>
+<p><strong>Rhyming words &amp; rhyme scheme:</strong></p>
+<ul>
+<li>Sets: <em>heart/depart, care/air, earth/worth, needs/weeds, impart/heart, way/say, cheer/dear, feast/least, test/rest, show/grow, root/fruit</em>.</li>
+<li>Rhyme scheme of each quatrain: the first and third, and the second and fourth lines rhyme (alternate rhyme, e.g. <em>a-b-a-b</em>), with the last stanza rhyming fully (couplet).</li>
+</ul>
+<p><strong>Hyperbole sentences (answers):</strong></p>
+<ol>
+<li>I have <strong>tonnes of</strong> things to do this weekend.</li>
+<li>The player missed the basket by <strong>a mile</strong>.</li>
+<li>My mother is so tired that she can sleep for a <strong>decade</strong>.</li>
+<li>I will be back in <strong>two seconds</strong>.</li>
+</ol>
+<p><strong>Vocabulary match:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Phrase</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>satisfy the heart</td>
+  <td>makes one happy</td>
+</tr>
+<tr>
+  <td>depart and leave but empty air</td>
+  <td>there is no outcome</td>
+</tr>
+<tr>
+  <td>hosts of words</td>
+  <td>many words</td>
+</tr>
+<tr>
+  <td>never touch the heart</td>
+  <td>does not appeal to our emotions</td>
+</tr>
+<tr>
+  <td>wins its sunny way</td>
+  <td>cheers up a person</td>
+</tr>
+<tr>
+  <td>plants that cannot grow fruit</td>
+  <td>makes no impact</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Word map (example for 'cheer'):</strong></p>
+<ul>
+<li>Meaning: to give a loud shout of approval or encouragement</li>
+<li>Synonym: comfort</li>
+<li>Antonym: sadden</li>
+<li>Sentence: &quot;The audience cheered her for great performance.&quot;</li>
+<li>Sketch: sunshine, sunflower, or a smiling face</li>
+</ul>
+<hr />
+<h2 id="rev-6-study-the-class-room-questions-amp-practice">✍️ 6. Study the Class Room Questions &amp; Practice</h2>
+<h3 id="rev-the-heart-and-the-weeds-stanza-2-questions-amp-answers">The heart and the weeds (stanza 2) — questions &amp; answers</h3>
+<ul>
+<li><strong>Why a 'pilgrim'?</strong> Because the heart is a traveller on a long quest who, when in need, searches for help and comfort — like a pilgrim seeking fulfilment.</li>
+<li><strong>When would a heart 'need' words?</strong> When it is <strong>lonely, sad, or troubled</strong> and longs for comfort and reassurance.</li>
+<li><strong>Words are like weeds because —</strong> they are <strong>worthless and useless</strong> to a heart that really needs help (as weeds are useless to a garden).</li>
+<li><strong>Two emotions the heart feels when words are of little worth:</strong> <strong>disappointment</strong> and <strong>disillusionment</strong> (also sadness, frustration).</li>
+<li><strong>Nature of communication suggested:</strong> words alone are often <strong>inadequate and hollow</strong>; true communication needs <strong>sincerity and feeling</strong>, not just many words.</li>
+</ul>
+<h3 id="rev-the-feast-stanza-5-questions-amp-answers">The feast (stanza 5) — questions &amp; answers</h3>
+<ul>
+<li><strong>How can words 'satisfy the chest'?</strong> By genuinely <strong>comforting and healing the heart</strong> — truly responding to a person's emotional need.</li>
+<li><strong>How can words be 'summoned to the test'?</strong> When they are <strong>put to the test — called upon to actually bring relief or prove their worth</strong> in a real moment of need — they are exposed.</li>
+<li><strong>What does 'the world holding a feast' imply?</strong> An <strong>exaggeration (hyperbole)</strong>: if words truly satisfied hearts, everyone everywhere would celebrate in joy.</li>
+<li><strong>Words satisfy the least because —</strong> in real moments of need, <strong>hollow words fail to bring true comfort</strong> — they promise much but deliver nothing.</li>
+<li><strong>'oft' does NOT mean:</strong> <strong>A. always</strong> (it means <em>often / usually / frequently</em>).</li>
+</ul>
+<h3 id="rev-whole-poem-questions-quick-answers">Whole-poem questions — quick answers</h3>
+<ol>
+<li><strong>Words vs 'empty air':</strong> both are <strong>intangible, hollow, without substance</strong> — like summer birds, words depart leaving only <strong>empty air</strong>, sounding like something but holding nothing.</li>
+<li><strong>Meaningful words more precious:</strong> &quot;A little said, and truly said, can deeper joy impart than hosts of words.&quot; A few sincere words <strong>touch the heart</strong>, while many empty words <strong>only reach the head</strong>.</li>
+<li><strong>Contrasting ideas → Yes:</strong> poet contrasts <strong>truly said words</strong> (precious) with <strong>hosts of words</strong> (worthless weeds), and words that <strong>reach the head</strong> with words that <strong>touch the heart</strong> — quality over quantity.</li>
+<li><strong>Loneliness hovers:</strong> <em>&quot;words, like summer birds, depart… leave but empty air&quot;</em> (emptiness) · <em>&quot;The heart, a pilgrim upon earth&quot;</em> (solitary quest) · <em>&quot;The voice that wins its sunny way, / A lonely home to cheer&quot;</em> (explicit loneliness).</li>
+<li><strong>Superficial words → what to do:</strong> empty words are like <strong>gaudy plants</strong> that &quot;blossom to the root&quot; yet grow &quot;not one particle of fruit&quot; — impressive outside, hollow inside. <strong>Remedy:</strong> speak <strong>little but truthfully, from the heart</strong>.</li>
+</ol>
+<hr />
+<h2 id="rev-quick-recap-both-texts">✅ QUICK RECAP (Both Texts)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>Text</th>
+  <th>Key line to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><em>Carrier of Words</em></td>
+  <td>&quot;People like Khetaram are a part and parcel of our social fabric.&quot;</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><em>Words</em></td>
+  <td>&quot;A little said, and truly said / Can deeper joy impart.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Grammar</strong></td>
+  <td>Present Perfect</td>
+  <td>has/have + V3</td>
+</tr>
+<tr>
+  <td><strong>Writing task</strong></td>
+  <td>Condolence message</td>
+  <td>sorrow → sympathy → prayer → signature</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>✍️ PRACTICE QUESTIONS (Self-test)</h1>
+<p><strong>Part A:</strong></p>
+<ol>
+<li>Why does the Postmaster-General call the role of GDS 'invaluable'?</li>
+<li>How was India Post's purpose different from the British postal system?</li>
+<li>Give two instances showing people trusted the GDS.</li>
+<li>Why did Khetaram call famine 'a way of life'?</li>
+<li>What was Khetaram's philosophy about death news, and how did he act on it?</li>
+</ol>
+<p><strong>Part B:</strong></p>
+<ol>
+<li>How does the poet show words are 'of little worth'? Quote a simile and a metaphor.</li>
+<li>Why does the exaggerated (hyperbolic) image of a feast appear in stanza 5?</li>
+<li>Explain &quot;reach the head, but never touch the heart&quot; in your own words.</li>
+<li>What should we do so that our words are not hollow? (Use the last three stanzas.)</li>
+</ol>
+<p><strong>Quick recall:</strong></p>
+<ul>
+<li>(a) Khetaram's left shoulder slumped because he… (carried a mailbag for years).</li>
+<li>(b) The number of post offices in India today is… (more than a lakh and a half).</li>
+<li>(c) The poem compares the heart with… (a pilgrim).</li>
+<li>(d) &quot;Main tayyar hoon&quot; means… (I'm ready).</li>
+</ul>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 7 (PDF) — all facts, quotes, and answers are taken from the chapter.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 7: Carrier of Words & Words —</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Carrier of Words* (Essay/Prose · about Khetaram, a Gramin Dak Sewak) · **B)** *Words* (Poem · Charles Swain)</p>
+      <h1>🟣 PART A — CARRIER OF WORDS</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<p>The text is built on <strong>three main themes</strong>:</p>
+<ol>
+<li><strong>Dedicated service in the harshest conditions</strong> — Khetaram, the sole postman of Somarad Branch Post Office, has been a trusted link between a remote Rajasthani village and its faraway families for the last 15 years, defying all elements of the Thar desert.</li>
+<li><strong>Trust and human connection</strong> — every post office has many operational accounts of the people, reflecting their trust in the postal system; Khetaram reads out letters and drafts replies for villagers.</li>
+<li><strong>The invaluable role of Gramin Dak Sewaks (GDS)</strong> — more than 50 per cent of India Post's workforce; they deliver in interior areas often inaccessible by any means besides foot.</li>
+</ol>
+<p><strong>Underlying values:</strong> honesty, dedication and trust. As the closing lines say, <em>&quot;People like Khetaram are a part and parcel of our social fabric, and are a great support!&quot;</em></p>
+<blockquote>
+<p>❤️ <strong>Message:</strong> A simple postman who carries words across the desert is a lifeline of trust, hope and connection for remote communities.</p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary-exam-ready">📝 LONG ANSWER (Complete summary — exam-ready)</h2>
+<blockquote>
+<p><em>Use this as a complete answer. Every important point of the chapter is here.</em></p>
+</blockquote>
+<p><strong>The text begins with a reflection on how mail is sent today.</strong> Though we are just a click away from sending mail now, before the internet the mail was dropped in the post box, sent through the postal system, and finally delivered by the postman into our letter box. In areas <strong>beyond the last railhead</strong> and after the road crumbles into sand, <strong>Gramin Dak Sewaks</strong> still serve as the <strong>sole link</strong> between the &quot;oases of humanity&quot; in India's extremes and their faraway families.</p>
+<p><strong>Khetaram is a Gramin Dak Sewak.</strong> His left shoulder <strong>slumped</strong> from years of carrying a mailbag; he is the <strong>sole postman of Somarad Branch Post Office</strong>. For the last <strong>15 years</strong>, he has been a trusted link between the people attached to this Rajasthani village post office and their families. <strong>Defying all elements of the harshest desert of India, the Thar</strong>, he is the <strong>lone face of the state</strong> who reaches the far-flung hamlets, or <strong>dhaanis</strong>, of this remote area <strong>just 2.5 km short of the Indo-Pakistan border</strong>.</p>
+<p><strong>Where Khetaram works:</strong> Some <strong>120 km beyond the last railhead at Barmer</strong>, <strong>50 km beyond the last phone</strong> and <strong>10 km beyond</strong> where the Barmer–Chohtan road crumbles into sand so soft that even bicycles can't ply, Khetaram's footprints appear along sand beds and dunes. His bodily effort ensures that the mail — transferred from the <strong>mail train onto buses</strong> before being <strong>hefted (lifted) onto his shoulders</strong> — is delivered at the border <strong>within 24 hours of dispatch from Jodhpur</strong>, around <strong>330 km away</strong>.</p>
+<p><strong>The weight of his burden:</strong> Regulations stipulate that his load cannot exceed <strong>28 kilos</strong>. In the summers, when the sands sizzle under his <strong>mojri-clad (traditional Rajasthani footwear) feet</strong>, Khetaram says, <strong>&quot;Even a single delivery is tiring, as I have to cover 20 km for it.&quot;</strong> He delivers even when the temperature crosses 50 degrees Celsius — but it is <strong>recorded as 49.9 degrees</strong>, because 50 degrees Celsius would mean a <strong>state holiday</strong>. Sometimes severe heat forces him to postpone deliveries till after sundown.</p>
+<p><strong>The desert's furies:</strong> On other days, his <strong>khaki turban and uniform</strong> are his only protection against the desert's furies — scorching summer winds and swirling sandstorms which turn him into a <strong>walking sandman</strong>. &quot;Water is too precious to waste on washing, so I can only wipe my body. When I finish, there is a sand dune at my feet every evening,&quot; he says.</p>
+<p><strong>What is a Gramin Dak Sewak?</strong> Till <strong>2001</strong>, Khetaram was known as a <strong>'delivery agent'</strong>, operating in rural areas devoid of schools and primary healthcare centres. Since then, India's <strong>three lakh plus</strong> delivery agents were accepted as <strong>Gramin Dak Sewaks (GDS)</strong>, who constitute <strong>more than 50 per cent of the total workforce</strong>. The frozen desert of <strong>Ladakh</strong>, the isles of <strong>Lakshadweep</strong>, and the <strong>riverine communities of the northeast</strong> are all GDS territories. The <strong>Postmaster-General of Rajasthan Western Region</strong> explains: &quot;The role of GDS is invaluable, since they deliver in interior areas that are often inaccessible by any means besides foot.&quot;</p>
+<p><strong>India Post then and now:</strong> Unlike the British postal system set up in India to relay company (company) dak between administrative centres, after independence the mandate of <strong>India Post</strong> was to bring the entire population within the mailing ambit. Compared to <strong>25,000 post offices in 1947</strong>, today we have <strong>more than a lakh and a half post offices</strong> throughout the country. Through the GDS, India Post has been able to reach <strong>rural depositors</strong>, who entrust their monthly savings to the post office. Every post office has many operational accounts of the people, which reflects their <strong>trust in the postal system</strong>.</p>
+<p><strong>The GDS system:</strong> The essential criterion for GDS selection is <strong>access to another means of livelihood</strong>. They work only <strong>five hours in a day</strong> and are allowed to serve <strong>till the age of 65</strong> after 60 — all so they can be paid a salary to have an <strong>assured income</strong>. &quot;Only by applying such different conditions could we retain a large workforce of Gramin Dak Sewaks to serve remote outposts,&quot; explains a postmaster.</p>
+<p><strong>Why Khetaram needs this job:</strong> His appointment more than a decade ago gave him <strong>a new lease of life</strong>. <strong>&quot;Akaal or famine is a way of life here. In a good year, I get one crop of bajra. That cannot feed my family of five. We would starve without this job,&quot;</strong> he says. For each family in this arid land, survival is partly dependent on <strong>money orders remitted (sent) by a relative</strong>. In his book <em>Story of the Indian Post Office</em>, <strong>Mulk Raj Anand</strong> writes: &quot;In no other country a person in remote villages is so dependent on the post office for transmission of small sums of money… It reflects the absolute confidence which most Indians place in the post office.&quot; A few years ago, a scheme to <strong>scrap the GDS</strong> and transfer the job to <strong>patwaris (village record keepers)</strong> was proposed and <strong>summarily rejected</strong>. &quot;We knew they would not be able to do the job,&quot; says <strong>Budh Singh</strong>, a village elder.</p>
+<p><strong>Trust makes Khetaram welcome:</strong> Such aspects of trust make Khetaram a warmly received man. He can <strong>dwell on any threshold</strong> (entrance to a home), <strong>read out letters</strong> and <strong>write replies</strong> in his slightly shaky hand. Everyone feels comfortable asking him to read the letters and draft the replies. &quot;People are kind to me; the <strong>BSF (Border Security Force)</strong> always gives me a lift. Since their camp came here last year, when I distribute their dak, I get a cup of tea.&quot; In the village, a piece of <strong>jaggery</strong> is all that can be offered when he brings news of a birth or weddings.</p>
+<p><strong>The letter he dreads:</strong> There is one letter delivery he dreads — the envelope with the <strong>right corner torn off</strong>, which signifies that the missive bears <strong>news of death</strong>. <strong>&quot;Ashubh Samachar (unlucky news) cannot be carried into the house,&quot;</strong> says Khetaram. So he <strong>stands outside, reads out the letter twice, then tears it to bits</strong>. &quot;Bad news must be destroyed,&quot; he mutters philosophically.</p>
+<p><strong>His future hope:</strong> Today, after more than <strong>a decade and a half</strong> of bearing words across this desolate geography, Khetaram says his <strong>spine is strong</strong>. &quot;I am grateful that as a Gramin Dak Sewak, I can serve the people even after 60.&quot; He is waiting for the arrival of <strong>phone lines, now only 50 km away</strong>, for then he might become a <strong>Gramin Sanchar Sewak</strong>, when his duty will <strong>entail (involve) carrying a cell phone and the post</strong> from home to home. <strong>&quot;Main tayyar hoon&quot;</strong> (I'm ready), he says, before striding off with his sack to deliver <strong>Panna Devi's dak</strong> before sundown. The text closes with a salute: <em>&quot;People like Khetaram are a part and parcel of our social fabric, and are a great support!&quot;</em></p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>sole</strong></td>
+  <td>only</td>
+</tr>
+<tr>
+  <td><strong>hamlets</strong></td>
+  <td>settlements</td>
+</tr>
+<tr>
+  <td><strong>ply</strong></td>
+  <td>move</td>
+</tr>
+<tr>
+  <td><strong>hefted</strong></td>
+  <td>lifted</td>
+</tr>
+<tr>
+  <td><strong>stipulate</strong></td>
+  <td>specify</td>
+</tr>
+<tr>
+  <td><strong>mojri</strong></td>
+  <td>traditional footwear of Rajasthan</td>
+</tr>
+<tr>
+  <td><strong>operating</strong></td>
+  <td>working</td>
+</tr>
+<tr>
+  <td><strong>riverine</strong></td>
+  <td>situated on a river bank</td>
+</tr>
+<tr>
+  <td><strong>inaccessible</strong></td>
+  <td>unreachable</td>
+</tr>
+<tr>
+  <td><strong>ambit</strong></td>
+  <td>range</td>
+</tr>
+<tr>
+  <td><strong>access</strong></td>
+  <td>opportunity</td>
+</tr>
+<tr>
+  <td><strong>remitted</strong></td>
+  <td>sent as gift</td>
+</tr>
+<tr>
+  <td><strong>scrap</strong></td>
+  <td>remove</td>
+</tr>
+<tr>
+  <td><strong>dwell</strong></td>
+  <td>to stay on for some time</td>
+</tr>
+<tr>
+  <td><strong>threshold</strong></td>
+  <td>entrance to a home</td>
+</tr>
+<tr>
+  <td><strong>BSF</strong></td>
+  <td>Border Security Force</td>
+</tr>
+<tr>
+  <td><strong>dreads</strong></td>
+  <td>fears</td>
+</tr>
+<tr>
+  <td><strong>missive</strong></td>
+  <td>letter</td>
+</tr>
+<tr>
+  <td><strong>entail</strong></td>
+  <td>involve</td>
+</tr>
+<tr>
+  <td><strong>striding</strong></td>
+  <td>walking with long steps</td>
+</tr>
+<tr>
+  <td><strong>dunes</strong></td>
+  <td>sand hills made by the wind</td>
+</tr>
+<tr>
+  <td><strong>khejri trees</strong></td>
+  <td>desert trees typical of Rajasthan (in the opening passage)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-character-sketch-khetaram">👥 CHARACTER SKETCH — Khetaram</h2>
+<p>A <strong>Gramin Dak Sewak</strong> and the <strong>sole postman of Somarad Branch Post Office</strong> in Rajasthan, near the Indo-Pakistan border. His <strong>left shoulder slumped</strong> from years of carrying a mailbag. For 15 years he has defied the <strong>Thar desert</strong> — blazing summers (temperature crossing 50°C), scorching winds and swirling sandstorms — to deliver mail <strong>within 24 hours of dispatch from Jodhpur (330 km away)</strong>, walking up to 20 km for a single delivery under a load that can reach 28 kilos. He is <strong>trusted</strong> — villagers ask him to read letters and draft replies; the <strong>BSF</strong> gives him a lift; jaggery is offered for news of a birth or wedding. He is <strong>sensitive and respectful</strong> of tradition — he never carries &quot;<strong>Ashubh Samachar</strong>&quot; (death news) into a house; he stands outside, reads the letter twice and &quot;destroys&quot; it. He is <strong>grateful and ready</strong> for the future — waiting for phone lines &quot;only 50 km away&quot; so he might become a <strong>Gramin Sanchar Sewak</strong>: &quot;Main tayyar hoon&quot; (I'm ready).</p>
+<hr />
+<h2 id="sum-important-questions-with-answers">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. Justify the statement of the Postmaster-General that the role of GDS is 'invaluable'.</strong>
+GDS like Khetaram deliver in interior areas that are <strong>often inaccessible by any means besides foot</strong> — beyond railheads, roads, phones and, in the Thar, even areas where bicycles can't ply. Without them, the &quot;oases of humanity&quot; at India's extremes and their faraway families would lose their only link to the world. Their role cannot be valued in money — so it is <strong>invaluable</strong>.</p>
+<p><strong>2. How was the purpose of India Post different from that of the British postal system?</strong>
+The British postal system was set up in India to <strong>relay company (official 'company') dak between administrative centres</strong> — it served the rulers. After independence, the mandate of <strong>India Post</strong> was to <strong>bring the entire population within the mailing ambit</strong> — to serve all the people of the country.</p>
+<p><strong>3. People trusted Gramin Dak Sewaks. Support with any two instances from the text.</strong>
+(i) Every post office has <strong>many operational accounts of the people</strong>, reflecting their trust in the postal system — rural depositors entrust their <strong>monthly savings</strong> to the post office. (ii) Villagers feel comfortable asking Khetaram to <strong>read their letters and draft replies</strong>; and Mulk Raj Anand notes &quot;the absolute confidence which most Indians place in the post office.&quot; (Also: the scheme to scrap GDS in favour of patwaris was <strong>summarily rejected</strong> because &quot;they would not be able to do the job.&quot;)</p>
+<p><strong>4. Infer the most likely reason Khetaram was grateful to continue as GDS, even after the age of 60.</strong>
+He says, &quot;I am grateful that as a Gramin Dak Sewak, I can serve the people even after 60.&quot; The GDS system allows service <strong>till 65</strong>, giving him an <strong>assured income</strong> and purpose in a region where famine is &quot;a way of life&quot; — his job keeps his family of five from starving and lets him keep serving his community.</p>
+<p><strong>5. Explain why the author pays tribute to people like Khetaram.</strong>
+Because they are the <strong>silent lifeline</strong> of remote India — carrying words, money orders and news across the harshest deserts, upholding trust and human connection. They are &quot;<strong>part and parcel of our social fabric</strong>&quot; — so the author salutes them.</p>
+<p><strong>6. Why did Khetaram term famine as 'a way of life'?</strong>
+Because in his arid land, <strong>Akaal (famine) recurs so regularly</strong> that people have learned to live with it — &quot;In a good year, I get one crop of bajra.&quot; Scarcity is the normal condition, familiar and expected.</p>
+<p><strong>7. Give one reason why Khetaram had to take up a job to help his family to survive.</strong>
+One crop of bajra cannot feed his <strong>family of five</strong> in a good year — the family <strong>would starve without this job</strong>; a regular salary (an assured income) from the post office keeps them alive.</p>
+<p><strong>8. Complete: One crop of bajra makes a little difference for people like Khetaram because —</strong>
+it is not enough to feed a family of five, and the region depends additionally on <strong>money orders remitted by relatives</strong> for survival.</p>
+<p><strong>9. Other families: Money orders :: Khetaram: — his GDS job / salary</strong> (the relative, distant families depend on money orders, while Khetaram's own family depends on his postal salary).</p>
+<p><strong>10. What would 'a good year' signify?</strong>
+A year with <strong>enough rain to raise at least one crop of bajra</strong> — the best that the arid land can offer elsewhere, still far from sufficient.</p>
+<p><strong>11. Who could have torn the right corner of the envelope?</strong>
+→ <strong>B. Sender of the letter</strong> — the torn corner is a pre-arranged sign (from the sender) that the letter carries death news.</p>
+<p><strong>12. The most likely reason Khetaram reads the letter twice is because —</strong>
+he wants to be <strong>absolutely sure of the sad news</strong> before he conveys it and destroys the letter — it is a confirmation of what the envelope's damaged corner suggests.</p>
+<p><strong>13. What was Khetaram's philosophy regarding bad news, and how did he act upon it?</strong>
+His philosophy: <strong>&quot;Ashubh Samachar cannot be carried into the house&quot;</strong> — bad news must not enter a home or be spread; &quot;Bad news must be destroyed.&quot; He acted on it by <strong>standing outside the house</strong>, reading the letter twice, then <strong>tearing it to bits</strong>.</p>
+<p><strong>14. Khetaram's action of tearing the letter differed from his beliefs — True or False?</strong>
+<strong>False.</strong> His action <strong>matched</strong> his beliefs — he believed bad news must be destroyed, and he destroyed it.</p>
+<p><strong>15. Mention one aspect of Khetaram's temperament revealed through this extract.</strong>
+His <strong>humanity / compassion and sensitivity</strong> (he spares families the pain of receiving death news inside their home) — also his <strong>steadfast sense of duty</strong>.</p>
+<p><strong>16. Why was a piece of jaggery offered when he brought news of a birth or weddings?</strong>
+Because in the remote, poor village, <strong>jaggery is all that can be offered</strong> — it is the villagers' humble way of expressing <strong>gratitude</strong> for the happy news of a birth or a wedding he delivers.</p>
+<p><strong>17. How would phone lines help Khetaram in his job?</strong>
+Phone lines, only 50 km away, would let him become a <strong>Gramin Sanchar Sewak</strong> — his duty would then <strong>entail carrying a cell phone and the post</strong> from home to home, making communication faster and his service easier.</p>
+<hr />
+<h2 id="sum-grammar-amp-structures-in-context">✍️ GRAMMAR &amp; STRUCTURES IN CONTEXT</h2>
+<p><strong>Present perfect tense</strong> — structure: <strong>has/have + past participle (V3)</strong>. It indicates: finished actions (past event — present result), recently completed actions, life experiences, accomplishment, changes over time, multiple actions at different times, or actions completed in the past whose impact continues in the present.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Sentence</th>
+  <th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>She <strong>has found</strong> her book.</td>
+  <td>(i) finished action — past event, present result</td>
+</tr>
+<tr>
+  <td>I <strong>have just eaten</strong> a mango.</td>
+  <td>(ii) recently completed action</td>
+</tr>
+<tr>
+  <td><strong>Have you ever seen</strong> a play before?</td>
+  <td>(iii) life experiences</td>
+</tr>
+<tr>
+  <td>I <strong>have finished</strong> my project.</td>
+  <td>(iv) accomplishment</td>
+</tr>
+<tr>
+  <td>Ajay <strong>has become</strong> a good bowler in five years.</td>
+  <td>(v) changes over time</td>
+</tr>
+<tr>
+  <td>I <strong>have seen</strong> this book many times.</td>
+  <td>(vi) multiple actions at different times</td>
+</tr>
+<tr>
+  <td>I <strong>have studied</strong> in this school for six years.</td>
+  <td>(vii) action completed in the past, impact in the present</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Fill-in-the-blanks (present perfect):</strong></p>
+<ol>
+<li>I <strong>have just got(getting→gotten/got)</strong> a collection of postage stamps from my grandfather.</li>
+<li>He <strong>has collected</strong> these stamps over a period of 20 years.</li>
+<li>I <strong>have studied</strong> most of the stamps in his collection.</li>
+<li>I <strong>have begun</strong> my own collection of postage stamps.</li>
+<li>Grandfather <strong>has truly inspired</strong> me.</li>
+</ol>
+<p><strong>Active &amp; Passive voice</strong> (from the chapter):</p>
+<ul>
+<li><strong>Active:</strong> GDS delivers the mail at the border. (subject does the action)</li>
+<li><strong>Passive:</strong> The mail is delivered by the GDS at the border. (subject receives the action)</li>
+</ul>
+<p><strong>Passive transformation (Khetaram's advice):</strong></p>
+<ul>
+<li>(i) A lot of stamina <strong>will be needed</strong> for this job.</li>
+<li>(ii) Reading clearly <strong>will be practised</strong>, as you <strong>will be expected</strong> to read out the letters by some of the villagers.</li>
+<li>(iii) Words <strong>will be written</strong> neatly, as you <strong>will be asked</strong> to draft replies.</li>
+<li>(iv) Full-sleeved shirts and trousers <strong>will be worn</strong> to protect yourself from the heat.</li>
+</ul>
+<p><strong>Alliteration and metaphor (exercise II):</strong></p>
+<ul>
+<li><strong>Alliteration:</strong> <em>&quot;<strong>K</strong>hetaram's <strong>k</strong>haki <strong>t</strong>urban&quot;</em> · <em>&quot;<strong>s</strong>corching <strong>s</strong>ummer&quot;</em> · <em>&quot;<strong>s</strong>wirling <strong>s</strong>andstorms&quot;</em> (repetition of the initial consonant sounds).</li>
+<li><strong>Metaphor:</strong> &quot;the <strong>desert's furies</strong>&quot; (the desert's angry forces) · &quot;turn him into a <strong>walking sandman</strong>&quot; (he becomes covered in sand like a man made of it).</li>
+</ul>
+<p><strong>Matching (exercise III — words &amp; suggestions):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Suggests (in context)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>arid</strong></td>
+  <td>(iii) farmland without much yield</td>
+</tr>
+<tr>
+  <td><strong>concessional</strong></td>
+  <td>(i) interest rate for the farmers</td>
+</tr>
+<tr>
+  <td><strong>gaunt</strong></td>
+  <td>(v) farmer waiting for the rains</td>
+</tr>
+<tr>
+  <td><strong>remote</strong></td>
+  <td>(ii) corner of the world</td>
+</tr>
+<tr>
+  <td><strong>desolate</strong></td>
+  <td>(iv) desert stretching far and wide</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-writing-task-condolence-message">✉️ WRITING TASK — Condolence Message</h2>
+<p><strong>What is a condolence message?</strong> It communicates your feelings to someone whose relative or a close person has passed away; it mentions how sorry you feel for the loss and your prayers for strength to the family.</p>
+<p><strong>Model message from the chapter (Sawant Singh to his cousin Bhawar Singh):</strong></p>
+<blockquote>
+<p>16 July 20XX
+Dear Bhawar Bhai,
+I am deeply saddened to hear about the loss of Kunwar uncle. Please accept my condolences. I extend my deepest sympathy to you and your family in this hour of grief. May God give eternal peace to the departed soul and courage to the family to bear the loss.
+Yours sincerely,
+Sawant Singh
+Bhawar Singh, Village: Veer Nagar, Jodhpur, Rajasthan 342001</p>
+</blockquote>
+<p><strong>Task for you:</strong> On behalf of your parents, draft an imaginary condolence message for your aunt on the recent passing away of her father. (Follow the same format: Date · Dear… · sorrow + condolences · sympathy · prayer for peace &amp; strength · Yours sincerely · your name.)</p>
+<hr />
+<h2 id="sum-extras-from-the-chapter">🌍 EXTRAS FROM THE CHAPTER</h2>
+<ul>
+<li><strong>'Daakroom' carnival</strong> — a unique event <strong>conceptualised by the Ministry of Culture</strong> to re-introduce children and larger audiences to letter writing in innovative, creative and engaging ways. It hosted competitions and workshops around writing and post; supported by <strong>India Post, Ministry of Culture, Gandhi Smriti and Darshan Samiti</strong>; aimed to give a <strong>digital detox</strong> and <strong>revive the art of letter writing in India</strong>. <em>(Source: pib.gov.in PressRelease)</em></li>
+<li><strong>Philately</strong> — the study of postage stamps and postal history. One can be a <strong>philatelist without owning any stamps</strong> (the stamps studied may be rare, found only in museums).</li>
+<li><strong>Telegram</strong> — a past mode of fast communication for short, specific messages (greetings, condolences); priced <strong>by the number of words</strong>, so it had to be precise.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Listening tasks (answers from the audio, not the text):</strong> the girl's talk about the letter-writing event (suggestion/request/advice) has a transcript in the teacher's book (page 272).</p>
+</blockquote>
+<hr />
+<h2 id="sum-quick-reference-prose-amp-poem">✅ QUICK REFERENCE — Prose &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Prose</strong></td>
+  <td>Khetaram, the lone postman of the Thar near the Indo-Pakistan border, has carried words, money orders and news for 15 years — trusting, tireless, and &quot;a part and parcel of our social fabric&quot;.</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>Words depart like summer birds and leave empty air — true feeling, not many words, is what touches the heart.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 7 — all facts, definitions and answers verified against the PDF.</em></p>
+<hr />
+<h1>🟢 PART B — WORDS (POEM)</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p><strong>Words by Charles Swain</strong> is a <strong>philosophical poem about the limits of words</strong>. The poet reflects that words fail to truly satisfy what the heart wants to convey — &quot;words, like summer birds, depart, and leave but empty air.&quot; <strong>A little said, and truly said</strong> brings deeper joy than hosts of words that reach the head but never touch the heart. The poem values <strong>sincerity over quantity</strong>: the few words spoken from the heart are the most precious of all.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>Words alone cannot satisfy the heart.</strong> Empty or excessive words are as worthless as weeds; only <strong>a few sincere words that come from the heart</strong> can bring real joy. The poem urges us to value <strong>truthful, heartfelt speech</strong> over mere talk.</p>
+<hr />
+<h2 id="sum-the-poem">📜 THE POEM</h2>
+<blockquote>
+<p>If words could satisfy the heart,
+The heart might find less care;
+But words, like summer birds, depart,
+And leave but empty air.</p>
+<p>The heart, a pilgrim upon earth,
+Finds often, when it needs,
+That words are of as little worth
+As just so many weeds.</p>
+<p>A little said, and truly said,
+Can deeper joy impart
+Than hosts of words, which reach the head,
+But never touch the heart.</p>
+<p>The voice that wins its sunny way,
+A lonely home to cheer,
+Hath oft the fewest words to say;
+But, oh! those few, how dear!</p>
+<p>If words could satisfy the chest,
+The world might hold a feast;
+But words, when summoned to the test,
+Oft satisfy the least!</p>
+<p>Like plants that make a gaudy show,
+All blossom to the root;
+But whose poor nature cannot grow,
+One particle of fruit!</p>
+</blockquote>
+<p><em>(Poem text as printed in the textbook.)</em></p>
+<hr />
+<h2 id="sum-stanza-wise-meaning">📖 STANZA-WISE MEANING</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Stanza</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>1</strong></td>
+  <td>If words could truly satisfy the heart, the heart would have fewer cares — but words, like <strong>summer birds</strong>, fly away and leave behind nothing but <strong>empty air</strong>. Words are brief and hollow.</td>
+</tr>
+<tr>
+  <td><strong>2</strong></td>
+  <td>The heart is a <strong>pilgrim (traveller) upon earth</strong>; when it is in need, it finds that words are of <strong>as little worth as weeds</strong> — useless and worthless.</td>
+</tr>
+<tr>
+  <td><strong>3</strong></td>
+  <td><strong>A little said, and truly said</strong> brings deeper joy than <strong>hosts (crowds) of words</strong> that reach the head (the mind) but never touch the heart. Sincerity beats quantity.</td>
+</tr>
+<tr>
+  <td><strong>4</strong></td>
+  <td>The voice that <strong>wins its sunny way</strong> (spreads cheer/goodness) into a lonely home often has the <strong>fewest words</strong> — but those few words are <strong>very dear (precious)</strong>.</td>
+</tr>
+<tr>
+  <td><strong>5</strong></td>
+  <td>If words could satisfy the chest (the heart again), the world <strong>might hold a feast</strong> (celebrate); but words, when tested, <strong>satisfy the least</strong> — they rarely deliver what they promise.</td>
+</tr>
+<tr>
+  <td><strong>6</strong></td>
+  <td>Like plants that make a <strong>gaudy (showy) display</strong> of blossoms but whose poor nature cannot grow even <strong>one particle of fruit</strong>, empty impressive words produce nothing of real value.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-theme-tone-amp-mood">🎯 THEME, TONE &amp; MOOD</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>The inadequacy and emptiness of words; genuine, heartfelt words are precious</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Reflective, philosophical, wistful</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Thoughtful and slightly melancholic, ending with a note of truth</td>
+</tr>
+<tr>
+  <td><strong>Central assertion</strong></td>
+  <td>&quot;A little said, and truly said&quot; is worth more than many insincere words</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-poetic-devices-with-examples">🛠 POETIC DEVICES (with examples)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Example</th>
+  <th>What the poet communicates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Simile</strong></td>
+  <td><em>&quot;words, like summer birds, depart&quot;</em></td>
+  <td>Words are fleeting — they come, speak and vanish like migrating summer birds, leaving nothing behind</td>
+</tr>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td><em>&quot;The heart, a pilgrim upon earth&quot;</em></td>
+  <td>The heart is a traveller seeking fulfilment; like a pilgrim it searches but often finds words lacking</td>
+</tr>
+<tr>
+  <td><strong>Simile/Metaphor (weeds)</strong></td>
+  <td><em>&quot;words are of as little worth / As just so many weeds&quot;</em></td>
+  <td>Many words are as worthless and useless as weeds</td>
+</tr>
+<tr>
+  <td><strong>Hyperbole</strong></td>
+  <td><em>&quot;If words could satisfy the chest, / The world might hold a feast&quot;</em></td>
+  <td>Exaggeration — if words truly satisfied, the whole world would celebrate</td>
+</tr>
+<tr>
+  <td><strong>Metaphor (plants)</strong></td>
+  <td><em>&quot;Like plants that make a gaudy show&quot;</em></td>
+  <td>Showy words are like flowerless plants — all display, no real fruit</td>
+</tr>
+<tr>
+  <td><strong>Contrast / Antithesis</strong></td>
+  <td>&quot;reach the <strong>head</strong>, but never <strong>touch the heart</strong>&quot; · &quot;the fewest words… how dear!&quot;</td>
+  <td>Head vs heart; quantity vs quality of words</td>
+</tr>
+<tr>
+  <td><strong>Repetition</strong></td>
+  <td><em>&quot;words&quot;</em> used again and again</td>
+  <td>Emphasises that the poem is wholly about the nature of words</td>
+</tr>
+<tr>
+  <td><strong>Exclamation marks (stanzas 4, 5, 6)</strong></td>
+  <td>&quot;But, oh! those few, how dear!&quot; · &quot;Oft satisfy the least!&quot; · &quot;One particle of fruit!&quot;</td>
+  <td>Express <strong>admiration and frustration / disillusionment</strong> — deep feeling about words</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-with-answers-2">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. Why has the poet referred to the heart as 'a pilgrim'?</strong>
+A pilgrim is a traveller on a long quest with hopes and needs. Likewise, the heart journeys through life, and <strong>when it is in need</strong>, it looks to words — but finds them wanting. The pilgrim image shows the heart's search for true fulfilment.</p>
+<p><strong>2. When would a heart 'need' words?</strong>
+When it is <strong>lonely, sorrowful, or in difficulty</strong> — when it needs comfort, understanding or reassurance from others.</p>
+<p><strong>3. Complete: The words are like weeds because —</strong>
+they are <strong>worthless and useless</strong> to a heart that truly needs help — just as weeds are of no worth to a garden (they cannot satisfy real hunger or heal real pain).</p>
+<p><strong>4. Mention two emotions the heart might be experiencing when it finds words of 'little worth'.</strong>
+<strong>Disappointment</strong> and <strong>disillusionment</strong> (also: sadness, loneliness, frustration).</p>
+<p><strong>5. What do these lines suggest about the nature of communication?</strong>
+That speech alone is often <strong>inadequate</strong>; words can be hollow and fail to reach the heart. True communication needs <strong>sincerity and feeling</strong>, not just many words.</p>
+<p><strong>6. How can words 'satisfy the chest'?</strong>
+By truly <strong>comforting, healing and fulfilling the heart</strong> — when a person's words genuinely respond to someone's emotional need, not just their mind.</p>
+<p><strong>7. How can words be 'summoned to the test'?</strong>
+When words are <strong>put to the test — called upon to actually bring relief or prove their worth</strong> in a real moment of need — then they revealed how little they can really satisfy.</p>
+<p><strong>8. What does 'the world' holding 'a feast' imply?</strong>
+It is an <strong>exaggeration (hyperbole)</strong>: if words could truly satisfy people's hearts, everyone everywhere would have reason to celebrate in joy — the whole world would be feasting.</p>
+<p><strong>9. Complete: The poet mentions that words satisfy the least because —</strong>
+in moments of real need, <strong>hollow words fail to give true comfort</strong> — they promise much but deliver nothing.</p>
+<p><strong>10. Select the word that does not mean the same as 'oft' → A. always.</strong> ('oft' = often/usually/frequently.)</p>
+<p><strong>11. What is the comparison the poet draws between words and 'empty air'?</strong>
+Words, like the departure of summer birds, leave nothing behind — like <strong>empty air</strong>, they are <strong>intangible, hollow and without substance</strong>: they sound like something but hold nothing.</p>
+<p><strong>12. According to the poet, meaningful words are more precious than a lot of them. Explain.</strong>
+The poet says &quot;A little said, and truly said, can deeper joy impart than hosts of words.&quot; A few sincere, heartfelt words <strong>touch the heart and bring real joy</strong>, while many empty words only reach the head (the mind) — they never move the heart.</p>
+<p><strong>13. Do you agree that the poet presents contrasting ideas related to 'words'? Yes/No and why?</strong>
+Yes. The poet contrasts <strong>truly said words</strong> (precious, joy-giving) with <strong>hosts of words</strong> (worthless, empty, like weeds). He also contrasts words that &quot;reach the head&quot; (mind) with words that &quot;touch the heart&quot; (feelings). This contrast highlights his central idea: <strong>quality and sincerity matter, not quantity</strong>.</p>
+<p><strong>14. The theme of loneliness hovers over the poem. Support this statement with examples.</strong></p>
+<ul>
+<li><em>&quot;words, like summer birds, depart, and leave but empty air&quot;</em> — a solitary, hollow feeling.</li>
+<li><em>&quot;The heart, a pilgrim upon earth&quot;</em> — the lonely quest of the heart.</li>
+<li><em>&quot;The voice that wins its sunny way, / A lonely home to cheer…&quot;</em> — explicitly mentions a <strong>lonely home</strong>.
+These images of departure, pilgrimage and lonely homes keep loneliness hovering over the poem.</li>
+</ul>
+<p><strong>15. How does the poet convey the superficial nature of words? What ought to be done?</strong>
+The poet shows empty words as <strong>like weeds</strong> and showy plants that &quot;blossom to the root&quot; but never &quot;grow one particle of fruit&quot; — impressive outside, hollow inside. The remedy: <strong>speak little but truly, from the heart</strong> — &quot;A little said, and truly said.&quot;</p>
+<hr />
+<h2 id="sum-exercise-answers-fill-in-the-blanks-amp-device-hunt">🔑 EXERCISE ANSWERS (fill-in-the-blanks &amp; device hunt)</h2>
+<p><strong>Fill in the blanks (from the poem):</strong></p>
+<ol>
+<li>Words are compared to summer birds who <strong>depart</strong>, leaving nothing behind.</li>
+<li>The heart is equated to a <strong>pilgrim</strong>.</li>
+<li>The heart finds words as worthless as <strong>weeds</strong>.</li>
+<li>A few sincere words can bring more <strong>joy</strong> than many meaningless ones.</li>
+<li>A voice that brings happiness to a <strong>lonely</strong> place does not say much, but its few words are very precious.</li>
+<li>If words could satisfy us, the <strong>world</strong> would celebrate.</li>
+<li>Empty words may look impressive with lots of flowers, but they cannot produce anything valuable, like a <strong>plant/fruit</strong>.</li>
+</ol>
+<p><strong>Four sets of rhyming words + rhyme scheme:</strong></p>
+<ul>
+<li><em>heart / depart</em>, <em>care / air</em>, <em>earth / worth</em>, <em>needs / weeds</em>, <em>impart / heart</em>, <em>way / say</em>, <em>cheer / dear</em>, <em>feast / least</em>, <em>test / rest</em>, <em>show / grow</em>, <em>root / fruit</em> — rhyme scheme: the poem is in <strong>rhyming couplets/quatrains (aabb / abcb per stanza)</strong>. <em>(The classic rhyme in each stanza follows an alternating/couplet pattern; the teacher's answer key: e.g. heart–depart, care–air…)</em></li>
+</ul>
+<p><strong>Stanzas 4, 5, 6 exclamation marks — choose the option that displays the emotions being expressed through them:</strong>
+The correct option is <strong>(ii) 4. frustration; 5. admiration; and 6. disillusionment</strong> — stanza 4 ends with frustration (&quot;the fewest words to say; but, oh! those few, how dear!&quot;), stanza 5 with admiration conveyed in the build-up, and stanza 6 with disillusionment at words that blossom yet bear no fruit.</p>
+<p><strong>Hyperbole (from lines):</strong> <em>&quot;If words could satisfy the chest, / The world might hold a feast.&quot;</em></p>
+<p><strong>Complete the sentences with hyperboles:</strong></p>
+<ol>
+<li>I have <strong>tonnes of</strong> things to do this weekend.</li>
+<li>The player missed the basket by <strong>a mile</strong>.</li>
+<li>My mother is so tired she can sleep for a <strong>decade</strong>.</li>
+<li>I will be back in <strong>two seconds</strong>.</li>
+</ol>
+<hr />
+<h2 id="sum-vocabulary-in-context-matching">🔗 VOCABULARY IN CONTEXT (matching)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Phrase</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>satisfy the heart</strong></td>
+  <td>(iv) makes one happy</td>
+</tr>
+<tr>
+  <td><strong>depart and leave but empty air</strong></td>
+  <td>(iii) there is no outcome</td>
+</tr>
+<tr>
+  <td><strong>hosts of words</strong></td>
+  <td>(i) many words</td>
+</tr>
+<tr>
+  <td><strong>never touch the heart</strong></td>
+  <td>(v) does not appeal to our emotions</td>
+</tr>
+<tr>
+  <td><strong>wins its sunny way</strong></td>
+  <td>(ii) cheers up a person</td>
+</tr>
+<tr>
+  <td><strong>plants that cannot grow fruit</strong></td>
+  <td>(vi) makes no impact</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Word map (example 'cheer'):</strong> Meaning: to give a loud shout of approval or encouragement · Synonym: comfort · Antonym: sadden · Sentence: &quot;The audience cheered her for great performance.&quot; · Sketch: sunshine / sunflower / smiling face. <em>(Do the same for: depart, pilgrim, word, sunny, satisfy, heart.)</em></p>
+<hr />
+<h2 id="sum-quick-reference-prose-amp-poem-2">✅ QUICK REFERENCE — Prose &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Prose</strong></td>
+  <td>Khetaram, the sole postman of the Thar, carries words across the desert — a lifeline of trust in remote India.</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>Words are fleeting and hollow like summer birds and weeds — but &quot;a little said, and truly said&quot; touches the heart.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 7 — all facts, definitions and answers verified against the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-about-khetaram-part-a", "t": "👤 2. About Khetaram (Part A)"}, {"h": "rev-3-carrier-of-words-read-amp-understand-key-points", "t": "📖 3. Carrier of Words — Read &amp; Understand (Key points)"}, {"h": "rev-4-key-figures-from-the-text", "t": "📊 4. Key Figures from the Text"}, {"h": "rev-5-grammar-corner", "t": "📝 5. Grammar Corner"}, {"h": "rev-6-writing-task-condolence-message", "t": "💬 6. Writing Task — Condolence Message"}, {"h": "rev-7-beyond-the-text-worth-one-mark", "t": "🌟 7. Beyond the Text (worth one mark)"}, {"h": "rev-2-the-poem-full-text", "t": "📖 2. The Poem (full text)"}, {"h": "rev-3-theme-tone-mood", "t": "🎭 3. Theme, Tone, Mood"}, {"h": "rev-4-poetic-devices-with-examples", "t": "🛠 4. Poetic Devices (with examples)"}, {"h": "rev-5-exercise-answers", "t": "📋 5. Exercise Answers"}, {"h": "rev-6-study-the-class-room-questions-amp-practice", "t": "✍️ 6. Study the Class Room Questions &amp; Practice"}, {"h": "rev-quick-recap-both-texts", "t": "✅ QUICK RECAP (Both Texts)"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary-exam-ready", "t": "📝 LONG ANSWER (Complete summary — exam-ready)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-character-sketch-khetaram", "t": "👥 CHARACTER SKETCH — Khetaram"}, {"h": "sum-important-questions-with-answers", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-grammar-amp-structures-in-context", "t": "✍️ GRAMMAR &amp; STRUCTURES IN CONTEXT"}, {"h": "sum-writing-task-condolence-message", "t": "✉️ WRITING TASK — Condolence Message"}, {"h": "sum-extras-from-the-chapter", "t": "🌍 EXTRAS FROM THE CHAPTER"}, {"h": "sum-quick-reference-prose-amp-poem", "t": "✅ QUICK REFERENCE — Prose &amp; Poem"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-the-poem", "t": "📜 THE POEM"}, {"h": "sum-stanza-wise-meaning", "t": "📖 STANZA-WISE MEANING"}, {"h": "sum-theme-tone-amp-mood", "t": "🎯 THEME, TONE &amp; MOOD"}, {"h": "sum-poetic-devices-with-examples", "t": "🛠 POETIC DEVICES (with examples)"}, {"h": "sum-important-questions-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-exercise-answers-fill-in-the-blanks-amp-device-hunt", "t": "🔑 EXERCISE ANSWERS (fill-in-the-blanks &amp; device hunt)"}, {"h": "sum-vocabulary-in-context-matching", "t": "🔗 VOCABULARY IN CONTEXT (matching)"}, {"h": "sum-quick-reference-prose-amp-poem-2", "t": "✅ QUICK REFERENCE — Prose &amp; Poem"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

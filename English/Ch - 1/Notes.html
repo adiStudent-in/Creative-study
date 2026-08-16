@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 1 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 1 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 1</h1>
+      <p class="subtitle fade-in">Class 9 | This chapter contains **TWO texts**:</p>
+      <div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Text</th>
+  <th>Type</th>
+  <th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><strong>How I Taught My Grandmother to Read</strong></td>
+  <td>Prose (Story)</td>
+  <td><strong>Sudha Murty</strong></td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><strong>Bharat Our Land</strong></td>
+  <td>Poem</td>
+  <td><strong>Subramania Bharati</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>🧠 <strong>Exam tip:</strong> Read both parts separately — most questions come from <strong>A (the story)</strong>: summary, characters, themes, T/F, extracts, grammar (past vs past perfect). Part <strong>B (the poem)</strong> is tested via literary devices, symbolism, and extract questions.</p>
+</blockquote>
+<hr />
+<h1>🟣 PART A — HOW I TAUGHT MY GRANDMOTHER TO READ</h1>
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Author</strong></td>
+  <td>Sudha Murty</td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>Autobiographical short story (from her book <em>How I Taught My Grandmother to Read and Other Stories</em>)</td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>A village in <strong>north Karnataka</strong>, India (grandparents' home), in the narrator's childhood</td>
+</tr>
+<tr>
+  <td><strong>Narrator</strong></td>
+  <td>A young girl of about <strong>twelve</strong> — the author herself as a child <em>(the story's running page-header reads &quot;Kaveri&quot;, but the story text never names the narrator)</em></td>
+</tr>
+<tr>
+  <td><strong>Main characters</strong></td>
+  <td>The narrator (Sudha as a girl), her grandmother <strong>Krishtakka</strong> (called <strong>Avva</strong>), and the Kannada writer <strong>Triveni</strong></td>
+</tr>
+<tr>
+  <td><strong>Key words</strong></td>
+  <td>Triveni, <em>Kashi Yatre</em>, <em>Karmaveera</em>, literacy, independence, &quot;no age bar&quot;</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td><strong>Learning has no age bar. Determination can overcome any obstacle. Education gives independence.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-about-the-author-general-knowledge-not-in-the-textbook">👤 2. About the Author <em>(general knowledge — not in the textbook)</em></h2>
+<p><strong>Sudha Murty</strong> is a famous Indian author and social worker, known for her simple, warm stories about everyday people. The story is told in the <strong>first person from her own childhood</strong> — and at the end we learn the narrator grew up to become a <strong>teacher in Computer Science</strong> (which Sudha Murty really did).</p>
+<hr />
+<h2 id="rev-3-characters">👥 3. Characters</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Character</th>
+  <th>Who they are</th>
+  <th>Role in the story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>The narrator</strong> (12-year-old girl)</td>
+  <td>The author as a child; lives with her grandparents</td>
+  <td>Reads <em>Kashi Yatre</em> to her grandmother every week; later becomes her teacher. Grows up to be a <strong>Computer Science teacher</strong></td>
+</tr>
+<tr>
+  <td><strong>Krishtakka (Avva)</strong></td>
+  <td>The narrator's <strong>sixty-two-year-old grandmother</strong></td>
+  <td>Cannot read (never went to school); listens to the story; learns the Kannada alphabet to become <strong>independent</strong></td>
+</tr>
+<tr>
+  <td><strong>Triveni</strong></td>
+  <td>Popular <strong>Kannada writer</strong></td>
+  <td>Author of <em>Kashi Yatre</em>; died young; admired for easy, convincing stories about ordinary people</td>
+</tr>
+<tr>
+  <td><strong>The old lady</strong> (in <em>Kashi Yatre</em>)</td>
+  <td>Protagonist of Triveni's novel</td>
+  <td>Wants to go to Kashi; sacrifices her savings for an orphan girl's wedding</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>💡 <strong>&quot;Avva&quot;</strong> means <strong>mother</strong> in the Kannada spoken in <strong>north Karnataka</strong>. The narrator used to call her grandmother <em>Avva</em>.</p>
+</blockquote>
+<hr />
+<h2 id="rev-4-story-summary-part-i">📖 4. Story Summary — Part I</h2>
+<p><strong>How the story begins:</strong></p>
+<ul>
+<li>When the narrator was about <strong>twelve</strong>, she stayed with her <strong>grandparents in a village in north Karnataka</strong>.</li>
+<li>The <strong>transport system was not good</strong> → the morning paper came only in the <strong>afternoon</strong>, and the weekly magazine came <strong>one day late</strong>.</li>
+<li>Everyone waited eagerly for the <strong>bus</strong> that brought papers, weekly magazines and the <strong>post</strong>.</li>
+</ul>
+<p><strong>About the writer Triveni:</strong></p>
+<ul>
+<li>Triveni was a <strong>very popular Kannada writer</strong> — easy to read, very <strong>convincing</strong> style.</li>
+<li>Her stories dealt with <strong>complex psychological problems of ordinary people</strong>.</li>
+<li>She <strong>died very young</strong>, but even <strong>after forty years</strong> people still appreciate her novels.</li>
+</ul>
+<p><strong>The novel <em>Kashi Yatre</em>:</strong></p>
+<ul>
+<li>One of Triveni's novels, <em>Kashi Yatre</em>, was appearing as a **serial in the Kannada weekly *Karmaveera***.</li>
+<li>It is the story of an <strong>old lady</strong> with an <strong>ardent (keen) desire to go to Kashi (Varanasi)</strong>.</li>
+<li>Most Hindus believe that going to Kashi and worshipping <strong>Lord Vishweshwara</strong> is the <strong>ultimate punya</strong>.</li>
+<li>The old lady struggles to go there. There is also a <strong>young orphan girl</strong> in the story who falls in love but has <strong>no money for her wedding</strong>.</li>
+<li><strong>Ending of the novel:</strong> the old lady <strong>gives away all her savings without going to Kashi</strong>, saying — <em>&quot;The happiness of this orphan girl is more important than worshipping Lord Vishweshwara at Kashi.&quot;</em></li>
+</ul>
+<p><strong>The grandmother's habit:</strong></p>
+<ul>
+<li>Krishtakka <strong>never went to school</strong> → she <strong>could not read</strong>.</li>
+<li><strong>Every Wednesday</strong> the magazine came and the narrator read the <strong>next episode</strong> to her.</li>
+<li>While listening, she forgot all her work and listened with the <strong>greatest concentration</strong>; later she could <strong>repeat the entire text by heart</strong>.</li>
+<li>The grandmother had also <strong>never been to Kashi</strong> → she <strong>identified herself with the novel's protagonist</strong> and was most eager to know what happened next.</li>
+<li>After hearing the episode, she joined her <strong>friends at the temple courtyard</strong> and discussed it (while children played <strong>hide and seek</strong>).</li>
+</ul>
+<p><strong>The wedding incident (turning point):</strong></p>
+<ul>
+<li>The narrator once went to a <strong>wedding in a neighbouring village</strong> with her cousins. (Those days a wedding was a great event; the elders were busy and children enjoyed their freedom.)</li>
+<li>She went for <strong>a couple of days but stayed a week</strong>.</li>
+<li>When she returned, she saw her grandmother <strong>in tears</strong> — this surprised her, because she had <strong>never seen her cry, even in the most difficult situations</strong>.</li>
+<li>The narrator asked, <em>&quot;Avva, is everything all right?&quot;</em> — Avva <strong>nodded but did not reply</strong>.</li>
+<li>That <strong>summer night</strong> (after dinner), they were sleeping on the <strong>open terrace</strong> under a <strong>full moon</strong>. Avva came and sat beside her; her <strong>affectionate hands touched the narrator's forehead</strong>, and she began to speak.</li>
+</ul>
+<p><strong>The grandmother's life story (why she was uneducated):</strong></p>
+<ul>
+<li>When she was a young girl, she <strong>lost her mother</strong> and had nobody to look after or guide her.</li>
+<li>Her father was busy and <strong>married again</strong>.</li>
+<li><strong>In those days people never considered education essential for girls</strong>, so she never went to school.</li>
+<li>She married <strong>very young</strong>, had children, became busy, and later enjoyed <strong>cooking and feeding her grandchildren</strong>.</li>
+<li>At times she <strong>regretted not going to school</strong> — so she <strong>made sure her children and grandchildren studied well</strong>.</li>
+</ul>
+<hr />
+<h2 id="rev-5-story-summary-part-ii">📖 5. Story Summary — Part II</h2>
+<p><strong>The grandmother's problem:</strong></p>
+<ul>
+<li>The narrator could not understand why her <strong>sixty-two-year-old</strong> grandmother was telling her life story in the middle of the night — but she knew she loved her immensely.</li>
+<li>The grandmother looked <strong>unhappy, eyes filled with tears</strong> (she was a good-looking lady, <strong>usually always smiling</strong>).</li>
+<li>She explained: while the narrator was away, <em>Karmaveera</em> came as usual. She opened the magazine, saw the <strong>picture accompanying *Kashi Yatre***, but **could not understand anything written</strong>.</li>
+<li>She <strong>rubbed her hands over the pages</strong>, wishing they could understand what was written. <em>&quot;If only I was educated enough.&quot;</em></li>
+<li>She waited eagerly for the narrator to return, and even thought of <strong>going to the village</strong> to ask her to read — but she was <strong>too embarrassed</strong> to ask anybody in the village.</li>
+<li><em>&quot;I felt very dependent and helpless. We are well-off, but what use is money when I cannot be independent?&quot;</em></li>
+</ul>
+<p><strong>The decision:</strong></p>
+<ul>
+<li>She declared: <strong>&quot;I have decided I want to learn the Kannada alphabet from tomorrow onwards.&quot;</strong></li>
+<li>Her deadline: the <strong>Saraswati Puja day during Dassara</strong> — by that day she should be able to <strong>read a novel on her own</strong>.</li>
+<li><strong>&quot;I want to be independent.&quot;</strong></li>
+</ul>
+<p><strong>The narrator's reaction:</strong></p>
+<ul>
+<li>The narrator saw her determination but <strong>laughed at her</strong> childishly: <em>&quot;At this age of sixty-two you want to learn the alphabet? All your hair is grey, your hands are wrinkled, you wear spectacles and you work so much in the kitchen…&quot;</em></li>
+<li>The grandmother just smiled: <strong>&quot;For a good cause if you are determined, you can overcome any obstacle… For learning there is no age bar.&quot;</strong></li>
+</ul>
+<p><strong>The learning:</strong></p>
+<ul>
+<li>From the next day the narrator <strong>started her tuition</strong> — Avva was a <strong>wonderful student</strong>; she would <strong>read, repeat, write, and recite</strong>.</li>
+<li>The narrator was her <strong>only teacher</strong>; the grandmother was her <strong>first student</strong>.</li>
+<li><em>(The narrator did not know then that one day she would become a <strong>teacher in Computer Science</strong> and teach hundreds of students.)</em></li>
+</ul>
+<p><strong>The climax — Dassara:</strong></p>
+<ul>
+<li>When Dassara came, the narrator <strong>secretly bought *Kashi Yatre***, which by then had been **published as a novel</strong>.</li>
+<li>The grandmother called her to the <strong>puja place</strong>, made her sit on a stool, and gave her a <strong>gift of frock material</strong>.</li>
+<li>Then she did something unusual — she <strong>bent down and touched the narrator's feet</strong>.</li>
+<li>The narrator was <strong>surprised and taken aback</strong>: elders never touch the feet of youngsters; we touch the feet of <strong>God, elders and teachers</strong> as a mark of respect. Today the reverse had happened.</li>
+<li>The grandmother said: <em>&quot;I am touching the feet of a teacher, not my granddaughter… Now I am independent. It is my duty to respect a teacher. Is it not written in our scriptures that a teacher should be respected, irrespective of the gender and age?&quot;</em></li>
+<li>The narrator <strong>returned her namaskara</strong> (touched her feet) and gave her the gift.</li>
+<li>The grandmother <strong>opened it and read immediately the title &quot;Kashi Yatre&quot; by Triveni and the publisher's name</strong>.</li>
+<li>The narrator knew then that <strong>her student had passed with flying colours</strong>.</li>
+</ul>
+<hr />
+<h2 id="rev-6-character-sketch-grandmother-krishtakka">🧑 6. Character Sketch — Grandmother (Krishtakka)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Quality</th>
+  <th>Evidence from the story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Strong-willed / determined</strong></td>
+  <td>&quot;For a good cause if you are determined, you can overcome any obstacle.&quot; Set a strict deadline (Saraswati Puja during Dassara) and achieved it</td>
+</tr>
+<tr>
+  <td><strong>Self-respecting / valued independence</strong></td>
+  <td>&quot;What use is money when I cannot be independent?&quot;</td>
+</tr>
+<tr>
+  <td><strong>Hard-working</strong></td>
+  <td>&quot;I will work harder than anybody but I will do it.&quot; Did amazing homework — read, repeat, write, recite</td>
+</tr>
+<tr>
+  <td><strong>Humble / respectful</strong></td>
+  <td>Touched her young granddaughter's feet as a mark of respect for her teacher</td>
+</tr>
+<tr>
+  <td><strong>Loving / affectionate</strong></td>
+  <td>Cooked for and fed her grandchildren with happiness; affectionate hands touched the narrator's forehead</td>
+</tr>
+<tr>
+  <td><strong>Emotionally strong</strong></td>
+  <td>Never cried even in the most difficult situations</td>
+</tr>
+<tr>
+  <td><strong>Believer in learning</strong></td>
+  <td>&quot;For learning there is no age bar.&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-7-central-themes-amp-message">🎯 7. Central Themes &amp; Message</h2>
+<ol>
+<li><strong>Learning has no age bar</strong> — Age, grey hair, or wrinkles are no barrier to learning; one can learn at any age.</li>
+<li><strong>Education brings independence</strong> — Illiteracy made the grandmother &quot;dependent and helpless&quot;; literacy freed her.</li>
+<li><strong>Determination overcomes obstacles</strong> — A strong will and hard work can defeat any difficulty.</li>
+<li><strong>Respect for teachers and knowledge</strong> — A teacher is respected &quot;irrespective of the gender and age&quot;; education deserves the highest honour.</li>
+<li><strong>Love and care in a family</strong> — The bond between the grandmother and the narrator; the grandmother's sacrifice for her children's education.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Message:</strong> <em>No goal is impossible if you are determined — and it is never too late to learn.</em></p>
+</blockquote>
+<hr />
+<h2 id="rev-8-difficult-words-amp-meanings">🔑 8. Difficult Words &amp; Meanings</h2>
+<h3 id="rev-words-explained-in-the-story-margins">Words explained in the story (margins)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>ardent</strong></td>
+  <td>keen; full of passion</td>
+</tr>
+<tr>
+  <td><strong>savouring</strong></td>
+  <td>enjoying (something) to the fullest</td>
+</tr>
+<tr>
+  <td><strong>immensely</strong></td>
+  <td>extremely; very much</td>
+</tr>
+<tr>
+  <td><strong>taken aback</strong></td>
+  <td>surprised by something unexpected</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-words-from-the-opening-exercise">Words from the opening exercise</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>protagonist</strong></td>
+  <td>main character of a story</td>
+</tr>
+<tr>
+  <td><strong>debate</strong></td>
+  <td>discussion; argument on a topic</td>
+</tr>
+<tr>
+  <td><strong>episode</strong></td>
+  <td>a part of a story</td>
+</tr>
+<tr>
+  <td><strong>community</strong></td>
+  <td>people living in one particular area</td>
+</tr>
+<tr>
+  <td><strong>concentration</strong></td>
+  <td>focus; attention</td>
+</tr>
+<tr>
+  <td><strong>eagerly</strong></td>
+  <td>excitedly; with keen interest</td>
+</tr>
+<tr>
+  <td><strong>convincing</strong></td>
+  <td>believable; easy to accept as true</td>
+</tr>
+<tr>
+  <td><strong>guided</strong></td>
+  <td>directed; shown the way</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-other-useful-words-from-the-text">Other useful words from the text</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>serial</strong></td>
+  <td>a story published in parts in a magazine</td>
+</tr>
+<tr>
+  <td><strong>punya</strong></td>
+  <td>religious merit / virtue</td>
+</tr>
+<tr>
+  <td><strong>by heart</strong></td>
+  <td>from memory</td>
+</tr>
+<tr>
+  <td><strong>tuition</strong></td>
+  <td>teaching lessons (here: the narrator's teaching)</td>
+</tr>
+<tr>
+  <td><strong>well-off</strong></td>
+  <td>wealthy; having money</td>
+</tr>
+<tr>
+  <td><strong>dependent</strong></td>
+  <td>relying on others for help</td>
+</tr>
+<tr>
+  <td><strong>puja place</strong></td>
+  <td>the place where worship is done</td>
+</tr>
+<tr>
+  <td><strong>namaskara</strong></td>
+  <td>a respectful Indian greeting (folded hands)</td>
+</tr>
+<tr>
+  <td><strong>frock material</strong></td>
+  <td>cloth for making a dress</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-9-word-work">✍️ 9. Word Work</h2>
+<h3 id="rev-a-binomials-two-words-joined-by-and-or-used-in-fixed-order">A. Binomials (two words joined by 'and'/'or', used in fixed order)</h3>
+<blockquote>
+<p><strong>Definition:</strong> Binomials are expressions of <strong>two words usually linked by 'and' or 'or'</strong>, used together in a fixed order, e.g., <em>odds and ends</em>, <em>right or wrong</em>, <em>hide and seek</em>.</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Binomial</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>sink or swim</strong></td>
+  <td>succeed or fail without help</td>
+</tr>
+<tr>
+  <td><strong>on and off</strong></td>
+  <td>sometimes, occasionally</td>
+</tr>
+<tr>
+  <td><strong>mix and match</strong></td>
+  <td>put different things together to get a range of possibilities</td>
+</tr>
+<tr>
+  <td><strong>all or nothing</strong></td>
+  <td>something to be done completely or not at all</td>
+</tr>
+<tr>
+  <td><strong>part and parcel</strong></td>
+  <td>complete part of / belonging to</td>
+</tr>
+<tr>
+  <td><strong>pick and choose</strong></td>
+  <td>choose only the best</td>
+</tr>
+<tr>
+  <td><strong>sooner or later</strong></td>
+  <td>at some time in the future</td>
+</tr>
+<tr>
+  <td><strong>leaps and bounds</strong></td>
+  <td>increase or develop very quickly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Example sentences:</strong></p>
+<ol>
+<li><em>No one will help you now — it is <strong>sink or swim</strong>.</em></li>
+<li>He goes to the gym <strong>on and off</strong>.</li>
+<li>The store lets you <strong>mix and match</strong> shirts and trousers.</li>
+<li>For him it was <strong>all or nothing</strong> — win completely or not at all.</li>
+<li>Hard work is <strong>part and parcel</strong> of success.</li>
+</ol>
+<h3 id="rev-b-prefixes-un-im-dis-in-mis-extra">B. Prefixes (un, im, dis, in, mis, extra)</h3>
+<blockquote>
+<p>Prefixes add opposite/negative meaning: <em>un</em>happy, <em>ir</em>respective, <em>in</em>dependent.</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Root word</th>
+  <th>Prefixed word</th>
+  <th>Root word</th>
+  <th>Prefixed word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>popular</td>
+  <td><strong>unpopular</strong></td>
+  <td>continue</td>
+  <td><strong>discontinue</strong></td>
+</tr>
+<tr>
+  <td>belief</td>
+  <td><strong>disbelief</strong></td>
+  <td>understand</td>
+  <td><strong>misunderstand</strong></td>
+</tr>
+<tr>
+  <td>important</td>
+  <td><strong>unimportant</strong></td>
+  <td>ordinary</td>
+  <td><strong>extraordinary</strong></td>
+</tr>
+<tr>
+  <td>respect</td>
+  <td><strong>disrespect</strong></td>
+  <td>interesting</td>
+  <td><strong>uninteresting</strong></td>
+</tr>
+<tr>
+  <td>correct</td>
+  <td><strong>incorrect</strong></td>
+  <td>possible</td>
+  <td><strong>impossible</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Five words with prefixes from the story</strong> (used in sentences):</p>
+<ol>
+<li><strong>unhappy</strong> — Her face was unhappy and her eyes were filled with tears.</li>
+<li><strong>unusual</strong> — She did something unusual; she touched my feet.</li>
+<li><strong>unfortunately</strong> — Unfortunately, Triveni died very young.</li>
+<li><strong>irrespective</strong> — A teacher should be respected irrespective of gender and age.</li>
+<li><strong>independent</strong> — I want to be independent.</li>
+</ol>
+<h3 id="rev-c-idioms-related-to-learning">C. Idioms related to 'learning'</h3>
+<blockquote>
+<p><strong>Idiom:</strong> <em>passed with flying colours</em> = <strong>outstanding performance</strong>.</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Idiom</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>to hit the books</strong></td>
+  <td>to study seriously</td>
+</tr>
+<tr>
+  <td><strong>to draw a blank</strong></td>
+  <td>to be unable to remember</td>
+</tr>
+<tr>
+  <td><strong>to learn the ropes</strong></td>
+  <td>to understand how to do an activity</td>
+</tr>
+<tr>
+  <td><strong>to rack one's brain</strong></td>
+  <td>to think very hard</td>
+</tr>
+<tr>
+  <td><strong>to learn by heart</strong></td>
+  <td>to memorise something</td>
+</tr>
+<tr>
+  <td><strong>to burn the midnight oil</strong></td>
+  <td>to study or work late into the night</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Example sentences:</strong></p>
+<ol>
+<li>Exams are near, so I must <strong>hit the books</strong>.</li>
+<li>I tried to recall his name but <strong>drew a blank</strong>.</li>
+<li>Within a month the new student <strong>learned the ropes</strong> of the school.</li>
+<li>She <strong>racked her brain</strong> to solve the puzzle.</li>
+<li>My grandmother could repeat the story <strong>by heart</strong>.</li>
+</ol>
+<hr />
+<h2 id="rev-10-grammar-simple-past-vs-past-perfect">📚 10. Grammar — Simple Past vs Past Perfect</h2>
+<h3 id="rev-the-rule-from-the-story">The rule (from the story)</h3>
+<ul>
+<li><strong>Past perfect tense (had + V3):</strong> the <strong>earlier</strong> of two completed actions.</li>
+<li><strong>Simple past tense (V2):</strong> the <strong>more recent</strong> of two completed actions.</li>
+</ul>
+<blockquote>
+<p>The <strong>earlier action</strong> → past perfect (had + past participle).
+The <strong>more recent action</strong> → simple past.</p>
+</blockquote>
+<p><strong>Examples from the story:</strong></p>
+<ol>
+<li><em>&quot;Secretly, I <strong>bought</strong> *Kashi Yatre</em> which <strong>had been published</strong> as a novel by that time.&quot;*<ul>
+<li><code>bought</code> = <strong>simple past</strong> (more recent) · <code>had been published</code> = <strong>past perfect</strong> (published earlier)</li>
+</ul>
+</li>
+<li><em>&quot;I <strong>knew</strong>, then, that my student <strong>had passed</strong> with flying colours.&quot;</em><ul>
+<li><code>knew</code> = <strong>simple past</strong> · <code>had passed</code> = <strong>past perfect</strong></li>
+</ul>
+</li>
+</ol>
+<p><strong>More examples:</strong></p>
+<ul>
+<li>By the time I reached the party, everyone <strong>had finished</strong> eating.</li>
+<li>When she returned home, her brother <strong>had finished</strong> the project.</li>
+</ul>
+<h3 id="rev-exercise-i-answers">Exercise (i) — Answers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>S.</th>
+  <th>Sentence (completed)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td>When the delegates <strong>arrived</strong> at the conference, the keynote speaker <strong>had already begun</strong> the session.</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td>After the students <strong>had learned</strong> how to identify fake news online, they <strong>started</strong> verifying information before sharing it.</td>
+</tr>
+<tr>
+  <td>C</td>
+  <td>Before Kiran <strong>started</strong> using digital payment platforms, she <strong>had ensured</strong> her understanding of online fraud prevention.</td>
+</tr>
+<tr>
+  <td>D</td>
+  <td>By the time Varun <strong>recognised</strong> the importance of budgeting, he <strong>had exhausted</strong> most of his savings.</td>
+</tr>
+<tr>
+  <td>E</td>
+  <td>When Raghu <strong>logged in</strong> to the cybersecurity webinar, the instructor <strong>had already discussed</strong> the importance of strong passwords.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-exercise-ii-answers">Exercise (ii) — Answers</h3>
+<p>Last year, my parents and I <strong>A. took</strong> a financial planning course. When we <strong>B. reviewed</strong> our expenses, we realised we <strong>C. had spent</strong> too much on unnecessary purchases. After my parents <strong>D. had discussed</strong> ways to save, I <strong>E. opened</strong> a savings account.</p>
+<p>By the time we <strong>F. had set</strong> our budget, the course <strong>G. had already introduced</strong> investment strategies. We <strong>H. hurried</strong> to take notes, but many participants <strong>I. had completed</strong> their financial plans. Despite that, we <strong>J. enjoyed</strong> learning how to manage money wisely.</p>
+<blockquote>
+<p>💡 <strong>Shortcut:</strong> Look for time words — <em>by the time, when, after, before</em> — the action that happened <strong>first</strong> takes <strong>past perfect</strong>; the one that happened <strong>later</strong> takes <strong>simple past</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="rev-11-writing-task-letter-to-the-editor-format-model-answer">✉️ 11. Writing Task — Letter to the Editor (Format + Model Answer)</h2>
+<h3 id="rev-format-from-the-textbook-remember-these-points">Format (from the textbook — remember these points)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Element</th>
+  <th>What to write</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1. Sender</td>
+  <td>Name, designation, address</td>
+</tr>
+<tr>
+  <td>2. Date</td>
+  <td>Write the date</td>
+</tr>
+<tr>
+  <td>3. Subject</td>
+  <td><strong>4–5 words in title case</strong> (e.g., <em>Importance of Adult Literacy Camps</em>)</td>
+</tr>
+<tr>
+  <td>4. Salutation</td>
+  <td>Sir/Madam</td>
+</tr>
+<tr>
+  <td>5. Body</td>
+  <td><strong>At least 3 paragraphs</strong></td>
+</tr>
+<tr>
+  <td>6. Close</td>
+  <td><strong>Yours truly,</strong></td>
+</tr>
+<tr>
+  <td>Language</td>
+  <td>Formal, clear, specific; short, to-the-point sentences; purpose stated clearly</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Body structure:</strong></p>
+<ul>
+<li><strong>Paragraph 1 (Statement of problem):</strong> raise the issue — cite a news item / survey / personal experience.</li>
+<li><strong>Paragraph 2 (Analyse):</strong> causes and consequences of the issue.</li>
+<li><strong>Paragraph 3 (Suggestions &amp; request):</strong> offer solutions; request authorities to act and the editor to publish your views.</li>
+</ul>
+<h3 id="rev-model-letter-topic-student-participation-in-adult-literacy-camps">Model letter (topic: student participation in adult literacy camps)</h3>
+<blockquote>
+<p>The Editor
+The Hindustan Times
+New Delhi</p>
+<p><strong>23rd April, 2026</strong></p>
+<p><strong>Subject: Role of Students in Adult Literacy Camps</strong></p>
+<p><strong>Sir/Madam,</strong></p>
+<p>With reference to the article titled &quot;Illiteracy Still a Hurdle&quot; dated 20th April in your newspaper, I would like to draw your attention towards the alarming number of adults, especially women, who still cannot read or write in our country.</p>
+<p>Adult illiteracy affects a large section of society. An illiterate person feels dependent and helpless in everyday life — unable to read a newspaper, sign a form, or understand bank documents. As the story of my grandmother reminds us, <em>&quot;What use is money when I cannot be independent?&quot;</em> Adult literacy camps can end this dependence, and students can play a vital role here. During vacations, students can volunteer to teach basic reading, writing, and numbers to adults in their neighbourhoods.</p>
+<p>One effective way to spread awareness is to hold community meetings and street plays that encourage people to join literacy camps. Schools can tie up with organisations and award certificates to student volunteers. Authorities could consider implementing a small service credit for such participation. Such initiatives nurture a sense of responsibility and compassion in students while empowering adults.</p>
+<p>I trust this matter will be considered seriously for the benefit of all. I hope this letter gets published in the columns of your esteemed daily.</p>
+<p><strong>Yours truly,</strong>
+(Name)</p>
+</blockquote>
+<hr />
+<h2 id="rev-12-exercise-answers">✅ 12. Exercise Answers</h2>
+<h3 id="rev-check-your-understanding-part-i-cause-amp-effect-table-blanks-filled">Check Your Understanding (Part I) — Cause &amp; Effect table (blanks filled)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Cause</th>
+  <th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>The transport system was not good</strong></td>
+  <td>(i) The morning papers arrived late in the day and weekly magazines would come one day late.</td>
+</tr>
+<tr>
+  <td>(2) The grandmother, Krishtakka, never went to school</td>
+  <td><strong>She could not read the magazine herself and had to depend on the narrator to read <em>Kashi Yatre</em> to her.</strong></td>
+</tr>
+<tr>
+  <td><strong>She identified herself with the novel's protagonist</strong> (the old lady who wanted to go to Kashi)</td>
+  <td>(iii) She was deeply interested in the story and discussed it with her friends.</td>
+</tr>
+<tr>
+  <td>(4) The narrator went to a wedding for a week</td>
+  <td><strong>The grandmother could not read the story alone; she felt dependent and helpless and was in tears.</strong></td>
+</tr>
+<tr>
+  <td><strong>In those days education was not considered essential for girls</strong></td>
+  <td>(v) The grandmother never went to school.</td>
+</tr>
+<tr>
+  <td>(6) The grandmother regretted not going to school</td>
+  <td><strong>She made sure her children and grandchildren studied well.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-check-your-understanding-part-ii-thinking-questions">Check Your Understanding (Part II) — Thinking questions</h3>
+<p><strong>Q1. Do you think the narrator expected to see her grandmother in tears? Why / why not?</strong>
+No. The narrator says she was <strong>surprised</strong>, &quot;for I had never seen her cry even in the most difficult situations.&quot; Her grandmother was strong-willed and always smiling, so seeing her cry was unexpected.</p>
+<p><strong>Q2. How might the narrator help her grandmother fulfil her desire to learn to read and write?</strong>
+She could teach her the alphabet — and she did. From the next day onwards she started teaching her grandmother the <strong>Kannada alphabet</strong>, making her read, repeat, write, and recite. She also gifted her <em>Kashi Yatre</em> so her grandmother could read it on her own.</p>
+<h3 id="rev-check-your-understanding-part-ii-true-or-false">Check Your Understanding (Part II) — True or False</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>S.</th>
+  <th>Statement</th>
+  <th>T/F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>The grandmother wanted to learn the Kannada alphabet to gain independence.</td>
+  <td><strong>True</strong> (&quot;I want to be independent&quot;)</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>The grandmother asked someone in the village to read <em>Kashi Yatre</em> to her while the narrator was away.</td>
+  <td><strong>False</strong> — she was <strong>too embarrassed</strong> to ask anybody in the village</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>The narrator was the grandmother's first teacher and taught her how to read Kannada.</td>
+  <td><strong>True</strong></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>The grandmother believed that there was no age limit for learning.</td>
+  <td><strong>True</strong> (&quot;For learning there is no age bar&quot;)</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>The grandmother touched the narrator's feet as a mark of respect for her as a teacher.</td>
+  <td><strong>True</strong></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>The narrator was disappointed with the progress her grandmother made.</td>
+  <td><strong>False</strong> — she says her student &quot;passed with flying colours&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-critical-reflection-extract-1">Critical Reflection — Extract 1</h3>
+<p><strong>Extract:</strong> <em>&quot;When I came back to my village, I saw my grandmother in tears. I was surprised, for I had never seen her cry even in the most difficult situations…&quot;</em></p>
+<p><strong>(i)</strong> The phrase &quot;never seen her cry in the most difficult situations&quot; tells us that the grandmother was <strong>→ A. strong-willed</strong>.
+<strong>(ii)</strong> Grandmother did not reply because she might have been too <strong>emotional</strong> to respond.
+<strong>(iii)</strong> Clue of a <strong>rural setting with traditional customs</strong>: they slept on the <strong>open terrace</strong> of the house on a summer night; the affectionate gesture of touching the forehead; the traditional Kannada address <strong>&quot;Avva&quot;</strong>.
+<strong>(iv)</strong> Lines that establish a <strong>tender atmosphere</strong>: <em>&quot;Avva came and sat next to me. Her affectionate hands touched my forehead.&quot;</em> (the warm summer night with the full moon adds to this).
+<strong>(v)</strong> The aspect <strong>NOT emphasised</strong> in this extract: <strong>→ C. the grandmother's regret over her lack of education.</strong> (The extract shows the grandmother's emotional turmoil, the affectionate bond, and the narrator's concern — not her regret over education.)</p>
+<h3 id="rev-critical-reflection-extract-2">Critical Reflection — Extract 2</h3>
+<p><strong>Extract:</strong> <em>&quot;I have decided I want to learn the Kannada alphabet from tomorrow onwards… I want to be independent.&quot;</em></p>
+<p><strong>(i)</strong> &quot;I want to be independent&quot; reveals that she <strong>→ B. desires self-sufficiency</strong>.
+<strong>(ii)</strong> The grandmother's determination shows that learning has no <strong>age limit</strong>.
+<strong>(iii)</strong> The narrator laughs because <strong>she thought sixty-two was too old to learn the alphabet</strong> — she childishly judged her grandmother by her grey hair, wrinkled hands, spectacles, and kitchen work, instead of her determination.
+<strong>(iv)</strong> Any <strong>two qualities</strong>: <strong>determination / will-power</strong> and <strong>humility / respect for teachers</strong> (also: hard work, self-respect).
+<strong>(v)</strong> The narrator is making assumptions because <strong>she judged her grandmother by her age and appearance</strong> and assumed an old lady could not learn — but the grandmother proved her wrong with her hard work.</p>
+<h3 id="rev-main-questions-model-answers">Main Questions — Model Answers</h3>
+<p><strong>Q1. Why did the grandmother feel embarrassed to ask someone else to read to her while the narrator was away?</strong>
+The grandmother was illiterate and felt <strong>dependent and helpless</strong>. Asking another villager to read would have openly exposed her inability to read, and she was <strong>too embarrassed to admit it</strong>. She trusted only her granddaughter, and felt that money could not buy the independence that literacy brings.</p>
+<p><strong>Q2. Why does the narrator initially laugh at her grandmother's determination to learn at the age of sixty-two?</strong>
+She laughed <strong>childishly</strong>, because she thought sixty-two was far too old to begin learning the alphabet. She made fun of the grandmother's grey hair, wrinkled hands and spectacles, forgetting that determination matters more than age. The grandmother's reply — &quot;For learning there is no age bar&quot; — gently corrected her.</p>
+<p><strong>Q3. What significance does the story of <em>Kashi Yatre</em> have in both the grandmother's life and the story?</strong>
+<em>Kashi Yatre</em> is the <strong>turning point</strong> of the story. The grandmother, who had never been to Kashi, <strong>identified herself with the old lady protagonist</strong> and waited eagerly for each episode. When she could not read the final episodes herself, she felt her illiteracy deeply — which <strong>motivated her to learn to read</strong>. The narrator also proves her success by gifting her the same novel. Thus the story-within-the-story drives the plot and symbolises the grandmother's struggle for independence.</p>
+<p><strong>Q4. What does the grandmother's desire to learn the Kannada alphabet reflect about her?</strong>
+It reflects her <strong>strong desire for independence</strong>, her <strong>determination and will-power</strong>, her <strong>respect for education</strong>, and her belief that <strong>learning has no age bar</strong>. It also shows her self-respect — she did not want to depend on anyone, even though her family was well-off.</p>
+<p><strong>Q5. What lessons can we infer from the grandmother's action of touching the narrator's feet?</strong>
+We learn that <strong>a teacher deserves the highest respect, irrespective of the teacher's gender or age</strong>. Even though she was the elder, she honoured knowledge above all. It also teaches <strong>humility</strong> and shows how deeply the grandmother valued the gift of literacy.</p>
+<p><strong>Q6. What does the line 'For a good cause if you are determined, you can overcome any obstacle' tell us about the broader theme?</strong>
+It states the <strong>central message</strong> of the story: <strong>determination and a strong will can overcome every obstacle</strong>. Age, illiteracy, poverty or difficult circumstances can all be defeated if one is truly determined — here, a sixty-two-year-old woman overcame a lifetime of illiteracy.</p>
+<p><strong>Q7. How effectively does the story highlight the value of education in supporting personal independence?</strong>
+Very effectively. The grandmother was &quot;dependent and helpless&quot; without literacy — she could not even read a magazine. Education gave her <strong>self-respect, confidence and independence</strong>; she could read a whole novel on her own and no longer needed anyone's help. The story proves that education is the key to true independence.</p>
+<hr />
+<h2 id="rev-13-extras-from-the-chapter-good-for-mcqs">🧩 13. Extras from the Chapter (Good for MCQs)</h2>
+<ul>
+<li><strong>India has 22 major languages</strong> according to the <strong>Eighth Schedule</strong> of the Indian Constitution.</li>
+<li><strong>NLMA (National Literacy Mission Authority):</strong> responsible to design, develop, and implement the <strong>Adult Education Programme</strong> in India.</li>
+<li><strong>DAE (Directorate of Adult Education):</strong> under the Department of School Education and Literacy, <strong>Ministry of Education</strong>; facilitates adult education programmes.</li>
+<li><strong>Financial literacy:</strong> the ability to understand and apply financial skills — personal financial management, budgeting, and investing.</li>
+<li><strong>NCFE (National Centre for Financial Education):</strong> conducts surveys on financial awareness, collaborates with educational institutions, and organises <strong>annual financial literacy tests</strong>.</li>
+<li><strong>ELP (Early Literacy Project):</strong> an integrated, intensive, culturally sensitive <strong>early literacy-training programme</strong> for out-of-school children and under-achieving school-going children (Grades 1–3) in <strong>rural government primary schools</strong> — especially children from marginalised communities.</li>
+<li><strong>Cultural literacy:</strong> awareness, understanding and appreciation of the country's diverse traditions, languages, arts and social practices — promoted through organisations like <strong>CCRT (Centre for Cultural Resources and Training)</strong>.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Listening task (answers come from the audio, not the text):</strong> the &quot;Listen and Respond&quot; exercise on <strong>digital literacy</strong> has a transcript in the teacher's book (page 259) — the blanks fill in from the words you hear.</p>
+</blockquote>
+<hr />
+<h1>🟢 PART B — BHARAT OUR LAND (POEM)</h1>
+<h2 id="rev-1-at-a-glance-2">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Poet</strong></td>
+  <td><strong>Subramania Bharati</strong></td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>A patriotic <strong>ode</strong> (lyrical poem of praise)</td>
+</tr>
+<tr>
+  <td><strong>Subject</strong></td>
+  <td>India (Bharat) — its mountains, rivers, scriptures, heroes, sages, music, and ancient knowledge</td>
+</tr>
+<tr>
+  <td><strong>Key idea</strong></td>
+  <td>India is <strong>peerless (unmatched)</strong> — beautiful, sacred, glorious, and ancient</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Proud, reverent, admiring, celebratory</td>
+</tr>
+<tr>
+  <td><strong>Mood created in readers</strong></td>
+  <td>National pride, love, admiration, devotion</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-about-the-poet-general-knowledge-not-in-the-textbook">👤 2. About the Poet <em>(general knowledge — not in the textbook)</em></h2>
+<p><strong>Subramania Bharati</strong> (also known as <strong>Mahakavi Bharati</strong>) was a great <strong>Tamil poet, writer, journalist and freedom fighter</strong> of India. He wrote patriotic and devotional poems that inspired people during the freedom struggle.</p>
+<hr />
+<h2 id="rev-3-the-poem">📜 3. The Poem</h2>
+<blockquote>
+<p><strong>Stanza 1</strong>
+The mighty Himavant is ours—
+there's no equal anywhere on earth.
+The generous Ganga is ours—
+which other river can match her grace?
+The sacred Upanishads are ours—
+what scriptures else to name with them?
+This sunny golden land is ours—
+she's peerless, let's praise her!</p>
+<p><strong>Stanza 2</strong>
+Gallant warriors have lived here,
+many a sage has sanctified this land.
+The divinest music has been heard here,
+and here all auspicious things are found.</p>
+<p><strong>Stanza 3</strong>
+Here Brahma-knowledge has taken root,
+and the Buddha preached his dhamma here.
+Of hoary antiquity is Bharat,
+she's peerless, let's praise her! …</p>
+</blockquote>
+<p><em>(Poem text as printed in the textbook; the hyphen/dash at the end of some lines creates a pause.)</em></p>
+<hr />
+<h2 id="rev-4-summary-line-by-line-meaning">📖 4. Summary (Line-by-Line Meaning)</h2>
+<p><strong>Stanza 1 — India's natural beauty:</strong></p>
+<ul>
+<li><strong>Himavant (the Himalayas)</strong> is ours — no mountain on earth equals it in might. (&quot;Mighty&quot; = its strength and grandeur.)</li>
+<li><strong>Ganga</strong> is ours — no other river can match her <strong>grace</strong>. (She is called <strong>generous</strong> because she gives water and life to millions.)</li>
+<li>The <strong>Upanishads</strong> (ancient sacred scriptures) are ours — no other scriptures can be named beside them.</li>
+<li>This <strong>sunny golden land</strong> is ours — she is <strong>peerless (matchless)</strong>, so let us praise her!</li>
+</ul>
+<p><strong>Stanza 2 — India's brave and sacred past:</strong></p>
+<ul>
+<li><strong>Gallant (brave) warriors</strong> have lived here; <strong>many sages</strong> have <strong>sanctified (blessed)</strong> this land with their wisdom.</li>
+<li>The <strong>divinest music</strong> has been heard here, and all <strong>auspicious (fortunate/favourable) things</strong> are found here.</li>
+</ul>
+<p><strong>Stanza 3 — India's spiritual and philosophical heritage:</strong></p>
+<ul>
+<li><strong>Brahma-knowledge</strong> (spiritual knowledge of the ultimate truth) has taken root here.</li>
+<li><strong>Buddha preached his dhamma</strong> here.</li>
+<li>Bharat is of <strong>hoary antiquity</strong> (ancient, time immemorial) — she is peerless; let us praise her!</li>
+</ul>
+<hr />
+<h2 id="rev-summary-fill-in-the-blanks-from-the-textbook-answers-in-bold">✅ Summary (Fill-in-the-blanks from the textbook — answers in bold)</h2>
+<p>The poem is a tribute to India, celebrating its natural beauty, spiritual heritage, and <strong>1. historical greatness</strong>. The poet praises the <strong>2. Himavant</strong>, describing it as mighty and unparalleled. The <strong>3. Ganga</strong> is depicted as generous and graceful, while the <strong>4. Upanishads</strong> are honoured as sacred and unmatched. The poem highlights the contributions of <strong>5. sages</strong> and <strong>6. warriors</strong> who have enriched the land with their bravery and wisdom. It also acknowledges the presence of <strong>7. Brahma-knowledge</strong> and the teachings of <strong>8. Buddha</strong>, highlighting India's deep-rooted spiritual and philosophical traditions. The poet repeatedly asserts that India is <strong>9. peerless</strong>, urging everyone to <strong>10. praise</strong> her.</p>
+<hr />
+<h2 id="rev-5-theme-tone-amp-mood">🎯 5. Theme, Tone &amp; Mood</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>The glory, beauty and spiritual greatness of India; national pride; celebration of our heritage (nature, scriptures, heroes, sages, music, knowledge)</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong> (poet's attitude)</td>
+  <td>Proud, reverent, admiring, celebratory, full of love and devotion</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong> (effect on readers)</td>
+  <td>National pride, admiration, reverence and a feeling of patriotism</td>
+</tr>
+<tr>
+  <td><strong>Central assertion</strong></td>
+  <td>India is <strong>peerless</strong> — unmatched in natural beauty, wisdom and glory</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-6-rhyme-scheme-amp-structure">🔎 6. Rhyme Scheme &amp; Structure</h2>
+<ul>
+<li>The poem is written in <strong>free verse</strong> — it has <strong>no fixed rhyme scheme or regular metre</strong>.</li>
+<li>It is a <strong>lyrical ode</strong> with a <strong>refrain</strong> that repeats: <em>&quot;she's peerless, let's praise her!&quot;</em></li>
+<li>Structure: <strong>Stanza 1</strong> (8 lines) presents the &quot;X is ours&quot; pattern (Himavant, Ganga, Upanishads, the land). <strong>Stanza 2</strong> (4 lines) celebrates warriors, sages, music and auspicious things. <strong>Stanza 3</strong> (4 lines) celebrates Brahma-knowledge, Buddha's dhamma and India's antiquity.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Exam answer:</strong> <em>The poem has no fixed rhyme scheme (free verse). The refrain &quot;she's peerless, let's praise her!&quot; gives it a chant-like rhythm.</em></p>
+</blockquote>
+<hr />
+<h2 id="rev-7-literary-devices-with-examples-very-important">🛠 7. Literary Devices (with examples) — VERY IMPORTANT</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Definition</th>
+  <th>Example from the poem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Ode</strong></td>
+  <td>A lyrical poem of deep admiration/praise for a person, place, object or idea; elevated, grand, formal language</td>
+  <td>The whole poem is an ode to <strong>India</strong> — it praises her &quot;peerless&quot; beauty and greatness</td>
+</tr>
+<tr>
+  <td><strong>Refrain</strong></td>
+  <td>A line/group of lines repeated regularly</td>
+  <td><strong>&quot;she's peerless, let's praise her!&quot;</strong> (repeated at the end of stanza 1 and stanza 3)</td>
+</tr>
+<tr>
+  <td><strong>Personification</strong></td>
+  <td>Giving human qualities to non-human things</td>
+  <td>Ganga is called <strong>&quot;generous&quot;</strong>; her movement is <strong>&quot;grace&quot;</strong> — the river is described like a graceful person. India is addressed as <strong>&quot;she&quot;</strong></td>
+</tr>
+<tr>
+  <td><strong>Rhetorical questions</strong></td>
+  <td>Questions asked for emphasis, not for an answer</td>
+  <td><em>&quot;Which other river can match her grace?&quot;</em> · <em>&quot;What scriptures else to name with them?&quot;</em> — used to <strong>emphasise</strong> that India has no equal</td>
+</tr>
+<tr>
+  <td><strong>Hyperbole</strong></td>
+  <td>Extreme exaggeration (not to be taken literally)</td>
+  <td><em>&quot;there's no equal anywhere on earth&quot;</em> · <em>&quot;which other river can match her grace?&quot;</em> · <em>&quot;she's peerless&quot;</em></td>
+</tr>
+<tr>
+  <td><strong>Allusion</strong></td>
+  <td>An indirect reference to a well-known person/place/book/event</td>
+  <td><strong>Upanishads</strong> (ancient scriptures) · <strong>Brahma-knowledge</strong> (spiritual knowledge/ultimate truth) · <strong>Buddha's dhamma</strong> (his teachings of compassion and non-violence)</td>
+</tr>
+<tr>
+  <td><strong>Symbolism</strong></td>
+  <td>Using symbols to suggest deeper ideas</td>
+  <td>Himavant = strength; Ganga = purity/generosity; Upanishads = knowledge; warriors/sages = courage/wisdom; sunny golden land = richness/glory</td>
+</tr>
+<tr>
+  <td><strong>Imagery</strong></td>
+  <td>Descriptive language that creates vivid mental pictures (appeals to senses)</td>
+  <td><em>&quot;The mighty Himavant&quot;</em> (visual — towering mountains) · <em>&quot;sunny golden land&quot;</em> (visual — bright, warm) · <em>&quot;divinest music&quot;</em> (auditory — heavenly music)</td>
+</tr>
+<tr>
+  <td><strong>Hyphens / dashes</strong></td>
+  <td>Create pauses</td>
+  <td>At the end of lines like <em>&quot;The mighty Himavant is ours—&quot;</em> they create deliberate pauses, a chant-like rhythm, and build to the strong assertion after the dash</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-effect-of-the-hyphens-q-vii-true-statements">Effect of the hyphens (Q VII) — True statements:</h3>
+<p>✅ 1. Create deliberate pauses to reinforce the sense of admiration and pride.
+✅ 3. Lend to the lyrical quality giving a measured, chant-like rhythm.
+✅ 5. Present a key element of India's greatness before the hyphen and make a strong assertion about its uniqueness after the hyphen.
+❌ 2. Emphasise a contrast between strengths and weaknesses (not done).
+❌ 4. Suggest hesitation or uncertainty (not done).</p>
+<h3 id="rev-impact-of-the-refrain-q-iii">Impact of the refrain (Q III)</h3>
+<p>The refrain <em>&quot;she's peerless, let's praise her!&quot;</em> <strong>repeats the central idea</strong> that India is matchless. It gives the poem a <strong>chant-like, musical rhythm</strong>, reinforces the poet's pride and admiration, and <strong>urges every reader to feel and express the same praise</strong> — leaving a strong, lasting impression of patriotism.</p>
+<hr />
+<h2 id="rev-8-symbolism-table-q-v-answers">🔄 8. Symbolism Table (Q V — Answers)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Symbol</th>
+  <th>Suggests</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Himavant</strong></td>
+  <td>(v) strength and permanence</td>
+</tr>
+<tr>
+  <td><strong>Ganga</strong></td>
+  <td>(iii) purity and generosity</td>
+</tr>
+<tr>
+  <td><strong>Upanishads</strong></td>
+  <td>(i) knowledge and enlightenment</td>
+</tr>
+<tr>
+  <td><strong>Gallant warriors and sages</strong></td>
+  <td>(vi) courage and wisdom</td>
+</tr>
+<tr>
+  <td><strong>Brahma-knowledge and Buddha's Dhamma</strong></td>
+  <td>(ii) spiritual and philosophical legacy</td>
+</tr>
+<tr>
+  <td><strong>Sunny golden land</strong></td>
+  <td>(iv) richness and glory</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>&quot;This sunny golden land&quot; metaphor:</strong> India is compared to a <strong>bright, warm, prosperous and beautiful</strong> land — full of sunshine (hope, happiness) and gold (wealth, glory).</p>
+<hr />
+<h2 id="rev-9-vocabulary-suffixes">✍️ 9. Vocabulary — Suffixes</h2>
+<h3 id="rev-exercise-i-words-chosen-from-the-poem-answers">Exercise I (words chosen from the poem) — Answers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Suffix</th>
+  <th>Meaning</th>
+  <th>Word from the poem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>-ous</strong></td>
+  <td>full of, having the qualities of</td>
+  <td><strong>generous</strong> (The generous Ganga is ours)</td>
+</tr>
+<tr>
+  <td><strong>-ity</strong></td>
+  <td>the state of being very old or ancient</td>
+  <td><strong>antiquity</strong> (Of hoary antiquity is Bharat)</td>
+</tr>
+<tr>
+  <td><strong>-est</strong></td>
+  <td>superlative form</td>
+  <td><strong>divinest</strong> (The divinest music has been heard here)</td>
+</tr>
+<tr>
+  <td><strong>-less</strong></td>
+  <td>without something</td>
+  <td><strong>peerless</strong> (she's peerless)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-exercise-ii-add-a-suffix-to-form-a-new-word-answers">Exercise II (add a suffix to form a new word) — Answers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Suffix</th>
+  <th>Meaning</th>
+  <th>New word</th>
+  <th>Sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>-tion</strong></td>
+  <td>the action/process of</td>
+  <td>educate → <strong>education</strong></td>
+  <td>Education gives us independence.</td>
+</tr>
+<tr>
+  <td><strong>-ive</strong></td>
+  <td>quality or nature of</td>
+  <td>create → <strong>creative</strong></td>
+  <td>She has a creative imagination.</td>
+</tr>
+<tr>
+  <td><strong>-ment</strong></td>
+  <td>the action or result of</td>
+  <td>achieve → <strong>achievement</strong></td>
+  <td>Learning to read was her greatest achievement.</td>
+</tr>
+<tr>
+  <td><strong>-ed</strong></td>
+  <td>past-tense version of a verb</td>
+  <td>praise → <strong>praised</strong></td>
+  <td>The teacher praised her student.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-10-poem-exercise-answers">✅ 10. Poem Exercise Answers</h2>
+<h3 id="rev-check-your-understanding-ii-features-of-the-poem">Check Your Understanding (II) — Features of the poem</h3>
+<ol>
+<li><strong>Impact on the readers (mood):</strong> the poem fills the reader with <strong>pride, admiration and love for the nation</strong>.</li>
+<li><strong>Poet's attitude (tone):</strong> <strong>proud, reverent and admiring</strong> — full of praise and devotion for India.</li>
+<li><strong>Rhyme scheme:</strong> <strong>no fixed rhyme scheme</strong> — the poem is written in <strong>free verse</strong>.</li>
+<li><strong>Examples of personification:</strong> Ganga described as <strong>&quot;generous&quot;</strong> with <strong>&quot;grace&quot;</strong>; India addressed as <strong>&quot;she&quot;</strong> (personified as a mother/goddess).</li>
+</ol>
+<h3 id="rev-imagery-q-vi-any-two-examples">Imagery (Q VI) — any two examples</h3>
+<ol>
+<li><em>&quot;The mighty Himavant is ours&quot;</em> — <strong>visual imagery</strong>: the grandeur and height of the Himalayas.</li>
+<li><em>&quot;The divinest music has been heard here&quot;</em> — <strong>auditory imagery</strong>: heavenly music fills the land.</li>
+</ol>
+<h3 id="rev-allusions-q-x-matching">Allusions (Q X) — matching</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Explanation</th>
+  <th>Allusion in the poem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Ancient Indian scriptures forming the philosophical core; deep wisdom and enlightenment</td>
+  <td><strong>Upanishads</strong></td>
+</tr>
+<tr>
+  <td>Spiritual knowledge associated with self-realisation and ultimate truth</td>
+  <td><strong>Brahma-knowledge</strong></td>
+</tr>
+<tr>
+  <td>Gautama Buddha's teachings (compassion, non-violence, enlightenment)</td>
+  <td><strong>Buddha's dhamma</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-critical-reflection-extract-answers">Critical Reflection (Extract) — Answers</h3>
+<p><strong>Extract:</strong> <em>The mighty Himavant is ours— / there's no equal anywhere on earth. / The generous Ganga is ours— / which other river can match her grace? / The sacred Upanishads are ours— / what scriptures else to name with them?</em></p>
+<ol>
+<li>The word &quot;mighty&quot; refers to the <strong>strength / grandeur</strong> of the Himavant.</li>
+<li>The question mark at the end of the fourth and sixth lines is used to <strong>(ii) emphasise a point</strong> (rhetorical questions).</li>
+<li>The Ganga is called <strong>&quot;generous&quot;</strong> because she <strong>gives life, water and nourishment to millions</strong> — like a kind giver who shares freely with all.</li>
+<li>The river's movement is described as <strong>graceful</strong> because its gentle, flowing, winding motion is beautiful and elegant — like a graceful person (personification).</li>
+<li>The poet implies that the Upanishads are <strong>unmatched</strong> in their wisdom and spiritual depth.</li>
+</ol>
+<h3 id="rev-main-questions-model-answers-2">Main Questions — Model Answers</h3>
+<p><strong>Q1. How does the poem reflect a strong connection to cultural identity and heritage?</strong>
+The poem celebrates India's <strong>mountains (Himavant), rivers (Ganga), sacred scriptures (Upanishads), brave warriors, sages, divine music, Brahma-knowledge and Buddha's dhamma</strong>. All these are elements of our <strong>cultural and spiritual heritage</strong>. By calling the land &quot;ours&quot; and &quot;peerless,&quot; the poet makes every Indian feel proud of this shared identity and heritage.</p>
+<p><strong>Q2. What can you infer about the poet's attitude towards India from the repeated phrase 'she's peerless, let's praise her!'?</strong>
+The repetition shows the poet's <strong>deep love, pride and reverence</strong> for India. He believes India is <strong>matchless</strong> — in beauty, wisdom and glory — and he wants every reader to feel the same pride and join in praising her.</p>
+<p><strong>Q3. What does the line 'many a sage has sanctified this land' suggest about India's spiritual heritage?</strong>
+It suggests that India's spiritual heritage is <strong>ancient, sacred and rich</strong>. Many sages have lived here, and their wisdom, penance and teachings have <strong>blessed and purified</strong> the land, making it a holy place of knowledge and enlightenment.</p>
+<p><strong>Q4. How does the poet connect warriors and music to India's greatness?</strong>
+<strong>Warriors</strong> gave the land <strong>valour and protection</strong> — they defended it with courage. <strong>Music</strong> (the &quot;divinest music&quot;) gave it <strong>art, culture and beauty</strong>. Together they show that India is great in both <strong>strength (heroism)</strong> and <strong>culture (art and wisdom)</strong> — every noble quality is found here.</p>
+<p><strong>Q5. How does this poem foster a sense of national pride?</strong>
+The poem lists India's matchless treasures — mighty mountains, generous rivers, sacred scriptures, brave heroes, wise sages and divine knowledge — and repeats that she is <strong>peerless</strong>. This <strong>uplifts the reader</strong>, creates pride in our heritage, and inspires love and devotion for the motherland.</p>
+<hr />
+<h3 id="rev-quot-odd-one-out-quot-national-anthem-activity-page-23-answers">&quot;Odd one out&quot; (National Anthem activity, page 23) — Answers</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Options</th>
+  <th>Odd one out</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>peerless</strong> (matchless)</td>
+  <td>valuable, incomparable, unmatched</td>
+  <td><strong>valuable</strong></td>
+</tr>
+<tr>
+  <td><strong>sanctified</strong> (blessed, purified)</td>
+  <td>blessed, purified, applauded</td>
+  <td><strong>applauded</strong></td>
+</tr>
+<tr>
+  <td><strong>auspicious</strong> (favourable, fortunate)</td>
+  <td>fortunate, fantastic, favourable</td>
+  <td><strong>fantastic</strong></td>
+</tr>
+<tr>
+  <td><strong>hoary</strong> (ancient, very old)</td>
+  <td>ancient times, recent past, time immemorial</td>
+  <td><strong>recent past</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>National Anthem — names mentioned</strong> <em>(general knowledge, for the table activity):</em></p>
+<ul>
+<li><strong>States/regions:</strong> Punjab, Sindh, Gujarat, Maratha, Dravida, Utkala (Odisha), Banga (Bengal)</li>
+<li><strong>Mountain ranges:</strong> Vindhya, Himalaya (Himachal)</li>
+<li><strong>Rivers:</strong> Yamuna, Ganga</li>
+</ul>
+<p><strong>&quot;जय हे&quot; (Jaya he):</strong> it expresses <strong>victory, glory and triumph to the motherland</strong> — a patriotic salute and a prayer that India may always be victorious and blessed.</p>
+<hr />
+<h1>✅ QUICK RECAP (Both Texts)</h1>
+<h3 id="rev-story-how-i-taught-my-grandmother-to-read">Story — How I Taught My Grandmother to Read</h3>
+<ul>
+<li>Author <strong>Sudha Murty</strong> · narrator = 12-year-old girl in <strong>north Karnataka</strong> · grandmother = <strong>Krishtakka / Avva</strong> (62).</li>
+<li>Writer <strong>Triveni</strong> · novel <strong>Kashi Yatre</strong> serialised in weekly <strong>Karmaveera</strong> (story of an old lady wanting to go to Kashi who sacrifices her savings for an orphan girl).</li>
+<li>Grandmother listened every <strong>Wednesday</strong>, could repeat the text <strong>by heart</strong>, <strong>identified with the protagonist</strong>.</li>
+<li>Narrator stayed a <strong>week</strong> at a wedding → grandmother felt <strong>dependent and helpless</strong>, couldn't read the magazine.</li>
+<li>Grandmother decided to learn the <strong>Kannada alphabet</strong> by <strong>Saraswati Puja during Dassara</strong> → &quot;For learning there is no age bar.&quot;</li>
+<li>Narrator taught her (read, repeat, write, recite) → on Dassara grandmother <strong>touched her feet</strong> as her teacher, read <strong>Kashi Yatre</strong> herself → &quot;passed with flying colours.&quot;</li>
+</ul>
+<h3 id="rev-poem-bharat-our-land">Poem — Bharat Our Land</h3>
+<ul>
+<li>Poet <strong>Subramania Bharati</strong> · patriotic <strong>ode</strong> to India · free verse, no fixed rhyme.</li>
+<li>Praises: <strong>Himavant</strong> (mighty), <strong>Ganga</strong> (generous), <strong>Upanishads</strong> (sacred), <strong>sunny golden land</strong> (peerless).</li>
+<li>Also: <strong>gallant warriors, sages, divinest music, auspicious things, Brahma-knowledge, Buddha's dhamma, hoary antiquity</strong>.</li>
+<li>Refrain: <strong>&quot;she's peerless, let's praise her!&quot;</strong> · Devices: personification, hyperbole, rhetorical questions, allusion, symbolism, imagery, hyphens.</li>
+</ul>
+<hr />
+<h1>✍️ PRACTICE QUESTIONS (Self-test)</h1>
+<p><strong>Story:</strong></p>
+<ol>
+<li>Why was the narrator surprised to see her grandmother in tears?</li>
+<li>What made the grandmother decide to learn to read at sixty-two?</li>
+<li>Explain: &quot;What use is money when I cannot be independent?&quot;</li>
+<li>Why did the grandmother touch the narrator's feet? What does it teach us?</li>
+<li>What is the significance of the title <em>Kashi Yatre</em> in the grandmother's life?</li>
+<li>Why did Triveni become so popular in Kannada literature?</li>
+</ol>
+<p><strong>Poem:</strong></p>
+<ol>
+<li>Why is the Ganga called &quot;generous&quot; in the poem?</li>
+<li>Name two literary devices used in the poem with one example each.</li>
+<li>What does &quot;she's peerless, let's praise her!&quot; tell us about the poet's feelings?</li>
+<li>Which allusions does the poet make, and what do they symbolise?</li>
+<li>Does the poem have a rhyme scheme? Justify.</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 1 (PDF) — all facts, quotes, and answers are taken from the chapter.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 1</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *How I Taught My Grandmother to Read* (Prose · Sudha Murty) · **B)** *Bharat Our Land* (Poem · Subramania Bharati)</p>
+      <h1>🟣 PART A — HOW I TAUGHT MY GRANDMOTHER TO READ</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<p>The story is built on <strong>three main themes</strong>:</p>
+<ol>
+<li><strong>Learning has no age bar</strong> — a sixty-two-year-old grandmother learns the Kannada alphabet and becomes able to read a whole novel on her own. <em>&quot;For learning there is no age bar.&quot;</em></li>
+<li><strong>Education brings independence</strong> — illiteracy made the grandmother feel &quot;dependent and helpless&quot;; literacy made her say <em>&quot;Now I am independent.&quot;</em> She says, <em>&quot;We are well-off, but what use is money when I cannot be independent?&quot;</em></li>
+<li><strong>Determination overcomes every obstacle</strong> — <em>&quot;For a good cause if you are determined, you can overcome any obstacle.&quot;</em> Strong will defeats age, grey hair, wrinkles and a lifetime of illiteracy.</li>
+</ol>
+<p><strong>Underlying values:</strong> respect for a teacher, <em>irrespective of the gender and age</em>; the loving bond between grandmother and granddaughter; and the idea that self-respect is worth more than money.</p>
+<blockquote>
+<p>❤️ <strong>Message:</strong> <em>It is never too late to learn. Education gives confidence, dignity and independence.</em></p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary-exam-ready">📝 LONG ANSWER (Complete summary — exam-ready)</h2>
+<blockquote>
+<p><em>Use this as a complete answer. Every important point of the chapter is here.</em></p>
+</blockquote>
+<p><strong>&quot;How I Taught My Grandmother to Read&quot; is an autobiographical story by Sudha Murty.</strong> When the narrator was a girl of about twelve, she stayed with her grandparents in a village in <strong>north Karnataka</strong>. In those days the transport system was not good, so the morning paper came only in the afternoon and the weekly magazine came one day late. Everyone waited eagerly for the bus that brought the newspapers, the weekly magazines and the post.</p>
+<p>At that time <strong>Triveni</strong> was a very popular writer in the <strong>Kannada</strong> language. Her style was easy to read and very <strong>convincing</strong>. Her stories usually dealt with the complex psychological problems of ordinary people and were always interesting. She died very young, but even after forty years people still appreciate her novels.</p>
+<p>One of Triveni's novels, <strong>Kashi Yatre</strong>, was appearing as a serial in the Kannada weekly <strong>Karmaveera</strong>. It is the story of an old lady who had an <strong>ardent</strong> (keen) desire to go to <strong>Kashi</strong> (Varanasi), because most Hindus believe that going to Kashi and worshipping <strong>Lord Vishweshwara</strong> is the ultimate punya. There is also a young orphan girl in the story who falls in love but has no money for her wedding. In the end, the old lady gives away all her savings without going to Kashi, saying, <em>&quot;The happiness of this orphan girl is more important than worshipping Lord Vishweshwara at Kashi.&quot;</em></p>
+<p>The narrator's grandmother, <strong>Krishtakka</strong>, never went to school and could not read. Every <strong>Wednesday</strong> the magazine came and the narrator read the next episode of the story to her. While listening, the grandmother forgot all her work and listened with the greatest <strong>concentration</strong>, and later she could repeat the entire text <strong>by heart</strong>. Because she herself had never gone to Kashi, she identified herself with the novel's protagonist and was the most eager of all to know what happened next. After each episode she would discuss it with her friends at the temple courtyard.</p>
+<p>Once the narrator went to a wedding in a neighbouring village with her cousins and ended up staying for a week. When she returned, she was surprised to see her grandmother in tears, because she had never seen her cry even in the most difficult situations. That summer night, while the family slept on the open terrace under a full moon, the grandmother, whom the narrator called <strong>Avva</strong> (meaning &quot;mother&quot; in the Kannada of north Karnataka), told her the story of her life: she lost her mother young, her busy father married again, and in those days people never considered education essential for girls — so she never went to school. She regretted it and made sure her own children grew up well.</p>
+<p>Then Avva explained why she was crying. When the narrator was away, <em>Karmaveera</em> had come. She opened the magazine and saw the picture that accompanies the story, but she could not understand anything written. She became &quot;dependent and helpless.&quot; She said, <em>&quot;We are well off, but what use is money when I cannot be independent?&quot;</em> So she decided to <strong>learn the Kannada alphabet from the very next day</strong>, keeping the <strong>Saraswati Puja day during Dassara</strong> as the deadline — by that day she must be able to read a novel on her own.</p>
+<p>The narrator laughed childishly at her — at sixty-two, grey hair, wrinkled hands, spectacles, so much kitchen work, learning the alphabet? But the grandmother just smiled and said, <em>&quot;For a good cause if you are determined you can overcome any obstacle. I will work harder than anybody. For learning there is no age bar.&quot;</em> From the next day the narrator started her tuition. The grandmother proved to be a wonderful student — she read, repeated, wrote and recited. The narrator was her only teacher, and the grandmother was her first student. (The narrator did not suspect then that one day she would become a teacher of Computer Science.)</p>
+<p>On Dassara, the narrator bought <em>Kashi Yatre</em> secretly, as the novel had by then been published as a book. The grandmother called her to the puja place, made her sit on a stool, gave her a gift of frock material, and then bent down and touched her feet. The narrator was taken aback — elders never touch the feet of youngsters; we touch the feet of God, elders and teachers as a mark of respect. The grandmother said, <em>&quot;I am touching the feet of a teacher, not my granddaughter … Now I am independent. It is my duty to respect a teacher. Is it not written in our scriptures that a teacher should be respected, irrespective of the gender and age?&quot;</em> The narrator returned her namaskara and gave her the gift. The grandmother opened it and read the title <em>Kashi Yatre</em> by Triveni and the publisher's name, and the narrator knew that her student had <strong>passed with flying colours</strong>.</p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Triveni</strong></td>
+  <td>the popular Kannada writer; author of <em>Kashi Yatre</em>; died young</td>
+</tr>
+<tr>
+  <td><strong>Krishtakka</strong></td>
+  <td>the grandmother's name</td>
+</tr>
+<tr>
+  <td><strong>Avva</strong></td>
+  <td>&quot;mother&quot; in the Kannada of north Karnataka; how the narrator calls her grandmother</td>
+</tr>
+<tr>
+  <td><strong>Kashi / Varanasi</strong></td>
+  <td>the holy city in the novel; Hindus believe going there brings ultimate punya</td>
+</tr>
+<tr>
+  <td><strong>Lord Vishweshwara</strong></td>
+  <td>the name of God worshipped at Kashi</td>
+</tr>
+<tr>
+  <td><strong>Kashi Yatre</strong></td>
+  <td>Triveni's novel serialised in <em>Karmaveera</em></td>
+</tr>
+<tr>
+  <td><strong>Karmaveera</strong></td>
+  <td>the Kannada weekly magazine in which the novel appeared</td>
+</tr>
+<tr>
+  <td><strong>ardent</strong></td>
+  <td>keen; deeply felt</td>
+</tr>
+<tr>
+  <td><strong>savouring</strong></td>
+  <td>enjoying to the fullest</td>
+</tr>
+<tr>
+  <td><strong>immensely</strong></td>
+  <td>extremely</td>
+</tr>
+<tr>
+  <td><strong>taken aback</strong></td>
+  <td>surprised by something unexpected</td>
+</tr>
+<tr>
+  <td><strong>protagonist</strong></td>
+  <td>main character of a story</td>
+</tr>
+<tr>
+  <td><strong>episode</strong></td>
+  <td>a part of a story</td>
+</tr>
+<tr>
+  <td><strong>community</strong></td>
+  <td>people living in one particular area</td>
+</tr>
+<tr>
+  <td><strong>concentration</strong></td>
+  <td>full focus; attention</td>
+</tr>
+<tr>
+  <td><strong>convincing</strong></td>
+  <td>easy to believe; believable</td>
+</tr>
+<tr>
+  <td><strong>punya</strong></td>
+  <td>religious merit; sacred virtue</td>
+</tr>
+<tr>
+  <td><strong>namaskara</strong></td>
+  <td>respectful greeting with folded hands</td>
+</tr>
+<tr>
+  <td><strong>by heart</strong></td>
+  <td>from memory</td>
+</tr>
+<tr>
+  <td><strong>tuition</strong></td>
+  <td>teaching; the activity of teaching</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-character-sketches">👥 CHARACTER SKETCHES</h2>
+<h3 id="sum-the-grandmother-krishtakka-avva">The Grandmother — Krishtakka (Avva)</h3>
+<p>She is a <strong>strong-willed, determined</strong> lady of <strong>sixty-two</strong>. She never went to school, so she cannot read, a helplessness she deeply felt. Her inner strength is remarkable — she sets her own deadline (Saraswati Puja during Dassara) and works harder than anyone, reading, repeating, writing and reciting. She has <strong>great self-respect</strong>: money could not replace her independence. She is also <strong>humble and respectful</strong> — she touches her granddaughter's feet to honour her teacher. She is <strong>loving</strong> — she fed her grandchildren with happiness and made sure they studied well. Her words <em>&quot;For learning there is no age bar&quot;</em> are the soul of the story.</p>
+<h3 id="sum-the-narrator-young-sudha-murty">The narrator (young Sudha Murty)</h3>
+<p>A twelve-year-old girl living with her grandparents in north Karnataka. She is <strong>loving and patient</strong> — she reads the magazine to her grandmother every Wednesday and later teaches her the entire alphabet with care. She is kind and caring (she is worried and upset when she sees her grandmother in tears), though at one point she is childishly thoughtless (she laughs at her grandmother's age). She grows into a good teacher, proud that her first student passed &quot;with flying colours.&quot; She later becomes a teacher in Computer Science.</p>
+<h3 id="sum-triveni">Triveni</h3>
+<p>The <strong>popular Kannada novelist</strong> whose book is the heart of the story. She wrote easy, convincing stories about the psychological problems of ordinary people. She <strong>died young</strong>, yet even after forty years her novels are still appreciated. Her novel <em>Kashi Yatre</em> brings the grandmother and the narrator together and sets the story in motion.</p>
+<hr />
+<h2 id="sum-important-questions-with-answers">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. The phrase &quot;never seen her cry in the most difficult situations&quot; tells us the grandmother was —</strong>
+<strong>→ A. strong-willed.</strong> It shows her emotional strength, not kindness, thoughtfulness or daring.</p>
+<p><strong>2. When the grandmother did not answer, it was because she was too ______ (emotional / tired) to speak.</strong>
+<strong>→ emotional.</strong> She was about to reveal the painful secret of her illiteracy.</p>
+<p><strong>3. &quot;I want to be independent&quot; reveals about her character —</strong>
+<strong>→ B. She desires self-sufficiency.</strong> She does not want to prove her intelligence, nor is she pressured by society — she simply wants freedom.</p>
+<p><strong>4. Her determination shows that learning has no —</strong>
+<strong>→ age limit.</strong> She is sixty-two, yet she learns the alphabet from zero.</p>
+<p><strong>5. Why did the narrator laugh when the grandmother decided to learn?</strong>
+Because she judged her grandmother by <strong>age and appearance</strong> — grey hair, wrinkled hands, spectacles, and so much work in the kitchen — and she thought a person of sixty-two could never begin the alphabet. It is a childish reaction; her grandmother's gentle answer — <em>&quot;For learning there is no age bar&quot;</em> — corrects her.</p>
+<p><strong>6. Why was the grandmother embarrassed to ask someone else to read?</strong>
+She felt ashamed of her illiteracy. She would rather wait for her granddaughter than let the people know she could not read. She said she felt &quot;dependent and helpless&quot; and waiting for the narrator was her own chosen dependence.</p>
+<p><strong>7. Why did she set the deadline of Saraswati Puja during Dassara?</strong>
+Saraswati is the goddess of learning; Dassara is a festival of knowledge and victory. Choosing that day to read a novel <strong>symbolises</strong> her learning as a <strong>sacred achievement</strong> and gives her a firm meaningful goal to work towards.</p>
+<p><strong>8. Why did the grandmother touch the narrator's feet?</strong>
+By tradition, only the feet of <strong>God, elders and teachers</strong> are touched — never a younger person's. She touched her granddaughter's feet because she honoured the <strong>teacher</strong>, not the grandchild. She says the scriptures say a teacher is to be respected <em>&quot;irrespective of gender and age.&quot;</em> Her act shows <strong>knowledge honours above everything</strong>.</p>
+<p><strong>9. The main lesson of the story is —</strong> no age is too old to learn, education is freedom, determination wins, and a teacher deserves respect at any age.</p>
+<p><strong>10. Why did the picture in the magazine shock the grandmother?</strong>
+She opened the magazine, saw the picture that goes with the story, and could not read a single word beside it. That moment of helplessness, when she rubbed her hands over the pages, prompted her to decide to learn.</p>
+<hr />
+<h1>🟢 PART B — BHARAT OUR LAND (POEM)</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p><strong>Bharat Our Land by Subramania Bharati</strong> is a patriotic <strong>ode</strong> to India's <strong>natural beauty, spiritual heritage, valour and ancient glory</strong>. The poet celebrates the Himalayas (Himavant), the Ganga, the Upanishads, warriors, sages, divine music, Brahma-Knowledge and Buddha's Dhamma, and repeats like a refrain: <strong>India is peerless — &quot;she's peerless, let's praise her!&quot;</strong> — to awaken love, pride and devotion for the homeland.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>India is unmatched among all the lands of the earth.</strong> It is a force of nature — the mighty Himalayas and the graceful, generous Ganga — as well as the treasure of the Upanishads, the valour of warriors, the purity of sages, divine music, Brahma-knowledge and the Dhamma of the Buddha. Since it is ancient (of hoary antiquity) and peerless, the poet urges all of us to praise it with love and pride.</p>
+<hr />
+<h2 id="sum-stanza-wise-explanation-correct-amp-complete">📜 STANZA-WISE EXPLANATION (correct &amp; complete)</h2>
+<h3 id="sum-stanza-1-what-belongs-to-us">Stanza 1 — What belongs to us</h3>
+<blockquote>
+<p>The mighty Himavant is ours —
+there's no equal anywhere on earth.
+The generous Ganga is ours —
+which other river can match her grace?
+The sacred Upanishads are ours —
+what scriptures else to name with them?
+This sunny golden land is ours —
+she's peerless, let's praise her!</p>
+</blockquote>
+<p><strong>Meaning/Explanation:</strong></p>
+<ul>
+<li>The poet proudly lists <strong>India's natural treasures</strong> and claims them as &quot;ours&quot;.</li>
+<li>The word <strong>mighty</strong> shows the Himavant (the Himalayas) is great in <strong>strength and grandeur</strong>. &quot;No equal anywhere on earth&quot; is an <strong>exaggeration / hyperbole</strong>.</li>
+<li>The <strong>Ganga</strong>, like a <strong>generous mother</strong>, gives water and life to the land — she is <strong>personified</strong>. Her <strong>grace</strong> speaks of her gentle, beautiful form. The <strong>rhetorical question</strong> (&quot;which other river can match her grace?&quot;) does not expect an answer — it simply emphasises that none can.</li>
+<li><strong>The Upanishads</strong> (our oldest sacred texts) have unmatched wisdom — <em>what other scriptures equal them?</em></li>
+<li><strong>&quot;This sunny golden land&quot;</strong> is India — <strong>metaphor</strong>: our country is bright, prosperous and holy.</li>
+<li>The refrain <strong>&quot;she's peerless, let's praise her!&quot;</strong> ends the stanza and lifts the note of praise and pride.</li>
+</ul>
+<h3 id="sum-stanza-2-valour-and-sanctity">Stanza 2 — Valour and sanctity</h3>
+<blockquote>
+<p>Gallant warriors have lived here,
+many a sage has sanctified this land.
+The divinest music has been heard here,
+and here all auspicious things are found.</p>
+</blockquote>
+<p><strong>Meaning/Explanation:</strong></p>
+<ul>
+<li><strong>Gallant warriors</strong> — the brave heroes of our land — have lived here. By their presence and their deeds the land becomes historic.</li>
+<li><strong>Sages</strong> have made the land <strong>sacred / holy</strong> by their prayers and their penance — they have <strong>&quot;sanctified this land&quot;</strong>.</li>
+<li><strong>Divine music</strong> — the greatest music has been heard in this land (the poet calls it &quot;the divinest music&quot;).</li>
+<li><strong>All the auspicious things</strong> — everything good, holy and favourable — are at home in India.</li>
+<li>Tone: <strong>proud, reverent, reverential</strong>.</li>
+</ul>
+<h3 id="sum-stanza-3-the-oldest-wisdom-and-the-eternal-bharat">Stanza 3 — The oldest wisdom and the eternal Bharat</h3>
+<blockquote>
+<p>Here Brahma-knowledge has taken root,
+and the Buddha preached his dhamma here.
+Of hoary antiquity is Bharat,
+she's peerless, let's praise her! …</p>
+</blockquote>
+<p><strong>Meaning/Explanation:</strong></p>
+<ul>
+<li><strong>Brahma-knowledge</strong> (the supreme spiritual knowledge connected to self-realisation and the ultimate truth, as the textbook explains) has &quot;taken root&quot; in this land — India is the home of deep philosophy and enlightenment.</li>
+<li><strong>The Buddha preached his Dhamma here</strong> — Gautam Buddha taught his path of <strong>compassion, non-violence and enlightenment</strong> in this very land.</li>
+<li><strong>&quot;Of hoary antiquity is Bharat&quot;</strong> — Bharat (India) is <strong>very ancient</strong>. <em>Hoary</em> means white or grey with age; <em>antiquity</em> means ancient times. India has a long, unbroken and honourable history.</li>
+<li>The refrain <em>&quot;she's peerless, let's praise her&quot;</em> returns and ends the poem with the same ring of praise.</li>
+</ul>
+<p><strong>Note on the poem:</strong> The refrain repeats, giving the poem a <strong>musical, chant-like shape</strong>. India is called &quot;<em>she</em>&quot;, i.e. <strong>personified</strong> as a mother and a goddess, so the poem speaks to the land with love.</p>
+<hr />
+<h2 id="sum-poem-s-keywords-amp-meanings">🔑 POEM'S KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Himavant</strong></td>
+  <td>the great / mighty Himalayas</td>
+</tr>
+<tr>
+  <td><strong>Ganga</strong></td>
+  <td>the sacred river, symbol of purity &amp; life</td>
+</tr>
+<tr>
+  <td><strong>Upanishads</strong></td>
+  <td>the ancient sacred scriptures of knowledge</td>
+</tr>
+<tr>
+  <td><strong>peerless</strong></td>
+  <td>matchless; has no equal</td>
+</tr>
+<tr>
+  <td><strong>sanctified</strong></td>
+  <td>made holy; blessed, purified</td>
+</tr>
+<tr>
+  <td><strong>divinest</strong></td>
+  <td>most divine; very fine</td>
+</tr>
+<tr>
+  <td><strong>auspicious</strong></td>
+  <td>favourable; lucky; holy</td>
+</tr>
+<tr>
+  <td><strong>Brahma-knowledge</strong></td>
+  <td>the supreme knowledge of the self &amp; ultimate truth (Brahman / God)</td>
+</tr>
+<tr>
+  <td><strong>dhamma</strong></td>
+  <td>the Buddha's teaching — compassion, non-violence, and real knowledge</td>
+</tr>
+<tr>
+  <td><strong>hoary</strong></td>
+  <td>white/grey with age; ancient</td>
+</tr>
+<tr>
+  <td><strong>antiquity</strong></td>
+  <td>ancient times; old age of a people</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-with-answers-2">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. &quot;Mighty&quot; is used for the Himavant — what does it express?</strong>
+→ It tells of its <strong>grandeur and strength</strong> — a high, huge mountain with no equal anywhere on earth.</p>
+<p><strong>2. What is the effect of the question marks at the end of the fourth and sixth lines (&quot;Which other river can match her grace?&quot; / &quot;What scriptures else to name with them?&quot;)?</strong>
+→ The questions are <strong>rhetorical</strong>. They are used to <strong>emphasise</strong> that no other river — no other scriptures — can stand comparison. They are not an expression of doubt.</p>
+<p><strong>3. Why does the poet call the Ganga &quot;generous&quot;?</strong>
+→ The poet uses <strong>personification</strong>. As a mother gives freely to all, so the Ganga <strong>gives water and life</strong> to countless people living on her banks, without asking anything in return — that is her generosity.</p>
+<p><strong>4. &quot;The movement of the river is graceful&quot; — what does &quot;grace&quot; suggest here?</strong>
+→ <strong>Grace</strong> here is the elegant, calm and beautiful movement of the slow-flowing river, like the dignified walk of an elegant lady (personification). No other river, says the poet, has such grace.</p>
+<p><strong>5. Fill in the blank: the poet suggests that the Upanishads are (unmatched / abundant) in wisdom and spiritual depth.</strong>
+→ <strong>unmatched</strong> — &quot;What scriptures else to name?&quot; — there are none equal.</p>
+<p><strong>6. &quot;This sunny golden land&quot; — what interpretation?</strong>
+→ India is <strong>broad, bright, prosperous, fertile and beautiful</strong> — gold representing wealth and glory, sunshine of hope and goodness.</p>
+<p><strong>7. &quot;She's peerless, let's praise her!&quot; — what does that repeat do?</strong>
+→ It <strong>repeats the central thought</strong> of the poem, adds an <strong>emotional, musical</strong> touch, and stirs every listener to feel <strong>pride and love</strong> for the motherland — as a refrain of devotion.</p>
+<p><strong>8. What does &quot;many a sage has sanctified this land&quot; tell us about India?</strong>
+→ Sages, through their penance and their teaching, have made the land <strong>holy and pure</strong>. So India is not only ancient — it carries the <strong>blessing and purity of the enlightened</strong>.</p>
+<p><strong>9. How does the poem express the greatness of India's natural and spiritual beauty? (Model answer)</strong>
+→ The poet moves from <strong>outer grandeur to inner knowledge</strong>: the mighty Himalayas and the generous Ganga stand for nature's beauty; the sacred Upanishads, Brahma-knowledge and the Buddha's Dhamma stand for India's spiritual depth; and the gallant warriors, sages and divine music show its valour and culture. Through them he shows that India's greatness is written both in its land and in its spirit — and no country can match that.</p>
+<p><strong>10. Is this an &quot;ode&quot;? Why?</strong>
+→ An ode is a <strong>lyrical poem expressing deep praise for a person, a place, an object or an idea</strong>. This poem is <strong>to India</strong>, to its beauty, its knowledge and its glory, in a language of love and reverence — so it is, indeed, an ode.</p>
+<hr />
+<h2 id="sum-quick-reference-story-amp-poem">✅ QUICK REFERENCE — Story &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Story</strong></td>
+  <td>A twelve-year-old girl teaches her elderly grandmother to read; the grandmother learns the alphabet and touches her granddaughter's feet in respect of a teacher.</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>Praises the Himalayas, the Ganga, the sacred scriptures and the ancient, enduring spirit of the nation — <em>&quot;she's peerless, let's praise her!&quot;</em></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 1 — all facts, definitions and answers verified against the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-about-the-author-general-knowledge-not-in-the-textbook", "t": "👤 2. About the Author (general knowledge — not in the textbook)"}, {"h": "rev-3-characters", "t": "👥 3. Characters"}, {"h": "rev-4-story-summary-part-i", "t": "📖 4. Story Summary — Part I"}, {"h": "rev-5-story-summary-part-ii", "t": "📖 5. Story Summary — Part II"}, {"h": "rev-6-character-sketch-grandmother-krishtakka", "t": "🧑 6. Character Sketch — Grandmother (Krishtakka)"}, {"h": "rev-7-central-themes-amp-message", "t": "🎯 7. Central Themes &amp; Message"}, {"h": "rev-8-difficult-words-amp-meanings", "t": "🔑 8. Difficult Words &amp; Meanings"}, {"h": "rev-9-word-work", "t": "✍️ 9. Word Work"}, {"h": "rev-10-grammar-simple-past-vs-past-perfect", "t": "📚 10. Grammar — Simple Past vs Past Perfect"}, {"h": "rev-11-writing-task-letter-to-the-editor-format-model-answer", "t": "✉️ 11. Writing Task — Letter to the Editor (Format + Model Answer)"}, {"h": "rev-12-exercise-answers", "t": "✅ 12. Exercise Answers"}, {"h": "rev-13-extras-from-the-chapter-good-for-mcqs", "t": "🧩 13. Extras from the Chapter (Good for MCQs)"}, {"h": "rev-1-at-a-glance-2", "t": "🧭 1. At a Glance"}, {"h": "rev-2-about-the-poet-general-knowledge-not-in-the-textbook", "t": "👤 2. About the Poet (general knowledge — not in the textbook)"}, {"h": "rev-3-the-poem", "t": "📜 3. The Poem"}, {"h": "rev-4-summary-line-by-line-meaning", "t": "📖 4. Summary (Line-by-Line Meaning)"}, {"h": "rev-summary-fill-in-the-blanks-from-the-textbook-answers-in-bold", "t": "✅ Summary (Fill-in-the-blanks from the textbook — answers in bold)"}, {"h": "rev-5-theme-tone-amp-mood", "t": "🎯 5. Theme, Tone &amp; Mood"}, {"h": "rev-6-rhyme-scheme-amp-structure", "t": "🔎 6. Rhyme Scheme &amp; Structure"}, {"h": "rev-7-literary-devices-with-examples-very-important", "t": "🛠 7. Literary Devices (with examples) — VERY IMPORTANT"}, {"h": "rev-8-symbolism-table-q-v-answers", "t": "🔄 8. Symbolism Table (Q V — Answers)"}, {"h": "rev-9-vocabulary-suffixes", "t": "✍️ 9. Vocabulary — Suffixes"}, {"h": "rev-10-poem-exercise-answers", "t": "✅ 10. Poem Exercise Answers"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary-exam-ready", "t": "📝 LONG ANSWER (Complete summary — exam-ready)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-character-sketches", "t": "👥 CHARACTER SKETCHES"}, {"h": "sum-important-questions-with-answers", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-stanza-wise-explanation-correct-amp-complete", "t": "📜 STANZA-WISE EXPLANATION (correct &amp; complete)"}, {"h": "sum-poem-s-keywords-amp-meanings", "t": "🔑 POEM'S KEYWORDS &amp; MEANINGS"}, {"h": "sum-important-questions-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-quick-reference-story-amp-poem", "t": "✅ QUICK REFERENCE — Story &amp; Poem"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

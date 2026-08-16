@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 6 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 6 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 6</h1>
+      <p class="subtitle fade-in">Class 9 | This chapter contains **TWO texts**:</p>
+      <div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Text</th>
+  <th>Type</th>
+  <th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><strong>Twin Melodies</strong></td>
+  <td>Play (Drama, 3 acts)</td>
+  <td><strong>Mitra Phukan</strong></td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><strong>A Friend Found in Music</strong></td>
+  <td>Poem</td>
+  <td><strong>Bryanna T. Perkins</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>🧠 <strong>Exam tip:</strong> Read both parts separately — Part <strong>A (the play)</strong> is tested on plot, characters, the theme of tradition vs modernity, dramatic devices (aside, stage directions, non-lexical fillers) and reported speech (exclamatory sentences). Part <strong>B (the poem)</strong> is tested on the metaphors for music, rhyme scheme, mood, and vocabulary (phrasal verbs).</p>
+</blockquote>
+<hr />
+<h1>🟣 PART A — TWIN MELODIES (A PLAY)</h1>
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Author</strong></td>
+  <td>Mitra Phukan</td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>A play in <strong>three acts</strong> (Act I, II, III)</td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>Act I — <strong>Iqbal's room</strong> (rehearsal room); Act II — <strong>Shruti's dining room</strong> (dinner); Act III — <strong>Iqbal's house</strong> (practice)</td>
+</tr>
+<tr>
+  <td><strong>Main character</strong></td>
+  <td><strong>Shruti Sharma</strong> — aspiring violinist</td>
+</tr>
+<tr>
+  <td><strong>Other characters</strong></td>
+  <td><strong>Guru Nabin Sharma</strong> (father, violinist, Principal of Sangeetika Music School) · <strong>Leela Devi</strong> (mother) · <strong>Avinash</strong> (tabla) · <strong>Iqbal</strong> (flute) · <strong>Peter</strong> (keyboard)</td>
+</tr>
+<tr>
+  <td><strong>Key words</strong></td>
+  <td>fusion, desecration, ragas and aalaaps, 'bite the bullet', 'each bay, its own wind', familiariti breeds contempt</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td>Tradition and modernity can blend; love and understanding bridge the generational gap.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-about-the-author-general-knowledge-not-in-the-textbook">👤 2. About the Author <em>(general knowledge — not in the textbook)</em></h2>
+<p><strong>Mitra Phukan</strong> is an Indian writer from Assam. She writes novels and short stories about Indian life and culture. This play, <em>Twin Melodies</em>, appears in the textbook.</p>
+<hr />
+<h2 id="rev-3-characters">👥 3. Characters</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Character</th>
+  <th>Who they are</th>
+  <th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Shruti Sharma</strong></td>
+  <td>A young aspiring <strong>violinist</strong> in a fusion group</td>
+  <td>Hidden from her father that she plays in an <strong>Indo-Western fusion</strong> concert; bites the bullet and tells him; wins his support</td>
+</tr>
+<tr>
+  <td><strong>Guru Nabin Sharma</strong></td>
+  <td>Shruti's father; a <strong>violinist</strong> and <strong>Principal of Sangeetika Music School</strong></td>
+  <td>Believes Classical Hindustani music (ragas and aalaaps) is the only true music; at first refuses, later <strong>supports</strong> her after watching the practice</td>
+</tr>
+<tr>
+  <td><strong>Leela Devi</strong></td>
+  <td>Shruti's mother</td>
+  <td>Teases gently, scolds lovingly, and <strong>opens Nabin's eyes</strong> by reminding him of his own past</td>
+</tr>
+<tr>
+  <td><strong>Avinash</strong></td>
+  <td>Tabla player of the fusion group</td>
+  <td>Encourages Shruti; &quot;the worst that can happen?… he will eventually come round&quot;</td>
+</tr>
+<tr>
+  <td><strong>Iqbal</strong></td>
+  <td>Flutist of the fusion group</td>
+  <td>Reassures her: &quot;All ways are right ways&quot; — a little scolding &quot;for breakfast every day&quot;</td>
+</tr>
+<tr>
+  <td><strong>Peter</strong></td>
+  <td>Keyboard player of the fusion group</td>
+  <td>Cheerful; &quot;That's the spirit!&quot;, &quot;Shruti Sharma for the win!&quot;</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-play-summary-act-by-act">🎬 4. Play Summary — Act by Act</h2>
+<h3 id="rev-act-i-the-secret">ACT I — The secret</h3>
+<ul>
+<li>Scene opens on an <strong>Indo-Western fusion piece in its crescendo</strong>.</li>
+<li><strong>Iqbal's room:</strong> small rack, wooden table <strong>stacked with books</strong>; posters of famous flute players <strong>Pandit Hariprasad Chaurasia</strong> and <strong>Shashank Subramanyam</strong>.</li>
+<li>Instrument of each child: Iqbal — <strong>flute</strong> · Avinash — <strong>tabla</strong> · Peter — <strong>keyboard</strong> · Shruti — <strong>violin</strong>.</li>
+<li>The <strong>Parbatpuri Daily Clarion</strong> writes: &quot;Melody runs in the veins of Miss Shruti Sharma!&quot; — Shruti is <strong>unaffected, lost in thoughts</strong>.</li>
+<li>The friends discover she has <strong>not told her parents</strong> about the concert. Shruti explains:<ul>
+<li>Papa is <strong>strict</strong>; he will call it a <strong>desecration of the violin</strong> to be played to Western tunes.</li>
+<li>He believes <strong>Classical Hindustani music, with its ragas and aalaaps, is the only kind of music an artist of any worth should play</strong>.</li>
+<li>She <strong>cares about his opinions</strong> but wants to try fusion too.</li>
+</ul>
+</li>
+<li>Iqbal: <em>&quot;All ways are right ways&quot;</em> · Avinash: father will <strong>come round</strong> · Shruti decides it is <strong>time to bite the bullet</strong> — she will bring it up at dinner.</li>
+</ul>
+<h3 id="rev-act-ii-the-refusal">ACT II — The refusal</h3>
+<ul>
+<li>At dinner Shruti is <strong>stuck on the last bite, lost in thought</strong>.</li>
+<li>She tells her father about a concert next week. <strong>Nabin: &quot;No is the answer.&quot;</strong> Rule: <strong>one performance in every six months</strong> — &quot;more than that, <strong>familiarity breeds contempt</strong>. Work on your art and everything will follow.&quot;</li>
+<li>He disapproves of drowning &quot;individual style in the hubbub of an orchestra.&quot;</li>
+<li>Shruti admits it is an <strong>Indo-western fusion concert</strong>. <strong>Silence.</strong> Nabin: &quot;I never thought any of my students, let alone my own child, would lose their sense of musicality to such an extent.&quot;</li>
+<li>Shruti pleads — he should attend <strong>one practice</strong> before deciding. Nabin mocks: <em>&quot;Sure, there'll be a practice, for 'phoo' music when making noise starts needing practice.&quot;</em> He leaves.</li>
+<li>Leela scolds Shruti for hiding it. Shruti says all their practice may <strong>go down the drain</strong>, and promises not to hide again. Leela sends her to bed.</li>
+</ul>
+<h3 id="rev-act-iii-the-reconciliation">ACT III — The reconciliation</h3>
+<ul>
+<li>At Iqbal's house. Shruti thinks (aside) she will tell them she can't join after one last practice.</li>
+<li><strong>In the middle of the performance, Shruti's parents enter and stand in a corner.</strong> They become <strong>engrossed</strong>; Nabin <strong>taps his feet, evidently enjoying</strong>; he claps <strong>furiously</strong> with <strong>pride</strong>.</li>
+<li>Nabin praises her: <em>&quot;You did not lose sight of the notes of the raga even once and performed it to excellence.&quot;</em></li>
+<li>Nabin offers them the <strong>music room</strong> — more equipment, regular practice.</li>
+<li>Shruti thanks them; promises to take her art seriously.</li>
+<li><strong>Nabin: &quot;It was Leela who opened my eyes.&quot;</strong> Leela reveals Nabin's past:<ul>
+<li>Nabin's family were <strong>vocalists</strong> of a <strong>highly traditional school</strong>; they <strong>painstakingly nurtured</strong> the musical heritage <strong>through thick and thin</strong>.</li>
+<li>At that time the violin had <strong>not yet been incorporated into classical Indian music</strong>; grandfather saw his choice as <strong>betrayal of family values</strong>.</li>
+<li>But Nabin <strong>worked his fingers to the bone</strong> — &quot;and see where the violin got him.&quot;</li>
+</ul>
+</li>
+<li><strong>Nabin: &quot;I underestimated the power of our own music. I was afraid you would be lost to us. I realise that my fears were baseless. After all each bay, its own wind. I trust you Shruti and I will root for your group at the concert!&quot;</strong></li>
+<li>Shruti <strong>hugs both her parents.</strong> <strong>CURTAIN DOWN.</strong></li>
+</ul>
+<hr />
+<h2 id="rev-5-character-sketch-nabin-sharma-table-of-traits">🧑 5. Character Sketch — Nabin Sharma (table of traits)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Quality</th>
+  <th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Strict / disciplined</strong></td>
+  <td>&quot;No is the answer&quot;; one performance per six months</td>
+</tr>
+<tr>
+  <td><strong>Traditional in music</strong></td>
+  <td>Classical Hindustani music &quot;with its ragas and aalaaps&quot; is the only music &quot;an artist of any worth should play&quot;</td>
+</tr>
+<tr>
+  <td><strong>Authoritative (as a teacher-father)</strong></td>
+  <td>&quot;Since my views on fusion music have been iterated in this house on several occasions…&quot;</td>
+</tr>
+<tr>
+  <td><strong>Loving father underneath</strong></td>
+  <td>secretly attends the practice; claps furiously with pride; &quot;I trust you Shruti&quot;</td>
+</tr>
+<tr>
+  <td><strong>Self-aware / humble</strong></td>
+  <td>&quot;I underestimated the power of our own music… my fears were baseless&quot;</td>
+</tr>
+<tr>
+  <td><strong>Fair / reconciling</strong></td>
+  <td>offers the music room; &quot;each bay, its own wind&quot;; will root for the group</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-6-themes">🎯 6. Themes</h2>
+<ol>
+<li><strong>Tradition vs modernity</strong> — classical vs Indo-Western fusion; resolved through understanding.</li>
+<li><strong>Duty to family vs personal passion</strong> — Shruti respects her father yet pursues her own music.</li>
+<li><strong>Generational gap</strong> — the young see art as experiment; the old see it as purity.</li>
+<li><strong>Empathy / reconciliation</strong> — Nabin recalls his own youth and grants the freedom he once needed.</li>
+<li><strong>Individuality in art</strong> — &quot;each bay, its own wind&quot;: every artist has a unique path and style.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Message:</strong> <em>Every generation has its own wind. Respect tradition, but let love open the door to new music.</em></p>
+</blockquote>
+<hr />
+<h2 id="rev-7-dramatic-devices-very-important-for-exams">🎭 7. Dramatic Devices (VERY IMPORTANT for exams)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Definition</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Aside</strong></td>
+  <td>A theatrical technique where a character directly addresses the audience; the other characters on stage are unaware of this speech.</td>
+  <td><strong>SHRUTI (Aside):</strong> &quot;Oh, how much I enjoy performing this piece…&quot;</td>
+</tr>
+<tr>
+  <td><strong>Stage directions</strong></td>
+  <td>Words in brackets telling the actor the manner of delivering lines (not uttered aloud).</td>
+  <td>Iqbal <strong>(a little loudly)</strong> · Avinash <strong>(very loudly)</strong> · Nabin <strong>(calmly but firmly)</strong> · <strong>(picking up a newspaper)</strong> · <strong>(getting up)</strong></td>
+</tr>
+<tr>
+  <td><strong>Non-lexical fillers</strong></td>
+  <td>Sounds like 'uh'/'um' used to fill pauses while thinking.</td>
+  <td>&quot;<strong>Ahem ahem</strong>…&quot; · &quot;I… <strong>er</strong>… was finding the right words&quot;</td>
+</tr>
+<tr>
+  <td><strong>Ellipsis (…)</strong></td>
+  <td>Marks a short pause or silence for dramatic effect.</td>
+  <td>&quot;Yes, actually I… er… was finding the right words to say something to you… to you papa.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Colon</strong></td>
+  <td>In a script, placed after the speaker's name to introduce the dialogue.</td>
+  <td>Nabin: No is the answer.</td>
+</tr>
+<tr>
+  <td><strong>Repetition for emphasis</strong></td>
+  <td>Repeated words to heighten effect</td>
+  <td>Iqbal / Iqbal (a little loudly) / SHRUTI (very loudly) — escalating calls</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Q: Why no inverted commas in a play? Because dialogue in a play is shown by the <strong>speaker's name + colon</strong>, not by quotation marks. The brackets (stage directions) do the work of a reporting verb (like &quot;he shouted&quot;).</p>
+</blockquote>
+<hr />
+<h2 id="rev-8-grammar-reported-speech-exclamatory-sentences">📖 8. Grammar — Reported Speech (Exclamatory sentences)</h2>
+<p><strong>Rule:</strong> For exclamatory sentences, use <strong>'exclaimed' / 'exclaimed with (feeling)'</strong> instead of 'said'. Remove interjections, the exclamation mark, and quotation marks.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Direct (exclamatory)</th>
+  <th>Reported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>&quot;Wow Shruti! You're a sensation!&quot; suggested Avinash.</td>
+  <td>Avinash <strong>exclaimed with wonder</strong> that Shruti <strong>was</strong> a great sensation.</td>
+</tr>
+<tr>
+  <td>&quot;What an incredible achievement! I can't believe we pulled it off!&quot; said Iqbal.</td>
+  <td>Iqbal <strong>exclaimed that</strong> it was an incredible achievement and that he couldn't believe they <strong>had pulled</strong> it off.</td>
+</tr>
+<tr>
+  <td>&quot;Bravo! Each note was executed perfectly, and the performance was flawless!&quot; said Shruti's mother.</td>
+  <td>Shruti's mother <strong>applauded that</strong> each note had been executed perfectly and the performance had been flawless.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Exercise V:</strong> &quot;Oh, how much I enjoy performing this piece!&quot; and &quot;Wah, how soulful!&quot; are <strong>exclamatory</strong> sentences.</p>
+<hr />
+<h2 id="rev-9-vocabulary-amp-structures">🎵 9. Vocabulary &amp; Structures</h2>
+<h3 id="rev-music-words-exercise-iii-matching">Music words (Exercise III — matching)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>notes</strong></td>
+  <td>a single sound at a certain pitch, usually a symbol on a music sheet</td>
+</tr>
+<tr>
+  <td><strong>crescendo</strong></td>
+  <td>a gradual increase in volume or intensity of sound</td>
+</tr>
+<tr>
+  <td><strong>rhythm</strong></td>
+  <td>the pattern of beats or time intervals in music</td>
+</tr>
+<tr>
+  <td><strong>tempo</strong></td>
+  <td>the speed or pace at which a piece of music is played</td>
+</tr>
+<tr>
+  <td><strong>bass</strong></td>
+  <td>the lowest tone or part in music</td>
+</tr>
+<tr>
+  <td><strong>baritone</strong></td>
+  <td>a male voice between the higher and lower ranges</td>
+</tr>
+<tr>
+  <td><strong>cacophony</strong></td>
+  <td>a mixture of loud unpleasant sounds</td>
+</tr>
+<tr>
+  <td><strong>pitch</strong></td>
+  <td>the perceived frequency of a sound — how high or low it is</td>
+</tr>
+<tr>
+  <td><strong>scale</strong></td>
+  <td>a series of musical notes moving upwards or downwards</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-chapter-idioms-amp-phrases">Chapter idioms &amp; phrases</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Phrase</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>bite the bullet</strong></td>
+  <td>to deal with an unpleasant or difficult situation courageously and determinedly</td>
+</tr>
+<tr>
+  <td><strong>go down the drain</strong></td>
+  <td>to be wasted / lost without profit</td>
+</tr>
+<tr>
+  <td><strong>familiarity breeds contempt</strong></td>
+  <td>too much closeness can cause disrespect/liking to turn to dislike</td>
+</tr>
+<tr>
+  <td><strong>work one's fingers to the bone</strong></td>
+  <td>to work very hard</td>
+</tr>
+<tr>
+  <td><strong>root for (someone)</strong></td>
+  <td>to show support for them</td>
+</tr>
+<tr>
+  <td><strong>each bay, its own wind</strong></td>
+  <td>every person/journey has its own unique path and style</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="rev-phrase-meanings-exercise-iv">Phrase meanings (Exercise IV)</h3>
+<ul>
+<li><strong>drown your individual style</strong> — lose your own style by following trends without thinking.</li>
+<li><strong>sense of musicality</strong> — a deep understanding and appreciation of music.</li>
+<li><strong>go down the drain</strong> — be completely wasted (of effort/practice).</li>
+</ul>
+<hr />
+<h2 id="rev-10-writing-task-play-script-story-start-tips">✍️ 10. Writing Task — Play Script (story start + tips)</h2>
+<p><strong>Story start given:</strong> Anuradha, a teenager, learns <strong>tabla</strong> since primary years and is an extraordinary player. Her father, a <strong>vocalist</strong> and music teacher, is against her learning tabla and wants her to be a vocalist. She has been invited to perform at a prestigious event and decides to participate despite his disapproval; her mother and brother root for her. Anuradha sat wondering.</p>
+<p><strong>Tips for writing the script:</strong></p>
+<ol>
+<li>Write a rough draft first.</li>
+<li>Mention the setting and characters.</li>
+<li>Use colon (:) after the speaker's name.</li>
+<li>Use brackets for the manner of delivery (stage directions).</li>
+<li>Include 'aside' where needed.</li>
+<li>Use non-lexical fillers (Ahem-ahem!, Arrghh!).</li>
+<li>Use ellipsis (…) for pauses/silence.</li>
+</ol>
+<hr />
+<h2 id="rev-11-extras-from-the-chapter-good-for-mcqs">🌍 11. Extras from the Chapter (Good for MCQs)</h2>
+<ul>
+<li><strong>Recycled Orchestra of Cateura, Paraguay</strong> — formed in <strong>2012</strong>; children play instruments made from <strong>scrap materials from landfills</strong>.</li>
+<li><strong>Indigenous instruments</strong> are crafted from natural materials: <strong>bamboo, gourds, animal hides, and shells</strong> — from percussion (drums, rattles) to wind (flutes).</li>
+<li><strong>Raga Chikitsa</strong> — an ancient text on the healing properties of music. <strong>Sangita Sudha</strong> — a seventeenth-century work on the effects of music on emotions.</li>
+<li>Book suggestion: <strong>Rigmarole and Other Plays</strong> by <strong>Sai Paranjpye</strong> — includes 'Rigmarole' (a silly King, a Council of nine Ministers, a bed bug) and 'The Boy Who Wrote a Constitution'.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Listening tasks (answers from the audio, not the text):</strong> yazh description and the two-speaker conversation have transcripts in the teacher's book (page 270).</p>
+</blockquote>
+<hr />
+<h1>🟢 PART B — A FRIEND FOUND IN MUSIC (POEM)</h1>
+<h2 id="rev-1-at-a-glance-2">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Poet</strong></td>
+  <td><strong>Bryanna T. Perkins</strong></td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>Lyrical poem of praise for music</td>
+</tr>
+<tr>
+  <td><strong>Subject</strong></td>
+  <td>Music as ocean, rhythm, therapy, spirit-lifter and friend</td>
+</tr>
+<tr>
+  <td><strong>Key idea</strong></td>
+  <td>Music is a constant, dependable companion in every mood</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Grateful, warm, heartfelt</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td><strong>(ii) thoughtful</strong> — reflective and soothing</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-the-poem">📜 2. The Poem</h2>
+<blockquote>
+<p>Music is the ocean
+That pulls me to the shore.
+Music is the rhythm
+That moves me to the core.
+Music is the therapy
+I need when I feel blue.
+Music lifts my spirits
+To make sure I pull through.
+The times when I'm most cheerful,
+It's clear, music was there.
+Music is the needed friend
+When no one seems to care.</p>
+</blockquote>
+<hr />
+<h2 id="rev-3-meaning-explanation">📖 3. Meaning / Explanation</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Lines</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>ocean / pulls me to the shore</td>
+  <td>music is a vast comforting force that draws the poet to safety and peace</td>
+</tr>
+<tr>
+  <td>rhythm / moves me to the core</td>
+  <td>the pattern of beats deeply affects her feelings, to the depth of her being</td>
+</tr>
+<tr>
+  <td>therapy / when I feel blue</td>
+  <td>music heals her sadness (&quot;feel blue&quot; = sad)</td>
+</tr>
+<tr>
+  <td>lifts my spirits / pull through</td>
+  <td>music raises her mood so she survives difficult times (&quot;pull through&quot;)</td>
+</tr>
+<tr>
+  <td>most cheerful / music was there</td>
+  <td>even in happy times music is present</td>
+</tr>
+<tr>
+  <td>needed friend / when no one seems to care</td>
+  <td>music is her trusted companion in loneliness</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-theme-metaphors-amp-mood">🎯 4. Theme, Metaphors &amp; Mood</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>Music is a friend found in every moment — a source of comfort, healing and joy</td>
+</tr>
+<tr>
+  <td><strong>Central message</strong></td>
+  <td>Music is a dependable companion and therapy in both happy and sad times</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The metaphors for music (and their similes):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Metaphor</th>
+  <th>Meaning</th>
+  <th>Rewritten as a simile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Music is the <strong>ocean</strong></td>
+  <td>vast, attractive, comforting</td>
+  <td>Music is as vast and comforting as an ocean / Music is as pulling as the ocean</td>
+</tr>
+<tr>
+  <td>Music is the <strong>rhythm</strong></td>
+  <td>beats that move the body &amp; feelings</td>
+  <td>Music is as stirring as a rhythm</td>
+</tr>
+<tr>
+  <td>Music is the <strong>therapy</strong></td>
+  <td>healer in sadness</td>
+  <td>Music is as healing as therapy</td>
+</tr>
+<tr>
+  <td>Music is the <strong>needed friend</strong></td>
+  <td>trustworthy companion</td>
+  <td>Music is as dependable as a friend</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Rhyme scheme:</strong> <strong>aabb</strong> per stanza (<em>shore/core</em>, <em>blue/through</em>, <em>there/care</em>) — gives a smooth, musical, song-like flow.</p>
+<p><strong>Why is 'music' repeated?</strong> To build the idea that music means everything — ocean, rhythm, therapy, friend; the repetition creates a <strong>chant-like, rhythmic effect</strong> matching the musical theme and emphasises how all-pervading music is in the poet's life.</p>
+<hr />
+<h2 id="rev-5-critical-reflection-extract-answers">❓ 5. Critical Reflection (Extract answers)</h2>
+<p><strong>Extract:</strong> <em>Music is the therapy / I need when I feel blue. / Music lifts my spirits / To make sure I pull through.</em></p>
+<ul>
+<li><strong>(i)</strong> 'Feel blue' indicates <strong>sadness / feeling low</strong>.</li>
+<li><strong>(ii)</strong> The line showing music makes the poet happy: <strong>&quot;Music lifts my spirits&quot;</strong>.</li>
+<li><strong>(iii)</strong> The last line signifies that music <strong>gives her the strength to overcome difficult times / to survive</strong> — &quot;pull through&quot;.</li>
+<li><strong>(iv)</strong> &quot;Music plays a vital role in the poet's life&quot; — <strong>True</strong>.</li>
+<li><strong>(v)</strong> Central idea: → <strong>A. Music brings comfort during sadness.</strong></li>
+</ul>
+<p><strong>Model answers:</strong></p>
+<ol>
+<li><strong>How is music able to move the poet 'to the core'?</strong> Its rhythm reaches the deepest part of her feelings — it affects her body, mind and emotions intensely, stirring her completely.</li>
+<li><strong>Why compare music to a 'needed friend'?</strong> Because it is always there when she is lonely or sad (&quot;when no one seems to care&quot;) — it comforts and supports her like a true friend.</li>
+<li><strong>Explain the poet's attitude towards music.</strong> Deep love and dependence — music is her ocean of comfort, therapy, spirit-lifter and friend; it is central to her life.</li>
+<li><strong>Universal appeal?</strong> Everyone knows happiness, sadness, loneliness and the need for comfort; the idea of music as a never-failing friend applies to people of all ages and cultures.</li>
+</ol>
+<hr />
+<h2 id="rev-6-vocabulary-phrasal-verbs">🔑 6. Vocabulary — Phrasal Verbs</h2>
+<p><strong>Key phrasal verb:</strong> <strong>pull through</strong> = to succeed in doing something very difficult / to survive. (&quot;To make sure I pull through.&quot;)</p>
+<p><strong>Phrasal verbs with 'move' (Exercise III):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Sentence</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>move out</td>
+  <td>(v) to leave a place where one has been living</td>
+</tr>
+<tr>
+  <td>moved in</td>
+  <td>(ii) to begin living in a new home or place</td>
+</tr>
+<tr>
+  <td>moved on</td>
+  <td>(i) to start doing or discussing something new</td>
+</tr>
+<tr>
+  <td>move over</td>
+  <td>(iv) to go to a new position to make room for others</td>
+</tr>
+<tr>
+  <td>move along</td>
+  <td>(vi) to shift position to make space</td>
+</tr>
+<tr>
+  <td>moved off</td>
+  <td>(iii) to start moving; to leave</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Phrasal verb</strong> = verb + preposition/adverb that together carry a different meaning. Make your own phrasal verbs from <strong>put, get, look, break</strong> (e.g. put off, get over, look after, break down) and write sentences.</p>
+</blockquote>
+<p><strong>Emotion words (Exercise I):</strong></p>
+<ul>
+<li><strong>Positive (happiness):</strong> lifts my spirits, most cheerful.</li>
+<li><strong>Negative (sadness):</strong> feel blue.</li>
+<li><strong>Fill in the blanks:</strong> 1. During the talk the girl concluded with a suggestion/request/advice (listening). 2. Vocabulary: 1. <strong>nostalgia</strong>; 2. <strong>anguish</strong>; 3. <strong>melancholy</strong>; 4. <strong>jubilant</strong>.</li>
+</ul>
+<hr />
+<h2 id="rev-7-writing-task-invitation-letter-informal">✍️ 7. Writing Task — Invitation Letter (informal)</h2>
+<p><strong>Task:</strong> Your school is organising a musical evening on <strong>21 June — World Music Day</strong>. You present a <strong>Sitar recital</strong>. Draft an invitation letter to your <strong>grandparents</strong>.</p>
+<p><strong>Format:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Element</th>
+  <th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Sender's address</td>
+  <td>(your address)</td>
+</tr>
+<tr>
+  <td>Date</td>
+  <td>10 June 2026</td>
+</tr>
+<tr>
+  <td>Salutation</td>
+  <td>Dear Grandma and Grandpa,</td>
+</tr>
+<tr>
+  <td>Body</td>
+  <td>Ask about their well-being · mention the event — date, time, venue — a Sitar recital · request them to attend warmly</td>
+</tr>
+<tr>
+  <td>Complimentary close</td>
+  <td>Yours affectionately,</td>
+</tr>
+<tr>
+  <td>Name</td>
+  <td>(sender's name)</td>
+</tr>
+<tr>
+  <td>Language</td>
+  <td>First person 'I' and second person 'You'/'We'; warm and personalised style</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Model:</strong></p>
+<blockquote>
+<p>24, Rose Villa, Green Park (your address)
+<strong>10 June 2026</strong>
+Dear Grandma and Grandpa,</p>
+<p>How are you both? I hope you are keeping well. Our school is organising a musical evening on <strong>21 June, World Music Day</strong>, at the school auditorium from 5 p.m. to 7 p.m. I am presenting a <strong>sitar recital</strong> at the event. It would make me so happy if you both could come and watch me perform. Please do come — it will mean a lot to me.</p>
+<p>Yours affectionately,
+(Your name)</p>
+</blockquote>
+<hr />
+<h2 id="rev-quick-recap-both-texts">✅ QUICK RECAP (Both Texts)</h2>
+<h3 id="rev-play-twin-melodies">Play — Twin Melodies</h3>
+<ul>
+<li><strong>Mitra Phukan</strong> · play in 3 acts · Shruti (violin) hides her <strong>Indo-Western fusion</strong> concert from father <strong>Nabin</strong> (classical violinist, Principal).</li>
+<li>Act I: rehearsal + secret found out; &quot;time to <strong>bite the bullet</strong>&quot;. Act II: &quot;No is the answer&quot;; fusion = &quot;phoo music&quot;. Act III: parents watch, Nabin is won over; Leela reveals Nabin's own rebel past; Nabin accepts — &quot;<strong>each bay, its own wind</strong>&quot;, offers the music room.</li>
+<li>Devices: <strong>aside, stage directions, non-lexical fillers, ellipsis</strong> · Grammar: reported speech with 'exclaimed'.</li>
+</ul>
+<h3 id="rev-poem-a-friend-found-in-music">Poem — A Friend Found in Music</h3>
+<ul>
+<li><strong>Bryanna T. Perkins</strong> — music as <strong>ocean, rhythm, therapy, spirit-lifter, needed friend</strong>.</li>
+<li>Rhyme scheme <strong>aabb</strong> · metaphors + simile rewrites · 'feel blue' = sad · 'pull through' = survive difficulties · mood: thoughtful.</li>
+</ul>
+<hr />
+<h1>✍️ PRACTICE QUESTIONS (Self-test)</h1>
+<p><strong>Play:</strong></p>
+<ol>
+<li>Why does Nabin say &quot;No is the answer&quot;? Quote his rule.</li>
+<li>What does &quot;each bay, its own wind&quot; mean, and who says it?</li>
+<li>How does Leela open Nabin's eyes?</li>
+<li>What is an 'aside'? Give one example from the play.</li>
+<li>Change &quot;Wah, how soulful!&quot; into reported speech.</li>
+<li>Why did grandfather see Nabin's violin choice as a betrayal?</li>
+</ol>
+<p><strong>Poem:</strong></p>
+<ol>
+<li>List all the metaphors for music in the poem.</li>
+<li>What is the rhyme scheme, and what impact does it have?</li>
+<li>What does 'feel blue' mean? Use it in a sentence.</li>
+<li>Define a phrasal verb with an example from the poem.</li>
+<li>Why does the poet call music a 'needed friend'?</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 6 (PDF) — all facts, quotes, and answers are taken from the chapter.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 6</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Twin Melodies* (Play · Mitra Phukan) · **B)** *A Friend Found in Music* (Poem · Bryanna T. Perkins)</p>
+      <h1>🟣 PART A — TWIN MELODIES (A PLAY)</h1>
+<h2 id="sum-the-play-at-a-glance">🎭 THE PLAY AT A GLANCE</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Author</strong></td>
+  <td>Mitra Phukan</td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>A play (drama) in <strong>three acts</strong> (Act I, Act II, Act III)</td>
+</tr>
+<tr>
+  <td><strong>Main character</strong></td>
+  <td><strong>Shruti Sharma</strong> — a young aspiring violinist</td>
+</tr>
+<tr>
+  <td><strong>Other characters</strong></td>
+  <td><strong>Guru Nabin Sharma</strong> (Shruti's father, a violinist and Principal of Sangeetika Music School) · <strong>Leela Devi</strong> (Shruti's mother) · the fusion group — <strong>Avinash</strong> (tabla), <strong>Iqbal</strong> (flute), <strong>Peter</strong> (keyboard)</td>
+</tr>
+<tr>
+  <td><strong>Conflict</strong></td>
+  <td>Tradition vs modernity in music — Nabin believes Classical Hindustani music is the only true music; Shruti wants to play in an <strong>Indo-Western fusion</strong> concert</td>
+</tr>
+<tr>
+  <td><strong>Resolution</strong></td>
+  <td>Nabin watches a practice, is won over, and <strong>supports</strong> Shruti's fusion group — offering them the music room and rooting for them at the concert</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td>Tradition and modernity can blend (&quot;each bay, its own wind&quot;); parents and children can understand each other through love.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-long-answer-complete-summary-exam-ready">📝 LONG ANSWER (Complete summary — exam-ready)</h2>
+<blockquote>
+<p><em>Use this as a complete answer. Every important point of the chapter is here.</em></p>
+</blockquote>
+<p><strong>Act I — The rehearsal and Shruti's secret.</strong>
+The scene opens to the notes of a beautiful <strong>Indo-Western fusion music piece in its crescendo</strong> (a piece of music that gets louder and louder). <strong>Four children are on stage</strong> in Iqbal's room, which has a small rack, a wooden table stacked with books, and walls bearing posters of famous Indian flute players <strong>Pandit Hariprasad Chaurasia</strong> and <strong>Shashank Subramanyam</strong>. Iqbal plays the <strong>flute</strong>, Avinash the <strong>tabla</strong>, Peter the <strong>keyboard</strong>, and Shruti the <strong>violin</strong>. They wind up their performance, but Shruti <strong>wears a look of distress</strong> on her face. Iqbal reads from the <strong>Parbatpuri Daily Clarion</strong>: <em>&quot;Melody runs in the veins of Miss Shruti Sharma, daughter of the master violinist Nabin Sharma!&quot;</em> Avinash and Peter tease her about her praise, but Shruti remains <strong>lost in her thoughts</strong>. They realise she has still <strong>not told her parents</strong> about the concert. Shruti explains that her father is strict: he will think it a <strong>desecration of the violin to be played to Western tunes</strong>, because Papa firmly believes that <strong>Classical Hindustani music, with its ragas and aalaaps, is the only kind of music that an artist of any worth should play</strong>. She does care about his opinions — she just wants to try fusion too and doesn't know how to tell him in the right way. Iqbal assures her, &quot;All ways are right ways&quot;; Avinash adds that he will eventually come round. Shruti decides it is time to <strong>bite the bullet (deal with a difficult situation courageously)</strong> and promises to bring it up at dinner that night. Peter cheers, &quot;That's the spirit!&quot;</p>
+<p><strong>Act II — The confrontation at dinner.</strong>
+At dinner, Shruti is <strong>stuck on the last bite and lost in thoughts</strong>. Her father jokes about the dosa and her mother, Leela, teases her. Shruti finally gathers courage and tells her father there is a concert next week. <strong>Nabin calmly but firmly says, &quot;No is the answer.&quot;</strong> He repeats his rule — <strong>&quot;one performance in every six months; more than that, familiarity breeds contempt. Work on your art and everything will follow.&quot;</strong> He disapproves of her drowning her individual style &quot;in the hubbub of an orchestra.&quot; When Shruti timidly reveals it is an <strong>Indo-western fusion concert</strong>, there is silence, then Nabin rises: <em>&quot;I never thought any of my students, let alone my own child, would lose their sense of musicality to such an extent.&quot;</em> Shruti pleads with him to attend just one practice before deciding, but Nabin mocks, <em>&quot;Sure, there'll be a practice, for 'phoo' music when making noise starts needing practice,&quot;</em> and leaves. Leela scolds Shruti for getting into this without her father's knowledge. Shruti admits she should have asked him and that all their practice may &quot;go down the drain,&quot; and promises never to hide from her mother again. Leela sends her to bed.</p>
+<p><strong>Act III — The practice that changes everything.</strong>
+At Iqbal's house, the group begins practising. Shruti thinks (aside) how much she enjoys the piece and plans to tell the others she can't join them after one last practice. <strong>In the middle of the performance, Shruti's parents enter the room and stand in a corner.</strong> Slowly they become <strong>engrossed</strong>; Nabin <strong>taps his feet and is evidently enjoying</strong>; when the piece ends, he claps <strong>furiously</strong> with an expression of <strong>pride</strong>. He praises Shruti: <em>&quot;You did not lose sight of the notes of the raga even once and performed it to excellence.&quot;</em> Leela too praises the children. Nabin then offers the children the <strong>music room</strong> — with more equipment, they can practise regularly. Shruti and her parents step aside; the other children practise in <strong>mime</strong>. Shruti thanks her parents and promises to always take her art seriously. <strong>Nabin admits it was Leela who opened his eyes.</strong> Leela reveals the past: Nabin himself <strong>had to go against his family's wishes to play the violin</strong>. His family were all <strong>vocalists</strong> belonging to a highly traditional school; at that time the violin had <strong>not yet been incorporated into classical Indian music</strong>, and his grandfather <strong>saw the choice as a betrayal of family values and tradition</strong>. But Nabin <strong>worked his fingers to the bone (worked very hard)</strong> — &quot;and see where the violin got him.&quot; Nabin confesses: <em>&quot;I underestimated the power of our own music. I was afraid you would be lost to us. I realise that my fears were baseless. After all each bay, its own wind. I trust you Shruti and I will root for your group at the concert!&quot;</em> Shruti <strong>hugs both her parents</strong> — CURTAIN DOWN.</p>
+<hr />
+<h2 id="sum-character-sketches">👥 CHARACTER SKETCHES</h2>
+<h3 id="sum-nabin-sharma-the-father">Nabin Sharma (the father)</h3>
+<p>The Principal of <strong>Sangeetika Music School</strong> and a master violinist. He is <strong>strict and traditional</strong> — he believes Classical Hindustani music &quot;with its ragas and aalaaps is the only kind of music an artist of any worth should play&quot; and follows the rule of <strong>one performance in six months</strong> (&quot;familiarity breeds contempt&quot;). But he is <strong>not unreasonable</strong>: when he actually watches the practice, he is won over. He admits he <strong>underestimated the power of our own music</strong>, that his fears were <strong>baseless</strong>, and that his own past (going against his family to play the violin) should have taught him tolerance. He ends the play <strong>warm, proud and supportive</strong>. His evolution shows that love for a child can triumph over rigid tradition.</p>
+<h3 id="sum-shruti-sharma-the-daughter">Shruti Sharma (the daughter)</h3>
+<p>A <strong>young aspiring violinist</strong> in a fusion group (violin). She loves her father and <strong>cares about his opinions</strong> — which is why she is in a <strong>dilemma</strong>, unable to tell him about the concert. She is honest and brave enough to <strong>bite the bullet</strong> and talk to him, and she is a <strong>talented, dedicated musician</strong> (her father says she did not lose sight of the notes of the raga even once). She promises never to hide from her mother again. Her quiet determination and respect for her parents bring the family together.</p>
+<h3 id="sum-leela-devi-the-mother">Leela Devi (the mother)</h3>
+<p>Shruti's supportive, witty mother. She teases Shruti gently at dinner but understands the situation. It is <strong>Leela who &quot;opened (Nabin's) eyes&quot;</strong> by reminding him of his own past — how he had to go against his family to play the violin. She is the loving bridge between tradition and modernity in the family.</p>
+<h3 id="sum-iqbal-avinash-and-peter-the-fusion-group">Iqbal, Avinash and Peter (the fusion group)</h3>
+<p>Shruti's fellow musicians — Iqbal plays the <strong>flute</strong>, Avinash the <strong>tabla</strong>, Peter the <strong>keyboard</strong>. They are cheerful supporters: Iqbal reassures her (&quot;All ways are right ways&quot;), Avinash jokes that it's time to <strong>bite the bullet</strong> and that her father will &quot;come round,&quot; and Peter urges her to &quot;throw a party.&quot; They bring energy and friendship to the play.</p>
+<hr />
+<h2 id="sum-themes">🎯 THEMES</h2>
+<ol>
+<li><strong>Tradition vs modernity</strong> — Classical Hindustani music (ragas, aalaaps) against Indo-Western fusion; the play shows they can coexist.</li>
+<li><strong>Duty towards family vs personal passion</strong> — Shruti wants to honour her father's views yet pursue her own musical path.</li>
+<li><strong>Generational gap and understanding</strong> — Nabin's fears (&quot;you would be lost to us&quot;) are resolved through open-heartedness, not rebellion.</li>
+<li><strong>Empathy and reconciliation</strong> — Nabin remembers his own past (going against his family for the violin), changes his mind, and supports his daughter.</li>
+<li><strong>The power of art</strong> — music unites the family; &quot;each bay, its own wind&quot; — every artist has a unique path.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Message:</strong> <em>Every generation has its own wind — respect tradition, but allow love and understanding to make room for new music.</em></p>
+</blockquote>
+<hr />
+<h2 id="sum-act-by-act-summary-quick">📜 ACT-BY-ACT SUMMARY (quick)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Act</th>
+  <th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Act I</strong></td>
+  <td>Fusion rehearsal in Iqbal's room; newspaper praise of Shruti; her friends learn she hasn't told her parents about the concert; Shruti promises to <strong>bite the bullet</strong> and bring it up at dinner.</td>
+</tr>
+<tr>
+  <td><strong>Act II</strong></td>
+  <td>At dinner, Nabin firmly refuses; one performance per six months; he calls fusion &quot;phoo music&quot;; Leela scolds; Shruti promises not to hide.</td>
+</tr>
+<tr>
+  <td><strong>Act III</strong></td>
+  <td>Parents secretly watch the practice; Nabin is won over and offers the <strong>music room</strong>; the story of Nabin's own past is revealed; Nabin accepts: &quot;each bay, its own wind&quot; — he will root for the group at the concert; Shruti hugs her parents.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>crescendo</strong></td>
+  <td>a piece of music that gets louder and louder / a gradual increase in volume or intensity of sound</td>
+</tr>
+<tr>
+  <td><strong>desecration</strong></td>
+  <td>disrespect towards something sacred</td>
+</tr>
+<tr>
+  <td><strong>ragas and aalaaps</strong></td>
+  <td>elements of Hindustani classical music</td>
+</tr>
+<tr>
+  <td><strong>to bite the bullet</strong></td>
+  <td>to deal with an unpleasant or difficult situation in a courageous and determined way</td>
+</tr>
+<tr>
+  <td><strong>contempt</strong></td>
+  <td>a strong feeling of dislike and disrespect</td>
+</tr>
+<tr>
+  <td><strong>hubbub</strong></td>
+  <td>a loud noise</td>
+</tr>
+<tr>
+  <td><strong>iterated</strong></td>
+  <td>repeated</td>
+</tr>
+<tr>
+  <td><strong>painstakingly</strong></td>
+  <td>done with great care and effort</td>
+</tr>
+<tr>
+  <td><strong>worked his fingers to the bone</strong></td>
+  <td>work very hard</td>
+</tr>
+<tr>
+  <td><strong>root (for)</strong></td>
+  <td>show support</td>
+</tr>
+<tr>
+  <td><strong>to go down the drain</strong></td>
+  <td>to be wasted / lost without profit</td>
+</tr>
+<tr>
+  <td><strong>familiarity breeds contempt</strong></td>
+  <td>knowing someone too well can make one dislike or disrespect them</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-with-answers">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. Justify the title 'Twin Melodies'. How does the play explore the theme of tradition and modernity?</strong>
+&quot;Twin Melodies&quot; suggests <strong>two kinds of music</strong> — the <strong>classical (traditional) and the fusion (modern)</strong> — that are meant to sound together. The play is about Shruti's violin in a fusion group and her father Nabin's pure classical belief. Through the family's journey — Nabin's refusal, Leela's reminder of Nabin's own past, and Nabin finally accepting the fusion — the play shows that <strong>tradition and modernity are not enemies; they can play like twin melodies side by side</strong>.</p>
+<p><strong>2. What are the different perspectives of Peter, Iqbal, and Avinash regarding confronting authority?</strong></p>
+<ul>
+<li><strong>Iqbal:</strong> gentle and reassuring — &quot;All ways are right ways… he will understand.&quot; He believes honesty and love will win the father over.</li>
+<li><strong>Avinash:</strong> practical and light-hearted — &quot;What's the worst that can happen? He will scold you a little… he will eventually come round.&quot; He thinks the fear of confrontation is greater than the confrontation itself.</li>
+<li><strong>Peter:</strong> encouraging but simple — &quot;That's the spirit!&quot;, &quot;Tell them you come for the practice from 4 to 5.&quot; He treats it casually.
+Together they give Shruti the courage to speak (to bite the bullet).</li>
+</ul>
+<p><strong>3. Analyse the character of Nabin Sharma. How does his attitude evolve throughout the play?</strong>
+He begins as a <strong>strict traditionalist</strong> — &quot;No is the answer&quot;, one performance per six months, fusion is &quot;phoo music&quot;. His attitude evolves when he actually <strong>watches the practice and is enchanted</strong>. With Leela's reminder that he himself had gone against his family to play the violin, he becomes humble — &quot;I underestimated the power of our own music… my fears were baseless.&quot; He ends <strong>open, proud and supportive</strong>, offering the music room and rooting for the group. His growth shows that <strong>understanding can change a mind</strong>.</p>
+<p><strong>4. How does the play use Shruti's internal conflict to explore duty towards family versus personal passion?</strong>
+Shruti loves fusion music but does not want to hurt her father, whose classical values she respects. She fulfils her duty by <strong>telling the truth</strong> (biting the bullet) and showing her art seriously. In the end the conflict is resolved not by choosing one side but by <strong>bringing both together</strong> — she keeps her passion and gains her father's blessings.</p>
+<p><strong>5. Evaluate the effectiveness of the play's conclusion.</strong>
+The conclusion is effective and realistic: Nabin changes not through a lecture but through <strong>watching his daughter's music</strong> and <strong>remembering his own past</strong>. The hug, the offer of the music room, and &quot;I will root for your group&quot; resolve the conflict with warmth. It shows family reconciliation achieved through love and understanding.</p>
+<p><strong>6. Assess how well the role of cultural diversity contributes to the storyline.</strong>
+Diversity — flute, tabla, keyboard and violin playing together (an Indo-Western fusion) — <strong>is the heart of the conflict</strong>. The violin (a Western instrument) meeting Indian classical tradition, and posters of Pandit Hariprasad Chaurasia and Shashank Subramanyam, show music as a blend of cultures. This makes the play's message — that different traditions can harmonise — both musical and universal.</p>
+<p><strong>7. Why is Shruti in a dilemma? State her situation in the extract.</strong>
+In the extract, Shruti is <strong>in a dilemma</strong> (D). She wants to play fusion, but is afraid her father will see it as <strong>desecration of the violin</strong>; she cares about his opinions yet wants to give fusion a try and doesn't know how to tell him &quot;in the right way&quot;.</p>
+<p><strong>8. What does Shruti mean by 'the right way'?</strong>
+She means a way of telling her father that <strong>respects his feelings and opinions</strong> — not hiding or defying him, but explaining her desire honestly so he understands instead of feeling hurt.</p>
+<p><strong>9. Why does the extract reflect a generational gap in understanding art and tradition?</strong>
+Because the father believes classical Hindustani music is the only music &quot;an artist of any worth should play&quot;, while the daughter sees fusion as a worthy expression. The two generations view art through different lenses — for the older, purity of tradition; for the younger, joyful experimentation.</p>
+<p><strong>10. How were Iqbal's words meant as an assurance to Shruti?</strong>
+Iqbal said, &quot;All ways are right ways, Shruti. He is your father, he will understand.&quot; He assured her that <strong>any honest way of telling her father is the right way</strong>, because a father's love will make him understand. This comforted Shruti and gave her courage.</p>
+<p><strong>11. What does &quot;each bay, its own wind&quot; mean?</strong>
+It is a proverb-like phrase meaning <strong>every bay (harbour/place) has its own wind</strong> — every person, age, and artistic journey has its <strong>own unique path and style</strong>. One way does not fit everyone. Nabin says this when he accepts that Shruti's musical path (fusion) is her own wind.</p>
+<p><strong>12. Why is the family's revelation about Nabin's past important?</strong>
+It explains Nabin's fear: he was afraid Shruti &quot;would be lost&quot; to the family just as his own father feared he was lost when he chose the violin. When Nabin remembers that he once defied tradition himself, he realises his fears are baseless and he grants Shruti the same freedom he once needed.</p>
+<p><strong>13. &quot;Shruti: There is need to worry Iqbal!&quot; — why is there &quot;need to worry&quot;?</strong>
+Because she knows her papa better than anyone — he is very strict, believes fusion is a desecration of the violin, and would never understand. She is afraid of losing his good opinion.</p>
+<p><strong>14. In Act II, why does Nabin mock 'phoo' music?</strong>
+He is being sarcastic and dismissive of fusion — he thinks making &quot;noise&quot; cannot be called music and does not deserve &quot;practice&quot;. His mocking tone reveals his contempt for fusion at that point.</p>
+<p><strong>15. What does the extract &quot;I underestimated the power of our own music. I was afraid you would be lost to us… my fears were baseless&quot; reveal?</strong>
+It shows Nabin's <strong>growth and humility</strong>. He feared fusion would take his daughter away from classical music and the family; now he sees she holds the raga faithfully even in fusion. His breakthrough <strong>bridges traditional values and modern expressions (B)</strong> — he understands artistic freedom.</p>
+<hr />
+<h2 id="sum-dramatic-devices-amp-conventions">🎭 DRAMATIC DEVICES &amp; CONVENTIONS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>What it is</th>
+  <th>Example in the play</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Aside</strong></td>
+  <td>A theatrical technique where a character directly addresses the audience; the other characters on stage are unaware of this speech.</td>
+  <td>Shruti (Aside): &quot;Oh, how much I enjoy performing this piece. Perhaps I can practise one last time…&quot;</td>
+</tr>
+<tr>
+  <td><strong>Stage directions (in brackets)</strong></td>
+  <td>Words within brackets convey to the actor the manner of delivering the lines; not uttered aloud.</td>
+  <td>Iqbal <strong>(a little loudly)</strong> Shruti! · Avinash <strong>(very loudly)</strong> SHRUTI! · Nabin <strong>(calmly but firmly)</strong> No is the answer. · <strong>(picking up a newspaper)</strong> · <strong>(getting up)</strong></td>
+</tr>
+<tr>
+  <td><strong>Non-lexical fillers</strong></td>
+  <td>Words/sounds used to fill pauses while a speaker gathers thoughts — like 'uh' or 'um'.</td>
+  <td>&quot;Ahem ahem…&quot; · &quot;I… er… was finding the right words&quot;</td>
+</tr>
+<tr>
+  <td><strong>Ellipsis (…)</strong></td>
+  <td>Marks a short pause or silence for dramatic effect.</td>
+  <td>&quot;Yes, actually I… er… was finding the right words…&quot;</td>
+</tr>
+<tr>
+  <td><strong>Colons (:)</strong></td>
+  <td>In a script, placed after the speaker's name to introduce the words of the speaker.</td>
+  <td>Peter: That was a good rehearsal.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-grammar-in-the-play-reported-speech">✍️ GRAMMAR IN THE PLAY — Reported Speech</h2>
+<p><strong>Rule for exclamatory sentences in reported speech:</strong> use <strong>'exclaimed' or 'exclaimed with (feeling)'</strong> instead of 'said'; remove interjections, exclamation marks, and quotation marks.</p>
+<p><strong>Examples from the chapter:</strong></p>
+<ol>
+<li>&quot;Wow Shruti! You're a sensation!&quot; suggested Avinash. → <strong>Avinash exclaimed with wonder that Shruti was a great sensation.</strong></li>
+<li>&quot;What an incredible achievement! I can't believe we pulled it off!&quot; said Iqbal. → <strong>Iqbal exclaimed that it was an incredible achievement and that he couldn't believe they had pulled it off.</strong></li>
+<li>&quot;Bravo! Each note was executed perfectly, and the performance was flawless!&quot; said Shruti's mother. → <strong>Shruti's mother applauded that each note had been executed perfectly and the performance was flawless.</strong></li>
+</ol>
+<p><strong>Exercise V — identifying sentence types:</strong> &quot;Oh, how much I enjoy performing this piece!&quot; and &quot;Wah, how soulful!&quot; are <strong>exclamatory</strong> sentences.</p>
+<p><strong>Music-related vocabulary (matching):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>rhythm</strong></td>
+  <td>(iii) the pattern of beats or time intervals in music</td>
+</tr>
+<tr>
+  <td><strong>tempo</strong></td>
+  <td>(iv) the speed or pace at which a piece of music is played</td>
+</tr>
+<tr>
+  <td><strong>bass</strong></td>
+  <td>(i) the lowest tone or part in music</td>
+</tr>
+<tr>
+  <td><strong>baritone</strong></td>
+  <td>(v) a male voice that falls between the higher and lower ranges</td>
+</tr>
+<tr>
+  <td><strong>cacophony</strong></td>
+  <td>(ii) a mixture of loud unpleasant sounds</td>
+</tr>
+<tr>
+  <td><strong>pitch</strong></td>
+  <td>(vii) the perceived frequency of a sound, how high or low it is</td>
+</tr>
+<tr>
+  <td><strong>scale</strong></td>
+  <td>(vi) a series of musical notes moving upwards or downwards</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-quick-reference-play-amp-poem">✅ QUICK REFERENCE — Play &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Play</strong></td>
+  <td>A violinist daughter hides her Indo-Western fusion concert from her strict classical-musician father; when he secretly watches a practice and recalls his own rebel past, he accepts — &quot;each bay, its own wind.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>A celebration of music as ocean, rhythm, therapy, spirit-lifter and needed friend that comforts the poet always.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 6 — all facts, definitions and answers verified against the PDF.</em></p>
+<hr />
+<h1>🟢 PART B — A FRIEND FOUND IN MUSIC (POEM)</h1>
+<h2 id="sum-theme">🎭 THEME</h2>
+<p><strong>A Friend Found in Music by Bryanna T. Perkins</strong> is a <strong>lyrical celebration of music as a friend</strong>. To the poet, music is the <strong>ocean</strong> that pulls her to the shore, the <strong>rhythm</strong> that moves her to the core, the <strong>therapy</strong> she needs when she feels blue, the power that <strong>lifts her spirits</strong>, and the <strong>needed friend</strong> when no one seems to care. The poem shows music as a constant, dependable companion — present in both happiness and sadness.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>Music is a friend found at every moment.</strong> Whether the poet is cheerful or sad, music is there — it comforts, heals, lifts, and moves her. The poem personifies music as a loyal friend who never leaves, giving the message that <strong>music is an ever-present source of comfort, healing and joy</strong>.</p>
+<hr />
+<h2 id="sum-the-poem">📜 THE POEM</h2>
+<blockquote>
+<p>Music is the ocean
+That pulls me to the shore.
+Music is the rhythm
+That moves me to the core.
+Music is the therapy
+I need when I feel blue.
+Music lifts my spirits
+To make sure I pull through.
+The times when I'm most cheerful,
+It's clear, music was there.
+Music is the needed friend
+When no one seems to care.</p>
+</blockquote>
+<blockquote>
+<p>— Bryanna T. Perkins</p>
+</blockquote>
+<hr />
+<h2 id="sum-line-by-line-meaning-explanation">📖 LINE-BY-LINE MEANING / EXPLANATION</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Lines</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><em>Music is the ocean / That pulls me to the shore.</em></td>
+  <td>Music is like a vast ocean of comfort that draws the poet towards safety and peace — like being pulled to the shore.</td>
+</tr>
+<tr>
+  <td><em>Music is the rhythm / That moves me to the core.</em></td>
+  <td>Music's rhythm (pattern of beats) deeply stirs her feelings, right to the depths of her being.</td>
+</tr>
+<tr>
+  <td><em>Music is the therapy / I need when I feel blue.</em></td>
+  <td>When she is sad (&quot;feel blue&quot;), music is the medicine/healing (therapy) she needs.</td>
+</tr>
+<tr>
+  <td><em>Music lifts my spirits / To make sure I pull through.</em></td>
+  <td>Music raises her mood and gives her strength to survive difficult times (&quot;pull through&quot; = succeed in doing something very difficult).</td>
+</tr>
+<tr>
+  <td><em>The times when I'm most cheerful, / It's clear, music was there.</em></td>
+  <td>Even in her happiest moments, music is clearly present with her.</td>
+</tr>
+<tr>
+  <td><em>Music is the needed friend / When no one seems to care.</em></td>
+  <td>When she has no one else, music becomes the trusted friend she needs.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-the-poem-s-poetic-devices">🛠 THE POEM'S POETIC DEVICES</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Definition</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td>A direct comparison (X is Y) without 'like'/'as'</td>
+  <td>&quot;Music is the <strong>ocean</strong>&quot; · &quot;Music is the <strong>rhythm</strong>&quot; · &quot;Music is the <strong>therapy</strong>&quot; · &quot;Music is the <strong>needed friend</strong>&quot;</td>
+</tr>
+<tr>
+  <td><strong>Personification</strong></td>
+  <td>Giving human qualities to non-human things</td>
+  <td>Music is called a <strong>&quot;needed friend&quot;</strong> — treated like a person who &quot;seems to care&quot;</td>
+</tr>
+<tr>
+  <td><strong>Simile</strong> (when rewriting the metaphors)</td>
+  <td>A comparison using 'like'/'as'</td>
+  <td>Music is <strong>as pulling as the ocean</strong>; Music is <strong>as healing as therapy</strong></td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td>The pattern of end-rhymes</td>
+  <td>The poem follows the scheme <strong>aabb</strong> in each stanza — e.g. <em>shore / core</em>, <em>blue / through</em>, <em>there / care</em></td>
+</tr>
+<tr>
+  <td><strong>Repetition</strong></td>
+  <td>Repeating words for emphasis and rhythm</td>
+  <td>&quot;Music is…&quot; repeated at the start of several lines — it builds up the idea that music is everything to the poet</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-with-answers-2">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. How is music able to move the poet 'to the core'?</strong>
+The rhythm of music reaches into the deepest part of her being (&quot;the core&quot; — the centre of her feelings). It affects her emotions so strongly that she is stirred inside, body and mind — moved like the gentle pull of the ocean.</p>
+<p><strong>2. Why does the poet compare music to a 'needed friend'?</strong>
+Because music is always available when she feels lonely or unhappy (&quot;when no one seems to care&quot;). It comforts, understands and supports her without judging — everything a true, needed friend does.</p>
+<p><strong>3. Explain the poet's attitude towards music.</strong>
+The poet <strong>loves and relies on music deeply</strong>. She sees it as a <strong>constant companion</strong> — an ocean of comfort, a healing therapy, a spirit-lifter and a friend. Music is central to her emotional life.</p>
+<p><strong>4. Support the opinion that this poem has a universal appeal.</strong>
+Everyone experiences happiness, sadness, loneliness and the need for comfort. The poem's idea of music as a never-failing friend and therapy applies to people of all ages and cultures — so anyone who loves music can relate to it.</p>
+<p><strong>5. Give evidence from the poem to support that the speaker is the poet herself.</strong>
+The poem is written in <strong>first person</strong> — &quot;pulls <strong>me</strong>&quot;, &quot;moves <strong>me</strong>&quot;, &quot;<strong>I</strong> need&quot;, &quot;<strong>my</strong> spirits&quot;, &quot;<strong>I</strong> pull through&quot;, &quot;<strong>I'm</strong> most cheerful&quot;. These personal pronouns and her own feelings show the speaker is the poet herself sharing her own experience.</p>
+<p><strong>6. What does the phrase 'feel blue' indicate?</strong>
+It indicates the emotion of <strong>sadness / feeling low or depressed</strong>.</p>
+<p><strong>7. Which line shows music makes the poet happy?</strong>
+<em>&quot;Music lifts my spirits&quot;</em> — (also &quot;The times when I'm most cheerful, it's clear, music was there&quot;).</p>
+<p><strong>8. Music plays a vital role in the poet's life — True or False?</strong>
+<strong>True.</strong> Music is her therapy, spirit-lifter, and needed friend who is there in all her moods.</p>
+<p><strong>9. Select the central idea of the extract (A):</strong>
+→ <strong>A. Music brings comfort during sadness.</strong></p>
+<p><strong>10. What is the message the poet wishes to convey through the poem?</strong>
+That music is a <strong>dependable friend and healing power</strong> — always there in both happy and sad times, lifting our spirits and helping us pull through difficult moments.</p>
+<p><strong>11. Identify the mood of the poem:</strong>
+→ <strong>(ii) thoughtful</strong> — the mood is reflective and heartfelt (a celebration, not nostalgic/amused/playful).</p>
+<p><strong>12. What is the effect of the rhyme scheme of the poem?</strong>
+The <strong>aabb</strong> rhyme scheme in each stanza gives the poem a <strong>gentle, musical, song-like rhythm</strong>, matching the theme of music — easy, smooth and soothing to read.</p>
+<hr />
+<h2 id="sum-key-vocabulary">🔑 KEY VOCABULARY</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Phrase</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>feel blue</strong></td>
+  <td>to feel sad</td>
+</tr>
+<tr>
+  <td><strong>lifts my spirits</strong></td>
+  <td>makes me happier / raises my mood</td>
+</tr>
+<tr>
+  <td><strong>pull through</strong></td>
+  <td>to succeed in doing something very difficult; to survive hard times</td>
+</tr>
+<tr>
+  <td><strong>moves me to the core</strong></td>
+  <td>deeply affects my feelings, to the depth of my being</td>
+</tr>
+<tr>
+  <td><strong>most cheerful</strong></td>
+  <td>in my happiest mood</td>
+</tr>
+<tr>
+  <td><strong>needed friend</strong></td>
+  <td>a friend one badly requires for support</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phrasal verbs with 'move' (Exercise III — matching):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Sentence</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>move <strong>out</strong> of his parents' house</td>
+  <td>(v) to leave a place where one has been living</td>
+</tr>
+<tr>
+  <td>moved <strong>in</strong> yesterday</td>
+  <td>(ii) to begin living in a new home or place</td>
+</tr>
+<tr>
+  <td>moved <strong>on</strong></td>
+  <td>(i) to start doing or discussing something new</td>
+</tr>
+<tr>
+  <td>move <strong>over</strong> a bit</td>
+  <td>(iv) to go to a new position to make room</td>
+</tr>
+<tr>
+  <td>move <strong>along</strong></td>
+  <td>(vi) to shift position to make space</td>
+</tr>
+<tr>
+  <td>moved <strong>off</strong></td>
+  <td>(iii) to start moving; to leave</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>💡 <strong>A phrasal verb</strong> = a verb + a preposition/adverb that together convey a different meaning (e.g. <em>pull through</em>, <em>moves me</em>).</p>
+</blockquote>
+<hr />
+<h2 id="sum-quick-reference-play-amp-poem-2">✅ QUICK REFERENCE — Play &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Play</strong></td>
+  <td>Shruti hides her fusion concert from classical-musician father Nabin; he watches the practice, recalls his own past, and supports her — &quot;each bay, its own wind.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>Music is ocean, rhythm, therapy, spirit-lifter and needed friend — a companion found in every mood.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 6 — all facts, definitions and answers verified against the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-about-the-author-general-knowledge-not-in-the-textbook", "t": "👤 2. About the Author (general knowledge — not in the textbook)"}, {"h": "rev-3-characters", "t": "👥 3. Characters"}, {"h": "rev-4-play-summary-act-by-act", "t": "🎬 4. Play Summary — Act by Act"}, {"h": "rev-5-character-sketch-nabin-sharma-table-of-traits", "t": "🧑 5. Character Sketch — Nabin Sharma (table of traits)"}, {"h": "rev-6-themes", "t": "🎯 6. Themes"}, {"h": "rev-7-dramatic-devices-very-important-for-exams", "t": "🎭 7. Dramatic Devices (VERY IMPORTANT for exams)"}, {"h": "rev-8-grammar-reported-speech-exclamatory-sentences", "t": "📖 8. Grammar — Reported Speech (Exclamatory sentences)"}, {"h": "rev-9-vocabulary-amp-structures", "t": "🎵 9. Vocabulary &amp; Structures"}, {"h": "rev-10-writing-task-play-script-story-start-tips", "t": "✍️ 10. Writing Task — Play Script (story start + tips)"}, {"h": "rev-11-extras-from-the-chapter-good-for-mcqs", "t": "🌍 11. Extras from the Chapter (Good for MCQs)"}, {"h": "rev-1-at-a-glance-2", "t": "🧭 1. At a Glance"}, {"h": "rev-2-the-poem", "t": "📜 2. The Poem"}, {"h": "rev-3-meaning-explanation", "t": "📖 3. Meaning / Explanation"}, {"h": "rev-4-theme-metaphors-amp-mood", "t": "🎯 4. Theme, Metaphors &amp; Mood"}, {"h": "rev-5-critical-reflection-extract-answers", "t": "❓ 5. Critical Reflection (Extract answers)"}, {"h": "rev-6-vocabulary-phrasal-verbs", "t": "🔑 6. Vocabulary — Phrasal Verbs"}, {"h": "rev-7-writing-task-invitation-letter-informal", "t": "✍️ 7. Writing Task — Invitation Letter (informal)"}, {"h": "rev-quick-recap-both-texts", "t": "✅ QUICK RECAP (Both Texts)"}], sum: [{"h": "sum-the-play-at-a-glance", "t": "🎭 THE PLAY AT A GLANCE"}, {"h": "sum-long-answer-complete-summary-exam-ready", "t": "📝 LONG ANSWER (Complete summary — exam-ready)"}, {"h": "sum-character-sketches", "t": "👥 CHARACTER SKETCHES"}, {"h": "sum-themes", "t": "🎯 THEMES"}, {"h": "sum-act-by-act-summary-quick", "t": "📜 ACT-BY-ACT SUMMARY (quick)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-important-questions-with-answers", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-dramatic-devices-amp-conventions", "t": "🎭 DRAMATIC DEVICES &amp; CONVENTIONS"}, {"h": "sum-grammar-in-the-play-reported-speech", "t": "✍️ GRAMMAR IN THE PLAY — Reported Speech"}, {"h": "sum-quick-reference-play-amp-poem", "t": "✅ QUICK REFERENCE — Play &amp; Poem"}, {"h": "sum-theme", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-the-poem", "t": "📜 THE POEM"}, {"h": "sum-line-by-line-meaning-explanation", "t": "📖 LINE-BY-LINE MEANING / EXPLANATION"}, {"h": "sum-the-poem-s-poetic-devices", "t": "🛠 THE POEM'S POETIC DEVICES"}, {"h": "sum-important-questions-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-key-vocabulary", "t": "🔑 KEY VOCABULARY"}, {"h": "sum-quick-reference-play-amp-poem-2", "t": "✅ QUICK REFERENCE — Play &amp; Poem"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

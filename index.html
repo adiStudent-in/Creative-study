@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyHub &mdash; Class 9 · Revision Index</title>
+<meta name="description" content="Class 9 CBSE revision index — Science, SST, English chapters fielded by subject, ready to revise.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ───── print-style "revision index" tokens ───── */
+:root{
+  --paper:#F4EFE1; --card:#EDE6D1; --card-hi:#E5DCC2;
+  --ink:#2B2416; --ink-soft:#6D6552; --ink-dim:#8A8270;
+  --rule:#CFC3A4; --rule-hi:#B4A984;
+  --red:#C5412B;
+  --amber:#D99B3E; --sky:#4E7696; --sage:#6B855F;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;min-height:100vh}
+::selection{background:var(--ink);color:var(--paper)}
+/* laid–paper tooth */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.05'/%3E%3C/svg%3E")}
+/* soft vignette */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(130% 100% at 50% 0%,transparent 55%,rgba(43,36,22,.06))}
+.wrap{position:relative;z-index:1;padding:0 clamp(1.25rem,5vw,4.5rem)}
+
+/* ─── masthead ─── */
+.mast{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;padding:clamp(1.3rem,3vw,2rem) 0 1.1rem;border-bottom:3px double var(--rule)}
+.brand{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.02em;line-height:1}
+.brand .amp{color:var(--red);font-style:italic;font-weight:600;padding:0 .03em}
+.mast .sub{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;font-variant-numeric:tabular-nums}
+nav.temple{display:flex;gap:1.5rem;flex-wrap:wrap}
+.temple a{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:.4rem 0;position:relative}
+.temple a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--red);transition:width .35s cubic-bezier(.22,1,.36,1)}
+.temple a:hover{color:var(--ink)}
+.temple a:hover::after{width:100%}
+
+/* ─── edition header ─── */
+.edition{position:relative;padding-top:clamp(2rem,6vw,3.6rem)}
+.kicker{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:'';width:2.4rem;height:1px;background:var(--rule)}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.6rem,9vw,5.6rem);line-height:.96;letter-spacing:-.035em;max-width:12ch;margin:.85rem 0 1.2rem}
+h1 em{font-style:italic;font-weight:400;color:var(--red)}
+.lede{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.05rem,1.9vw,1.26rem);color:var(--ink-soft);max-width:44ch;line-height:1.6}
+.lede b{font-weight:600;color:var(--ink)}
+/* rubber stamp — pinned to the headline's top-right corner */
+.stamp{position:absolute;top:-1.4rem;right:0;text-align:center;color:var(--red);transform:rotate(4deg);border:2px solid currentColor;border-radius:3px;padding:.65rem .95rem .55rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;line-height:1.4;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px currentColor;-webkit-mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%);mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%)}
+.stamp .st-big{font-family:'Fraunces',serif;font-size:.92rem;letter-spacing:.04em;font-weight:700;display:block}
+.stamp .st-line{display:block;margin-top:.12rem;border-top:1px solid currentColor;padding-top:.1rem}
+@media(max-width:720px){.stamp{position:static;width:fit-content;margin:1.2rem 0 0;transform:rotate(-2deg)}}
+
+/* ─── section rule ─── */
+.secline{display:flex;align-items:baseline;gap:1.1rem;margin:clamp(2.8rem,6vw,4.4rem) 0 clamp(1.3rem,3vw,2rem)}
+.secline .n{font-family:'Fraunces',serif;font-style:italic;color:var(--red);font-size:1.05rem}
+.secline h2{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-.01em;font-size:clamp(1.25rem,2.6vw,1.8rem)}
+.secline .slug{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;margin-left:auto;text-align:right}
+
+/* ─── hanging file–tab cards ─── */
+.cat{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.1rem,2.6vw,2rem);grid-auto-rows:1fr}
+.tab{--c:#000;position:relative;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule-hi);border-radius:2px;padding:3.4rem 1.45rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;box-shadow:0 1px 0 rgba(43,36,22,.05);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s,border-color .4s}
+.tab::before{content:'';position:absolute;left:-1px;right:-1px;top:-1px;height:2.2rem;background:var(--c);border-radius:2px 2px 0 0;transition:height .3s}
+.tab .tt{position:absolute;top:.44rem;left:50%;transform:translateX(-50%);color:var(--paper);background:var(--c);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.24rem .9rem;border-radius:1px;white-space:nowrap;z-index:3;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+.tab .tidx{position:absolute;top:.52rem;right:.85rem;font-family:'Fraunces',serif;font-style:italic;color:var(--paper);font-size:.74rem;opacity:.92;z-index:3}
+.tab .tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.tab .tag b{color:var(--c);font-weight:700}
+.tab h3{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.14;letter-spacing:-.01em;margin-top:.1rem}
+.tab .meta{font-size:.78rem;color:var(--ink-soft);line-height:1.6}
+.tab .meta b{color:var(--ink);font-weight:600}
+.tab .foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.85rem;border-top:1px dashed var(--rule)}
+.tab .unit{font-size:.62rem;color:var(--ink-dim);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.tab .go{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:1.05rem;color:var(--c)}
+.tab:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 22px 44px -18px var(--shadow,var(--red))}
+.tab:hover::before{height:2.7rem}
+/* subject desks */
+.t-sc{--c:var(--amber)}.t-ss{--c:var(--sky)}.t-en{--c:var(--sage)}
+.t-sc:hover{--shadow:rgba(217,155,62,.42)}
+.t-ss:hover{--shadow:rgba(78,118,150,.45)}
+.t-en:hover{--shadow:rgba(107,133,95,.42)}
+
+/* ─── cabinet (subject browse) ─── */
+.cabinet{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:clamp(1.6rem,4vw,2.4rem)}
+.cab{--c:#000;display:flex;align-items:center;gap:.85rem;flex:1 1 200px;background:transparent;border:1px solid var(--rule);padding:.9rem 1.25rem;text-decoration:none;color:var(--ink);transition:all .3s cubic-bezier(.22,1,.36,1)}
+.cab .sw{width:.72rem;height:.72rem;border-radius:50%;background:var(--c);flex-shrink:0}
+.cab .cn{font-family:'Fraunces',serif;font-weight:600;font-size:1.08rem}
+.cab .cq{font-size:.66rem;color:var(--ink-dim);letter-spacing:.06em;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+.cab .ca{font-family:'Fraunces',serif;font-style:italic;color:var(--ink-dim);font-size:1.15rem;transition:transform .3s,color .3s}
+.cab:hover{border-color:var(--c);background:var(--card);transform:translateY(-2px)}
+.cab:hover .ca{transform:translateX(4px);color:var(--c)}
+.cabsc{--c:var(--amber)}.cabsst{--c:var(--sky)}.cabeng{--c:var(--sage)}
+
+/* ─── footer ─── */
+.footline{margin-top:clamp(3rem,7vw,5rem);border-top:3px double var(--rule);padding:1.3rem 0 2.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.footline .mark{font-family:'Fraunces',serif;font-style:italic;text-transform:none;letter-spacing:.02em;font-size:.9rem;color:var(--ink)}
+.footline a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+.footline a:hover{color:var(--red);border-color:var(--red)}
+
+/* reveal–on–scroll */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.v{opacity:1;transform:none}
+.r1{transition-delay:.04s}.r2{transition-delay:.1s}.r3{transition-delay:.16s}.r4{transition-delay:.22s}
+
+@media(max-width:920px){.cat{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.cat{grid-template-columns:1fr}.temple{gap:1rem}.mast .sub{order:0}.mast nav{order:2}}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+  <header class="mast">
+    <span class="brand">study<span class="amp">&amp;</span>hub</span>
+    <span class="sub">Class 9 · Revision Index — 2025–26</span>
+    <nav class="temple">
+      <a href="science.html">Science</a>
+      <a href="sst.html">SST</a>
+      <a href="english.html">English</a>
+    </nav>
+  </header>
+
+  <section class="edition rv v">
+    <div class="kicker">Actively filed</div>
+    <h1>Class <em>Nine</em>,<br>your notes are here.</h1>
+    <p class="lede">Every chapter stays under <b>its subject</b> — science in amber, sst in sky, english in sage — so the filed tabs below mark exactly <b>what you can revise right now</b>.</p>
+    <div class="stamp" aria-hidden="true">
+      <span class="st-big">Revision · live</span>
+      <span class="st-line">2025–26 · 3 of 3 open</span>
+    </div>
+  </section>
+
+  <div class="secline rv r1">
+    <span class="n">№ 1</span>
+    <h2>Current; filed under each subject</h2>
+    <span class="slug">open chapters · tap to revise</span>
+  </div>
+
+  <div class="cat">
+    <a class="tab t-sc rv r2" href="Science/Ch%20-%202/Notes.html">
+      <span class="tt">&#128300; Science</span><span class="tidx">№ 2</span>
+      <span class="tag">Biology · <b>Revise</b></span>
+      <h3>The fundamental unit of life — Cell</h3>
+      <p class="meta">Protoplasm, the nucleus, the living build. <b>13 key terms</b> to stamp in before exams.</p>
+      <div class="foot"><span class="unit">FILE 0-SCI-2</span><span class="go">open →</span></div>
+    </a>
+
+    <a class="tab t-sc rv r2" href="Science/Ch%20-%204/Notes.html">
+      <span class="tt">&#128640; Science</span><span class="tidx">№ 4</span>
+      <span class="tag">Physics · <b>Revise</b></span>
+      <h3>Describing motion around us</h3>
+      <p class="meta">Position, velocity, acceleration. <b>7 sections</b>, 5 drawn diagrams.</p>
+      <div class="foot"><span class="unit">FILE 0-SC1-4</span><span class="go">open →</span></div>
+    </a>
+
+    <a class="tab t-ss rv r3" href="sst.html">
+      <span class="tt">&#127757; SST</span><span class="tidx">№ 2</span>
+      <span class="tag">Geography · <b>Revise</b></span>
+      <h3>Shaping of the Earth&rsquo;s surface</h3>
+      <p class="meta">Continental drift, the tug of the slow. <b>Contemporary India</b> counter.</p>
+      <div class="foot"><span class="unit">FILE 0-SST-2</span><span class="go">open →</span></div>
+    </a>
+  </div>
+
+  <div class="secline rv r1">
+    <span class="n">№ 2</span>
+    <h2>Find the desk you need</h2>
+    <span class="slug">browse by subject</span>
+  </div>
+  <div class="cabinet">
+    <a class="cab cabsc rv r1" href="science.html"><span class="sw"></span><span class="cn">Science</span><span class="cq">02 / 02</span><span class="ca">&rarr;</span></a>
+    <a class="cab cabsst rv r2" href="sst.html"><span class="sw"></span><span class="cn">SST</span><span class="cq">01 / 01</span><span class="ca">&rarr;</span></a>
+    <a class="cab cabeng rv r3" href="english.html"><span class="sw"></span><span class="cn">English</span><span class="cq">00 / 00</span><span class="ca">&rarr;</span></a>
+  </div>
+
+  <footer class="footline">
+    <span class="mark">study&hub · revision index</span>
+    <span>CBSE · 2025–26 · <a href="#top">back to top</a></span>
+  </footer>
+</div>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>

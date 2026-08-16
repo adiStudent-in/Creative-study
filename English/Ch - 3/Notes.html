@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 3 ·</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 3 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 3 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 3 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Winds of Change* (Informative prose on pankhas/fans) · **B)** *Canvas of Soil* (Poem · Maya Anthony)</p>
+      <h1>🟣 PART A — WINDS OF CHANGE</h1>
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>Informative / descriptive prose</td>
+</tr>
+<tr>
+  <td><strong>Subject</strong></td>
+  <td>The <strong>pankha (hand fan)</strong> of India — its origin, uses, regional varieties, and changing role</td>
+</tr>
+<tr>
+  <td><strong>Word origin</strong></td>
+  <td><strong>pankha</strong> comes from <strong>pankh</strong> = feather of a bird. <strong>Pankhi</strong> = a small plumed fan used in ancient India</td>
+</tr>
+<tr>
+  <td><strong>Central idea</strong></td>
+  <td>The pankha is not just a tool — it carries the <strong>culture, tradition and artistry</strong> of each region, and its story is one of change (&quot;Winds of Change&quot;)</td>
+</tr>
+<tr>
+  <td><strong>Message</strong></td>
+  <td>Celebrate and preserve this traditional craft; workshops and exhibitions can keep it alive</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-summary-long-version">📖 2. Summary (Long version)</h2>
+<h3 id="rev-origin-and-ancient-use">Origin and ancient use</h3>
+<ul>
+<li>The word <strong>pankha (punkha)</strong> originates from <strong>'pankh'</strong>, meaning <strong>feather of a bird</strong>.</li>
+<li><strong>Pankha</strong> is used for all fans; <strong>pankhi</strong> denotes a small <strong>plumed fan</strong> used in ancient India.</li>
+<li>Evidence of the <strong>pankhi</strong> can be found in <strong>Buddhist wall paintings at Ajanta</strong>, dating to the <strong>2nd century CE</strong>. Other representations appear in <strong>embroidery, sculptures and carvings</strong>.</li>
+<li>In ancient times pankhas were used in <strong>temples to fan deities</strong> and in <strong>royal courts to fan kings</strong>.</li>
+<li>Sizes varied from a tiny <strong>two-inch</strong> fan to large ones needing a person's <strong>full arm strength</strong>.</li>
+</ul>
+<h3 id="rev-trade-and-regional-varieties">Trade and regional varieties</h3>
+<ul>
+<li>Over time, pankhas became <strong>significant cultural goods</strong> distributed through <strong>trade routes</strong>. They were considered <strong>exotic and stylish</strong>.</li>
+<li>Although there was <strong>commonality in use</strong> across India, each village and town developed <strong>its own variety</strong> with distinct materials or intricate designs.</li>
+</ul>
+<p><strong>Regional pankhas:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Region</th>
+  <th>Type of fan</th>
+  <th>Material / special feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Rajasthan</strong></td>
+  <td>Appliqué hand fan</td>
+  <td>Pieces of fabric in different shapes sewn onto another cloth with ornamental needlework</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Zardozi hand fan</td>
+  <td>Glittering, ornate, encrusted <strong>gold threadwork</strong></td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Temple hand fans</td>
+  <td>Made by <strong>engraving brass</strong>, long handle</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Painted hand fan</td>
+  <td>Cardboard fan with images; usually <strong>offered to gods</strong></td>
+</tr>
+<tr>
+  <td><strong>Gujarat</strong></td>
+  <td>Mirror-work hand fans</td>
+  <td>Elegant pure <strong>cotton</strong> fans embellished with mirror work</td>
+</tr>
+<tr>
+  <td>Gujarat</td>
+  <td>Beads hand fan</td>
+  <td>Covered with colourful beads, <strong>silver handle</strong> (Gujarat = centre for bead craft in India)</td>
+</tr>
+<tr>
+  <td>Gujarat (Kutch)</td>
+  <td>Hand-stitched <strong>leather</strong> fans</td>
+  <td>Decorated with thread and wool at the seams</td>
+</tr>
+<tr>
+  <td>Gujarat</td>
+  <td>Embroidered hand fans</td>
+  <td>Traditional mirror work and <strong>cross-stitch</strong> embroidery</td>
+</tr>
+<tr>
+  <td><strong>West Bengal</strong></td>
+  <td>Sola hand fans</td>
+  <td>Made from the milky-white spongy centre of <strong>sola</strong> (a water grass)</td>
+</tr>
+<tr>
+  <td>West Bengal</td>
+  <td><strong>Tal Patar Pankha</strong></td>
+  <td>Palm leaf fans, easy to carry, kept as an article of possession</td>
+</tr>
+<tr>
+  <td><strong>Uttar Pradesh</strong></td>
+  <td><strong>Phadh</strong> hand fans</td>
+  <td>Adorned with pure gold, silver <strong>zari</strong>, silk and satin frills</td>
+</tr>
+<tr>
+  <td><strong>Odisha</strong></td>
+  <td>Large palm leaf fans</td>
+  <td>Recognised for antiquity and rarity</td>
+</tr>
+<tr>
+  <td><strong>Bihar</strong></td>
+  <td>Bamboo hand fans</td>
+  <td>Colourful and sturdy</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Tribes</strong> also made their own versions: <strong>grass and metal</strong> embedded using <strong>bamboo sticks</strong>; <strong>cane and palm leaves</strong> used, with <strong>silk and brass</strong> reserved for antique pieces; <strong>geometrical patterns</strong>, and <strong>white ink + red background</strong> combinations.</li>
+</ul>
+<h3 id="rev-the-present-and-the-future">The present and the future</h3>
+<ul>
+<li>In modern times pankhas are <strong>restricted to decorative purposes</strong> and have become <strong>traditional craft items</strong>.</li>
+<li><strong>Risk:</strong> with technology and innovative creations, the beautiful culture of pankhas <strong>runs the risk of slowly losing its presence</strong> among Indians.</li>
+<li><strong>Change:</strong> once made for <strong>personal use</strong>, this handicraft has transformed into a <strong>commercial business</strong>, now providing <strong>some livelihood</strong> to India's artisans.</li>
+<li><strong>Preservation:</strong> the first step is to <strong>celebrate pankhas</strong> and appreciate the <strong>culture, stories and artistry</strong> they carry. This lets contemporary pankha makers <strong>demonstrate their craft, regain popularity</strong>, and get a <strong>commercial platform</strong> for a <strong>sustainable livelihood</strong>. Initiatives like <strong>pankha-making workshops</strong>, within and outside handicraft exhibitions, spread awareness about the beauty and importance of the craft.</li>
+</ul>
+<hr />
+<h2 id="rev-3-difficult-words-amp-meanings">🔑 3. Difficult Words &amp; Meanings</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>pankh</strong></td>
+  <td>feather of a bird (origin of pankha)</td>
+</tr>
+<tr>
+  <td><strong>pankhi</strong></td>
+  <td>a small plumed fan used in ancient India</td>
+</tr>
+<tr>
+  <td><strong>indigenous</strong></td>
+  <td>local; from where it originated</td>
+</tr>
+<tr>
+  <td><strong>innovative</strong></td>
+  <td>new and original in approach</td>
+</tr>
+<tr>
+  <td><strong>industrious</strong></td>
+  <td>hardworking</td>
+</tr>
+<tr>
+  <td><strong>intricate</strong></td>
+  <td>elaborate; detailed</td>
+</tr>
+<tr>
+  <td><strong>invoked</strong></td>
+  <td>brought out (here: called up a sense of)</td>
+</tr>
+<tr>
+  <td><strong>initiatives</strong></td>
+  <td>actions to improve a situation</td>
+</tr>
+<tr>
+  <td><strong>encrusted</strong></td>
+  <td>covered or decorated</td>
+</tr>
+<tr>
+  <td><strong>sola</strong></td>
+  <td>a type of water grass</td>
+</tr>
+<tr>
+  <td><strong>perpetually</strong></td>
+  <td>constantly</td>
+</tr>
+<tr>
+  <td><strong>antiquity</strong></td>
+  <td>the distant past; ancient times</td>
+</tr>
+<tr>
+  <td><strong>advent</strong></td>
+  <td>arrival</td>
+</tr>
+<tr>
+  <td><strong>exotic</strong></td>
+  <td>unusual and interesting; foreign-looking</td>
+</tr>
+<tr>
+  <td><strong>appliqué</strong></td>
+  <td>fabric pieces sewn onto another cloth</td>
+</tr>
+<tr>
+  <td><strong>zardozi</strong></td>
+  <td>ornate gold/silver threadwork</td>
+</tr>
+<tr>
+  <td><strong>zari</strong></td>
+  <td>gold/silver thread</td>
+</tr>
+<tr>
+  <td><strong>sustainable</strong></td>
+  <td>able to continue over time</td>
+</tr>
+<tr>
+  <td><strong>artefact</strong></td>
+  <td>a handmade object of cultural value</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-word-matching-reflect-amp-respond-exercise-answers">✅ 4. Word Matching (Reflect &amp; Respond exercise) — Answers</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>indigenous</strong></td>
+  <td>(iv) local — from where it originated</td>
+</tr>
+<tr>
+  <td><strong>innovative</strong></td>
+  <td>(v) new and original in approach</td>
+</tr>
+<tr>
+  <td><strong>industrious</strong></td>
+  <td>(i) hardworking</td>
+</tr>
+<tr>
+  <td><strong>intricate</strong></td>
+  <td>(vi) elaborate / detailed</td>
+</tr>
+<tr>
+  <td><strong>invoked</strong></td>
+  <td>(iii) brought out</td>
+</tr>
+<tr>
+  <td><strong>initiatives</strong></td>
+  <td>(ii) actions to improve a situation</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-pankha-table-check-your-understanding-answers">🌀 5. Pankha Table (Check Your Understanding) — Answers</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>State</th>
+  <th>Type of fan</th>
+  <th>Material used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Rajasthan</td>
+  <td>Appliqué hand fan</td>
+  <td>Pieces of fabric in different shapes/patterns, ornamental needlework</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Zardozi hand fan</td>
+  <td>Gold thread</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Temple hand fans</td>
+  <td>Brass (engraved, long handle)</td>
+</tr>
+<tr>
+  <td>Gujarat</td>
+  <td>Mirror-work hand fans</td>
+  <td>Pure cotton, mirror work</td>
+</tr>
+<tr>
+  <td>Gujarat</td>
+  <td>Beads hand fan</td>
+  <td>Beads (with silver handle)</td>
+</tr>
+<tr>
+  <td>Gujarat (Kutch)</td>
+  <td>Leather fans</td>
+  <td>Leather, decorated with thread and wool</td>
+</tr>
+<tr>
+  <td>West Bengal</td>
+  <td>Sola hand fans</td>
+  <td>Sola (milky-white spongy centre)</td>
+</tr>
+<tr>
+  <td>Uttar Pradesh</td>
+  <td>Phadh hand fans</td>
+  <td>Pure gold, silver zari, silk, satin frills</td>
+</tr>
+<tr>
+  <td>Bihar</td>
+  <td>Bamboo hand fans</td>
+  <td>Bamboo</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-6-critical-reflection-answers">📚 6. Critical Reflection — Answers</h2>
+<h3 id="rev-extract-1-pankhas-as-cultural-goods">Extract 1 (pankhas as cultural goods)</h3>
+<p><strong>(i)</strong> &quot;Pankhas were one of the most popular items of commerce&quot; — <strong>False.</strong> The text says they became <em>&quot;significant cultural goods&quot;</em> distributed through trade routes; it does not say they were among the most popular items of commerce.
+<strong>(ii)</strong> The word <strong>'traditional'</strong> is used because different villages and towns developed their own varieties of pankhas with distinct materials and designs — they are rooted in each region's tradition, not made uniformly.
+<strong>(iii)</strong> &quot;They were considered exotic and stylish&quot; is an <strong>opinion and not a fact</strong> because it expresses how people <em>felt</em> about pankhas (a judgment of taste), which cannot be measured or proved like a fact.
+<strong>(iv)</strong> One reason for <strong>commonality in use</strong>: pankhas served the same basic practical purpose everywhere — they were used in temples, royal courts and daily life across India — so their <em>use</em> was similar even while their designs differed.
+<strong>(v)</strong> Correct assertion for the reason (pankhas made of indigenous materials, unique to region, elaborate designs): <strong>A. Each kind of pankha could be distinguished from the other.</strong></p>
+<h3 id="rev-extract-2-technology-and-change">Extract 2 (technology and change)</h3>
+<p><strong>(i)</strong> Negative impact of technological advancement: the beautiful culture of pankhas <strong>runs the risk of slowly losing its presence</strong> among Indians (traditional fans are pushed aside by modern electric fans and innovation).
+<strong>(ii)</strong> Pankhas are called a <strong>'culture'</strong> (not just an object) because they carry each region's traditions, stories, materials and artistry — a living heritage.
+<strong>(iii)</strong> Line showing the changed role: <em>&quot;Once made for personal use, over time this handicraft has transformed into a commercial business and now provides some form of livelihood to India's artisans.&quot;</em>
+<strong>(iv)</strong> One benefit of increased demand: it <strong>provides a sustainable livelihood</strong> to artisans / gives them a commercial platform to sell their craft.
+<strong>(v)</strong> Factor behind commercialisation: <strong>B. economic demand.</strong></p>
+<hr />
+<h2 id="rev-7-answer-the-following-model-answers">✍️ 7. Answer the Following — Model answers</h2>
+<ol>
+<li><p><strong>How does the title &quot;Winds of Change&quot; capture the essence of the chapter?</strong> The pankha (fan) is an object connected to <strong>air and wind</strong>, and the chapter shows how the craft has <strong>changed over time</strong> — from ancient temple and royal use, to cultural trade goods, to a modern commercial business facing the risk of decline. The title joins the fan (wind) with the idea of change.</p>
+</li>
+<li><p><strong>Two examples that the structure/design of pankhas reflects the cultural identity of the region:</strong> (i) <strong>Rajasthan's zardozi hand fans</strong> — their gold threadwork mirrors Rajasthan's rich tradition of ornate textiles and embroidery; (ii) <strong>Gujarat's beads hand fan</strong> with its silver handle — Gujarat is the centre for bead craft in India, and the fan reflects that identity. <em>(Also valid: Bengal's sola fans using local sola; tribal fans with white-ink-on-red geometrical patterns.)</em></p>
+</li>
+<li><p><strong>Balance between preserving traditional craftsmanship and incorporating innovative designs:</strong> Preserving the old techniques keeps the craft and its heritage alive; incorporating innovative designs keeps the pankha <strong>relevant and attractive</strong> to modern buyers. Together they prevent the craft from dying while giving it a sustainable future.</p>
+</li>
+<li><p><strong>How pankha-making workshops help preserve the craft:</strong> They <strong>spread awareness</strong> about the beauty and importance of pankhas in Indian culture, let contemporary makers <strong>demonstrate their craft</strong> before people, help the craft <strong>regain popularity</strong>, and give artisans a <strong>commercial platform</strong> for a sustainable livelihood.</p>
+</li>
+<li><p><strong>Benefits of celebrating pankhas:</strong> Celebrating the craft means appreciating the culture, stories and artistry behind it. This helps contemporary pankha makers <strong>demonstrate their skill and regain popularity</strong>, and provides them a <strong>commercial platform</strong> to create a <strong>sustainable livelihood</strong> — so the craft stays alive.</p>
+</li>
+<li><p><strong>How the restriction of pankha use to decorative purposes reflects change:</strong> Once an everyday object of personal use, the pankha is now used mainly as <strong>decoration and as a traditional craft item</strong>. This reflects how modern life has replaced it with electric fans, and how its <strong>cultural role</strong> has shifted from utility to <strong>heritage and beauty</strong> — a symbol of tradition rather than a daily necessity.</p>
+</li>
+</ol>
+<hr />
+<h2 id="rev-8-vocabulary-amp-structures-answers">📖 8. Vocabulary &amp; Structures — Answers</h2>
+<h3 id="rev-a-word-pairs-fixed-expressions">A. Word pairs (fixed expressions)</h3>
+<p>Classify the given pairs:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Category</th>
+  <th>Pairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Appearance</strong></td>
+  <td>exotic and stylish · ornate and encrusted</td>
+</tr>
+<tr>
+  <td><strong>Place</strong></td>
+  <td>villages and towns · within and outside</td>
+</tr>
+<tr>
+  <td><strong>Material</strong></td>
+  <td>thread and wool · silk and brass</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Fixed expressions (with 'and'):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Expression</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>high and dry</strong></td>
+  <td>(i) in a difficult situation, without help or money</td>
+</tr>
+<tr>
+  <td><strong>wear and tear</strong></td>
+  <td>(ii) the damage to an object due to normal use</td>
+</tr>
+<tr>
+  <td><strong>facts and figures</strong></td>
+  <td>(iii) accurate and detailed information</td>
+</tr>
+<tr>
+  <td><strong>thick and thin</strong> (through)</td>
+  <td>(iv) even when there are problems or difficulties</td>
+</tr>
+<tr>
+  <td><strong>all and sundry</strong></td>
+  <td>(v) everyone, not just a few special people</td>
+</tr>
+<tr>
+  <td><strong>time and again</strong></td>
+  <td>(vi) often; on many or all occasions</td>
+</tr>
+<tr>
+  <td><strong>cut and run</strong></td>
+  <td>(vii) to make a quick or sudden escape</td>
+</tr>
+<tr>
+  <td><strong>hard and fast</strong></td>
+  <td>a strict, unchangeable rule</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Rule: the shorter word usually comes first — e.g., bread and butter, not butter and bread.)</em></p>
+<h3 id="rev-b-collocations-choose-the-correct-word">B. Collocations (choose the correct word)</h3>
+<ol>
+<li>The students have to <strong>take</strong> the English exam tomorrow.</li>
+<li>The interviewer asked the candidate to <strong>take</strong> a seat.</li>
+<li>My scooter <strong>ran into</strong> a car.</li>
+<li>I must <strong>take</strong> responsibility for my success.</li>
+<li>I would like to <strong>improve</strong> my grammar.</li>
+</ol>
+<h3 id="rev-c-present-perfect-tense">C. Present Perfect Tense</h3>
+<p><strong>Rule:</strong> the verbs refer to the past but have relevance to the present — <strong>present perfect (has/have + past participle)</strong>. Recently completed actions also take this form.</p>
+<p><strong>Puppets paragraph (fill in the blanks):</strong></p>
+<ul>
+<li>Puppets have long fascinated audiences worldwide. Puppeteers <strong>(i) have created</strong> intricate characters and captivating stories with their skillful artistry. They <strong>(ii) have mastered</strong> the delicate movements that bring these lifeless figures to life. Over the years, puppetry <strong>(iii) has evolved</strong>, using modern technology while preserving traditional techniques. Many puppeteers <strong>(iv) have passed</strong> down their craft through generations. They <strong>(v) have performed</strong> in theatres, on television, and at festivals.</li>
+</ul>
+<hr />
+<h2 id="rev-9-extras-for-mcqs">🎓 9. Extras for MCQs</h2>
+<ul>
+<li>Word <strong>pankha</strong> comes from <strong>pankh</strong> = feather of a bird.</li>
+<li><strong>Pankhi</strong> = small plumed fan; evidence in <strong>Ajanta Buddhist wall paintings (2nd century CE)</strong>.</li>
+<li>Ancient uses: <strong>temples</strong> (to fan deities), <strong>royal courts</strong> (to fan kings).</li>
+<li><strong>Gujarat</strong> is the centre for <strong>bead craft</strong> in India.</li>
+<li><strong>Tal Patar Pankha</strong> = Bengal's palm leaf fan.</li>
+<li>Pankhas are now used mainly for <strong>decorative purposes</strong>; the craft is becoming a <strong>commercial business</strong> providing livelihood.</li>
+</ul>
+<hr />
+<h1>🟢 PART B — CANVAS OF SOIL (POEM)</h1>
+<h2 id="rev-at-a-glance">🏁 At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Item</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Poet</strong></td>
+  <td><strong>Maya Anthony</strong></td>
+</tr>
+<tr>
+  <td><strong>Type</strong></td>
+  <td>Lyrical poem / allegory</td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td><strong>AABB</strong> (couplets: deep–seep, true–hue, sight–light, blue–new, wide–coincide, till–still)</td>
+</tr>
+<tr>
+  <td><strong>Key metaphor</strong></td>
+  <td>A <strong>garden is a painting</strong> — the soil is the canvas/palette, seeds are brushstrokes</td>
+</tr>
+<tr>
+  <td><strong>Central idea</strong></td>
+  <td>Gardening is a form of art; in the hands of gardeners, gardens become paintings</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-the-poem">📜 The Poem</h2>
+<blockquote>
+<p>Palette of earth, rich and deep,
+Where dreams of gardeners seep.
+Brushstrokes of seeds, planted true,
+Awaiting spring's vibrant hue.</p>
+<p>Blossoms bloom, a painted sight,
+Dancing in the morning light.
+Shades of green, red, and blue,
+Nature's artwork, ever new.</p>
+<p>Each plot, a canvas wide,
+Where art and life coincide.
+In the hands of those who till,
+Gardens become paintings still.</p>
+</blockquote>
+<hr />
+<h2 id="rev-3-stanza-wise-summary">📖 3. Stanza-wise Summary</h2>
+<p><strong>Stanza 1 (Earth = palette):</strong> The earth is like a painter's <strong>palette</strong> — rich and deep. The dreams of gardeners sink (&quot;seep&quot;) into it. Seeds are like <strong>brushstrokes</strong>, planted truly/straight, waiting for <strong>spring's vibrant hue</strong> (bright colour).</p>
+<p><strong>Stanza 2 (Garden = painting):</strong> Blossoms bloom into a <strong>painted sight</strong>, dancing in the morning light. Shades of <strong>green, red and blue</strong> make it <strong>nature's artwork</strong>, ever fresh and new.</p>
+<p><strong>Stanza 3 (Plot = canvas):</strong> Each garden plot is like a <strong>wide canvas</strong> where <strong>art and life meet</strong> (&quot;coincide&quot;). In the hands of those who till the soil (gardeners), <strong>gardens become paintings</strong> — still, permanent works of art.</p>
+<hr />
+<h2 id="rev-4-poetic-devices-with-examples">🛠 4. Poetic Devices (with examples)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Example from the poem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Extended metaphor</strong></td>
+  <td>Garden = painting; soil = palette; seeds = brushstrokes; plot = canvas</td>
+</tr>
+<tr>
+  <td><strong>Imagery</strong> (visual)</td>
+  <td>&quot;colours, brushstrokes, blossoms, shades of green&quot; — vivid pictures</td>
+</tr>
+<tr>
+  <td><strong>Personification</strong></td>
+  <td>Blossoms <strong>&quot;dancing&quot;</strong> in the morning light</td>
+</tr>
+<tr>
+  <td><strong>Alliteration</strong></td>
+  <td><strong>&quot;Blossoms bloom&quot;</strong> (b), <strong>&quot;Gardens become&quot;</strong> (g)</td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td>AABB (couplets)</td>
+</tr>
+<tr>
+  <td><strong>Allegory</strong></td>
+  <td>The garden can symbolise <strong>life's journey and growth</strong> (the cyclical nature of existence) and <strong>harmony &amp; diversity</strong> (different colours living together)</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Appreciative / admiring</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Joyful</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-exercise-answers">✅ 5. Exercise Answers</h2>
+<h3 id="rev-a-summary-fill-in-the-blanks">A. Summary (fill in the blanks)</h3>
+<ol>
+<li>The <strong>earth</strong> is portrayed as a rich palette where gardeners' <strong>dreams</strong> flourish in the form of <strong>seeds</strong>, awaiting spring.</li>
+<li>The garden flowers <strong>bloom</strong> into a beautiful display of different <strong>blossoms</strong>, resembling a <strong>painting</strong> by Mother Nature, in the light of morning.</li>
+<li>Each garden is likened to a wide <strong>canvas</strong>, integrating art and <strong>life</strong>. Through the efforts of gardeners, gardens transform into still-life <strong>paintings</strong>.</li>
+</ol>
+<h3 id="rev-b-stanza-titles">B. Stanza titles</h3>
+<ul>
+<li>Stanza 1 → <strong>Earth and Possibilities</strong></li>
+<li>Stanza 2 → <strong>Nature's Work of Art</strong></li>
+<li>Stanza 3 → <strong>Gardens as Living Canvases</strong></li>
+<li><em>(Extra titles not used: Sweet-smelling Blossoms, The Painter's Canvas)</em></li>
+</ul>
+<h3 id="rev-c-poetic-devices-matching">C. Poetic devices matching</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Imagery (mind pictures)</td>
+  <td>(iv) colours, brushstrokes, blossoms, shades of green</td>
+</tr>
+<tr>
+  <td>Metaphor (comparison without 'like'/'as')</td>
+  <td>(vi) garden as a painting, plot as canvas, seeds as brushstrokes</td>
+</tr>
+<tr>
+  <td>Rhyme Scheme</td>
+  <td>(ii) AABB</td>
+</tr>
+<tr>
+  <td>Tone (what the poet feels)</td>
+  <td>(i) appreciative</td>
+</tr>
+<tr>
+  <td>Mood (what the reader feels)</td>
+  <td>(vii) joyful</td>
+</tr>
+<tr>
+  <td>Speaker</td>
+  <td>(v) a gardener</td>
+</tr>
+<tr>
+  <td>Alliteration (same consonant sound)</td>
+  <td>(iii) 'Blossoms bloom'</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-6-critical-reflection-answers-2">❓ 6. Critical Reflection — Answers</h2>
+<h3 id="rev-extract-1-quot-brushstrokes-of-seeds-planted-true-awaiting-spring-s-vibrant-hue-quot">Extract 1: &quot;Brushstrokes of seeds, planted true, / Awaiting spring's vibrant hue.&quot;</h3>
+<p><strong>(i)</strong> The option that uses a metaphor: <strong>B. She has a heart of gold.</strong> <em>(A, C, D use other devices — personification/simile-like phrasing — not a direct metaphor.)</em>
+<strong>(ii)</strong> &quot;Planted true&quot; implies that the seeds are planted <strong>correctly, straightly, with care and hope</strong> — faithfully, so they will grow.
+<strong>(iii)</strong> The poet uses <strong>'hue'</strong> instead of 'colours' because a hue is a <strong>shade of a colour</strong>, a more precise and painterly word — it fits the poem's painting metaphor and sounds more artistic.
+<strong>(iv)</strong> Summer : hot :: Spring : <strong>vibrant</strong> (colourful).
+<strong>(v)</strong> Assertion (A) &quot;Gardeners wait for Spring&quot; is <strong>true</strong>; Reason (R) &quot;Gardens are worth painting in Spring&quot; is also <strong>true</strong> — but (R) is <strong>not</strong> the correct explanation of (A) (gardeners wait for spring because that is when plants grow and bloom). <strong>Answer: B.</strong></p>
+<h3 id="rev-extract-2-quot-each-plot-a-canvas-wide-where-art-and-life-coincide-quot">Extract 2: &quot;Each plot, a canvas wide, / Where art and life coincide.&quot;</h3>
+<p><strong>(i)</strong> &quot;Each plot&quot; refers to <strong>each garden bed / plot of land</strong> being tilled.
+<strong>(ii)</strong> Option that imitates the rhyme scheme (wide–coincide): <strong>A. beautiful and clear / laughter and cheer</strong> (clear–cheer rhyme, like wide–coincide).
+<strong>(iii)</strong> The line that conveys gardening blends aesthetic beauty with natural growth: <strong>&quot;Where art and life coincide.&quot;</strong>
+<strong>(iv)</strong> The plot is likened to a canvas suggesting that <strong>the garden is a surface on which nature creates art</strong> — a place where beauty is deliberately created.
+<strong>(v)</strong> The poet uses <strong>'wide'</strong> instead of 'long' because <strong>wide</strong> suggests openness, vastness and grandeur — like a broad painting — and it also rhymes with &quot;coincide.&quot;</p>
+<hr />
+<h2 id="rev-7-give-reasons-for-the-comparisons-answers">✍️ 7. Give Reasons for the Comparisons — Answers</h2>
+<ol>
+<li>A painter is compared to a gardener because <strong>both create beauty — the painter with brush and canvas, the gardener with seeds and soil; both are artists of creation.</strong></li>
+<li>A palette is like earth because <strong>both hold the materials from which art is made</strong> — the palette holds colours, the earth holds seeds.</li>
+<li>Brushstrokes are like seeds because <strong>both are placed carefully to grow into something beautiful</strong> — strokes build a picture, seeds grow into plants.</li>
+<li>A canvas is similar to a garden plot because <strong>both are the surface/space where art takes form</strong> — paint on canvas, plants on soil.</li>
+</ol>
+<hr />
+<h2 id="rev-8-answer-the-following-model-answers">❓ 8. Answer the Following — Model answers</h2>
+<ol>
+<li><p><strong>How does the metaphor 'Brushstrokes of seeds' enhance understanding of gardening as an art form?</strong> It makes planting seem <strong>deliberate, artistic and creative</strong> — just as a painter lays each stroke carefully, a gardener plants each seed with care and vision. The garden becomes a picture, and the gardener a painter.</p>
+</li>
+<li><p><strong>Poet's perspective on nature and creativity (from &quot;Each plot, a canvas wide, / Where art and life coincide&quot;):</strong> The poet believes <strong>nature and art are one</strong> — creativity is not separate from life; it grows from it. A garden is living art, where beauty and growth happen together.</p>
+</li>
+<li><p><strong>Does the imagery paint a vivid picture?</strong> Yes — words like <em>blossoms blooming, dancing in the morning light, shades of green/red/blue</em> create bright, clear visual images that bring the garden alive in the reader's mind.</p>
+</li>
+<li><p><strong>Would adding yellow have helped?</strong> Yes — yellow would add <strong>warmth, brightness and variety</strong> to the palette of green, red and blue, making the imagery of the garden even richer and more colourful.</p>
+</li>
+<li><p><strong>&quot;Gardens become paintings still&quot; — the poet's view on timelessness:</strong> Nature's beauty is <strong>permanent and timeless</strong>. A garden, once created, remains a work of art that endures — a &quot;still&quot; (motionless, lasting) painting that nature keeps renewing.</p>
+</li>
+<li><p><strong>Justify the title &quot;Canvas of Soil&quot;:</strong> The poem's central image is the <strong>soil as the painter's canvas</strong> — gardeners create living art on it. The title perfectly captures the poem's metaphor of gardening as painting on the canvas of the earth.</p>
+</li>
+</ol>
+<hr />
+<h2 id="rev-9-vocabulary-shades-of-colours-from-the-text">🎨 9. Vocabulary — Shades of Colours (from the text)</h2>
+<ul>
+<li><strong>Blues:</strong> navy blue, indigo, cobalt blue, denim, sky blue, ice blue</li>
+<li><strong>Greens:</strong> pine green, India green, apple green, jade, olive, pistachio</li>
+<li><strong>Reds:</strong> rusty red, salmon, scarlet, crimson, blood red, vermilion</li>
+</ul>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 3 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 3 ·</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Winds of Change* (Informative prose on pankhas) · **B)** *Canvas of Soil* (Poem · Maya Anthony)</p>
+      <h1>🟣 PART A — WINDS OF CHANGE</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<ol>
+<li><strong>Cultural identity through craft</strong> — the pankha (hand fan) reflects the traditions, materials and artistry of every region of India.</li>
+<li><strong>Change over time</strong> — from ancient temple and royal use, to cultural trade goods, to a modern commercial business that now faces the risk of decline.</li>
+<li><strong>Preservation</strong> — celebrating the craft and spreading awareness can keep the pankha alive and give artisans a sustainable livelihood.</li>
+</ol>
+<blockquote>
+<p>❤️ <strong>Message:</strong> <em>A craft is not just an object — it carries a culture, a story and an identity. To preserve it, we must celebrate it.</em></p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary">📝 LONG ANSWER (Complete summary)</h2>
+<p><strong>&quot;Winds of Change&quot; tells the story of the Indian hand fan, the pankha, and its journey from ancient times to today.</strong></p>
+<p>The word <strong>pankha (punkha)</strong> originates from the word <strong>'pankh'</strong>, which means <strong>feather of a bird</strong>. <strong>Pankha</strong> is used for all fans, while <strong>pankhi</strong> denotes a small plumed fan used in ancient India. Evidence of the pankhi can be seen in the <strong>Buddhist wall paintings at Ajanta</strong>, which date back to the <strong>2nd century CE</strong>, and other representations appear in embroidery, sculptures and carvings. In ancient times pankhas were used in <strong>temples to fan deities</strong> and in <strong>royal courts to fan kings</strong>. They varied from a tiny <strong>two-inch</strong> fan to large ones requiring a person's full arm strength.</p>
+<p>Over time, pankhas became <strong>significant cultural goods</strong> distributed through <strong>trade routes</strong> and were considered <strong>exotic and stylish</strong>. Although there was commonality in their use across India, different villages and towns developed <strong>their own varieties</strong>, using materials like <strong>bamboo, cane, palm leaf, silk, brass, leather and silver</strong>, with decorative beads and stones, depending on geography, culture and traditional rituals.</p>
+<p>Each region made its own distinct pankha. <strong>Rajasthan</strong> is famous for its <strong>appliqué hand fan</strong> (pieces of fabric sewn onto another cloth with ornamental needlework), its <strong>zardozi hand fan</strong> (glittering gold threadwork), its <strong>temple hand fans</strong> (engraved brass, long handle) and its <strong>painted hand fan</strong> (a cardboard fan offered to gods). <strong>Gujarat</strong> has elegant <strong>mirror-work cotton fans</strong>, the <strong>beads hand fan</strong> with a silver handle (Gujarat is the centre of bead craft in India), Kutch's <strong>hand-stitched leather fans</strong> decorated with thread and wool, and embroidered fans with cross-stitch. <strong>Bengal</strong> makes delicate <strong>sola fans</strong> from the milky-white spongy centre of the sola (a water grass) and the <strong>Tal Patar Pankha</strong> (palm leaf), easy to carry and always kept in Bengali households. <strong>Uttar Pradesh</strong> has the <strong>Phadh hand fan</strong> with pure gold, silver zari, silk and satin frills. <strong>Odisha</strong> has large palm leaf fans, and <strong>Bihar</strong> has colourful, sturdy <strong>bamboo hand fans</strong> — both recognised for antiquity and rarity. Many <strong>tribes</strong> also make their own versions, embedding grass and metal with bamboo sticks, using cane and palm leaves, and reserving silk and brass for antique pieces, often with geometrical patterns in white ink on a red background.</p>
+<p>In modern times, the use of pankhas has been <strong>restricted to decorative purposes</strong>, and they have become traditional craft items. With the advent of technology and innovative creations, the beautiful culture of pankhas <strong>runs the risk of slowly losing its presence</strong> among Indians. Once made for personal use, the handicraft has <strong>transformed into a commercial business</strong> and now provides some form of <strong>livelihood</strong> to India's artisans. The slight increase in popularity is factored by the different versions of the pankha being crafted.</p>
+<p>The <strong>first step to preserve</strong> the craft is to <strong>celebrate pankhas</strong> and appreciate the culture, stories and artistry they carry. This allows contemporary pankha makers to <strong>demonstrate their craft and regain popularity</strong>, and gives them a <strong>commercial platform</strong> for a <strong>sustainable livelihood</strong>. Initiatives such as <strong>pankha-making workshops</strong>, within and outside handicraft exhibitions, help spread awareness about the beauty and importance of this craft in India's culture.</p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>pankha / punkha</strong></td>
+  <td>the Indian word for fan (from 'pankh' = feather)</td>
+</tr>
+<tr>
+  <td><strong>pankhi</strong></td>
+  <td>a small plumed fan used in ancient India</td>
+</tr>
+<tr>
+  <td><strong>pankh</strong></td>
+  <td>feather of a bird</td>
+</tr>
+<tr>
+  <td><strong>indigenous</strong></td>
+  <td>local; from where it originated</td>
+</tr>
+<tr>
+  <td><strong>innovative</strong></td>
+  <td>new and original in approach</td>
+</tr>
+<tr>
+  <td><strong>industrious</strong></td>
+  <td>hardworking</td>
+</tr>
+<tr>
+  <td><strong>intricate</strong></td>
+  <td>elaborate; detailed</td>
+</tr>
+<tr>
+  <td><strong>invoked</strong></td>
+  <td>brought out</td>
+</tr>
+<tr>
+  <td><strong>initiatives</strong></td>
+  <td>actions to improve a situation</td>
+</tr>
+<tr>
+  <td><strong>encrusted</strong></td>
+  <td>covered or decorated</td>
+</tr>
+<tr>
+  <td><strong>sola</strong></td>
+  <td>a type of water grass</td>
+</tr>
+<tr>
+  <td><strong>perpetually</strong></td>
+  <td>constantly</td>
+</tr>
+<tr>
+  <td><strong>antiquity</strong></td>
+  <td>the distant past</td>
+</tr>
+<tr>
+  <td><strong>advent</strong></td>
+  <td>arrival</td>
+</tr>
+<tr>
+  <td><strong>exotic</strong></td>
+  <td>unusual, interesting, foreign-looking</td>
+</tr>
+<tr>
+  <td><strong>appliqué</strong></td>
+  <td>fabric pieces sewn onto another cloth</td>
+</tr>
+<tr>
+  <td><strong>zardozi</strong></td>
+  <td>ornate gold/silver threadwork</td>
+</tr>
+<tr>
+  <td><strong>sustainable</strong></td>
+  <td>able to continue over time</td>
+</tr>
+<tr>
+  <td><strong>Tal Patar Pankha</strong></td>
+  <td>Bengal's palm leaf fan</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-key-regions-amp-their-pankhas-in-place-of-a-character-sketch">🗺 KEY REGIONS &amp; THEIR PANKHAS (in place of a character sketch)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Region</th>
+  <th>Type of pankha</th>
+  <th>Special feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Rajasthan</strong></td>
+  <td>Appliqué hand fan</td>
+  <td>Fabric pieces sewn with ornamental needlework</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Zardozi hand fan</td>
+  <td>Glittering gold threadwork</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Temple hand fan</td>
+  <td>Engraved brass, long handle</td>
+</tr>
+<tr>
+  <td>Rajasthan</td>
+  <td>Painted hand fan</td>
+  <td>Cardboard, offered to gods</td>
+</tr>
+<tr>
+  <td><strong>Gujarat</strong></td>
+  <td>Mirror-work hand fan</td>
+  <td>Pure cotton with mirror work</td>
+</tr>
+<tr>
+  <td>Gujarat</td>
+  <td>Beads hand fan</td>
+  <td>Beads with silver handle (bead craft centre)</td>
+</tr>
+<tr>
+  <td>Gujarat (Kutch)</td>
+  <td>Leather hand fan</td>
+  <td>Hand-stitched, decorated with thread and wool</td>
+</tr>
+<tr>
+  <td><strong>West Bengal</strong></td>
+  <td>Sola hand fan</td>
+  <td>From the sola water grass</td>
+</tr>
+<tr>
+  <td>West Bengal</td>
+  <td>Tal Patar Pankha</td>
+  <td>Palm leaf, easy to carry</td>
+</tr>
+<tr>
+  <td><strong>Uttar Pradesh</strong></td>
+  <td>Phadh hand fan</td>
+  <td>Pure gold, silver zari, silk, satin frills</td>
+</tr>
+<tr>
+  <td><strong>Odisha</strong></td>
+  <td>Large palm leaf fan</td>
+  <td>Antiquity and rarity</td>
+</tr>
+<tr>
+  <td><strong>Bihar</strong></td>
+  <td>Bamboo hand fan</td>
+  <td>Colourful and sturdy</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Tribes:</strong> fans with grass and metal embedded using bamboo sticks; cane and palm leaves; silk and brass for antiques; geometrical patterns with white ink on red background.</p>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>How does the title &quot;Winds of Change&quot; capture the essence of the chapter?</strong> The pankha is connected to air and wind, and the chapter shows how the craft has <strong>changed</strong> over time — from temple and royal use, to trade goods, to a modern commercial craft facing decline. The title unites the fan (wind) with change.</p>
+</li>
+<li><p><strong>&quot;The structure and design of pankhas are testimony to the cultural identity of the region.&quot; Support with two examples.</strong> (i) <strong>Rajasthan's zardozi fans</strong> reflect its rich tradition of ornate gold embroidery; (ii) <strong>Gujarat's beads hand fan</strong> reflects Gujarat's position as the bead craft centre of India. <em>(Also: Bengal's sola fans, tribal geometric fans.)</em></p>
+</li>
+<li><p><strong>Evaluate how the balance between preserving traditional craftsmanship and incorporating innovative designs helps.</strong> Preserving old techniques keeps the heritage alive; innovative designs make the pankha relevant and attractive to modern buyers. Together they protect the craft from dying while giving it a future.</p>
+</li>
+<li><p><strong>How might pankha-making workshops contribute to preservation?</strong> They spread awareness, let contemporary makers demonstrate the craft, help it regain popularity, and give artisans a commercial platform for a sustainable livelihood.</p>
+</li>
+<li><p><strong>Assess how celebrating pankhas could benefit artisans and the craft.</strong> Celebration appreciates the culture, stories and artistry behind the craft; it helps artisans demonstrate skill, regain popularity, and earn a sustainable livelihood — keeping the tradition alive.</p>
+</li>
+<li><p><strong>How does the restriction of pankha use to decorative purposes reflect the changing cultural role?</strong> Once an everyday object of personal use, the pankha is now mainly decorative — a symbol of tradition and heritage rather than a daily necessity, because electric fans have replaced it in daily life.</p>
+</li>
+<li><p><strong>Why is the pankha called a &quot;culture&quot; and not just an object?</strong> Because it carries each region's traditions, stories, materials and artistry — it is a living heritage, not a mere tool.</p>
+</li>
+<li><p><strong>What is the one negative impact of technological advancement?</strong> The beautiful culture of pankhas runs the risk of slowly losing its presence among Indians, as modern innovation pushes the traditional craft aside.</p>
+</li>
+<li><p><strong>What is the meaning of &quot;Winds of Change&quot; in the modern context?</strong> It shows that with time, technology and innovation, the craft's role has changed — yet it can be preserved if we celebrate and support it.</p>
+</li>
+<li><p><strong>What is the central message of the chapter?</strong> Crafts carry culture and identity; to preserve them we must appreciate, celebrate and support the artisans who keep them alive.</p>
+</li>
+</ol>
+<hr />
+<h1>🟢 PART B — CANVAS OF SOIL (POEM)</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p><strong>Gardening is an art.</strong> The poem compares a garden to a painting — the soil is the palette, seeds are brushstrokes, and the garden plot is a canvas. In the hands of those who till the soil, <strong>gardens become paintings</strong>. The theme celebrates nature's beauty and the creative power of gardeners.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>A garden is a living work of art.</strong> Just as a painter creates on a canvas with colours, a gardener creates on the soil with seeds. Nature provides the palette of green, red and blue, and the gardener's skill turns a plot of earth into a beautiful, ever-new painting.</p>
+<hr />
+<h2 id="sum-stanza-wise-explanation-correct-amp-complete">📜 STANZA-WISE EXPLANATION (correct &amp; complete)</h2>
+<h3 id="sum-stanza-1-the-soil-is-the-palette">Stanza 1 — The soil is the palette</h3>
+<blockquote>
+<p>Palette of earth, rich and deep,
+Where dreams of gardeners seep.
+Brushstrokes of seeds, planted true,
+Awaiting spring's vibrant hue.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>The earth is called a painter's <strong>palette</strong> — rich and deep in colour and quality.</li>
+<li>The <strong>dreams of gardeners</strong> &quot;seep&quot; into the soil — gardeners pour their hopes and love into the land.</li>
+<li>Seeds are like <strong>brushstrokes</strong>, planted <strong>true</strong> (straight, carefully, faithfully).</li>
+<li>These seed-brushstrokes <strong>await spring's vibrant hue</strong> — the bright colours of spring flowers.</li>
+<li><strong>Poetic devices:</strong> metaphor (earth = palette, seeds = brushstrokes), rhyme (deep–seep, true–hue = AABB).</li>
+</ul>
+<h3 id="sum-stanza-2-the-garden-is-a-painting">Stanza 2 — The garden is a painting</h3>
+<blockquote>
+<p>Blossoms bloom, a painted sight,
+Dancing in the morning light.
+Shades of green, red, and blue,
+Nature's artwork, ever new.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>Flowers blossom into a <strong>painted sight</strong> — a picture come alive.</li>
+<li>They seem to <strong>dance in the morning light</strong> (personification).</li>
+<li>The colours — shades of <strong>green, red and blue</strong> — make it <strong>nature's artwork</strong>, always fresh and new.</li>
+<li><strong>Poetic devices:</strong> personification (blossoms &quot;dancing&quot;), alliteration (&quot;Blossoms bloom&quot;), imagery, rhyme (sight–light, blue–new).</li>
+</ul>
+<h3 id="sum-stanza-3-the-plot-is-a-canvas">Stanza 3 — The plot is a canvas</h3>
+<blockquote>
+<p>Each plot, a canvas wide,
+Where art and life coincide.
+In the hands of those who till,
+Gardens become paintings still.</p>
+</blockquote>
+<p><strong>Meaning:</strong></p>
+<ul>
+<li>Each garden plot is like a <strong>wide canvas</strong>.</li>
+<li>On it, <strong>art and life meet</strong> — beauty (art) and growth (life) exist together.</li>
+<li>In the hands of gardeners (&quot;those who till&quot;), <strong>gardens become paintings</strong> — lasting, still works of art.</li>
+<li><strong>Poetic devices:</strong> metaphor (plot = canvas), rhyme (wide–coincide, till–still), alliteration (&quot;Gardens become&quot;).</li>
+</ul>
+<hr />
+<h2 id="sum-keywords-amp-meanings-2">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>palette</strong></td>
+  <td>the board on which a painter mixes colours (here: the earth)</td>
+</tr>
+<tr>
+  <td><strong>seep</strong></td>
+  <td>to slowly flow / sink in</td>
+</tr>
+<tr>
+  <td><strong>brushstrokes</strong></td>
+  <td>strokes of the painter's brush (here: seeds)</td>
+</tr>
+<tr>
+  <td><strong>hue</strong></td>
+  <td>a shade of colour</td>
+</tr>
+<tr>
+  <td><strong>vibrant</strong></td>
+  <td>bright, full of life and colour</td>
+</tr>
+<tr>
+  <td><strong>blossoms</strong></td>
+  <td>flowers</td>
+</tr>
+<tr>
+  <td><strong>canvas</strong></td>
+  <td>the cloth/surface on which a painting is made (here: the garden plot)</td>
+</tr>
+<tr>
+  <td><strong>coincide</strong></td>
+  <td>to come together; to exist at the same time</td>
+</tr>
+<tr>
+  <td><strong>till</strong></td>
+  <td>to cultivate / work the soil</td>
+</tr>
+<tr>
+  <td><strong>allegory</strong></td>
+  <td>a device that expresses a deeper idea through a surface story</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-competency-based-with-answers-2">❓ IMPORTANT QUESTIONS (Competency-based) — with answers</h2>
+<ol>
+<li><p><strong>How does the metaphor &quot;Brushstrokes of seeds&quot; enhance the understanding of gardening as an art form?</strong> It makes planting seem deliberate and creative — like a painter laying each stroke, a gardener plants each seed with care and vision. The garden becomes a picture and the gardener a painter.</p>
+</li>
+<li><p><strong>What can you infer from &quot;Each plot, a canvas wide, / Where art and life coincide&quot;?</strong> The poet believes nature and creativity are united — a garden is living art where beauty and growth happen together. Art is not separate from life.</p>
+</li>
+<li><p><strong>Does the imagery paint a vivid picture?</strong> Yes — &quot;blossoms bloom, a painted sight / dancing in the morning light / shades of green, red and blue&quot; creates bright, clear visual images that bring the garden to life.</p>
+</li>
+<li><p><strong>Would adding yellow have lent effectively to the imagery?</strong> Yes — yellow would add warmth, brightness and variety to the green, red and blue, making the imagery of the garden richer and more colourful.</p>
+</li>
+<li><p><strong>What does &quot;Gardens become paintings still&quot; say about the timelessness of nature's beauty?</strong> Nature's beauty is permanent and timeless — a garden, once created, remains a work of art that endures, like a &quot;still&quot; (lasting) painting.</p>
+</li>
+<li><p><strong>Justify the title &quot;Canvas of Soil.&quot;</strong> The poem's central image is the soil as the painter's canvas — gardeners create living art on it. The title perfectly captures the poem's metaphor of gardening as painting on the canvas of the earth.</p>
+</li>
+<li><p><strong>Why has the poet used 'hue' instead of 'colours'?</strong> A hue is a shade of a colour — a more precise, painterly word that fits the poem's painting metaphor and sounds artistic.</p>
+</li>
+<li><p><strong>The poem is an allegory. Explain.</strong> The garden symbolises larger ideas: <strong>life's journey and growth</strong> (the changing seasons and blooming flowers represent the cyclical nature of existence) and <strong>harmony and diversity</strong> (different colours together symbolise the beauty of diversity and harmony in the world).</p>
+</li>
+<li><p><strong>Why is the garden called &quot;nature's artwork, ever new&quot;?</strong> Because every season the garden blooms again with fresh colours — nature keeps creating new art endlessly.</p>
+</li>
+<li><p><strong>What is the poet's view of gardeners?</strong> Gardeners are <strong>artists</strong> — with their hands and love, they turn ordinary soil into living paintings, proving that creation is not only in art studios but in fields and gardens too.</p>
+</li>
+</ol>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 3 — all facts verified from the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-summary-long-version", "t": "📖 2. Summary (Long version)"}, {"h": "rev-3-difficult-words-amp-meanings", "t": "🔑 3. Difficult Words &amp; Meanings"}, {"h": "rev-4-word-matching-reflect-amp-respond-exercise-answers", "t": "✅ 4. Word Matching (Reflect &amp; Respond exercise) — Answers"}, {"h": "rev-5-pankha-table-check-your-understanding-answers", "t": "🌀 5. Pankha Table (Check Your Understanding) — Answers"}, {"h": "rev-6-critical-reflection-answers", "t": "📚 6. Critical Reflection — Answers"}, {"h": "rev-7-answer-the-following-model-answers", "t": "✍️ 7. Answer the Following — Model answers"}, {"h": "rev-8-vocabulary-amp-structures-answers", "t": "📖 8. Vocabulary &amp; Structures — Answers"}, {"h": "rev-9-extras-for-mcqs", "t": "🎓 9. Extras for MCQs"}, {"h": "rev-at-a-glance", "t": "🏁 At a Glance"}, {"h": "rev-the-poem", "t": "📜 The Poem"}, {"h": "rev-3-stanza-wise-summary", "t": "📖 3. Stanza-wise Summary"}, {"h": "rev-4-poetic-devices-with-examples", "t": "🛠 4. Poetic Devices (with examples)"}, {"h": "rev-5-exercise-answers", "t": "✅ 5. Exercise Answers"}, {"h": "rev-6-critical-reflection-answers-2", "t": "❓ 6. Critical Reflection — Answers"}, {"h": "rev-7-give-reasons-for-the-comparisons-answers", "t": "✍️ 7. Give Reasons for the Comparisons — Answers"}, {"h": "rev-8-answer-the-following-model-answers", "t": "❓ 8. Answer the Following — Model answers"}, {"h": "rev-9-vocabulary-shades-of-colours-from-the-text", "t": "🎨 9. Vocabulary — Shades of Colours (from the text)"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary", "t": "📝 LONG ANSWER (Complete summary)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-key-regions-amp-their-pankhas-in-place-of-a-character-sketch", "t": "🗺 KEY REGIONS &amp; THEIR PANKHAS (in place of a character sketch)"}, {"h": "sum-important-questions-competency-based-with-answers", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-stanza-wise-explanation-correct-amp-complete", "t": "📜 STANZA-WISE EXPLANATION (correct &amp; complete)"}, {"h": "sum-keywords-amp-meanings-2", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-important-questions-competency-based-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (Competency-based) — with answers"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

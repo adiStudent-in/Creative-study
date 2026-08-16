@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English — Chapter 8: Follow That Dream & Believe in Yourself —</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F6F4EC; --surface:#fff; --text:#23281F; --text-muted:#6E7267;
+  --accent:#4E724B; --accent-light:#E9F0E5;
+  --accent2:#B98A2F; --accent2-light:#FAF3E0;
+  --sidebar-bg:#26311F; --sidebar-text:#C7CDBE;
+  --border:#E2E0D8; --card-shadow:0 1px 3px rgba(0,0,0,.04),0 1px 2px rgba(0,0,0,.06);
+  --radius:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.wrapper{display:flex;min-height:100vh;width:100%;max-width:100vw}
+
+.sidebar{width:260px;flex-shrink:0;background:var(--sidebar-bg);color:var(--sidebar-text);padding:2rem 1.25rem;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.05rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-.01em}
+.sidebar-logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:400;color:var(--sidebar-text);margin-top:.15rem}
+.sidebar-toggle-view{display:flex;background:rgba(255,255,255,.06);border:none;margin-bottom:1.2rem;border-radius:8px;padding:3px;gap:3px}
+.sidebar-toggle-view button{flex:1;border:none;background:transparent;color:var(--sidebar-text);font-family:'Plus Jakarta Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:.38rem .4rem;border-radius:6px;cursor:pointer;transition:.2s}
+.sidebar-toggle-view button.active{background:#fff;color:var(--sidebar-bg)}
+.sidebar nav{flex:1}
+.sidebar nav a{display:block;color:var(--sidebar-text);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .6rem;margin-bottom:.1rem;border-radius:6px;transition:all .2s;line-height:1.4;border-left:2px solid transparent}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,.1);font-weight:600;border-left-color:var(--accent)}
+.sidebar nav a.indent{padding-left:1.35rem}
+.sidebar .meta{font-size:.68rem;color:rgba(255,255,255,.32);border-top:1px solid rgba(255,255,255,.06);padding-top:.9rem;margin-top:auto}
+
+.main{flex:1;min-width:0;width:1px}
+.content{padding:2.4rem 3rem 4rem;max-width:820px;margin:0 auto}
+
+.mode-toggle{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;margin-bottom:1.6rem;position:sticky;top:1rem;z-index:20}
+.mode-toggle button{border:none;background:transparent;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.03em;color:var(--text-muted);padding:.5rem 1.15rem;border-radius:999px;cursor:pointer;transition:all .25s}
+.mode-toggle button.active{background:var(--accent);color:#fff}
+.mode-toggle button:not(.active):hover{color:var(--accent);background:var(--accent-light)}
+
+.view-block{display:none}
+.view-block.active{display:block}
+
+h1{font-family:'DM Serif Display',serif;font-size:2.5rem;font-weight:400;line-height:1.2;letter-spacing:-.02em;margin-bottom:.3rem;color:var(--text)}
+.subtitle{font-size:.84rem;color:var(--text-muted);margin-bottom:2.4rem;font-weight:400;border-bottom:1px solid var(--border);padding-bottom:1.4rem}
+h2{font-family:'DM Serif Display',serif;font-size:1.55rem;font-weight:400;margin:2.5rem 0 1rem;letter-spacing:-.01em;line-height:1.3;color:var(--text);scroll-margin-top:2rem}
+h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--text)}
+h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.88rem;font-weight:600;margin:1.2rem 0 .4rem;color:var(--text)}
+p{margin-bottom:.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:.85em;background:#F0EFE7;padding:.12em .35em;border-radius:4px}
+
+.table-wrap{width:100%;overflow-x:auto;margin:1rem 0;border-radius:var(--radius);box-shadow:var(--card-shadow);-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:.55rem .75rem;text-align:left;font-weight:600;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+td{padding:.5rem .75rem;border-bottom:1px solid var(--border);overflow-wrap:break-word;word-break:break-word}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(0,0,0,.015)}
+tbody tr:hover{background:rgba(78,114,75,.05)}
+@media(max-width:600px){th,td{padding:.4rem .5rem;font-size:.8rem}th{white-space:normal;font-size:.7rem}}
+
+blockquote{margin:1.25rem 0;padding:1rem 1.25rem;border-radius:var(--radius);font-size:.88rem;line-height:1.65;background:var(--accent2-light);border-left:3px solid var(--accent2)}
+blockquote strong:first-child{color:var(--accent2)}
+
+hr{border:none;height:1px;background:var(--border);margin:2rem 0}
+
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;width:2.5rem;height:2.5rem;border:none;border-radius:8px;background:var(--sidebar-bg);color:#fff;font-size:1.2rem;cursor:pointer}
+
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left .3s ease;z-index:99;height:100dvh}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:block}
+  .main{max-width:100%}
+  .content{padding:2rem 1.4rem}
+  h1{font-size:2rem}
+  h2{font-size:1.4rem}
+}
+@media(max-width:600px){
+  .content{padding:1.4rem 1rem}
+  h1{font-size:1.6rem}
+  h2{font-size:1.2rem;margin:2rem 0 .75rem}
+  h3{font-size:.9rem}
+  ul,ol{padding-left:1rem}
+  blockquote{padding:.75rem 1rem;font-size:.83rem}
+  .mode-toggle{position:static}
+}
+@media print{
+  .sidebar,.sidebar-toggle,.mode-toggle{display:none}
+  .content{max-width:100%;padding:1rem}
+  .fade-in{opacity:1;transform:none}
+  .view-block{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 English
+    <small>Chapter 8 &middot; Revision &amp; Summary</small>
+  </div>
+  <div class="sidebar-toggle-view" role="tablist" aria-label="Notes view">
+    <button id="srevBtn" class="active" data-view="rev">Revision</button>
+    <button id="ssumBtn" data-view="sum">Summary</button>
+  </div>
+  <nav id="toc"></nav>
+  <div class="meta">English &middot; Chapter 8 &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <div class="mode-toggle" role="tablist" aria-label="Notes view">
+      <button id="revBtn" class="active" data-view="rev">Revision Notes</button>
+      <button id="sumBtn" data-view="sum">Summary</button>
+    </div>
+
+    <div class="view-block active" id="view-rev" data-block="rev">
+      <h1 class="fade-in">English — Chapter 8: Follow That Dream & Believe in Yourself —</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts in one chapter</p>
+      <div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Text</th>
+  <th>Type</th>
+  <th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><em>Follow That Dream</em></td>
+  <td>Letter (from <em>My Daughter, My Friend</em>)</td>
+  <td>Irene Chua</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><em>Believe in Yourself</em></td>
+  <td>Poem</td>
+  <td>Robert Langley</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⏰ <strong>Exam Tip:</strong> Learn the <strong>&quot;count the cost&quot; + 10-year + &quot;plunge&quot;</strong> trio for the letter, and the <strong>&quot;first step is the hardest&quot; + status quo + self-belief</strong> trio for the poem. Quote the exact lines — they carry the marks.</p>
+</blockquote>
+<hr />
+<h2 id="rev-1-at-a-glance">🧭 1. At a Glance</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Aspect</th>
+  <th>Part A — <em>Follow That Dream</em></th>
+  <th>Part B — <em>Believe in Yourself</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Genre</strong></td>
+  <td>Mother's letter to her teenage daughter</td>
+  <td>Motivational poem</td>
+</tr>
+<tr>
+  <td><strong>Central figure</strong></td>
+  <td>Ming's mother writing to Ming (<strong>19 June 1995</strong>)</td>
+  <td>The speaker / guide addressing 'You' (the reader)</td>
+</tr>
+<tr>
+  <td><strong>Setting</strong></td>
+  <td>From a mother's heart; Singapore references (Raffles College → NUS)</td>
+  <td>A private moment — &quot;no crowd to see&quot;, just you and your future</td>
+</tr>
+<tr>
+  <td><strong>Core idea</strong></td>
+  <td>Pursue your dream with passion and sacrifice, but count the cost — and let life remake your dreams</td>
+  <td>Step up to the challenge, quit the comfort of the status quo, believe in yourself — the first step is the hardest</td>
+</tr>
+<tr>
+  <td><strong>One key quote</strong></td>
+  <td>&quot;What differentiates greatness from the ordinary is how much effort and sacrifice people invest to realise their dream.&quot;</td>
+  <td>&quot;The first step is the hardest / There is no turning back, / You just need to believe in yourself / For your future to be on track.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Warm, wise, encouraging — yet realistic</td>
+  <td>Motivational, resolute</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-2-follow-that-dream-key-ideas-point-wise">📖 2. <em>Follow That Dream</em> — Key Ideas (Point-wise)</h2>
+<ol>
+<li><strong>Opening:</strong> &quot;By all means follow that dream.&quot;</li>
+<li><strong>Greatness formula:</strong> a dream + pursuing it till it comes true = greatness. Difference between great and ordinary = <strong>effort and sacrifice</strong>.</li>
+<li><strong>10-Year rule:</strong> world-class standard in any field needs <strong>singular, intensive pursuit for at least ten years</strong>.</li>
+<li><strong>The process:</strong> <strong>passion</strong> for an interest → <strong>conviction</strong> that it is imperative to realise it → <strong>count the cost</strong> (years of effort, financial investment, sacrifice) → if it's still &quot;<strong>burning in your blood</strong>&quot;, <strong>plunge</strong> — in any field: sports, science, arts, business, or design.</li>
+<li><strong>The road:</strong> uphill most of the way; you are <strong>buoyed up</strong> by knowing you're doing what you love and doing the right thing; <strong>the prospect of success</strong> keeps you on track when stamina runs out.</li>
+<li><strong>Support network:</strong> Academy Award winners thank a <strong>host of people</strong> — behind one winner stands a group who stayed by him/her.</li>
+<li><strong>Why dreams stay dreams:</strong> <strong>wishful thinking</strong> only (everyone wistfully says &quot;I wish I could…&quot;); trading the dream <strong>for security</strong>; circumstances changing lives (Raffles College students — the Japanese invasion in World War II changed their destiny; those who worked instead of finishing secondary school so they could <strong>support their siblings</strong>).</li>
+<li><strong>Balance:</strong> not &quot;a wet blanket&quot;, but you &quot;will also have to consider the <strong>years</strong> you need to chase your dream.&quot; After obstacles are considered, <strong>if the burning conviction is still coursing through your veins — go ahead and act</strong>.</li>
+<li><strong>Dreams evolve:</strong> life itself may change a person's dreams; new hopes &quot;are <strong>no less than</strong> the original dream of younger days&quot;; you negotiate &quot;a <strong>maze of hurdles</strong>&quot;; it takes much longer; more people join your <strong>dreamscape</strong>. Her example: publishing this <strong>book</strong> is the dream she chased for the <strong>last ten years</strong> — her &quot;original dream has changed over the years.&quot;</li>
+<li><strong>Close:</strong> &quot;I wish at least one of your dreams comes true too. Love, Mum.&quot;</li>
+</ol>
+<hr />
+<h2 id="rev-3-key-figures-from-the-letter">📊 3. Key Figures from the Letter</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Fact</th>
+  <th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Date of the letter</td>
+  <td><strong>19 June 1995</strong></td>
+</tr>
+<tr>
+  <td>Collection</td>
+  <td><em>My Daughter, My Friend</em></td>
+</tr>
+<tr>
+  <td>Dedicating</td>
+  <td>to daughter <strong>Ming</strong></td>
+</tr>
+<tr>
+  <td>Years of intensive pursuit for world-class skill</td>
+  <td><strong>at least ten</strong></td>
+</tr>
+<tr>
+  <td>Fields named</td>
+  <td>sports, science, arts, business, or design</td>
+</tr>
+<tr>
+  <td>Raffles College</td>
+  <td>now the <strong>National University of Singapore</strong></td>
+</tr>
+<tr>
+  <td>Circumstance that changed those students' destiny</td>
+  <td>the <strong>Japanese invasion during World War II</strong></td>
+</tr>
+<tr>
+  <td>Mother's own chased dream</td>
+  <td><strong>publishing this book</strong> — last <strong>ten years</strong></td>
+</tr>
+<tr>
+  <td>Her original dream</td>
+  <td><strong>changed over the years</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-grammar-corner">📝 4. Grammar Corner</h2>
+<h3 id="rev-the-first-conditional-with-an-imperative">The first conditional with an imperative</h3>
+<p><code>If + present simple, (imperative).</code> → &quot;if the burning conviction is still coursing through your veins, <strong>then go ahead and do something about it</strong>.&quot;</p>
+<p><strong>Sample answers (imperatives):</strong></p>
+<ol>
+<li>If the idea excites you, <strong>go for it without delay.</strong> 2. If you hear strange noises, <strong>call for help immediately.</strong> 3. If this seems too hard, <strong>break it into small steps.</strong> 4. If you care about the issue, <strong>speak up and take action.</strong> 5. If you finish early, <strong>revise your work carefully.</strong></li>
+</ol>
+<h3 id="rev-modal-could-functions">Modal 'could' — functions</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Sentence</th>
+  <th>Use of 'could'</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>It <strong>could</strong> be in any field… (sports, science…)</td>
+  <td><strong>Possibility</strong></td>
+</tr>
+<tr>
+  <td>&quot;I wish I <strong>could</strong> be this or the other&quot;</td>
+  <td><strong>Unreal / hypothetical</strong></td>
+</tr>
+<tr>
+  <td>They <strong>could have</strong> preferred to trade their dream for security</td>
+  <td><strong>Past possibility / speculation</strong></td>
+</tr>
+<tr>
+  <td>so that they <strong>could</strong> support their siblings</td>
+  <td><strong>Past ability / purpose</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>'could' sentences (answers):</strong></p>
+<ol>
+<li>I wish <strong>I could travel</strong> without worrying about money. 2. They <strong>could have taken</strong> the shorter route. 3. I <strong>could swim for miles</strong> without stopping. 4. She <strong>could be at</strong> the library right now. 5. <strong>Could you</strong> repeat the question? (formal/polite request)</li>
+</ol>
+<h3 id="rev-compound-words-with-scape-a-view-or-scene-of">Compound words with '-scape' (a view or scene of)</h3>
+<p>mindscape (view of the mind) · seascape (view of the sea) · landscape (view of the countryside) · cityscape (view of a city)</p>
+<p><strong>Dialogue answers:</strong> (i) <strong>seascape</strong> · (ii) <strong>cityscape</strong> · (iii) <strong>landscape</strong> · (iv) <strong>mindscape</strong></p>
+<h3 id="rev-grammar-forms-experiential-learning-paragraph">Grammar forms — 'Experiential Learning' paragraph</h3>
+<ol>
+<li><strong>helps</strong> · 2. <strong>learned</strong> · 3. <strong>work</strong> · 4. <strong>apply</strong> · 5. <strong>conducts</strong> · 6. <strong>analyses</strong> · 7. <strong>must reflect</strong> · 8. <strong>helps</strong> · 9. <strong>is</strong> · 10. <strong>will incorporate</strong></li>
+</ol>
+<h3 id="rev-phrases-to-know">Phrases to know</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Expression</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>burn in (one's) blood</td>
+  <td>have a passionate desire</td>
+</tr>
+<tr>
+  <td>uphill task</td>
+  <td>a tough challenge</td>
+</tr>
+<tr>
+  <td>buoyed up</td>
+  <td>encouraged / lifted in spirit</td>
+</tr>
+<tr>
+  <td>wishful thinking</td>
+  <td>a hopeful belief but unlikely to be true</td>
+</tr>
+<tr>
+  <td>wet blanket</td>
+  <td>a spoil-sport</td>
+</tr>
+<tr>
+  <td>coursing through one's veins</td>
+  <td>flowing through one's body</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-5-writing-task-email-enquiry">📧 5. Writing Task — Email (Enquiry)</h2>
+<p><strong>Format:</strong> From / To / Cc / Bcc / Subject / Message (introduction → query → conclusion) + Yours sincerely + name &amp; contact. Use <strong>formal language</strong>, avoid abbreviations.</p>
+<p><strong>Keep the model safe</strong> (task: summer workshop at a design institute):</p>
+<blockquote>
+<p><strong>Subject:</strong> Enquiry about the Summer Design Workshop and Application for Admission
+I am a Class 9 student passionate about designing. Kindly provide details of the workshop — <strong>dates, duration, fees, eligibility, procedure, seats and last date</strong>. I assure you of my sincerity.
+Yours sincerely, [Your name], (Student, Class 9), [contact].</p>
+</blockquote>
+<hr />
+<h2 id="rev-6-beyond-the-text-one-mark-facts">🌟 6. Beyond the Text (one-mark facts)</h2>
+<ul>
+<li><strong>Vision board:</strong> a visual representation of goals, dreams, inspirations — sections: My Dreams, I Want to Try, Goals, Places I Will Go, Inspiration.</li>
+<li><strong>Mothers who inspired history:</strong> <strong>Jijabai</strong> (Shivaji — dharma, patriotism, justice) · <strong>Queen Madalasa</strong> (mother of spiritual guidance).</li>
+<li><strong>Challenges → opportunities:</strong> <strong>Dr B. R. Ambedkar</strong> (Constitution's Drafting Committee chairperson) · <strong>Lal Bahadur Shastri</strong> (barefoot miles to school → PM) · <strong>Dr APJ Abdul Kalam</strong> (newspaper boy at dawn → 'Missile Man', 11th President).</li>
+<li><strong>Related poem:</strong> <em>Always Believe in Yourself</em> (Dorothy Hewitt).</li>
+</ul>
+<hr />
+<h1>🟢 PART B — BELIEVE IN YOURSELF (POEM)</h1>
+<h2 id="rev-2-the-poem-full-text">📖 2. The Poem (full text)</h2>
+<blockquote>
+<p>Step up to the challenge
+There is no crowd to see,
+It's just you and the future
+And where you want to be.
+Will it pull you forward
+Or push you back in fear?
+Difficult are choices
+When the future is getting near.
+There is such ease in comfort
+To maintain the status quo,
+But this isn't what we are made for
+This isn't how we grow.
+The first step is the hardest
+There is no turning back,
+You just need to believe in yourself
+For your future to be on track.</p>
+</blockquote>
+<p>— <em>Robert Langley</em></p>
+<hr />
+<h2 id="rev-3-theme-tone-mood">🎭 3. Theme, Tone, Mood</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>Personal responsibility for one's future; self-belief; growth through leaving comfort</td>
+</tr>
+<tr>
+  <td><strong>Central idea</strong></td>
+  <td>&quot;The first step is the hardest — believe in yourself and your future stays on track.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Motivational and encouraging; <strong>shifts from thoughtful to determined</strong></td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Inspirational, resolute</td>
+</tr>
+<tr>
+  <td><strong>Speaker</strong></td>
+  <td>A <strong>guide</strong> (not distant) who encourages the reader to take <strong>control of</strong> his/her own future; direct address 'You' = talking directly to the reader</td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td>Simple, effective <strong>ABCB</strong> per stanza (2nd &amp; 4th lines rhyme): see–be · fear–near · quo–grow · back–track</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="rev-4-poetic-devices-with-examples">🛠 4. Poetic Devices (with examples)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Example</th>
+  <th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Imagery</strong></td>
+  <td>&quot;There is no crowd to see…&quot;</td>
+  <td><strong>Solitary journey</strong> — stresses individual effort</td>
+</tr>
+<tr>
+  <td><strong>Imagery</strong></td>
+  <td>&quot;push you back in fear?&quot;</td>
+  <td><strong>Mental barrier</strong> that prevents growth</td>
+</tr>
+<tr>
+  <td><strong>Rhetorical question</strong></td>
+  <td>&quot;Will it pull you forward / Or push you back in fear?&quot;</td>
+  <td>Needing no answer — makes the reader reflect on choice</td>
+</tr>
+<tr>
+  <td><strong>Antithesis</strong></td>
+  <td>&quot;pull you forward / push you back&quot; · &quot;ease in comfort… how we grow&quot;</td>
+  <td>Contrasting pairs in parallel grammar highlight the choice</td>
+</tr>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td>&quot;The first step is the hardest&quot;</td>
+  <td>Not a physical step — difficulty of <em>beginning change</em></td>
+</tr>
+<tr>
+  <td><strong>Symbolism</strong></td>
+  <td>comfort &amp; status quo → <strong>stagnation</strong>; future → <strong>unknown</strong> needing <strong>courage</strong>; first step → <strong>leap of faith</strong> toward <strong>self-improvement</strong></td>
+  <td>Concrete images for inner experience</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Antithesis examples from the poem:</strong></p>
+<ul>
+<li>&quot;Will it pull you <strong>forward</strong> / Or push you <strong>back</strong> in fear?&quot; (forward↔back)</li>
+<li>&quot;There is such <strong>ease in comfort</strong>… but this isn't <strong>how we grow</strong>&quot; (ease↔growth)
+This parallel contrast (&quot;like Neil Armstrong's 'small step… giant leap'&quot;) emphasises the central choice facing the reader.</li>
+</ul>
+<hr />
+<h2 id="rev-5-exercise-answers">📋 5. Exercise Answers</h2>
+<p><strong>Central ideas (Check Your Understanding):</strong> St.1 → (i) personal responsibility &amp; clear focus · St.2 → (i) fear &amp; uncertainty make choices difficult · St.3 → (ii) growth requires leaving comfort · St.4 → (ii) first step difficult, self-belief keeps you on track.</p>
+<p><strong>Rhyme scheme:</strong> <strong>ABCB</strong> — simple, effective, flows steadily through each stanza.</p>
+<p><strong>Tone — True/False:</strong> 1. <strong>True</strong> · 2. <strong>True</strong>.</p>
+<p><strong>Speaker — options:</strong> <strong>guide</strong>, <strong>control of</strong>, <strong>talking directly to the reader</strong>.</p>
+<p><strong>Imagery match:</strong> &quot;no crowd to see&quot; → <strong>(ii)</strong> solitary journey · &quot;push you back in fear?&quot; → <strong>(iii)</strong> mental barrier.</p>
+<p><strong>Symbolism (unknown, self-improvement, courage, leap of faith, stagnation):</strong></p>
+<ol>
+<li>status quo = <strong>stagnation</strong> · 2. future = <strong>unknown</strong> (+ <strong>courage</strong>) · 3. first step = <strong>leap of faith</strong> (+ <strong>self-improvement</strong>).</li>
+</ol>
+<p><strong>Latin expressions (e.g., etc., ad hoc, in media res, per se, quid pro quo):</strong>
+(i) <strong>e.g.</strong> · (ii) <strong>quid pro quo</strong> · (iii) <strong>etc.</strong> · (iv) <strong>per se</strong> · (v) <strong>ad hoc</strong> · (vi) <strong>in media res</strong></p>
+<p><strong>Rhetorical-question match:</strong> (i)→<strong>F</strong> · (ii)→<strong>C</strong> · (iii)→<strong>A</strong> · (iv)→<strong>D</strong> · (v)→<strong>B</strong> · (vi)→<strong>E</strong></p>
+<hr />
+<h2 id="rev-6-practice-the-questions-q-amp-a">✍️ 6. Practice the Questions (Q &amp; A)</h2>
+<p><strong>Extract 1 — &quot;Step up to the challenge / There is no crowd to see, / It's just you and the future / And where you want to be.&quot;</strong></p>
+<ol>
+<li>'There is no crowd to see' → facing challenges is a <strong>private act of personal responsibility</strong> — no audience, so you act for yourself.</li>
+<li>'It's just you and the future' → <strong>your own future is entirely your responsibility</strong> — you alone choose where you want to be.</li>
+<li>&quot;Latha will <strong>step up</strong> her efforts to improve her vocal performance by practising harder each day.&quot;</li>
+<li>Best title → <strong>C. A Journey of Growth</strong>.</li>
+<li>achieve: goal :: face: <strong>challenge</strong>.</li>
+</ol>
+<p><strong>Whole-poem questions:</strong></p>
+<ol>
+<li><strong>Metaphor 'The first step is the hardest':</strong> the start of any change is the hardest moment — fear, uncertainty and the pull of comfort sit at the beginning; once taken, the goal is within reach and you don't turn back.</li>
+<li><strong>Antithesis message:</strong> personal growth is a <strong>choice between comfort and growth, fear and courage</strong> — the balanced contrast makes it plain that we &quot;aren't made for&quot; a comfortable status quo; only change builds us.</li>
+<li><strong>Realistic?</strong> Self-belief is <strong>essential but not enough by itself</strong> — real success also needs preparation, practice, support and perseverance; the poem is realistic that the first step is hardest and that belief takes it.</li>
+<li><strong>Application (your example):</strong> a student daunted by speaking in assembly — the &quot;no crowd&quot;, the fear, the hard first step (raising the hand); believing in yourself (&quot;future on track&quot;) turns hesitation into growth.</li>
+</ol>
+<hr />
+<h2 id="rev-quick-recap-both-texts">✅ QUICK RECAP (Both Texts)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>Text</th>
+  <th>Line to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td><em>Follow That Dream</em></td>
+  <td>&quot;What differentiates greatness from the ordinary is how much effort and sacrifice people invest.&quot;</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td><em>Believe in Yourself</em></td>
+  <td>&quot;The first step is the hardest… you just need to believe in yourself.&quot;</td>
+</tr>
+<tr>
+  <td><strong>Grammar</strong></td>
+  <td>First conditional + 'could'</td>
+  <td>If + simple present, (imperative)</td>
+</tr>
+<tr>
+  <td><strong>Writing task</strong></td>
+  <td>Email of enquiry</td>
+  <td>Subject → enquiry → Yours sincerely + contact</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1>✍️ PRACTICE QUESTIONS (Self-test)</h1>
+<p><strong>Part A:</strong></p>
+<ol>
+<li>State the '10-year rule' of mastery in any field.</li>
+<li>What differentiates actual achievers from mere dreamers?</li>
+<li>How does the mother balance encouragement with caution?</li>
+<li>Give two examples she uses of people whose dreams were changed by circumstances.</li>
+<li>Why is her own ten-year book-dream a good example for Ming?</li>
+</ol>
+<p><strong>Part B:</strong></p>
+<ol>
+<li>Explain the metaphor 'The first step is the hardest'.</li>
+<li>Quote the antithesis and the rhetorical question from the poem.</li>
+<li>What does 'status quo' mean, and why does the poet reject it?</li>
+<li>&quot;The speaker is a guide, not a distant stranger&quot; — justify with the poem's lines.</li>
+</ol>
+<p><strong>Quick recall:</strong></p>
+<ul>
+<li>(a) The letter is from the collection titled ______ (<em>My Daughter, My Friend</em>).</li>
+<li>(b) Raffles College is now ______ (the National University of Singapore).</li>
+<li>(c) The poem's rhyme scheme is ______ (ABCB).</li>
+<li>(d) 'status quo' comes from a ______ expression (Latin).</li>
+</ul>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 8 (PDF) — all facts, quotes, and answers are taken from the chapter.</em></p>
+
+    </div>
+
+    <div class="view-block" id="view-sum" data-block="sum">
+      <h1 class="fade-in">English — Chapter 8: Follow That Dream & Believe in Yourself —</h1>
+      <p class="subtitle fade-in">Class 9 | Two texts: **A)** *Follow That Dream* (Letter · Irene Chua) · **B)** *Believe in Yourself* (Poem · Robert Langley)</p>
+      <h1>🟣 PART A — FOLLOW THAT DREAM (LETTER)</h1>
+<h2 id="sum-theme">🎯 THEME</h2>
+<p>The text is built on <strong>three main themes</strong>:</p>
+<ol>
+<li><strong>Dreams demand effort and sacrifice</strong> — &quot;What differentiates greatness from the ordinary is how much effort and sacrifice people invest to realise their dream.&quot;</li>
+<li><strong>The 10-year rule of mastery</strong> — to reach world-class standard in any field one has to &quot;singularly and intensively&quot; pursue the subject for <strong>at least ten years</strong>.</li>
+<li><strong>Dreams can (and do) evolve</strong> — &quot;life itself may change a person's dreams&quot; — new hopes are &quot;no less than the original dream of younger days.&quot;</li>
+</ol>
+<p><strong>Underlying message:</strong> follow your dream <em>but count the cost</em> — passion + conviction + commitment, yet be balanced and realistic.</p>
+<blockquote>
+<p>❤️ <strong>Message:</strong> Follow your dream with <strong>passion, conviction and commitment</strong> — but first <em>count the cost</em> (years of effort, money, sacrifice), and be open to life reshaping that dream.</p>
+</blockquote>
+<hr />
+<h2 id="sum-long-answer-complete-summary-exam-ready">📝 LONG ANSWER (Complete summary — exam-ready)</h2>
+<blockquote>
+<p><em>Use this as a complete answer. Every important point of the letter is here.</em></p>
+</blockquote>
+<p><strong>The letter comes from <em>My Daughter, My Friend</em>, a collection by Irene Chua</strong>, in which she shares her deepest thoughts as a mother with her daughter, <strong>Ming</strong>. Dated <strong>19 June 1995</strong> and beginning <strong>&quot;By all means follow that dream&quot;</strong>, it celebrates the special bond between a mother and her teenage daughter while equipping her for life's challenges.</p>
+<p><strong>1. The truth behind greatness.</strong> Great men and women become great because they have a dream and <strong>pursue it till it comes true</strong>. What differentiates greatness from the ordinary is <strong>how much effort and sacrifice</strong> people invest to realise their dream. In fact, to reach <strong>world-class standard in any field</strong>, one must <strong>singularly and intensively pursue the subject for at least ten years</strong>.</p>
+<p><strong>2. How to decide.</strong> It starts with <strong>a passion for a particular interest</strong>, then comes the <strong>conviction that it is imperative to realise it</strong>. She advises Ming to <strong>count the cost</strong> — in years of effort, financial investments and sacrifice. Then, &quot;<strong>if it is still burning in your blood</strong> and you are ready to commit yourself to the task, <strong>plunge</strong>.&quot; It could be in any field — <strong>sports, science, arts, business, or design</strong>.</p>
+<p><strong>3. The uphill road.</strong> The road may be <strong>uphill most of the way</strong>; often you are &quot;<strong>buoyed up</strong> only by the knowledge that you are doing what you love best and are doing the right thing.&quot; When stamina runs out, <strong>the prospect of success</strong> keeps you on track.</p>
+<p><strong>4. The support network.</strong> When winners receive the <strong>Academy Awards</strong> for best actors, actresses and films, they always <strong>thank a host of people</strong> who formed their support network. So for one winner, there is <strong>a group of people who stood by him/her</strong>.</p>
+<p><strong>5. Why dreams remain dreams.</strong> It is good to fulfil your dreams, but <strong>for many people, dreams remain dreams</strong>. Everyone has <strong>wistfully</strong> said &quot;I wish I could be this or the other,&quot; yet they &quot;have never got beyond just wishful thinking.&quot; Some preferred to <strong>trade their dream for security</strong>; others had their lives changed by circumstance — e.g. people who dreamt of going to the then <strong>Raffles College (now the National University of Singapore)</strong> but the <strong>Japanese invasion during World War II changed their destiny forever</strong>; and people who wished to finish secondary school but had to <strong>go out to work to support their siblings</strong> through school.</p>
+<p><strong>6. Balance — not a &quot;wet blanket&quot;.</strong> Ming's mother says she is <strong>not going to put a wet blanket</strong> on Ming's dreams, &quot;but you will also have to consider the <strong>years you need to chase</strong> your dream.&quot; After all the obstacles are considered, &quot;<strong>if the burning conviction is still coursing through your veins, then go ahead and do something about it.</strong>&quot;</p>
+<p><strong>7. Dreams can change — and that is fine.</strong> From her own experience, <strong>life itself may change a person's dreams</strong>; these new hopes and aspirations are &quot;<strong>no less than the original dream of younger days</strong>.&quot; To fulfil them you must <strong>negotiate a path through a maze of hurdles</strong>; the dream takes <strong>much longer</strong> to realise, and the <strong>participants in your dreamscape</strong> are many more. As an example: <strong>publishing this book is a dream she chased for the last ten years</strong> — not the dream of her youth, but her &quot;original dream has changed over the years.&quot; She is &quot;really quite excited about it.&quot; The letter closes with the mother's wish: &quot;<strong>I wish at least one of your dreams comes true too.</strong> Love, Mum.&quot;</p>
+<hr />
+<h2 id="sum-keywords-amp-meanings">🔑 KEYWORDS &amp; MEANINGS</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Word</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>insight</strong></td>
+  <td>clear and deep understanding</td>
+</tr>
+<tr>
+  <td><strong>singularly</strong></td>
+  <td>exclusively</td>
+</tr>
+<tr>
+  <td><strong>imperative</strong></td>
+  <td>necessary</td>
+</tr>
+<tr>
+  <td><strong>plunge</strong></td>
+  <td>throw oneself into the activity</td>
+</tr>
+<tr>
+  <td><strong>buoyed up</strong></td>
+  <td>kept afloat</td>
+</tr>
+<tr>
+  <td><strong>wistfully</strong></td>
+  <td>longingly</td>
+</tr>
+<tr>
+  <td><strong>dreamscape</strong></td>
+  <td>a world of dreams</td>
+</tr>
+<tr>
+  <td><strong>sacrifice</strong></td>
+  <td>the act of giving up something valuable for something more important</td>
+</tr>
+<tr>
+  <td><strong>stamina</strong></td>
+  <td>strength that lets one continue</td>
+</tr>
+<tr>
+  <td><strong>aspiration</strong></td>
+  <td>a hope or ambition</td>
+</tr>
+<tr>
+  <td><strong>conviction</strong></td>
+  <td>a strong belief or opinion</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-character-sketch-ming-s-mother-the-writer">👥 CHARACTER SKETCH — Ming's Mother (the writer)</h2>
+<p>A <strong>warm, wise and encouraging mother</strong> writing to her teenage daughter Ming in <em>My Daughter, My Friend</em>. She is <strong>supportive</strong> (&quot;By all means follow that dream&quot;) yet <strong>realistic</strong> — she asks her daughter to <em>count the cost</em> in effort, money and sacrifice before plunging. She is <strong>persuasive</strong>, using <strong>critical questions and personal anecdotes</strong> (the Academy Award winners, Raffles College students whose destiny the Japanese invasion changed, siblings who worked to support their brothers and sisters, and her own ten-year dream of publishing this book). She reveals herself as <strong>optimistic and encouraging</strong> — her own dream changed over the years, yet she says the new hopes are &quot;no less than the original dream of younger days,&quot; and she signs off with the wish that at least one of Ming's dreams comes true.</p>
+<hr />
+<h2 id="sum-important-questions-with-answers">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. What do you think Ming must have written to her mother about?</strong>
+Ming must have written to her mother about <strong>a dream she was uncertain or hesitant about</strong>, perhaps seeking her mother's <strong>advice or blessing</strong> — she probably wondered whether she should pursue it, which is why her mother responds with the encouraging opening, &quot;By all means follow that dream.&quot;</p>
+<p><strong>2. How can one attain an international (world-class) level of skill in any field? Mention any two ways.</strong>
+(i) One has to <strong>singularly and intensively pursue the subject for at least ten years</strong>. (ii) One must <strong>count the cost</strong> (years of effort, financial investments, sacrifice) and, if the conviction is burning, <strong>commit and plunge</strong> into the task.</p>
+<p><strong>3. What differentiates the mere dreamers from actual achievers?</strong>
+<strong>Effort and sacrifice.</strong> Great people &quot;pursue their dream till it comes true,&quot; while mere dreamers stop at <strong>wishful thinking</strong> — they say &quot;I wish I could be this or the other&quot; but <strong>never get beyond simply wishing</strong> (or they trade their dream for security).</p>
+<p><strong>4. How does Ming's mother use critical questions and personal anecdotes to persuade Ming and convey her message effectively?</strong>
+She poses the <strong>critical question of &quot;counting the cost&quot;</strong> — years of effort, financial investment, sacrifice — making Ming think seriously before plunging. She then supports her points with <strong>personal anecdotes</strong>: the Academy Award winners who thank their support networks; people who lost their chance at Raffles College because of the Japanese invasion in World War II; those who left school to support their siblings; and <strong>her own experience</strong> of chasing the ten-year dream of publishing this book. These real examples make her advice convincing and heartfelt.</p>
+<p><strong>5. How does Ming's mother balance encouragement with caution in her advice?</strong>
+She <strong>encourages</strong> — &quot;By all means follow that dream&quot; — but couples it with <strong>caution</strong>: count the cost, consider the years you need to chase the dream, expect an uphill road and a &quot;maze of hurdles.&quot; She says she is &quot;not going to put a wet blanket&quot; on Ming's dreams, yet insists she &quot;will also have to consider the years.&quot; In short: <strong>dream boldly, but plan and persevere realistically.</strong></p>
+<p><strong>6. Is her advice still relevant in contemporary society? If yes, why?</strong>
+<strong>Yes.</strong> Even today, achieving world-class success takes years of focused, intensive practice and sacrifice; many young people still &quot;dream&quot; without action; and rapidly changing lives still reshape ambitions. Her emphasis on <strong>effort, counting the cost, support networks and adapting one's dreams</strong> is as true now as in 1995.</p>
+<p><strong>7. (For you — personal answer.)</strong> Be honest about the time, money, sacrifices and struggles you are willing to accept for your goal — and the ones you are not.</p>
+<hr />
+<h2 id="sum-vocabulary-amp-structures-in-context">✏️ VOCABULARY &amp; STRUCTURES IN CONTEXT</h2>
+<h3 id="sum-1-compound-words-with-scape-view-or-scene-of">1. Compound words with '-scape' (view or scene of)</h3>
+<ul>
+<li><strong>mindscape</strong> — the landscape of the mind / mental picture</li>
+<li><strong>seascape</strong> — a view or picture of the sea</li>
+<li><strong>landscape</strong> — a view of the countryside</li>
+<li><strong>cityscape</strong> — a view of a city</li>
+</ul>
+<p><strong>Dialogue fill-in answers:</strong> (i) <strong>seascape</strong> · (ii) <strong>cityscape</strong> · (iii) <strong>landscape</strong> · (iv) <strong>mindscape</strong></p>
+<h3 id="sum-2-figure-of-speech-expression-meanings">2. Figure-of-speech / expression meanings</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Expression</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>burn in her blood</td>
+  <td>have a passionate desire</td>
+</tr>
+<tr>
+  <td>an uphill task</td>
+  <td>a tough challenge</td>
+</tr>
+<tr>
+  <td>buoyed up (by victory)</td>
+  <td>encouraged / lifted in spirit</td>
+</tr>
+<tr>
+  <td>wishful thinking</td>
+  <td>a hopeful belief but unlikely to be true</td>
+</tr>
+<tr>
+  <td>a wet blanket</td>
+  <td>a spoil-sport</td>
+</tr>
+<tr>
+  <td>coursing through her veins</td>
+  <td>flowing through her body</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="sum-3-the-first-conditional-real-possible-future-with-an-imperative">3. The first conditional (real / possible future) — with an imperative</h3>
+<p><strong>Pattern:</strong> <code>If + present simple, (imperative).</code> E.g. <em>&quot;After all the obstacles are considered, if the burning conviction is still coursing through your veins, then go ahead and do something about it.&quot;</em></p>
+<p><strong>Sample answers (imperatives):</strong></p>
+<ol>
+<li>If the idea excites you, <strong>go for it without delay.</strong> 2. If you hear strange noises, <strong>call for help immediately.</strong> 3. If this seems too hard, <strong>break it into small steps.</strong> 4. If you care about the issue, <strong>speak up and take action.</strong> 5. If you finish early, <strong>revise your work carefully.</strong></li>
+</ol>
+<h3 id="sum-4-modal-could-matching">4. Modal 'could' — matching</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Sentence</th>
+  <th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>It <strong>could</strong> be in any field — sports, science, arts, business or design.</td>
+  <td>Possibility</td>
+</tr>
+<tr>
+  <td>&quot;I wish I <strong>could</strong> be this or the other,&quot; they have never got beyond just wishful thinking.</td>
+  <td>Unreal or hypothetical situation</td>
+</tr>
+<tr>
+  <td>They <strong>could have</strong> preferred to trade their dream for security.</td>
+  <td>Past possibility or speculation</td>
+</tr>
+<tr>
+  <td>…they had to go out to work so that they <strong>could</strong> support their siblings.</td>
+  <td>Past ability or purpose</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>'could' fill-in answers:</strong></p>
+<ol>
+<li>I wish <strong>I could travel</strong> without worrying about money. (unreal/hypothetical) · 2. They <strong>could have taken</strong> the shorter route, but they didn't know about it. (past possibility/speculative) · 3. When I was younger, I <strong>could swim/run for miles</strong> without stopping. (past ability) · 4. She <strong>could be at</strong> the library right now — she had mentioned it. (possibility) · 5. <strong>Could you</strong> repeat the question? I didn't hear it clearly. (formal/polite request)</li>
+</ol>
+<h3 id="sum-5-fill-in-the-blanks-grammatical-forms-experiential-learning">5. Fill in the blanks (grammatical forms) — Experiential Learning</h3>
+<ol>
+<li><strong>helps</strong> · 2. <strong>learned</strong> · 3. <strong>work</strong> · 4. <strong>apply</strong> · 5. <strong>conducts</strong> · 6. <strong>analyses</strong> · 7. <strong>must reflect</strong> · 8. <strong>helps</strong> · 9. <strong>is</strong> · 10. <strong>will incorporate</strong></li>
+</ol>
+<hr />
+<h2 id="sum-writing-task-email-writing-an-email-of-enquiry">📧 WRITING TASK — EMAIL (Writing an email of enquiry)</h2>
+<p><strong>What is an email?</strong> A method of composing, sending, storing and receiving messages over an electronic communication system.</p>
+<p><strong>Format:</strong> From:, To:, Cc:, Bcc:, Subject:, Message: (introduction → seeking details/permission → conclusion). Use <strong>formal language</strong>, avoid abbreviations, close with <strong>Yours sincerely</strong>, name + designation + contact details.</p>
+<p><strong>Model (task: summer designing workshop — enquiry):</strong></p>
+<blockquote>
+<p><strong>From:</strong> priya.sharma@gmail.com
+<strong>To:</strong> director@designint.in
+<strong>Cc:</strong> —
+<strong>Bcc:</strong> —
+<strong>Subject:</strong> Enquiry about the Summer Design Workshop and Application for Admission</p>
+<p>Dear Sir/Madam,
+I am a Class 9 student who is deeply passionate about pursuing a career in designing. I came across your reputed institute's <strong>summer workshop</strong> and would like to express my keen interest in joining it.
+I would be grateful if you could kindly provide me with details of the workshop — its <strong>dates, duration, fees, eligibility criteria and the application procedure</strong>. I would also like to know the number of seats available and the last date for submitting the application form.
+I assure you of my sincerity and would be glad to submit any further information you may require. I look forward to your kind response.</p>
+<p>Yours sincerely,
+Priya Sharma
+(Student, Class 9)
+Contact: 98XXXXXX10 · priya.sharma@gmail.com</p>
+</blockquote>
+<hr />
+<h2 id="sum-learning-beyond-the-text-worth-one-mark">🌍 LEARNING BEYOND THE TEXT (worth one mark)</h2>
+<ul>
+<li><strong>Vision board</strong> — a visual representation of your goals, dreams and inspirations; includes <strong>My Dreams, I Want to Try, Goals, Places I Will Go, Inspiration</strong>.</li>
+<li><strong>Mothers who shaped greatness:</strong> <strong>Jijabai</strong> instilled in <strong>Chhatrapati Shivaji</strong> a sense of dharma, patriotism and justice through tales of the Ramayana and Mahabharata; <strong>Queen Madalasa</strong> (wife of King Ritudhwaja) nurtured in her children understanding of the soul and detachment from material desires.</li>
+<li><strong>From challenges to opportunities:</strong> <strong>Dr B. R. Ambedkar</strong> (faced untold discrimination; became chairperson of the Drafting Committee of the Constitution); <strong>Lal Bahadur Shastri</strong> (walked miles barefoot to school; became Prime Minister); <strong>Dr APJ Abdul Kalam</strong> (delivered newspapers before dawn; the 'Missile Man', 11th President of India).</li>
+<li><strong>Related poem:</strong> <em>Always Believe in Yourself</em> (Dorothy Hewitt).</li>
+</ul>
+<hr />
+<h2 id="sum-quick-reference-letter-amp-poem">✅ QUICK REFERENCE — Letter &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Letter</strong></td>
+  <td>Follow your dream with passion, conviction and effort — but count the cost, and be ready for the dream itself to change and grow.</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>Step up to the challenge alone, leave comfort behind, and take that hardest first step — because believing in yourself keeps your future on track.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 8 — all facts, definitions and answers verified against the PDF.</em></p>
+<hr />
+<h1>🟢 PART B — BELIEVE IN YOURSELF (POEM)</h1>
+<h2 id="sum-theme-2">🎭 THEME</h2>
+<p><strong>Believe in Yourself by Robert Langley</strong> is a <strong>motivational poem about taking responsibility for your own future</strong>. It tells the reader to <strong>step up to the challenge</strong> even when no one is watching, to resist the easy pull of <strong>comfort and the status quo</strong>, and to take that hardest <strong>first step</strong> — because with <strong>self-belief</strong> the future stays on track. Growth happens only when we <strong>leave comfort behind and embrace change</strong>.</p>
+<hr />
+<h2 id="sum-central-idea">💡 CENTRAL IDEA</h2>
+<p><strong>Facing the future alone may be frightening, and the first step towards change is the hardest — but we are not made for a comfortable status quo.</strong> We grow only by stepping up to challenges, and <strong>believing in yourself is what keeps your future on track.</strong></p>
+<hr />
+<h2 id="sum-the-poem">📜 THE POEM</h2>
+<blockquote>
+<p>Step up to the challenge
+There is no crowd to see,
+It's just you and the future
+And where you want to be.
+Will it pull you forward
+Or push you back in fear?
+Difficult are choices
+When the future is getting near.
+There is such ease in comfort
+To maintain the status quo,
+But this isn't what we are made for
+This isn't how we grow.
+The first step is the hardest
+There is no turning back,
+You just need to believe in yourself
+For your future to be on track.</p>
+</blockquote>
+<p><em>(Poem text as printed in the textbook.)</em></p>
+<hr />
+<h2 id="sum-stanza-wise-meaning-with-central-ideas">📖 STANZA-WISE MEANING (with central ideas)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Stanza</th>
+  <th>Meaning</th>
+  <th>Central idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>1</strong></td>
+  <td>Step up to the challenge though <strong>no crowd is watching</strong>; it is just <strong>you and the future</strong> and where you want to be.</td>
+  <td>Facing challenges requires <strong>personal responsibility and a clear focus on one's future.</strong></td>
+</tr>
+<tr>
+  <td><strong>2</strong></td>
+  <td>The future will either <strong>pull you forward</strong> or <strong>push you back in fear</strong>; choices are difficult when the future approaches.</td>
+  <td><strong>Fear and uncertainty make choices difficult</strong> as the future nears.</td>
+</tr>
+<tr>
+  <td><strong>3</strong></td>
+  <td>There is ease in comfort and in <strong>maintaining the status quo</strong>, but that is <strong>not what we are made for</strong> — that is not how we <strong>grow</strong>.</td>
+  <td>Personal growth requires <strong>leaving behind comfort and embracing change.</strong></td>
+</tr>
+<tr>
+  <td><strong>4</strong></td>
+  <td><strong>The first step is the hardest</strong> and there is no turning back — you just need to <strong>believe in yourself</strong> to keep your future on track.</td>
+  <td>The first step is difficult, but <strong>self-belief and confidence keep you on track.</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-theme-tone-amp-mood">🎯 THEME, TONE &amp; MOOD</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Feature</th>
+  <th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Theme</strong></td>
+  <td>Personal responsibility; self-belief; growth through change</td>
+</tr>
+<tr>
+  <td><strong>Tone</strong></td>
+  <td>Motivational and encouraging; shifts from thoughtful to determined</td>
+</tr>
+<tr>
+  <td><strong>Mood</strong></td>
+  <td>Inspirational, resolute</td>
+</tr>
+<tr>
+  <td><strong>Speaker</strong></td>
+  <td>Not distant — a <strong>guide</strong> who understands the struggle and encourages the reader to take <strong>control of his/her own future</strong>; the direct address '<strong>You</strong>' makes it feel as if the speaker is <strong>talking directly to the reader</strong></td>
+</tr>
+<tr>
+  <td><strong>Rhyme scheme</strong></td>
+  <td>Simple, effective <strong>ABCB</strong> (second and fourth lines rhyme in each stanza): see–be, fear–near, quo(no)–grow, back–track</td>
+</tr>
+<tr>
+  <td><strong>Metre</strong></td>
+  <td>Each line subjected to stress-marking in class (spondaic/trochaic feel), lending rhythm</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-poetic-devices">🛠 POETIC DEVICES</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Device</th>
+  <th>Example / Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Imagery</strong></td>
+  <td>&quot;There is no crowd to see…&quot; → <strong>suggests a solitary journey, stressing individual effort</strong>; &quot;push you back in fear?&quot; → <strong>evokes the mental barrier that prevents growth</strong></td>
+</tr>
+<tr>
+  <td><strong>Rhetorical question</strong></td>
+  <td>&quot;Will it pull you forward / Or push you back in fear?&quot; — needs no answer; it makes the reader think about which way they will let the future move them</td>
+</tr>
+<tr>
+  <td><strong>Antithesis</strong></td>
+  <td>&quot;Will it pull you <strong>forward</strong> / Or push you <strong>back</strong> in fear?&quot; and &quot;There is such <strong>ease in comfort</strong>… But this isn't <strong>how we grow</strong>&quot; — contrasting forward/back, comfort/growth in parallel grammar to highlight the choice</td>
+</tr>
+<tr>
+  <td><strong>Metaphor</strong></td>
+  <td>&quot;<strong>The first step is the hardest</strong>&quot; — metaphorical because it is not a physical step; it stands for <strong>beginning the change</strong>, the difficulty of making that first decision</td>
+</tr>
+<tr>
+  <td><strong>Symbolism</strong></td>
+  <td><strong>Comfort and the status quo</strong> → <em>stagnation</em> and fear of change (the comfort zone that holds one back); <strong>the future</strong> → the <em>unknown</em> that requires <em>courage</em>; <strong>the first step</strong> → the initial <em>leap of faith</em> that begins <em>self-improvement</em> / personal development</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="sum-important-questions-with-answers-2">❓ IMPORTANT QUESTIONS (with answers)</h2>
+<p><strong>1. What does the line 'There is no crowd to see' suggest about facing challenges?</strong>
+That facing challenges is a <strong>private, solitary act</strong> — there is no audience applauding you. You must act on <strong>your own belief and responsibility</strong>, not for show or encouragement from others.</p>
+<p><strong>2. Complete: 'It's just you and the future' suggests that —</strong>
+<strong>the responsibility for your own future rests solely on you</strong> — you alone decide where you want to be and how to get there.</p>
+<p><strong>3. Fill the blank (word from the extract) — &quot;Latha will ____ her efforts to improve her vocal performance by practising harder each day.&quot;</strong>
+<strong>step up</strong> (— &quot;Step up to the challenge&quot;).</p>
+<p><strong>4. Most suitable title for the extract:</strong> <strong>C. A Journey of Growth.</strong></p>
+<p><strong>5. Complete the analogy — achieve: goal :: face: ______.</strong> <strong>challenge.</strong></p>
+<p><strong>6. Significance of the metaphor 'The first step is the hardest' in the context of personal growth.</strong>
+It captures the truth that <strong>beginning is the most difficult part of any change</strong> — the decision to step out of comfort, the fear, and the uncertainty all sit at the start. Once the first step is taken, the goal is already in reach, and <strong>momentum and self-belief</strong> carry you forward; &quot;there is no turning back.&quot;</p>
+<p><strong>7. What message does the antithesis convey about the nature of personal development?</strong>
+That personal development means <strong>choosing growth over comfort, forward over fear</strong> — the parallel contrasts (&quot;pull you forward / push you back&quot;, &quot;ease in comfort / how we grow&quot;) make us see that <strong>staying in the status quo is not living up to what we are made for</strong>; only change and challenge build us.</p>
+<p><strong>8. Is the poet's message realistic in the context of real-world struggles?</strong>
+<strong>Largely, with a caveat.</strong> &quot;Believing in yourself&quot; is <strong>essential but not always sufficient</strong> — real obstacles also need <strong>preparation, practice, support from others, perseverance and sometimes luck</strong>. The poem wisely makes the first step central (it is truly the hardest), and self-belief is what drives a person to act, prepare and persist — so the message is realistic <strong>as a starting point of growth</strong>.</p>
+<p><strong>9. Apply the poem's message to a real situation (your answer).</strong>
+Example: a student hesitating to speak in the school assembly. The audience (&quot;no crowd to see&quot;) and fear (&quot;push you back&quot;) loom large; the first step — raising the hand — is the hardest (&quot;there is no turning back&quot;); <strong>believing in yourself</strong> (&quot;the future to be on track&quot;) turns fear into confidence and growth.</p>
+<p><strong>10. Select the correct meaning of 'status quo':</strong> <strong>2. A situation to keep things the same</strong> — the Latin phrase <em>status quo</em> means &quot;the state in which&quot; / the existing state of affairs, especially when things remain unchanged.</p>
+<hr />
+<h2 id="sum-exercises-answers-at-a-glance">🔑 EXERCISES — ANSWERS AT A GLANCE</h2>
+<p><strong>A. Central ideas of stanzas (Check Your Understanding):</strong></p>
+<ul>
+<li>Stanza 1 → <strong>(i)</strong> · Stanza 2 → <strong>(i)</strong> · Stanza 3 → <strong>(ii)</strong> · Stanza 4 → <strong>(ii)</strong></li>
+</ul>
+<p><strong>B. Rhyme scheme sentence:</strong> The poem follows a simple, yet effective rhyme scheme <strong>ABCB</strong> (the second and fourth lines rhyme in each stanza) that flows steadily through each stanza.</p>
+<p><strong>C. Tone — True or False:</strong> 1. <strong>True</strong> (motivational and encouraging) · 2. <strong>True</strong> (shifts from thoughtful to determined).</p>
+<p><strong>D. Speaker — options:</strong> the speaker comes across as a <strong>guide</strong> who understands the struggle and encourages the reader to take <strong>control of</strong> his/her own future; the direct address 'You' makes it feel like the speaker is <strong>talking directly to the reader</strong>.</p>
+<p><strong>E. Imagery match:</strong> &quot;There is no crowd to see…&quot; → <strong>(ii)</strong> solitary journey, individual effort · &quot;push you back in fear?&quot; → <strong>(iii)</strong> mental barrier that prevents growth.</p>
+<p><strong>F. Symbolism fill (box: unknown, self-improvement, courage, leap of faith, stagnation):</strong></p>
+<ol>
+<li>Comfort and the status quo represent <strong>stagnation</strong> and fear of change. 2. The future symbolises the <strong>unknown</strong>, potential that lies ahead but requires <strong>courage</strong> to step into. 3. The first step symbolises the initial <strong>leap of faith</strong> required to begin the journey of <strong>self-improvement</strong> or personal development.</li>
+</ol>
+<p><strong>G. Latin expressions fill (etc., e.g., ad hoc, in media res, per se, quid pro quo):</strong>
+(i) <strong>e.g.</strong> · (ii) <strong>quid pro quo</strong> · (iii) <strong>etc.</strong> · (iv) <strong>per se</strong> · (v) <strong>ad hoc</strong> · (vi) <strong>in media res</strong></p>
+<p><strong>H. Rhetorical questions match:</strong>
+(i) stand up for what is right → <strong>F</strong> · (ii) own up to a mistake in a group project → <strong>C</strong> · (iii) try something challenging (public speaking) → <strong>A</strong> · (iv) two career paths → <strong>D</strong> · (v) apologise for a mistake → <strong>B</strong> · (vi) step out of the comfort zone → <strong>E</strong></p>
+<hr />
+<h2 id="sum-writing-task-speech-turning-challenges-into-opportunities">✍️ WRITING TASK — SPEECH (Turning Challenges into Opportunities)</h2>
+<p>Deliver the morning-assembly speech on <strong>'Turning Challenges into Opportunities'</strong>:</p>
+<ul>
+<li><strong>Opening:</strong> greet the audience, introduce yourself, begin with a quotation/question/surprising fact, state the purpose and give an overview.</li>
+<li><strong>Body (2 paragraphs):</strong> each paragraph makes one main point — e.g. (i) challenges bring new learning and growth; (ii) people fear change, but facing it builds skills, determination and confidence — with transition words, anecdotes and evidence.</li>
+<li><strong>Conclusion:</strong> summarise, end with a lasting statement, and thank the audience.</li>
+<li><strong>Language tip:</strong> use formal language and a <strong>persuasive tone</strong> — &quot;don't you agree…?&quot;, &quot;…isn't it?&quot;</li>
+</ul>
+<hr />
+<h2 id="sum-quick-reference-letter-amp-poem-2">✅ QUICK REFERENCE — Letter &amp; Poem</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+  <th>Part</th>
+  <th>One line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Letter</strong></td>
+  <td>Greatness comes from effort and sacrifice; count the cost, plunge, and let your dream grow with life.</td>
+</tr>
+<tr>
+  <td><strong>Poem</strong></td>
+  <td>No crowd, just you and your future — leave comfort, take the hardest first step, believe in yourself.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Notes prepared from the Class 9 English textbook, Chapter 8 — all facts, definitions and answers verified against the PDF.</em></p>
+
+    </div>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+(function(){
+  const revBtn = document.getElementById('revBtn');
+  const sumBtn = document.getElementById('sumBtn');
+  const srevBtn = document.getElementById('srevBtn');
+  const ssumBtn = document.getElementById('ssumBtn');
+  const rev = document.getElementById('view-rev');
+  const sum = document.getElementById('view-sum');
+  const toc = document.getElementById('toc');
+
+  const TOC = { rev: [{"h": "rev-1-at-a-glance", "t": "🧭 1. At a Glance"}, {"h": "rev-2-follow-that-dream-key-ideas-point-wise", "t": "📖 2. Follow That Dream — Key Ideas (Point-wise)"}, {"h": "rev-3-key-figures-from-the-letter", "t": "📊 3. Key Figures from the Letter"}, {"h": "rev-4-grammar-corner", "t": "📝 4. Grammar Corner"}, {"h": "rev-5-writing-task-email-enquiry", "t": "📧 5. Writing Task — Email (Enquiry)"}, {"h": "rev-6-beyond-the-text-one-mark-facts", "t": "🌟 6. Beyond the Text (one-mark facts)"}, {"h": "rev-2-the-poem-full-text", "t": "📖 2. The Poem (full text)"}, {"h": "rev-3-theme-tone-mood", "t": "🎭 3. Theme, Tone, Mood"}, {"h": "rev-4-poetic-devices-with-examples", "t": "🛠 4. Poetic Devices (with examples)"}, {"h": "rev-5-exercise-answers", "t": "📋 5. Exercise Answers"}, {"h": "rev-6-practice-the-questions-q-amp-a", "t": "✍️ 6. Practice the Questions (Q &amp; A)"}, {"h": "rev-quick-recap-both-texts", "t": "✅ QUICK RECAP (Both Texts)"}], sum: [{"h": "sum-theme", "t": "🎯 THEME"}, {"h": "sum-long-answer-complete-summary-exam-ready", "t": "📝 LONG ANSWER (Complete summary — exam-ready)"}, {"h": "sum-keywords-amp-meanings", "t": "🔑 KEYWORDS &amp; MEANINGS"}, {"h": "sum-character-sketch-ming-s-mother-the-writer", "t": "👥 CHARACTER SKETCH — Ming's Mother (the writer)"}, {"h": "sum-important-questions-with-answers", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-vocabulary-amp-structures-in-context", "t": "✏️ VOCABULARY &amp; STRUCTURES IN CONTEXT"}, {"h": "sum-writing-task-email-writing-an-email-of-enquiry", "t": "📧 WRITING TASK — EMAIL (Writing an email of enquiry)"}, {"h": "sum-learning-beyond-the-text-worth-one-mark", "t": "🌍 LEARNING BEYOND THE TEXT (worth one mark)"}, {"h": "sum-quick-reference-letter-amp-poem", "t": "✅ QUICK REFERENCE — Letter &amp; Poem"}, {"h": "sum-theme-2", "t": "🎭 THEME"}, {"h": "sum-central-idea", "t": "💡 CENTRAL IDEA"}, {"h": "sum-the-poem", "t": "📜 THE POEM"}, {"h": "sum-stanza-wise-meaning-with-central-ideas", "t": "📖 STANZA-WISE MEANING (with central ideas)"}, {"h": "sum-theme-tone-amp-mood", "t": "🎯 THEME, TONE &amp; MOOD"}, {"h": "sum-poetic-devices", "t": "🛠 POETIC DEVICES"}, {"h": "sum-important-questions-with-answers-2", "t": "❓ IMPORTANT QUESTIONS (with answers)"}, {"h": "sum-exercises-answers-at-a-glance", "t": "🔑 EXERCISES — ANSWERS AT A GLANCE"}, {"h": "sum-writing-task-speech-turning-challenges-into-opportunities", "t": "✍️ WRITING TASK — SPEECH (Turning Challenges into Opportunities)"}, {"h": "sum-quick-reference-letter-amp-poem-2", "t": "✅ QUICK REFERENCE — Letter &amp; Poem"}] };
+  const topButtons = [revBtn, sumBtn];
+  const sideButtons = [srevBtn, ssumBtn];
+  let current = 'rev';
+
+  function buildToc(view){
+    const items = TOC[view];
+    if(!items){ toc.innerHTML = ''; return; }
+    toc.innerHTML = items.map(function(a){
+      return '<a href="#' + a.h + '" data-h>' + a.t + '</a>';
+    }).join('\n');
+    attachSpy(items);
+  }
+
+  let spyItems = [];
+  function attachSpy(items){
+    spyItems = items;
+    const els = items.map(a => document.getElementById(a.h)).filter(Boolean);
+    const links = toc.querySelectorAll('a[data-h]');
+    function onScroll(){
+      let cur = '';
+      els.forEach(el => { if(window.scrollY >= el.offsetTop - 150) cur = el.id; });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+    }
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  }
+
+  function setView(view){
+    if(view === current) return;
+    current = view;
+    rev.classList.toggle('active', view === 'rev');
+    sum.classList.toggle('active', view === 'sum');
+    topButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    sideButtons.forEach(b => b.classList.toggle('active', b.dataset.view === view));
+    buildToc(view);
+    document.getElementById('sidebar').classList.remove('open');
+  }
+
+  topButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  sideButtons.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+  toc.addEventListener('click', e => {
+    if(e.target.matches('a[data-h]')) document.getElementById('sidebar').classList.remove('open');
+  });
+
+  const io = new IntersectionObserver(es => {
+    es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  buildToc('rev');
+})();
+</script>
+
+</body>
+</html>

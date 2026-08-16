@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syllabus Tracker — StudyHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0C0C14;
+  --surface: #181825;
+  --text: #E8E6E3;
+  --text-muted: #8B8FA3;
+  --text-dim: #5C5F72;
+  --amber: #E9A86C;
+  --sky: #6C8EBF;
+  --sage: #8FA88A;
+  --border: #2A2A3E;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;overflow-x:hidden}
+body{
+  font-family:'Sora',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;min-height:100vh;
+}
+::selection{background:var(--amber);color:var(--bg)}
+body::after{
+  content:'';position:fixed;inset:0;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px 256px;
+  pointer-events:none;z-index:9999;
+}
+.ambient-sci{
+  position:fixed;top:-20vh;left:-10vw;
+  width:50vmax;height:50vmax;
+  background:radial-gradient(circle, rgba(233,168,108,0.03) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+  animation:pulse 8s ease-in-out infinite alternate;
+}
+.ambient-eng{
+  position:fixed;bottom:-20vh;right:-10vw;
+  width:50vmax;height:50vmax;
+  background:radial-gradient(circle, rgba(143,168,138,0.03) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+  animation:pulse 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes pulse{0%{opacity:0.5;transform:scale(1)}100%{opacity:1;transform:scale(1.08)}}
+
+header{
+  position:sticky;top:0;z-index:100;
+  padding:1.15rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(12,12,20,0.7);
+  border-bottom:1px solid rgba(42,42,62,0.5);
+}
+.header-left{display:flex;align-items:center;gap:1rem}
+.back-btn{font-size:0.85rem;color:var(--text-muted);text-decoration:none;display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;border-radius:var(--radius-sm);transition:all 0.2s}
+.back-btn:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+.logo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text)}
+.logo span{color:var(--amber)}
+
+.content{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem;position:relative;z-index:1}
+
+/* Page header */
+.page-header{margin-bottom:2rem}
+.page-header h1{
+  font-family:'Syne',sans-serif;
+  font-size:2rem;font-weight:800;letter-spacing:-0.03em;
+  margin-bottom:0.3rem;
+}
+.page-header p{font-size:0.88rem;color:var(--text-muted)}
+
+/* Overall summary */
+.overall-summary{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0.75rem;margin-bottom:2rem;
+}
+.summary-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.15rem 1.25rem;
+  text-align:center;
+}
+.summary-card .ring-wrap{
+  width:56px;height:56px;border-radius:50%;
+  margin:0 auto 0.5rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.summary-card .ring-wrap .inner{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--surface);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;
+}
+.summary-card .label{font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.04em;font-weight:600}
+.summary-card .detail{font-size:0.78rem;color:var(--text-muted);margin-top:0.1rem}
+.summary-card.sci .ring-wrap{background:conic-gradient(var(--amber) 0%, rgba(255,255,255,0.06) 0)}
+.summary-card.sci .inner{color:var(--amber)}
+.summary-card.eng .ring-wrap{background:conic-gradient(var(--sage) 0%, rgba(255,255,255,0.06) 0)}
+.summary-card.eng .inner{color:var(--sage)}
+.summary-card.total .ring-wrap{background:conic-gradient(var(--sky) 0%, rgba(255,255,255,0.06) 0)}
+.summary-card.total .inner{color:var(--sky)}
+
+/* Tabs */
+.tabs{display:flex;gap:0.25rem;margin-bottom:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:0.25rem}
+.tab-btn{
+  flex:1;border:none;background:transparent;
+  color:var(--text-dim);font-family:'Sora',sans-serif;
+  font-size:0.82rem;font-weight:500;padding:0.55rem;
+  border-radius:var(--radius-sm);cursor:pointer;
+  transition:all 0.25s;
+}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{background:rgba(255,255,255,0.06);color:var(--text)}
+.tab-btn[data-tab="science"].active{color:var(--amber)}
+.tab-btn[data-tab="english"].active{color:var(--sage)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Term blocks */
+.term-block{margin-bottom:1.5rem}
+.term-header{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:0.75rem;
+}
+.term-header h3{
+  font-family:'Syne',sans-serif;
+  font-size:0.95rem;font-weight:600;
+}
+.term-header .term-meta{
+  font-size:0.75rem;color:var(--text-dim);
+}
+.term-bar{
+  width:100%;height:4px;background:rgba(255,255,255,0.06);
+  border-radius:3px;overflow:hidden;margin-bottom:0.75rem;
+}
+.term-bar .fill{
+  height:100%;border-radius:3px;transition:width 1s ease;width:0%;
+}
+.term-bar .fill.sci-mid{background:var(--amber)}
+.term-bar .fill.sci-final{background:rgba(233,168,108,0.5)}
+.term-bar .fill.eng-mid{background:var(--sage)}
+.term-bar .fill.eng-final{background:rgba(143,168,138,0.5)}
+
+/* Checkbox items */
+.checklist{display:flex;flex-direction:column;gap:0.35rem}
+.check-item{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.65rem 0.9rem;
+  border-radius:var(--radius-sm);
+  border:1px solid transparent;
+  transition:all 0.2s;
+  cursor:pointer;
+}
+.check-item:hover{background:rgba(255,255,255,0.02);border-color:var(--border)}
+.check-item.done{opacity:0.55}
+.check-item.done .item-title{text-decoration:line-through;text-decoration-color:rgba(255,255,255,0.2)}
+.check-item .cb{
+  width:18px;height:18px;border-radius:4px;
+  border:2px solid var(--text-dim);
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+  position:relative;
+}
+.check-item .cb.checked{background:var(--amber);border-color:var(--amber)}
+.check-item .cb.checked::after{
+  content:'✓';color:var(--bg);font-size:0.7rem;font-weight:700;
+}
+.check-item .item-num{font-size:0.7rem;color:var(--text-dim);min-width:2.2rem;flex-shrink:0}
+.check-item .item-title{font-size:0.84rem;font-weight:500;flex:1}
+
+/* Reset button */
+.reset-wrap{text-align:center;margin-top:2rem}
+.reset-btn{
+  background:transparent;border:1px solid var(--border);
+  color:var(--text-dim);font-family:'Sora',sans-serif;
+  font-size:0.75rem;padding:0.4rem 1rem;border-radius:var(--radius-sm);
+  cursor:pointer;transition:all 0.2s;
+}
+.reset-btn:hover{border-color:rgba(233,168,108,0.3);color:var(--amber)}
+
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  header{padding:1rem 1.25rem}
+  .content{padding:2rem 1.25rem}
+  .page-header h1{font-size:1.5rem}
+  .overall-summary{grid-template-columns:1fr;gap:0.5rem}
+}
+@media(max-width:600px){
+  .content{padding:1.5rem 1rem}
+  .page-header h1{font-size:1.3rem}
+  .check-item{padding:0.5rem 0.65rem}
+  .check-item .item-title{font-size:0.78rem}
+  .tabs .tab-btn{font-size:0.75rem;padding:0.45rem}
+}
+@media(prefers-reduced-motion){
+  *{animation:none!important;transition:none!important}
+  .fade-in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient-sci"></div>
+<div class="ambient-eng"></div>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="back-btn">&larr; Back</a>
+    <a href="index.html" class="logo">&#x25B3; <span>study</span>hub</a>
+  </div>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="#" class="active">Tracker</a>
+  </nav>
+</header>
+
+<div class="content">
+
+  <div class="page-header fade-in">
+    <h1>Syllabus Tracker</h1>
+    <p>Mark chapters as completed. Progress is saved automatically.</p>
+  </div>
+
+  <div class="overall-summary fade-in" id="summaryCards">
+    <div class="summary-card sci">
+      <div class="ring-wrap" id="sciRing"><div class="inner" id="sciPct">0%</div></div>
+      <div class="label">Science</div>
+      <div class="detail" id="sciDetail">0 / 9 CGs</div>
+    </div>
+    <div class="summary-card eng">
+      <div class="ring-wrap" id="engRing"><div class="inner" id="engPct">0%</div></div>
+      <div class="label">English</div>
+      <div class="detail" id="engDetail">0 / 14 chapters</div>
+    </div>
+    <div class="summary-card total">
+      <div class="ring-wrap" id="totalRing"><div class="inner" id="totalPct">0%</div></div>
+      <div class="label">Overall</div>
+      <div class="detail" id="totalDetail">0 / 23 items</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs fade-in">
+    <button class="tab-btn active" data-tab="science">&#x1F52C; Science</button>
+    <button class="tab-btn" data-tab="english">&#x1F4D6; English</button>
+  </div>
+
+  <!-- Science Tab -->
+  <div class="tab-content active" id="tab-science">
+
+    <!-- Mid Term -->
+    <div class="term-block fade-in">
+      <div class="term-header">
+        <h3>Mid Term</h3>
+        <span class="term-meta" id="sciMidMeta">0 / 5</span>
+      </div>
+      <div class="term-bar"><div class="fill sci-mid" id="sciMidBar"></div></div>
+      <div class="checklist" id="sciMidList"></div>
+    </div>
+
+    <!-- Final Term -->
+    <div class="term-block fade-in">
+      <div class="term-header">
+        <h3>Final Term</h3>
+        <span class="term-meta" id="sciFinalMeta">0 / 4</span>
+      </div>
+      <div class="term-bar"><div class="fill sci-final" id="sciFinalBar"></div></div>
+      <div class="checklist" id="sciFinalList"></div>
+    </div>
+
+  </div>
+
+  <!-- English Tab -->
+  <div class="tab-content" id="tab-english">
+
+    <!-- Mid Term -->
+    <div class="term-block fade-in">
+      <div class="term-header">
+        <h3>Mid Term <span style="font-size:0.7rem;font-weight:400;color:var(--text-dim)">(by 05 Sept 2026)</span></h3>
+        <span class="term-meta" id="engMidMeta">0 / 8</span>
+      </div>
+      <div class="term-bar"><div class="fill eng-mid" id="engMidBar"></div></div>
+      <div class="checklist" id="engMidList"></div>
+    </div>
+
+    <!-- Final Term -->
+    <div class="term-block fade-in">
+      <div class="term-header">
+        <h3>Final Term</h3>
+        <span class="term-meta" id="engFinalMeta">0 / 6</span>
+      </div>
+      <div class="term-bar"><div class="fill eng-final" id="engFinalBar"></div></div>
+      <div class="checklist" id="engFinalList"></div>
+    </div>
+
+  </div>
+
+  <div class="reset-wrap fade-in">
+    <button class="reset-btn" id="resetBtn">Reset all progress</button>
+  </div>
+
+</div>
+
+<script>
+const DATA = {
+  sciMid: [
+    { id: 'sci_cg1', num: 'CG-1', title: 'Matter and its constituents — properties, measurement, and behaviour' },
+    { id: 'sci_cg2', num: 'CG-2', title: 'Physical world — motion, electricity, light, and celestial objects' },
+    { id: 'sci_cg3', num: 'CG-3', title: 'Living world — diversity, characteristics, and environments' },
+    { id: 'sci_cg4', num: 'CG-4', title: 'Health, hygiene, and well-being' },
+    { id: 'sci_cg5', num: 'CG-5', title: 'Science, Technology, and Society' },
+  ],
+  sciFinal: [
+    { id: 'sci_cg6', num: 'CG-6', title: 'Nature and processes of scientific inquiry' },
+    { id: 'sci_cg7', num: 'CG-7', title: 'Communicating science' },
+    { id: 'sci_cg8', num: 'CG-8', title: 'India\'s contribution to science' },
+    { id: 'sci_cg9', num: 'CG-9', title: 'Current discoveries and frontiers' },
+  ],
+  engMid: [
+    { id: 'eng_l1', num: 'L-1', title: 'The Wit that Won Hearts' },
+    { id: 'eng_p1', num: 'P-1', title: 'A Concrete Example' },
+    { id: 'eng_l2', num: 'L-2', title: 'Wisdom Paves the Way' },
+    { id: 'eng_l3', num: 'L-3', title: 'A Tale of Valour — Major Somnath Sharma' },
+    { id: 'eng_p2', num: 'P-2', title: 'Somebody\'s Mother' },
+    { id: 'eng_l4', num: 'L-4', title: 'Verghese Kurien — I Too Had A Dream' },
+    { id: 'eng_l5', num: 'L-5', title: 'The Case of the Fifth Word' },
+    { id: 'eng_p3', num: 'P-3', title: 'The Magic Brush of Dreams' },
+  ],
+  engFinal: [
+    { id: 'eng_l6', num: 'L-6', title: 'Spectacular Wonders' },
+    { id: 'eng_l7', num: 'L-7', title: 'The Cherry Tree' },
+    { id: 'eng_p4', num: 'P-4', title: 'Harvest Hymn' },
+    { id: 'eng_l8', num: 'L-8', title: 'Waiting for the Rain' },
+    { id: 'eng_l9', num: 'L-9', title: 'Feathered Friend' },
+    { id: 'eng_p5', num: 'P-5', title: 'Magnifying Glass' },
+  ],
+};
+
+const GROUPS = [
+  { key: 'sciMid', list: 'sciMidList', meta: 'sciMidMeta', bar: 'sciMidBar', total: 5 },
+  { key: 'sciFinal', list: 'sciFinalList', meta: 'sciFinalMeta', bar: 'sciFinalBar', total: 4 },
+  { key: 'engMid', list: 'engMidList', meta: 'engMidMeta', bar: 'engMidBar', total: 8 },
+  { key: 'engFinal', list: 'engFinalList', meta: 'engFinalMeta', bar: 'engFinalBar', total: 6 },
+];
+
+const STORAGE_KEY = 'studysync_syllabus';
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; }
+}
+function saveState(state){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function render(){
+  const state = loadState();
+
+  GROUPS.forEach(function(g){
+    const items = DATA[g.key];
+    const listEl = document.getElementById(g.list);
+    const metaEl = document.getElementById(g.meta);
+    const barEl = document.getElementById(g.bar);
+    let done = 0;
+
+    listEl.innerHTML = '';
+    items.forEach(function(item){
+      const checked = state[item.id] === true;
+      if(checked) done++;
+      const div = document.createElement('div');
+      div.className = 'check-item' + (checked ? ' done' : '');
+      div.innerHTML =
+        '<div class="cb' + (checked ? ' checked' : '') + '"></div>' +
+        '<span class="item-num">' + item.num + '</span>' +
+        '<span class="item-title">' + item.title + '</span>';
+      div.addEventListener('click', function(){
+        state[item.id] = !state[item.id];
+        saveState(state);
+        render();
+        updateDashboard();
+      });
+      listEl.appendChild(div);
+    });
+
+    metaEl.textContent = done + ' / ' + g.total;
+    barEl.style.width = (done / g.total * 100) + '%';
+  });
+
+  updateSummary();
+}
+
+function updateSummary(){
+  const state = loadState();
+
+  // Science: 9 items
+  let sciDone = 0;
+  ['sciMid','sciFinal'].forEach(function(k){
+    DATA[k].forEach(function(item){ if(state[item.id]) sciDone++; });
+  });
+  document.getElementById('sciPct').textContent = Math.round(sciDone/9*100) + '%';
+  document.getElementById('sciDetail').textContent = sciDone + ' / 9 CGs';
+  document.getElementById('sciRing').style.background = 'conic-gradient(var(--amber) ' + (sciDone/9*100) + '%, rgba(255,255,255,0.06) 0)';
+
+  // English: 14 items
+  let engDone = 0;
+  ['engMid','engFinal'].forEach(function(k){
+    DATA[k].forEach(function(item){ if(state[item.id]) engDone++; });
+  });
+  document.getElementById('engPct').textContent = Math.round(engDone/14*100) + '%';
+  document.getElementById('engDetail').textContent = engDone + ' / 14 chapters';
+  document.getElementById('engRing').style.background = 'conic-gradient(var(--sage) ' + (engDone/14*100) + '%, rgba(255,255,255,0.06) 0)';
+
+  // Overall: 23 items
+  const total = 23;
+  const allDone = sciDone + engDone;
+  document.getElementById('totalPct').textContent = Math.round(allDone/total*100) + '%';
+  document.getElementById('totalDetail').textContent = allDone + ' / ' + total + ' items';
+  document.getElementById('totalRing').style.background = 'conic-gradient(var(--sky) ' + (allDone/total*100) + '%, rgba(255,255,255,0.06) 0)';
+}
+
+// Push progress to dashboard via localStorage
+function updateDashboard(){
+  const state = loadState();
+  let sci = 0, eng = 0;
+  ['sciMid','sciFinal'].forEach(function(k){ DATA[k].forEach(function(item){ if(state[item.id]) sci++; }); });
+  ['engMid','engFinal'].forEach(function(k){ DATA[k].forEach(function(item){ if(state[item.id]) eng++; }); });
+  localStorage.setItem('studysync_dash_progress', JSON.stringify({
+    science: { done: sci, total: 9 },
+    english: { done: eng, total: 14 },
+    overall: { done: sci + eng, total: 23 }
+  }));
+}
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(function(tc){ tc.classList.remove('active'); });
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', function(){
+  if(confirm('Reset all syllabus progress?')){
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+    updateDashboard();
+  }
+});
+
+// Fade observer
+const fadeObs = new IntersectionObserver(function(e){
+  e.forEach(function(entry){
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold:0.05});
+document.querySelectorAll('.fade-in').forEach(function(el){fadeObs.observe(el)});
+
+render();
+updateDashboard();
+</script>
+</body>
+</html>

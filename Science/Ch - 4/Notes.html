@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 4 — Describing Motion Around Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<style>
+:root {
+  --bg: #FCFBF9;
+  --surface: #FFFFFF;
+  --text: #1B1B2F;
+  --text-muted: #6B6B7B;
+  --accent: #C44536;
+  --accent-light: #F5E6E3;
+  --green: #2D6A4F;
+  --green-light: #E8F3EE;
+  --border: #E8E4DF;
+  --sidebar-bg: #1B1B2F;
+  --sidebar-text: #D4D0C9;
+  --sidebar-active: #FFFFFF;
+  --warm-highlight: #FDF6E3;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --radius: 8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#fff}
+
+/* Layout */
+.wrapper{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+  width:260px;flex-shrink:0;
+  background:var(--sidebar-bg);
+  color:var(--sidebar-text);
+  padding:2rem 1.5rem;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  display:flex;flex-direction:column;
+  z-index:10;
+}
+.sidebar-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.1rem;color:#fff;margin-bottom:2rem;
+  letter-spacing:-0.01em;
+}
+.sidebar-logo small{
+  display:block;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.7rem;font-weight:400;
+  color:var(--sidebar-text);margin-top:0.15rem;
+  letter-spacing:0.02em;
+}
+.sidebar nav{flex:1}
+.sidebar nav a{
+  display:block;
+  color:var(--sidebar-text);text-decoration:none;
+  font-size:0.8rem;font-weight:500;
+  padding:0.4rem 0.75rem;margin-bottom:0.15rem;
+  border-radius:6px;
+  transition:all 0.2s;
+  line-height:1.4;
+}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,0.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,0.1);font-weight:600}
+.sidebar .meta{
+  font-size:0.7rem;color:rgba(255,255,255,0.3);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:1rem;margin-top:auto;
+}
+
+/* Main */
+.main{flex:1;max-width:calc(100% - 260px)}
+.content{padding:3rem 4rem 4rem;max-width:780px;margin:0 auto}
+
+/* Headings */
+h1{
+  font-family:'DM Serif Display',serif;
+  font-size:2.6rem;font-weight:400;
+  line-height:1.2;letter-spacing:-0.02em;
+  margin-bottom:0.25rem;color:var(--text);
+}
+.subtitle{
+  font-size:0.85rem;color:var(--text-muted);
+  margin-bottom:2.5rem;font-weight:400;
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.5rem;
+}
+h2{
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem;font-weight:400;
+  margin:2.5rem 0 1rem;letter-spacing:-0.01em;
+  line-height:1.3;color:var(--text);
+  scroll-margin-top:2rem;
+}
+h2 .num{color:var(--accent);margin-right:0.3rem}
+h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1rem;font-weight:700;
+  margin:1.5rem 0 0.5rem;letter-spacing:-0.01em;
+  color:var(--text);
+}
+
+/* Paragraphs & lists */
+p{margin-bottom:0.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:0.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+
+/* Tables */
+table{
+  width:100%;border-collapse:collapse;
+  margin:1rem 0;font-size:0.875rem;
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--card-shadow);
+}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:0.6rem 1rem;text-align:left;font-weight:600;font-size:0.8rem;letter-spacing:0.03em;text-transform:uppercase}
+td{padding:0.55rem 1rem;border-bottom:1px solid var(--border)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(196,69,54,0.03)}
+tbody tr:nth-child(even){background:rgba(0,0,0,0.015)}
+
+/* Blockquotes (Competency Questions & Notes) */
+blockquote{
+  margin:1.25rem 0;padding:1rem 1.25rem;
+  border-radius:var(--radius);
+  font-size:0.875rem;line-height:1.65;
+}
+blockquote:not(.history){
+  background:var(--warm-highlight);
+  border-left:3px solid var(--accent);
+}
+blockquote:not(.history) strong:first-child{color:var(--accent)}
+blockquote.history{
+  background:var(--green-light);
+  border-left:3px solid var(--green);
+}
+
+/* Worked Example */
+.worked-example{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem 1.5rem;
+  margin:1rem 0;box-shadow:var(--card-shadow);
+}
+.worked-example .label{
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.35rem;
+}
+.worked-example p{margin-bottom:0.35rem}
+.worked-example p:last-child{margin-bottom:0}
+
+/* Graphs */
+.graph-figure{
+  margin:1.5rem 0;text-align:center;
+}
+.graph-figure img{
+  max-width:100%;border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  background:#fff;
+}
+.graph-figure figcaption{
+  font-size:0.78rem;color:var(--text-muted);
+  margin-top:0.4rem;font-style:italic;
+}
+
+/* Math display */
+.math-display{
+  margin:0.75rem 0;overflow-x:auto;
+  text-align:center;
+}
+
+/* Alert / warning box */
+.alert{
+  background:#FFF8F0;border-left:3px solid #E6A817;
+  padding:0.75rem 1rem;border-radius:var(--radius);
+  font-size:0.85rem;margin:0.75rem 0;
+}
+
+/* Formula box */
+.formula-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem;
+  margin:1rem 0;box-shadow:var(--card-shadow);
+}
+.formula-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0.5rem 1.5rem;
+}
+.formula-grid .item{display:flex;align-items:baseline;gap:0.5rem}
+.formula-grid .item .label{font-size:0.78rem;color:var(--text-muted);min-width:7rem;font-weight:500}
+.formula-grid .item .formula{font-weight:600}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Section dividers */
+.section-divider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+
+/* Mobile toggle */
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;
+  width:2.5rem;height:2.5rem;border:none;border-radius:8px;
+  background:var(--sidebar-bg);color:#fff;font-size:1.2rem;
+  cursor:pointer;align-items:center;justify-content:center;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left 0.3s ease;z-index:99}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:flex}
+  .main{max-width:100%}
+  .content{padding:3rem 1.5rem}
+  .formula-grid{grid-template-columns:1fr}
+  h1{font-size:2rem}
+}
+
+@media(max-width:480px){
+  .content{padding:2rem 1rem}
+  h1{font-size:1.7rem}
+  h2{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 Science
+    <small>Chapter 4 · Motion</small>
+  </div>
+  <nav>
+    <a href="#position" data-section>1. Position &amp; Motion</a>
+    <a href="#distance" data-section>2. Distance &amp; Displacement</a>
+    <a href="#speed" data-section>3. Speed &amp; Velocity</a>
+    <a href="#acceleration" data-section>4. Acceleration</a>
+    <a href="#graphical" data-section>5. Graphical Representation</a>
+    <a href="#kinematic" data-section>6. Kinematic Equations</a>
+    <a href="#motion-plane" data-section>7. Motion in a Plane</a>
+    <a href="#history" data-section>India's Scientific Contributions</a>
+    <a href="#revision" data-section>Quick Revision</a>
+  </nav>
+  <div class="meta">Revision Notes · CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <!-- Header -->
+    <h1 class="fade-in">Describing Motion Around Us</h1>
+    <p class="subtitle fade-in">Chapter 4 — Revision Notes</p>
+
+    <!-- 1. Position and Motion -->
+    <section id="position">
+      <h2 class="fade-in"><span class="num">01</span> Position and Motion</h2>
+
+      <ul class="fade-in">
+        <li><strong>Reference point (origin):</strong> A fixed point used to describe an object's position.</li>
+        <li><strong>Position of an object</strong> = distance + direction from the reference point.</li>
+        <li><strong>In motion:</strong> position changes with time w.r.t. reference point.</li>
+        <li><strong>At rest:</strong> position does not change with time w.r.t. reference point.</li>
+        <li><strong>Linear motion (straight-line motion):</strong> simplest type of motion; object moves along a straight line. Example: a swimmer, a falling ball, a car on a straight road.</li>
+        <li><strong>Sign convention:</strong> Right of origin = positive (+), Left of origin = negative (&minus;).</li>
+      </ul>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        Two students stand at different ends of a classroom and both claim a hanging fan is "moving" because the blades cross their line of sight. Explain why a reference point is essential before saying anything is "in motion," using the fan example.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 2. Distance and Displacement -->
+    <section id="distance">
+      <h2 class="fade-in"><span class="num">02</span> Distance and Displacement</h2>
+
+      <table class="fade-in">
+        <thead>
+          <tr><th>Quantity</th><th>Meaning</th><th>Direction needed?</th><th>SI Unit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Distance travelled</strong></td><td>Total path length covered</td><td>No</td><td>metre (m)</td></tr>
+          <tr><td><strong>Displacement</strong></td><td>Net change in position (shortest path, with direction) between two instants</td><td>Yes</td><td>metre (m)</td></tr>
+        </tbody>
+      </table>
+
+      <ul class="fade-in">
+        <li><strong>Magnitude</strong> = numerical value (with unit) of a quantity needing direction.</li>
+        <li><strong>Scalars:</strong> need only magnitude (e.g., distance). <strong>Vectors:</strong> need magnitude + direction (e.g., displacement) &mdash; <em>higher grade concept</em>.</li>
+        <li><strong>Key rule:</strong> Magnitude of displacement &le; Total distance travelled (always).
+          <ul>
+            <li>They are <strong>equal</strong> only when the object moves in <strong>one direction without turning back</strong>.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="worked-example fade-in">
+        <div class="label">Worked Example</div>
+        <p><strong>Athlete on a track:</strong> O &rarr; B (40 m) &rarr; A (100 m) &rarr; back to B (40 m)</p>
+        <p>Total distance = OA + AB = 100 + 60 = <strong>160 m</strong></p>
+        <p>Displacement = OB = <strong>40 m</strong> (since start = O, end = B)</p>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        A delivery drone flies 300 m east, then 300 m west back to its starting warehouse. (a) Find its total distance and displacement. (b) Why would a delivery company care more about "distance" than "displacement" when calculating battery usage?
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 3. Average Speed and Average Velocity -->
+    <section id="speed">
+      <h2 class="fade-in"><span class="num">03</span> Average Speed and Average Velocity</h2>
+
+      <h3 class="fade-in">Average Speed</h3>
+      <div class="math-display fade-in">$$\text{average speed} = \dfrac{\text{total distance travelled}}{\text{time interval}}$$</div>
+      <p class="fade-in">Has <strong>only magnitude</strong>, no direction (since distance has no direction).</p>
+
+      <h3 class="fade-in">Average Velocity</h3>
+      <div class="math-display fade-in">$$\text{average velocity} = \dfrac{\text{displacement}}{\text{time interval}} = \dfrac{s}{t}$$</div>
+      <ul class="fade-in">
+        <li>Has <strong>magnitude + direction</strong> (direction same as displacement; shown by + or &minus; sign).</li>
+        <li>SI unit (both speed &amp; velocity): <strong>m/s</strong> (also km/h commonly used).</li>
+        <li>Average velocity = <strong>average rate of change of position</strong> with respect to time.</li>
+      </ul>
+
+      <h3 class="fade-in">Uniform vs Non-Uniform Motion</h3>
+      <ul class="fade-in">
+        <li><strong>Uniform motion:</strong> equal distances in equal time intervals &rarr; constant speed.</li>
+        <li><strong>Non-uniform motion:</strong> unequal distances in equal time intervals &rarr; speed increasing/decreasing.</li>
+      </ul>
+
+      <div class="alert fade-in">
+        <strong>&#x26A0;&#xFE0F; Important Rule:</strong> For straight-line motion in <strong>one direction only</strong>, average speed = magnitude of average velocity. If the object reverses direction, they are generally different.
+      </div>
+
+      <div class="worked-example fade-in">
+        <div class="label">Worked Example</div>
+        <p><strong>Swimming pool (25 m pool, one lap forward + back = 50 m):</strong></p>
+        <p>Time = 50 s &rarr; Total distance = 50 m, Displacement = 0 m</p>
+        <p>Average speed = 50/50 = <strong>1 m/s</strong></p>
+        <p>Average velocity = 0/50 = <strong>0 m/s</strong></p>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        A car's speedometer reads "60 km/h" the entire time it drives around a circular roundabout and exits going in the opposite direction it entered. Is its average speed equal to 60 km/h for the trip? Is its average velocity also 60 km/h? Justify using the concepts above.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 4. Average Acceleration -->
+    <section id="acceleration">
+      <h2 class="fade-in"><span class="num">04</span> Average Acceleration</h2>
+
+      <div class="math-display fade-in">$$\text{average acceleration} = \dfrac{\text{change in velocity}}{\text{time interval}} = \dfrac{v-u}{t_2-t_1}$$</div>
+
+      <p class="fade-in">where <strong>u</strong> = initial velocity, <strong>v</strong> = final velocity.</p>
+
+      <ul class="fade-in">
+        <li>SI unit: <strong>m/s&sup2;</strong></li>
+        <li>Needs <strong>magnitude + direction</strong>.</li>
+        <li><strong>Direction rule (straight line motion):</strong>
+          <ul>
+            <li>Speed <strong>increasing</strong> &rarr; acceleration is in <strong>same direction</strong> as velocity.</li>
+            <li>Speed <strong>decreasing</strong> &rarr; acceleration is <strong>opposite</strong> to velocity direction.</li>
+          </ul>
+        </li>
+        <li>A <strong>constant acceleration</strong> means velocity changes by equal amounts in equal time intervals.</li>
+        <li>An object can move very fast yet have <strong>zero acceleration</strong> (constant velocity motion).</li>
+        <li>Acceleration due to gravity (free fall) is constant &approx; <strong>9.8 m/s&sup2;</strong>, denoted <strong>g</strong>, directed downward (in direction of motion while falling).</li>
+      </ul>
+
+      <div class="worked-example fade-in">
+        <div class="label">Worked Example</div>
+        <p><strong>Bus speeding up then braking:</strong></p>
+        <p>Accelerator pressed: u = 10 m/s, v = 15 m/s, t = 10 s &rarr; a = (15&minus;10)/10 = <strong>+0.5 m/s&sup2;</strong> (same direction as velocity)</p>
+        <p>Brakes pressed: u = 15 m/s, v = 0, t = 5 s &rarr; a = (0&minus;15)/5 = <strong>&minus;3 m/s&sup2;</strong> (opposite to velocity direction)</p>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        A passenger says, "I didn't feel any jolt, so the car's acceleration must be zero &mdash; even though the speedometer shows the car is moving very fast." Is the passenger's reasoning correct? Explain with reference to what acceleration actually depends on.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 5. Graphical Representation -->
+    <section id="graphical">
+      <h2 class="fade-in"><span class="num">05</span> Graphical Representation of Motion</h2>
+
+      <figure class="graph-figure fade-in">
+        <img src="graph01_position_time.png" alt="Position-Time Graphs: Constant Velocity vs Accelerated Motion" loading="lazy">
+        <figcaption>Fig. 4.13(a) &amp; (b): Position-time graphs &mdash; straight line for constant velocity, curved (parabolic) line for accelerated motion.</figcaption>
+      </figure>
+
+      <h3 class="fade-in">5.1 Position&ndash;Time Graphs</h3>
+
+      <table class="fade-in">
+        <thead>
+          <tr><th>Shape of graph</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Straight line (sloped)</td><td>Constant velocity</td></tr>
+          <tr><td>Straight line parallel to time-axis</td><td>Object at rest (stationary)</td></tr>
+          <tr><td>Curved line</td><td>Velocity changing &rarr; accelerated motion</td></tr>
+          <tr><td>Steeper line/curve</td><td>Higher velocity</td></tr>
+        </tbody>
+      </table>
+
+      <ul class="fade-in">
+        <li><strong>Slope of position&ndash;time graph = velocity</strong> (slope = change in position &divide; change in time).</li>
+        <li>Comparing two objects' position-time graphs: the one with the <strong>steeper slope</strong> has higher velocity.</li>
+      </ul>
+
+      <figure class="graph-figure fade-in">
+        <img src="graph02_slope_velocity.png" alt="Velocity from Slope of Position-Time Graph" loading="lazy">
+        <figcaption>Fig. 4.14: Slope of position-time graph = velocity. The right triangle shows &Delta;s/&Delta;t.</figcaption>
+      </figure>
+
+      <h3 class="fade-in">5.2 Velocity&ndash;Time Graphs</h3>
+
+      <figure class="graph-figure fade-in">
+        <img src="graph03_velocity_time_types.png" alt="Velocity-Time Graph Types" loading="lazy">
+        <figcaption>Fig. 4.17(a),(b),(c): Velocity-time graphs &mdash; zero, positive, and negative acceleration.</figcaption>
+      </figure>
+
+      <table class="fade-in">
+        <thead>
+          <tr><th>Shape of graph</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Straight line parallel to time-axis</td><td>Constant velocity, acceleration = 0</td></tr>
+          <tr><td>Straight line, sloping upward</td><td>Velocity increasing, constant +ve acceleration</td></tr>
+          <tr><td>Straight line, sloping downward</td><td>Velocity decreasing, constant &minus;ve acceleration (opposite to velocity)</td></tr>
+        </tbody>
+      </table>
+
+      <p class="fade-in"><strong>Two key things calculated from a velocity-time graph:</strong></p>
+
+      <div class="math-display fade-in">$$a = \dfrac{v-u}{t_2-t_1}$$</div>
+
+      <p class="fade-in">2. <strong>Area enclosed between the line and the time-axis = displacement</strong></p>
+      <ul class="fade-in">
+        <li>If velocity is constant: Area of rectangle = velocity &times; time = displacement.</li>
+        <li>If velocity changes uniformly: Area = area of rectangle + area of triangle (trapezium shape).</li>
+      </ul>
+
+      <figure class="graph-figure fade-in">
+        <img src="graph04_area_displacement.png" alt="Velocity-Time Graph: Area = Displacement" loading="lazy">
+        <figcaption>Fig. 4.19: Area under velocity-time graph gives displacement. Shaded area = ut + &frac12;(v&minus;u)t = ut + &frac12;at&sup2;.</figcaption>
+      </figure>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        Look at a velocity-time graph of a cyclist that rises, stays flat, then falls back to zero. Without doing any calculation, explain in words during which part of the journey the cyclist (a) is accelerating forward, (b) is moving at constant speed, (c) is decelerating, and (d) how you would find the total distance covered using the graph.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 6. Kinematic Equations -->
+    <section id="kinematic">
+      <h2 class="fade-in"><span class="num">06</span> Kinematic Equations</h2>
+
+      <p class="fade-in"><em>(Motion in a Straight Line, Constant Acceleration)</em></p>
+
+      <p class="fade-in">Where: <strong>u</strong> = initial velocity, <strong>v</strong> = final velocity, <strong>a</strong> = acceleration, <strong>t</strong> = time, <strong>s</strong> = displacement</p>
+
+      <div class="math-display fade-in">$$v = u + at \tag{4.4a}$$</div>
+      <div class="math-display fade-in">$$s = ut + \dfrac{1}{2}at^2 \tag{4.4b}$$</div>
+      <div class="math-display fade-in">$$v^2 = u^2 + 2as \tag{4.4c}$$</div>
+
+      <div class="alert fade-in">
+        <strong>&#x26A0;&#xFE0F; Valid only when acceleration is constant.</strong> Sign of u, v, a, s shows direction.
+      </div>
+
+      <div class="worked-example fade-in">
+        <div class="label">Worked Example</div>
+        <p><strong>Car braking:</strong> a = &minus;4 m/s&sup2;, final v = 0</p>
+        <p>Using v&sup2; = u&sup2; + 2as &rarr; s = u&sup2;/8</p>
+        <p>If u = 15 m/s (54 km/h) &rarr; s = <strong>28.1 m</strong></p>
+        <p>If u = 30 m/s (108 km/h) &rarr; s = <strong>112.5 m</strong></p>
+        <p>(Shows: doubling speed &rarr; braking distance becomes <strong>4&times;</strong>, not 2&times; &mdash; important real-world safety insight!)</p>
+      </div>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        A traffic safety officer claims, "If you double your driving speed, you only need double the braking distance to stop safely." Use the kinematic equations to check if this claim is correct. What is the actual relationship between speed and stopping distance?
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- 7. Motion in a Plane -->
+    <section id="motion-plane">
+      <h2 class="fade-in"><span class="num">07</span> Motion in a Plane</h2>
+
+      <p class="fade-in">Motion not confined to a straight line &mdash; e.g., a kicked ball's path, a vehicle overtaking, a satellite's circular path.</p>
+
+      <h3 class="fade-in">Uniform Circular Motion</h3>
+
+      <ul class="fade-in">
+        <li><strong>Circular motion:</strong> object moves along a circular path.</li>
+        <li><strong>Uniform circular motion (UCM):</strong> object moves on a circular path with <strong>constant speed</strong>.</li>
+        <li>For one complete revolution (radius R, time T):</li>
+      </ul>
+
+      <div class="math-display fade-in">$$\text{average speed} = \dfrac{2\pi R}{T}$$</div>
+
+      <ul class="fade-in">
+        <li><strong>Displacement after one full revolution = 0</strong> (returns to starting point), but distance travelled = 2&pi;R.</li>
+        <li><strong>Speed is constant, but velocity is NOT constant</strong> &mdash; because <strong>direction</strong> of velocity keeps changing continuously (velocity is always along the <strong>tangent</strong> to the circle at that point).</li>
+        <li>Since velocity direction changes continuously &rarr; <strong>UCM is accelerated motion</strong>, even though speed doesn't change.</li>
+        <li>A circular path can be thought of as the limit of a polygon (square &rarr; hexagon &rarr; ...) with infinite sides, where direction changes continuously instead of at sharp corners.</li>
+      </ul>
+
+      <figure class="graph-figure fade-in">
+        <img src="graph05_ucm_velocity_vectors.png" alt="Velocity Vectors in Uniform Circular Motion" loading="lazy">
+        <figcaption>Fig. 4.23(c): Velocity vectors tangential to the circular path. Direction changes continuously, so UCM is accelerated motion even at constant speed.</figcaption>
+      </figure>
+
+      <blockquote class="fade-in">
+        <strong>&#x1F9E0; Competency-Based Question:</strong><br>
+        A friend argues: "The Moon orbits Earth at constant speed, so it has zero acceleration." Do you agree or disagree? Use the idea of uniform circular motion to correct or support this statement.
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- India's Scientific Contributions -->
+    <section id="history">
+      <h2 class="fade-in"><span class="num">&#x1F4DC;</span> India's Scientific Contributions</h2>
+
+      <blockquote class="history fade-in">
+        The concept that <strong>speed = distance &divide; time</strong> is ancient and well-established in Indian mathematics, dating back to the <em><strong>Aryabhatiya</strong></em> (5th century CE). A classic problem on this concept comes from the <em><strong>Ganitakaumudi</strong></em> (14th century CE):
+        <br><br>
+        <strong>Problem:</strong> Two postmen start walking towards each other from 210 <em>yojanas</em> apart. One walks 9 <em>yojanas</em>/day, the other 5 <em>yojanas</em>/day. In how many days do they meet?
+        <br><br>
+        <strong>Solution:</strong><br>
+        Combined distance covered per day = 9 + 5 = 14 <em>yojanas</em><br>
+        Time to cover 210 <em>yojanas</em> together = 210 &divide; 14 = <strong>15 days</strong><br>
+        (In 15 days: 1st postman covers 135 <em>yojanas</em>, 2nd covers 75 <em>yojanas</em>)
+      </blockquote>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Quick Revision -->
+    <section id="revision">
+      <h2 class="fade-in"><span class="num">&#x1F4DA;</span> Quick Revision Box</h2>
+
+      <div class="formula-box fade-in">
+        <div class="formula-grid">
+          <div class="item"><span class="label">Average speed</span><span class="formula">total distance &divide; time interval</span></div>
+          <div class="item"><span class="label">Average velocity</span><span class="formula">displacement &divide; time interval = s/t</span></div>
+          <div class="item"><span class="label">Average acceleration</span><span class="formula">(v &minus; u) &divide; t</span></div>
+          <div class="item"><span class="label">Kinematic Eq. 1</span><span class="formula">v = u + at</span></div>
+          <div class="item"><span class="label">Kinematic Eq. 2</span><span class="formula">s = ut + &frac12;at&sup2;</span></div>
+          <div class="item"><span class="label">Kinematic Eq. 3</span><span class="formula">v&sup2; = u&sup2; + 2as</span></div>
+          <div class="item"><span class="label">Speed in UCM</span><span class="formula">2&pi;R / T</span></div>
+        </div>
+      </div>
+
+      <h3 class="fade-in">Important Notes to Remember</h3>
+      <ul class="fade-in">
+        <li>Distance &amp; displacement, speed &amp; velocity are <strong>equal only</strong> for straight-line motion in <strong>one direction</strong>.</li>
+        <li>Slope of position-time graph &rarr; <strong>velocity</strong></li>
+        <li>Slope of velocity-time graph &rarr; <strong>acceleration</strong></li>
+        <li>Area under velocity-time graph &rarr; <strong>displacement</strong></li>
+        <li>A graph is <strong>not a route map</strong> &mdash; it shows how a quantity changes with time, not the physical path.</li>
+        <li>Acceleration depends on <strong>how fast velocity changes</strong>, not on how fast the object is moving.</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+// Sidebar toggle
+document.getElementById('menuToggle').addEventListener('click', function(){
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Close sidebar on link click (mobile)
+document.querySelectorAll('.sidebar nav a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+// Intersection Observer for fade-in
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+
+// Active section highlighting
+var sections = document.querySelectorAll('section');
+var links = document.querySelectorAll('.sidebar nav a');
+
+window.addEventListener('scroll', function(){
+  var current = '';
+  sections.forEach(function(sec){
+    var top = sec.offsetTop - 120;
+    if(window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  links.forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Re-render KaTeX after page load
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });
+  }
+});
+</script>
+
+</body>
+</html>

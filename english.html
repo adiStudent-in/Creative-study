@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English &mdash; StudyHub · Revision Index</title>
+<meta name="description" content="English revision index — Class 9. Beehive prose, poetry, and Moments, filed for revision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE1; --card:#EDE6D1; --card-hi:#E5DCC2;
+  --ink:#2B2416; --ink-soft:#6D6552; --ink-dim:#8A8270;
+  --rule:#CFC3A4; --rule-hi:#B4A984;
+  --c:#6B855F;               /* english sage */
+  --c-weak:rgba(107,133,95,.20);
+  --red:#C5412B;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;overflow-x:hidden}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;min-height:100vh}
+::selection{background:var(--ink);color:var(--paper)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.05'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(130% 100% at 50% 0%,transparent 55%,rgba(43,36,22,.06))}
+.wrap{position:relative;z-index:1;padding:0 clamp(1.25rem,5vw,4.5rem);max-width:1240px;margin:0 auto}
+
+.mast{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;padding:clamp(1.3rem,3vw,2rem) 0 1.1rem;border-bottom:3px double var(--rule)}
+.brand{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--ink)}
+.brand .amp{color:var(--red);font-style:italic;font-weight:600;padding:0 .03em}
+nav.temple{display:flex;gap:1.4rem;flex-wrap:wrap}
+.temple a{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:.4rem 0;position:relative}
+.temple a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--c);transition:width .35s cubic-bezier(.22,1,.36,1)}
+.temple a:hover{color:var(--ink)}
+.temple a:hover::after{width:100%}
+.temple a.here{color:var(--ink)}
+.temple a.here::after{width:100%;background:var(--c)}
+
+.edition{position:relative;padding-top:clamp(2rem,5.5vw,3.4rem);display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.kicker{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:'';width:2.4rem;height:1px;background:var(--rule)}
+h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.2rem,7vw,4rem);line-height:.98;letter-spacing:-.03em;margin:.6rem 0 .7rem}
+h1 .sw{display:inline-block;width:1.1em;height:.5em;border-radius:1px;background:var(--c);vertical-align:.18em;margin-right:.35em}
+.subtitle{font-family:'Fraunces',Georgia,serif;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--ink-soft)}
+.subtitle b{font-weight:600;color:var(--ink)}
+.stamp{text-align:center;color:var(--red);transform:rotate(3deg);border:2px solid currentColor;border-radius:3px;padding:.6rem .9rem .5rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;line-height:1.4;box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4px currentColor;-webkit-mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%);mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%)}
+.stamp .st-big{font-family:'Fraunces',serif;font-size:.9rem;letter-spacing:.03em;font-weight:700;display:block}
+.stamp .st-line{display:block;margin-top:.12rem;border-top:1px solid currentColor;padding-top:.1rem}
+@media(max-width:720px){.edition{flex-direction:column}.stamp{transform:rotate(-2deg)}}
+
+.secline{display:flex;align-items:baseline;gap:1.1rem;margin:clamp(2.4rem,5vw,3.4rem) 0 1.1rem}
+.secline .n{font-family:'Fraunces',serif;font-style:italic;color:var(--c);font-size:1.05rem}
+.secline h2{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-.01em;font-size:clamp(1.15rem,2.4vw,1.6rem)}
+.secline .slug{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;margin-left:auto;text-align:right}
+
+.clist{display:flex;flex-direction:column;gap:.5rem}
+.crow{position:relative;display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--rule-hi);border-radius:2px;padding:.85rem 1.25rem;box-shadow:0 1px 0 rgba(43,36,22,.05)}
+a.crow{text-decoration:none;color:var(--ink)}
+a.crow::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);border-radius:2px 0 0 2px}
+a.crow:hover{transform:translateX(4px);border-color:var(--c);box-shadow:0 12px 26px -14px rgba(0,0,0,.28)}
+.crow .num{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;min-width:1rem}
+.crow .ttl{flex:1;font-size:.92rem;font-weight:500}
+.crow .ttl b{font-family:'Fraunces',serif;font-weight:600}
+.crow .act{margin-left:.4rem}
+.crow.locked{opacity:.5}
+.crow .lck-mark{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;border:1px dashed var(--rule-hi);padding:.26rem .7rem;border-radius:1px}
+.crow.open .open-mark{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);border:2px solid var(--red);border-radius:2px;padding:.22rem .6rem;box-shadow:inset 0 0 0 1px var(--paper);-webkit-mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%);mask-image:radial-gradient(130% 140% at 50% 20%,#000 80%,rgba(0,0,0,.4) 98%)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.v{opacity:1;transform:none}
+.r1{transition-delay:.05s}.r2{transition-delay:.1s}.r3{transition-delay:.15s}.r4{transition-delay:.2s}
+
+.footline{margin-top:clamp(2.6rem,6vw,4rem);border-top:3px double var(--rule);padding:1.2rem 0 2.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft)}
+.footline .mark{font-family:'Fraunces',serif;font-style:italic;text-transform:none;letter-spacing:.02em;font-size:.9rem;color:var(--ink)}
+.footline a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+
+@media(max-width:620px){.temple{gap:1rem}.crow .ttl{font-size:.86rem}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <a class="brand" href="index.html">study<span class="amp">&amp;</span>hub</a>
+    <nav class="temple">
+      <a href="science.html">Science</a>
+      <a href="sst.html">SST</a>
+      <a href="english.html" class="here">English</a>
+    </nav>
+  </header>
+
+  <section class="edition rv v">
+    <div>
+      <div class="kicker">Revision desk</div>
+      <h1><span class="sw"></span>English</h1>
+      <p class="subtitle"><b>8</b> files ready</p>
+    </div>
+    <div class="stamp" aria-hidden="true">
+      <span class="st-big">Open · 8 files</span>
+      <span class="st-line">sage desk</span>
+    </div>
+  </section>
+
+  <!-- Prose & Poetry -->
+  <div class="secline rv r1">
+    <span class="n">§ 1</span>
+    <h2>Prose & Poetry</h2>
+    <span class="slug">stories & verses</span>
+  </div>
+  <div class="clist rv r1">
+    <a class="crow open" href="English/Ch%20-%201/Notes.html">
+      <span class="st"></span><span class="num">Ch 1</span>
+      <span class="ttl"><b>How I Taught My Grandmother to Read</b> &middot; Bharat Our Land</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%202/Notes.html">
+      <span class="st"></span><span class="num">Ch 2</span>
+      <span class="ttl"><b>The Pot Maker</b> &middot; Gifts of Grace</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%203/Notes.html">
+      <span class="st"></span><span class="num">Ch 3</span>
+      <span class="ttl"><b>Winds of Change</b> &middot; Canvas of Soil</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%204/Notes.html">
+      <span class="st"></span><span class="num">Ch 4</span>
+      <span class="ttl"><b>Vitamin-M</b> &middot; I Cannot Remember My Mother</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%205/Notes.html">
+      <span class="st"></span><span class="num">Ch 5</span>
+      <span class="ttl"><b>The World of Limitless Possibilities</b> &middot; Nine Gold Medals</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%206/Notes.html">
+      <span class="st"></span><span class="num">Ch 6</span>
+      <span class="ttl"><b>Twin Melodies</b> &middot; A Friend Found in Music</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%207/Notes.html">
+      <span class="st"></span><span class="num">Ch 7</span>
+      <span class="ttl"><b>Carrier of Words</b> &middot; Words</span>
+      <span class="act open-mark">view →</span>
+    </a>
+    <a class="crow open" href="English/Ch%20-%208/Notes.html">
+      <span class="st"></span><span class="num">Ch 8</span>
+      <span class="ttl"><b>Follow That Dream</b> &middot; Believe in Yourself</span>
+      <span class="act open-mark">view →</span>
+    </a>
+  </div>
+
+  <footer class="footline">
+    <span class="mark">study&;hub · English desk</span>
+    <span><a href="index.html">back to index</a></span>
+  </footer>
+</div>
+
+<script>
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
