@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 13 — Earth as a System — Energy, Matter and Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
+<style>
+:root {
+  --bg: #FCFBF9;
+  --surface: #FFFFFF;
+  --text: #1B1B2F;
+  --text-muted: #6B6B7B;
+  --accent: #4E7696;
+  --accent-light: #E7EFF4;
+  --green: #2D6A4F;
+  --green-light: #E8F3EE;
+  --border: #E8E4DF;
+  --sidebar-bg: #1B2A3A;
+  --sidebar-text: #C9D4DC;
+  --sidebar-active: #FFFFFF;
+  --warm-highlight: #FDF6E3;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --radius: 8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#fff}
+
+/* Layout */
+.wrapper{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+  width:260px;flex-shrink:0;
+  background:var(--sidebar-bg);
+  color:var(--sidebar-text);
+  padding:2rem 1.5rem;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  display:flex;flex-direction:column;
+  z-index:10;
+}
+.sidebar-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.1rem;color:#fff;margin-bottom:2rem;
+  letter-spacing:-0.01em;
+}
+.sidebar-logo small{
+  display:block;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.7rem;font-weight:400;
+  color:var(--sidebar-text);margin-top:0.15rem;
+  letter-spacing:0.02em;
+}
+.sidebar nav{flex:1}
+.sidebar nav a{
+  display:block;
+  color:var(--sidebar-text);text-decoration:none;
+  font-size:0.8rem;font-weight:500;
+  padding:0.4rem 0.75rem;margin-bottom:0.15rem;
+  border-radius:6px;
+  transition:all 0.2s;
+  line-height:1.4;
+}
+.sidebar nav a:hover{color:#fff;background:rgba(255,255,255,0.06)}
+.sidebar nav a.active{color:#fff;background:rgba(255,255,255,0.1);font-weight:600}
+.sidebar .meta{
+  font-size:0.7rem;color:rgba(255,255,255,0.3);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:1rem;margin-top:auto;
+}
+
+/* Main */
+.main{flex:1;max-width:calc(100% - 260px)}
+.content{padding:3rem 4rem 4rem;max-width:780px;margin:0 auto}
+
+/* Headings */
+h1{
+  font-family:'DM Serif Display',serif;
+  font-size:2.6rem;font-weight:400;
+  line-height:1.2;letter-spacing:-0.02em;
+  margin-bottom:0.25rem;color:var(--text);
+}
+.subtitle{
+  font-size:0.85rem;color:var(--text-muted);
+  margin-bottom:2.5rem;font-weight:400;
+  border-bottom:1px solid var(--border);
+  padding-bottom:1.5rem;
+}
+h2{
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem;font-weight:400;
+  margin:2.5rem 0 1rem;letter-spacing:-0.01em;
+  line-height:1.3;color:var(--text);
+  scroll-margin-top:2rem;
+}
+h2 .num{color:var(--accent);margin-right:0.3rem}
+h3{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:1rem;font-weight:700;
+  margin:1.5rem 0 0.5rem;letter-spacing:-0.01em;
+  color:var(--text);
+}
+h4{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:0.9rem;font-weight:600;
+  margin:1.2rem 0 0.4rem;color:var(--text);
+}
+
+/* Paragraphs & lists */
+p{margin-bottom:0.75rem}
+ul,ol{padding-left:1.25rem;margin-bottom:1rem}
+li{margin-bottom:0.25rem}
+li > ul, li > ol{margin-bottom:0.25rem;margin-top:0.25rem}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic}
+code{font-family:'JetBrains Mono',Consolas,monospace;font-size:0.85em;background:#F0EEE9;padding:0.12em 0.35em;border-radius:4px}
+a{color:var(--accent)}
+
+/* Tables */
+table{
+  width:100%;border-collapse:collapse;
+  margin:1rem 0;font-size:0.875rem;
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--card-shadow);
+}
+thead{background:var(--sidebar-bg);color:#fff}
+th{padding:0.6rem 1rem;text-align:left;font-weight:600;font-size:0.8rem;letter-spacing:0.03em;text-transform:uppercase}
+td{padding:0.55rem 1rem;border-bottom:1px solid var(--border)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(78,118,150,0.03)}
+tbody tr:nth-child(even){background:rgba(0,0,0,0.015)}
+
+/* Blockquotes (Competency Questions & Notes) */
+blockquote{
+  margin:1.25rem 0;padding:1rem 1.25rem;
+  border-radius:var(--radius);
+  font-size:0.875rem;line-height:1.65;
+}
+blockquote:not(.history){
+  background:var(--warm-highlight);
+  border-left:3px solid var(--accent);
+}
+blockquote:not(.history) strong:first-child{color:var(--accent)}
+blockquote.history{
+  background:var(--green-light);
+  border-left:3px solid var(--green);
+}
+
+/* Worked Example */
+.worked-example{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem 1.5rem;
+  margin:1rem 0;box-shadow:var(--card-shadow);
+}
+.worked-example .label{
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.35rem;
+}
+.worked-example p{margin-bottom:0.35rem}
+.worked-example p:last-child{margin-bottom:0}
+
+/* Math display */
+.math-display{
+  margin:0.75rem 0;overflow-x:auto;
+  text-align:center;
+}
+
+/* Alert / warning box */
+.alert{
+  background:#FFF8F0;border-left:3px solid #E6A817;
+  padding:0.75rem 1rem;border-radius:var(--radius);
+  font-size:0.85rem;margin:0.75rem 0;
+}
+
+/* Formula box */
+.formula-box{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem;
+  margin:1rem 0;box-shadow:var(--card-shadow);
+}
+.formula-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0.5rem 1.5rem;
+}
+.formula-grid .item{display:flex;align-items:baseline;gap:0.5rem}
+.formula-grid .item .label{font-size:0.78rem;color:var(--text-muted);min-width:7rem;font-weight:500}
+.formula-grid .item .formula{font-weight:600}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Section dividers */
+.section-divider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+
+/* Mobile toggle */
+.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:100;
+  width:2.5rem;height:2.5rem;border:none;border-radius:8px;
+  background:var(--sidebar-bg);color:#fff;font-size:1.2rem;
+  cursor:pointer;align-items:center;justify-content:center;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .sidebar{position:fixed;left:-280px;transition:left 0.3s ease;z-index:99}
+  .sidebar.open{left:0}
+  .sidebar-toggle{display:flex}
+  .main{max-width:100%}
+  .content{padding:3rem 1.5rem}
+  .formula-grid{grid-template-columns:1fr}
+  h1{font-size:2rem}
+}
+
+@media(max-width:480px){
+  .content{padding:2rem 1rem}
+  h1{font-size:1.7rem}
+  h2{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+
+<button class="sidebar-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+<div class="wrapper">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    Class 9 Science
+    <small>Chapter 13 · Earth as a System — Energy, Matter and Life</small>
+  </div>
+  <nav>
+    <a href="#earth-as-one-system-five-interacting-spheres" data-section>Earth as One System — Five Interacting Spheres</a>
+    <a href="#uneven-heating-of-the-earth-solar-radiation" data-section>Uneven Heating of the Earth — Solar Radiation</a>
+    <a href="#how-surfaces-respond-albedo-and-re-radiation" data-section>How Surfaces Respond — Albedo and Re-radiation</a>
+    <a href="#latitude-shape-and-tilt-why-equator-is-warm" data-section>Latitude, Shape and Tilt — Why Equator Is Warm</a>
+    <a href="#role-of-the-atmosphere-composition-and-layers" data-section>Role of the Atmosphere — Composition and Layers</a>
+    <a href="#uneven-heating-causes-wind-and-ocean-currents" data-section>Uneven Heating Causes Wind and Ocean Currents</a>
+    <a href="#biogeochemical-cycles-matter-energy-recycled" data-section>Biogeochemical Cycles — Matter + Energy Recycled</a>
+    <a href="#human-impact-on-earth-s-processes" data-section>Human Impact on Earth's Processes</a>
+    <a href="#at-a-glance-chapter-summary-points" data-section>At-a-Glance (Chapter Summary Points)</a>
+    <a href="#quick-revision-box" data-section>Quick Revision Box</a>
+  </nav>
+  <div class="meta">Revision Notes &middot; CBSE Class 9</div>
+</aside>
+
+<main class="main">
+  <div class="content">
+
+    <!-- Header -->
+    <h1 class="fade-in">Earth as a System — Energy, Matter and Life</h1>
+    <p class="subtitle fade-in">Chapter 13 — Revision Notes</p>
+
+<section id="earth-as-one-system-five-interacting-spheres">
+<h2 id="earth-as-one-system-five-interacting-spheres" class="fade-in"><span class="num">01</span> Earth as One System — Five Interacting Spheres</h2>
+
+<ul class="fade-in">
+<li><strong>Core idea:</strong> Life on Earth is powered by constant flow of <strong>energy and matter</strong>. Main source = <strong>Sun</strong>. Also: Earth's hot interior + chemical reactions in air, water, rocks.</li>
+<li>Earlier you learnt pieces separately (sunlight → winds/water cycle; plants/microbes → nutrients; tilt → seasons; humans → air/water/soil/climate). Here they are joined as <strong>one Earth system</strong> of interacting 'spheres':</li>
+</ul>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Sphere</th>
+  <th>What it includes</th>
+  <th>Examples from chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Geosphere</strong></td>
+  <td>Solid rocks, soil, landforms, Earth's interior</td>
+  <td>Deccan plateau, Thar desert</td>
+</tr>
+<tr>
+  <td><strong>Hydrosphere</strong></td>
+  <td>Liquid water — surface water + groundwater</td>
+  <td>Oceans, Ganga–Brahmaputra rivers, lakes, groundwater</td>
+</tr>
+<tr>
+  <td><strong>Cryosphere</strong></td>
+  <td>Solid water — ice and snow</td>
+  <td>Himalayan glaciers, snow in Ladakh, polar ice caps</td>
+</tr>
+<tr>
+  <td><strong>Atmosphere</strong></td>
+  <td>Air surrounding Earth</td>
+  <td>Cleaner air in mountains/forests</td>
+</tr>
+<tr>
+  <td><strong>Biosphere</strong></td>
+  <td>All living organisms + habitats</td>
+  <td>Mangroves, forests, farms, ocean plankton, coral reefs</td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li><strong>Connection rule:</strong> Natural processes — heating by solar radiation, movement of air and water, nutrient cycling — connect spheres in delicate balance. <strong>Disturbance in one → changes in others.</strong></li>
+<li><strong>Activity 13.1 — Let us explore (Fig. 13.1):</strong> Circle one example of each sphere; trace how snow (cryosphere) becomes lake water (hydrosphere); predict: less winter snowfall for a few years → lower summer lake level → less grass for sheep.</li>
+</ul>
+<p class="fade-in"><strong>Think It Over (chapter openers — all answered by sphere links):</strong></p>
+<ul class="fade-in">
+<li>Warmer Arabian Sea water → more evaporation → fluctuation in southwest monsoon → floods in some regions, drought in others (hydrosphere disturbed).</li>
+<li>Clearing large forest → affects river flow in that area.</li>
+<li>Faster glacier/polar ice melt → flooding of low-lying regions → long-run sea-level rise → threat to coastal cities.</li>
+<li>Rising CO₂ → affects ocean plankton.</li>
+</ul>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+For three winters a village gets very little snowfall, then in summer its lake level falls and sheep get less grass. Name the three spheres involved in sequence and explain how a disturbance in the first caused change in the other two.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="uneven-heating-of-the-earth-solar-radiation">
+<h2 id="uneven-heating-of-the-earth-solar-radiation" class="fade-in"><span class="num">02</span> Uneven Heating of the Earth — Solar Radiation</h2>
+
+<h3 class="fade-in">2.1 Sun's energy and EM spectrum</h3>
+<ul class="fade-in">
+<li>Solar radiation reaches Earth as <strong>electromagnetic (EM) waves</strong> travelling through <strong>vacuum at speed of light: 3 × 10⁸ m s⁻¹</strong>. Unlike EM waves, <strong>sound waves</strong> (Ch. 10) are mechanical and need a medium.</li>
+<li>EM spectrum: high frequency / short wavelength = gamma rays, X-rays (very high energy, harmful); low frequency / long wavelength = infrared, radio waves.</li>
+<li><strong>Solar radiation reaching Earth is ~99% in UV + visible + IR.</strong><ul class="fade-in">
+<li>Gamma/X-rays mostly <strong>filtered by upper atmosphere</strong>; microwaves/radio carry very little energy to warm Earth.</li>
+<li><strong>UV (100 nm – 400 nm; 1 nm = 10⁻⁹ m):</strong> much higher energy than visible. Mostly absorbed by <strong>ozone layer</strong> (protects life + heats atmosphere). Overexposure damages eyes/skin, raises cancer risk → use UV glasses/sunscreen. Useful: killing germs in water purifiers, fluorescent lights.</li>
+<li><strong>Visible light:</strong> reaches surface; energy for <strong>photosynthesis</strong> (primary food source); partly warms land/water.</li>
+<li><strong>Infrared:</strong> warms surface; surface re-radiates heat; portion trapped by greenhouse gases — <strong>CO₂, CH₄, water vapour</strong> — keeping Earth warm enough for life.</li>
+</ul>
+</li>
+</ul>
+<h3 class="fade-in">2.2 Insolation and solar constant</h3>
+<ul class="fade-in">
+<li><strong>Insolation</strong> = amount of Sun's radiation reaching Earth's surface.</li>
+<li><strong>Solar constant</strong> = average solar energy per unit time per unit area perpendicular to Sun's rays <strong>at top of atmosphere ≈ 1.4 kW m⁻²</strong> (= 1400 J s⁻¹ m⁻²), before absorption/scattering/reflection.</li>
+<li>Gases, clouds, dust absorb/scatter, so <strong>maximum insolation at surface ≈ 1 kW m⁻² under clear sky</strong>.</li>
+<li>India, in tropical/sub-tropical location, gets <strong>abundant sunlight year-round</strong> → drives southwest monsoon (climate + agriculture) + huge solar-energy potential.</li>
+</ul>
+<div class="worked-example fade-in"><div class="label">Worked Example</div><p class="fade-in"><strong>Worked Example (Example 13.1):</strong>
+How much solar energy will a 1 m² area receive in 1 hour if insolation = 1 kW m⁻²?
+E = Intensity × area × time
+E = 1000 J s⁻¹ m⁻² × 1 m² × 3600 s = <strong>3,600,000 J = 3.6 × 10⁶ J</strong>
+= energy to melt ~5 kg ice and heat water to 100 °C = <strong>one unit of household electricity</strong>.</p></div>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+Two identical fields receive the same solar constant at the top of the atmosphere, but one day is cloudy/dusty and the other is clear. Which field gets lower insolation at the surface and why? What two atmospheric processes cause the difference?</p>
+</blockquote>
+<h3 class="fade-in">2.3 India's measurement heritage</h3>
+<ul class="fade-in">
+<li><strong>Anna Mani</strong>, pioneering atmospheric scientist, mapped solar insolation across India in the <strong>1950s</strong>; with <strong>S. Rangarajan</strong> published ***Solar Radiation Over India* in 1982** — country's first insolation atlas. Showed vast solar potential now realised in large-scale solar power.</li>
+</ul>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+In &quot;Think as a Scientist&quot; you must estimate what fraction of the Thar desert covered with panels could power India. List the three numbers/assumptions you must find or make (from internet + insolation + conversion fraction) before calculating.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="how-surfaces-respond-albedo-and-re-radiation">
+<h2 id="how-surfaces-respond-albedo-and-re-radiation" class="fade-in"><span class="num">03</span> How Surfaces Respond — Albedo and Re-radiation</h2>
+
+<ul class="fade-in">
+<li><strong>Land heats faster than water.</strong> Variation also by material and colour. <strong>Dark surfaces absorb more, light surfaces reflect more and stay cooler.</strong> E.g. dark roads hotter than light surfaces; dark clothes hotter than white in summer.</li>
+<li><strong>Albedo</strong> = fraction of solar radiation reflected by a surface (Latin <em>whiteness</em>). High albedo → cool (reflects more); low albedo → heats fast (absorbs more).</li>
+<li><strong>Table 13.1 (Reflection of solar radiation by surfaces of materials):</strong> the book gives values for the first three rows and leaves the rest as a student activity (Activity 13.2 — complete using authentic sources like websites and books):</li>
+</ul>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>S. No.</th>
+  <th>Material</th>
+  <th>Albedo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1.</td>
+  <td>Snow</td>
+  <td><strong>0.80–0.90</strong></td>
+</tr>
+<tr>
+  <td>2.</td>
+  <td>Ice</td>
+  <td><strong>0.50–0.70</strong></td>
+</tr>
+<tr>
+  <td>3.</td>
+  <td>Crushed rock</td>
+  <td><strong>0.25–0.30</strong></td>
+</tr>
+<tr>
+  <td>4.</td>
+  <td>Light coloured soil</td>
+  <td><em>(student activity — find from authentic sources)</em></td>
+</tr>
+<tr>
+  <td>5.</td>
+  <td>Black soil</td>
+  <td><em>(student activity — find from authentic sources)</em></td>
+</tr>
+<tr>
+  <td>6.</td>
+  <td>Ocean water</td>
+  <td><em>(student activity — find from authentic sources)</em></td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li>Snow/ice high albedo → polar regions very cold. Black soil/ocean water low albedo → relatively warmer.</li>
+<li><strong>Fig. 13.5 path:</strong> Sun → partly reflected by atmosphere/clouds; partly absorbed by atmosphere/clouds; partly absorbed by Earth's surface; partly reflected by Earth's surface.</li>
+<li><strong>All objects radiate heat.</strong> Concrete house feels hot at night in summer due to re-radiated heat; thick mud + wooden traditional houses stay cool (less re-radiation).</li>
+</ul>
+<p class="fade-in"><strong>Threads of Curiosity — Urban Heat Island Effect (Fig. 13.6):</strong>
+Cities warmer than rural surroundings, especially summer/night. Built-up steel, concrete, brick, asphalt absorb + retain heat; re-radiation warms city. More AC demand stresses urban ecosystems. Rural/forest areas cool via shade + transpiration. Shows human land use alters local climate.</p>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+A new layout offers two road options: dark asphalt vs light-coloured pavement. Using albedo, predict which stays cooler at noon and which re-radiates more at night. Link this to why cities show an Urban Heat Island.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="latitude-shape-and-tilt-why-equator-is-warm">
+<h2 id="latitude-shape-and-tilt-why-equator-is-warm" class="fade-in"><span class="num">04</span> Latitude, Shape and Tilt — Why Equator Is Warm</h2>
+
+<ul class="fade-in">
+<li>Earth is <strong>spherical</strong> → Sun's rays strike latitudes at different angles.</li>
+<li>Equatorial radiation concentrated over <strong>smaller area</strong>; polar radiation spread over <strong>larger area</strong>. Equator warm year-round; poles much colder. Creates equator-to-pole temperature difference.</li>
+<li>Spherical shape + <strong>tilt of rotation axis</strong> → <strong>seasons</strong> and changing day length during one revolution around Sun.</li>
+<li>Net result: solar radiation NOT evenly distributed → drives <strong>global winds and ocean currents</strong>.</li>
+</ul>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+If Earth were a flat disc instead of a sphere (Revise Q12), how would the pattern of solar radiation and temperature differ? Explain using the &quot;concentrated vs spread&quot; argument.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="role-of-the-atmosphere-composition-and-layers">
+<h2 id="role-of-the-atmosphere-composition-and-layers" class="fade-in"><span class="num">05</span> Role of the Atmosphere — Composition and Layers</h2>
+
+<ul class="fade-in">
+<li>Atmosphere = air held by <strong>Earth's gravity</strong>. Mainly <strong>nitrogen 78% + oxygen 21%</strong>, plus small argon, CO₂, water vapour, other gases.</li>
+<li><strong>Layered structure (Fig. 13.7, Table 13.2):</strong></li>
+</ul>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Layer</th>
+  <th>Approx. altitude</th>
+  <th>Features (chapter)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Troposphere</strong></td>
+  <td><strong>0–12 km</strong> (avg ~12 km)</td>
+  <td>Nearly all weather here; heated from Earth's surface; temp <strong>decreases ~6.5 °C/km</strong>; warm air rises → winds/storms; height max above equator, lowest above poles</td>
+</tr>
+<tr>
+  <td><strong>Stratosphere</strong></td>
+  <td><strong>12–50 km</strong></td>
+  <td><strong>Ozone layer</strong> absorbs UV → temp <strong>increases with height</strong>; rise calms layer (no vertical mixing) → weather confined to troposphere</td>
+</tr>
+<tr>
+  <td><strong>Mesosphere, Thermosphere, Exosphere</strong></td>
+  <td>Above stratosphere</td>
+  <td>Only minor role in surface climate</td>
+</tr>
+<tr>
+  <td><strong>Outer space starts</strong></td>
+  <td><strong>~100 km</strong></td>
+  <td>Boundary given in chapter</td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li><strong>Two protective roles:</strong><ol class="fade-in">
+<li><strong>Partly absorbs incoming solar:</strong> ozone blocks harmful UV; clouds/gases absorb some sunlight (Fig. 13.5).</li>
+<li><strong>Traps outgoing heat:</strong> surface absorbs sunlight, re-radiates in <strong>infrared</strong>; greenhouse gases (CO₂, CH₄, water vapour) absorb it, preventing escape. Without atmosphere Earth would be too cold. But <strong>excess CO₂ enhances greenhouse effect → global warming → potentially uninhabitable</strong>.</li>
+</ol>
+</li>
+<li><strong>Venus vs Mercury:</strong> Venus hotter than Mercury though Mercury is closer — because Venus atmosphere caused <strong>uncontrolled greenhouse effect</strong> (Grade 8 link).</li>
+<li>Atmosphere continuously modified by solar radiation + cosmic rays → affects weather, climate, communication. Makes Earth unique.</li>
+</ul>
+<p class="fade-in"><strong>Meet a Scientist — K. R. Ramanathan:</strong> Climbed to <strong>18,000 feet in Himalayas in 1934</strong> to measure ozone; found lower than expected; laid foundation for UV-vs-altitude/pollution understanding; later led early monsoon forecasting.</p>
+<p class="fade-in"><strong>Why ozone matters + Montreal Protocol:</strong> Ozone shield absorbs harmful UV. <strong>CFCs</strong> (refrigerators, aerosols) destroyed it faster than formed → <strong>ozone hole over Antarctica</strong> late 20th century → more UV harms organisms/ecosystems. Global <strong>Montreal Protocol</strong> cut CFCs → layer slowly recovering — power of cooperation. <strong>Kyoto Protocol + Paris Agreement</strong> (CO₂ cuts) less successful so far.</p>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+A student says &quot;ozone is always harmful, so the ozone hole is good.&quot; Distinguish ground-level ozone (smog, harmful — Sec. 8) from stratospheric ozone (protective), using absorption vs formation arguments from the chapter.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="uneven-heating-causes-wind-and-ocean-currents">
+<h2 id="uneven-heating-causes-wind-and-ocean-currents" class="fade-in"><span class="num">06</span> Uneven Heating Causes Wind and Ocean Currents</h2>
+
+<ul class="fade-in">
+<li>Wind = air from <strong>high to low pressure</strong>, driven mainly by uneven heating. Same idea explains land/sea breezes (earlier grades) up to planetary scale.</li>
+</ul>
+<h3 class="fade-in">6.1 Local winds — valley and mountain breezes (Fig. 13.8)</h3>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Breeze</th>
+  <th>When</th>
+  <th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Valley breeze (day)</strong></td>
+  <td>Daytime</td>
+  <td>Sun-facing slopes heat faster than valley floor → warm air over slopes rises (low pressure) → cool valley air flows <strong>up-slope</strong></td>
+</tr>
+<tr>
+  <td><strong>Mountain breeze (night)</strong></td>
+  <td>After sunset</td>
+  <td>Slopes lose heat faster, become cooler; valley floor relatively warmer → cool dense slope air flows <strong>down into valley</strong></td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li>Common in <strong>Shimla, Dehradun, Himalayan valleys</strong>. Influence temperature, moisture, soil/crop health, daily life.</li>
+</ul>
+<h3 class="fade-in">6.2 Planetary winds — pressure belts (Fig. 13.9)</h3>
+<ul class="fade-in">
+<li><strong>Equatorial low:</strong> intense heating → warm air rises at <strong>0°</strong>.</li>
+<li>Air moves poleward aloft, cools, sinks ~<strong>30° N/S → sub-tropical high</strong> belts. Part returns to equator at surface (one circulation); part moves poleward, rises ~<strong>60° N/S</strong> meeting polar cold air → <strong>sub-polar low</strong> belts.</li>
+<li><strong>Polar highs ~90° N/S:</strong> very cold dense air sinks → flows toward sub-polar belts.</li>
+<li><strong>Rotation deflects</strong> winds to curved paths: <strong>right in Northern Hemisphere, left in Southern Hemisphere</strong>.</li>
+</ul>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+Using Fig. 13.9, trace one full surface loop starting at 30° N high pressure: which way does air flow at the surface toward the equator vs toward 60° N, and how does rotation bend each path in the Northern Hemisphere?</p>
+</blockquote>
+<h3 class="fade-in">6.3 Ocean currents (Fig. 13.10)</h3>
+<ul class="fade-in">
+<li>Continuous movement of large ocean water masses. Strong planetary winds <strong>drag surface water by friction</strong>; plus temperature/salinity differences, Earth's rotation, land distribution.</li>
+<li>Warm equatorial surface water → poles; colder denser water → equator at depth. Lower salinity (less dense) stays near surface; higher salinity (denser) sinks to deep levels.</li>
+<li>Rotation forms large circular <strong>gyres: clockwise in Northern Hemisphere, counter-clockwise in Southern</strong>. Continents block/redirect.</li>
+<li><strong>Regulate climate + support life:</strong> transport heat equator→poles, reduce contrasts. Example: <strong>North Atlantic Drift</strong> (extension of <strong>Gulf Stream</strong> carrying warm water from southern North American east coast across Atlantic) → NW Europe, keeps many high-latitude ports <strong>ice-free in winter</strong> → supports trade/commerce. Also transport nutrients → massive ecosystems.</li>
+</ul>
+<p class="fade-in"><strong>Pause and Ponder (chapter):</strong> How does cool mountain breeze benefit crops/soil? What happens to warm equatorial surface water moving poleward and its impact?</p>
+<p class="fade-in"><strong>India's Scientific Contributions — IITM Pune (Fig. 13.11):</strong> Advanced coupled models (atmosphere-ocean-land-ice) + satellites, Indian Ocean buoys, even Antarctica stations → simulate monsoon, improve seasonal forecasts, study global-warming effect on rainfall.</p>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+A port in NW Europe at high latitude stays ice-free in winter while a same-latitude port elsewhere freezes. Using the Gulf Stream / North Atlantic Drift, explain which heat-transport process causes this and why ocean currents matter for both climate and trade.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="biogeochemical-cycles-matter-energy-recycled">
+<h2 id="biogeochemical-cycles-matter-energy-recycled" class="fade-in"><span class="num">07</span> Biogeochemical Cycles — Matter + Energy Recycled</h2>
+
+<ul class="fade-in">
+<li>Living + non-living (abiotic-biotic) exchange matter/energy continuously → <strong>cyclic movement = biogeochemical cycle</strong>. Recycles C, N, O; maintains balance; helps ecosystems recover.</li>
+<li>Focus: water, carbon, nitrogen, oxygen — balance matters, interlinked across spheres, sensitive to humans.</li>
+</ul>
+<h3 class="fade-in">7.1 Water cycle (Fig. 13.12)</h3>
+<ul class="fade-in">
+<li>Terms (Grade 7): <strong>evaporation, transpiration, condensation, precipitation, infiltration, groundwater</strong>.</li>
+<li>Path: evaporate from rivers/lakes/oceans → condense to clouds → precipitate (rain/hail/snow) → run off back to ocean; some seeps as groundwater. Dissolves minerals from soil/rocks, supports terrestrial life, carries nutrients to oceans → marine life.</li>
+<li><strong>Climate-change disruption:</strong> warmer air holds more moisture → heavier rains somewhere (intensified monsoons) + droughts elsewhere. Melting glaciers → more river water, long-run sea rise → threat to <strong>Mumbai, Chennai</strong>. Intense bursts → more run-off (erodes soil) + less infiltration → less groundwater recharge → hard to sustain agriculture in dry months. Links cryosphere + hydrosphere + atmosphere + geosphere + biosphere.</li>
+</ul>
+<h3 class="fade-in">7.2 Carbon cycle (Fig. 13.13, 13.14)</h3>
+<ul class="fade-in">
+<li>Carbon = backbone of proteins, carbs, fats, DNA. Circulates: atmosphere (CO₂) ↔ biosphere (plants/animals) ↔ geosphere (carbonate rocks, coal/oil) ↔ hydrosphere (dissolved CO₂, marine shells).</li>
+</ul>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Cycle speed</th>
+  <th>Time scale</th>
+  <th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Fast cycle</strong></td>
+  <td>Days–years</td>
+  <td>Photosynthesis: plants convert CO₂ → glucose; respiration returns CO₂; animals eat plants/animals; death + decomposition return CO₂</td>
+</tr>
+<tr>
+  <td><strong>Slow cycle</strong></td>
+  <td>Millions of years</td>
+  <td>Buried dead matter → coal/oil/gas; burning releases CO₂ very fast; ocean-atmosphere exchange: ocean absorbs CO₂ → carbonate/bicarbonate → phytoplankton photosynthesis + shells; dead sink → long storage</td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li><strong>Keeling curve (Fig. 13.14):</strong> <strong>315 ppm (1960) → 420 ppm (2025), ~35% rise</strong>, unprecedented in human civilisation. Sawtooth = seasonal dips from Northern Hemisphere plant growth absorbing CO₂. ppm = parts per million.</li>
+<li>Some CO₂ needed to keep warm, but excess intensifies greenhouse → warming, glacier/Arctic melt, sea rise, extremes. In India: more intense monsoons (warmer air holds moisture), threats to agriculture via rainfall shifts. Fossil fuels still power much electricity; rapid renewables growth helps.</li>
+<li><strong>Threads:</strong> Carbon ~<strong>49% of dry weight</strong> of organisms; <strong>71% of global carbon in oceans</strong> (regulates atmospheric CO₂); atmosphere holds only <strong>~1%</strong>.</li>
+</ul>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+Starting from &quot;plants use atmospheric CO₂&quot;, draw and explain the full loop by which that carbon returns to air via (a) respiration/decomposition and (b) fossil-fuel combustion. Label which is fast vs slow.</p>
+</blockquote>
+<h3 class="fade-in">7.3 Nitrogen cycle (Fig. 13.15)</h3>
+<ul class="fade-in">
+<li>N essential for <strong>proteins + nucleic acids</strong>. Largest reservoir = atmosphere, but <strong>N₂ non-reactive</strong>, unusable directly → must become soluble compounds. Steps: <strong>nitrogen fixation → assimilation → ammonification → nitrification → denitrification</strong>.</li>
+</ul>
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Step</th>
+  <th>Bacteria / process</th>
+  <th>Conversion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Fixation</strong></td>
+  <td><em>Rhizobium</em> (legume root nodules), <em>Azotobacter</em> (soil)</td>
+  <td>N₂ → <strong>ammonia (NH₃)</strong></td>
+</tr>
+<tr>
+  <td><strong>Nitrification</strong></td>
+  <td><em>Nitrosomonas</em></td>
+  <td>ammonia → <strong>nitrite (NO₂⁻)</strong></td>
+</tr>
+<tr>
+  <td><strong>Nitrification</strong></td>
+  <td><em>Nitrobacter</em></td>
+  <td>nitrite → <strong>nitrate (NO₃⁻)</strong></td>
+</tr>
+<tr>
+  <td><strong>Assimilation</strong></td>
+  <td>Plants (animals via eating)</td>
+  <td>absorb N compounds from soil</td>
+</tr>
+<tr>
+  <td><strong>Ammonification</strong></td>
+  <td>Decomposers (bacteria/fungi) on dead/waste</td>
+  <td>organic matter → <strong>ammonia</strong> to soil</td>
+</tr>
+<tr>
+  <td><strong>Denitrification</strong></td>
+  <td><em>Pseudomonas</em></td>
+  <td>nitrates → <strong>N₂ gas</strong> back</td>
+</tr>
+<tr>
+  <td>Extra natural</td>
+  <td><strong>Lightning</strong></td>
+  <td>tiny N₂ → nitrogen oxides</td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li><strong>Ready to Go Beyond — Haber-Bosch (early 1900s):</strong> artificial N₂ → ammonia for fertilisers; 'Bread from Air' → Green Revolution, feeds billions. <strong>&gt;Half N atoms in human body from Haber-Bosch.</strong> Energy-intensive (<strong>~1–2% global energy</strong>); fertiliser overuse degrades soil/water.</li>
+</ul>
+<h3 class="fade-in">7.4 Oxygen cycle (Fig. 13.16)</h3>
+<ul class="fade-in">
+<li><strong>~21% atmosphere = free O₂.</strong> Component of carbs, proteins, nucleic acids, fats. Also combined: crust metal oxides/minerals, air CO₂.</li>
+<li>Focus = regulate atmospheric O₂: <strong>consumption</strong> = respiration (plants/animals) + combustion (uses O₂ → CO₂); <strong>production</strong> = <strong>photosynthesis</strong> (sunlight + water + CO₂ → glucose + O₂). Balance circulates O₂ across atmosphere/land/oceans/organisms.</li>
+</ul>
+<p class="fade-in"><strong>Pause and Ponder:</strong> What if photosynthesis stopped? What if biogeochemical cycles disrupted/stopped? What happens to dissolved-ocean CO₂ + marine life when temperature rises?</p>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+A farmer doubles nitrogen fertiliser every year for higher yield. Using nitrification/denitrification + Haber-Bosch + eutrophication links, explain why yield gains may be short-term while rivers, soil and coastal fisheries suffer long-term.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="human-impact-on-earth-s-processes">
+<h2 id="human-impact-on-earth-s-processes" class="fade-in"><span class="num">08</span> Human Impact on Earth's Processes</h2>
+
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Action</th>
+  <th>Sphere disruption</th>
+  <th>Effect (chapter)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Fossil burning + deforestation</td>
+  <td>Carbon sinks (forests/oceans) saturated (past 50 yrs major shift)</td>
+  <td>Excess CO₂ → warming; more ocean absorption → <strong>acidic seawater</strong> → threatens <strong>plankton + coral reefs</strong>; but warmer water <strong>reduces</strong> ocean's CO₂ sink capacity</td>
+</tr>
+<tr>
+  <td>Excess fertiliser nitrates to rivers/lakes</td>
+  <td>N cycle overload</td>
+  <td><strong>Eutrophication (Fig. 13.17): algal blooms</strong> deplete O₂, kill fish; threatens water bodies + coastal fisheries</td>
+</tr>
+<tr>
+  <td>Deforestation</td>
+  <td>Air/water/land/organisms</td>
+  <td>Less photosynthesis + transpiration → less local rainfall; altered <strong>albedo</strong>; no roots → more <strong>soil erosion</strong>; habitat loss → <strong>biodiversity decline</strong></td>
+</tr>
+<tr>
+  <td>Vehicular emissions + sunlight</td>
+  <td>City air</td>
+  <td><strong>Ground-level smog + ground-level ozone (harmful)</strong> — contrast stratospheric ozone (protective)</td>
+</tr>
+<tr>
+  <td>Rising CO₂ generally</td>
+  <td>All spheres</td>
+  <td>Extreme weather, biodiversity loss</td>
+</tr>
+</tbody>
+</table>
+<ul class="fade-in">
+<li><strong>Solutions (chapter):</strong> local + global cooperation. Montreal Protocol recovering ozone; Kyoto/Paris CO₂ cuts less successful. Conserve energy/resources, switch to <strong>solar/wind</strong>, plant trees (India planted billions, expanded solar/renewables), save water, sustainable farming, individual: save water/food/energy, reduce waste, reuse/recycle.</li>
+<li><strong>Threads — Mission LiFE (Lifestyle for Environment):</strong> India-led global initiative at <strong>UN Climate Change Conference 2021</strong>. Mindful eco-friendly lifestyles; traditional/ancient texts already saw Earth as interconnected via energy flow + matter cycling; simple habits (save energy, conserve) → sustainable future.</li>
+</ul>
+<p class="fade-in"><strong>Pause and Ponder:</strong> How do humans raise greenhouse gases? What will you do individually to cut emissions?</p>
+<blockquote class="fade-in">
+<p class="fade-in">🧠 <strong>Competency-Based Question:</strong>
+Your city reports summer smog with high ground-level ozone plus rising algal blooms in its lake. Using Sec. 8, connect (a) vehicular emissions + sunlight and (b) fertiliser run-off to the two symptoms, and propose one individual + one community action consistent with Mission LiFE.</p>
+</blockquote>
+<hr class="section-divider">
+
+</section><section id="at-a-glance-chapter-summary-points">
+<h2 id="at-a-glance-chapter-summary-points" class="fade-in"><span class="num">09</span> At-a-Glance (Chapter Summary Points)</h2>
+
+<ul class="fade-in">
+<li>EM radiation from Sun = primary energy source.</li>
+<li>Most weather (evaporation, condensation, precipitation) in <strong>troposphere</strong>.</li>
+<li>Shape, latitude, axis tilt → insolation variation → uneven heating.</li>
+<li>Uneven heating → winds + ocean currents.</li>
+<li>Matter/energy cycled between biotic ↔ abiotic.</li>
+<li>Atmospheric O₂ used in combustion/respiration/oxide formation, restored mainly by <strong>photosynthesis</strong>.</li>
+<li>Water, carbon, nitrogen, oxygen cycle among atmosphere/oceans/land/organisms.</li>
+<li>Cycles make nutrients available, sustain life, regulate climate, balance ecosystems.</li>
+</ul>
+<hr class="section-divider">
+
+</section><section id="quick-revision-box">
+<h2 id="quick-revision-box" class="fade-in"><span class="num">&#x1F4DA;</span> Quick Revision Box</h2>
+
+<table class="fade-in">
+<thead>
+<tr>
+  <th>Concept</th>
+  <th>Key value / fact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Speed of light (vacuum)</td>
+  <td><strong>3 × 10⁸ m s⁻¹</strong></td>
+</tr>
+<tr>
+  <td>Solar energy at Earth</td>
+  <td><strong>~99% UV+visible+IR</strong>; solar constant <strong>1.4 kW m⁻²</strong>, surface max <strong>~1 kW m⁻²</strong></td>
+</tr>
+<tr>
+  <td>UV range</td>
+  <td><strong>100–400 nm</strong>; blocked by <strong>ozone</strong></td>
+</tr>
+<tr>
+  <td>Greenhouse gases</td>
+  <td><strong>CO₂, CH₄, water vapour</strong></td>
+</tr>
+<tr>
+  <td>Albedo (book values)</td>
+  <td>Snow <strong>0.80–0.90</strong>, Ice <strong>0.50–0.70</strong>, Crushed rock <strong>0.25–0.30</strong> (rest = student activity)</td>
+</tr>
+<tr>
+  <td>Atmosphere</td>
+  <td><strong>N₂ 78%, O₂ 21%</strong>; Troposphere <strong>0–12 km, −6.5 °C/km</strong>, Stratosphere <strong>12–50 km, +temp</strong>, Space <strong>~100 km</strong></td>
+</tr>
+<tr>
+  <td>Pressure belts</td>
+  <td><strong>0° low, 30° N/S high, 60° N/S low, 90° N/S high</strong>; deflect <strong>right N / left S</strong></td>
+</tr>
+<tr>
+  <td>Gyres</td>
+  <td><strong>Clockwise N, counter-clockwise S</strong>; <strong>Gulf Stream → North Atlantic Drift → NW Europe ice-free</strong></td>
+</tr>
+<tr>
+  <td>Local breezes</td>
+  <td>Day <strong>valley (up-slope)</strong>, Night <strong>mountain (down-valley)</strong>; e.g. Shimla, Dehradun</td>
+</tr>
+<tr>
+  <td>CO₂ rise</td>
+  <td><strong>315 ppm (1960) → 420 ppm (~2025), +35%</strong>; C: <strong>49% dry weight, 71% oceans, 1% atmosphere</strong></td>
+</tr>
+<tr>
+  <td>N cycle bugs</td>
+  <td><em>Rhizobium/Azotobacter</em> fix, <em>Nitrosomonas/Nitrobacter</em> nitrify, <em>Pseudomonas</em> denitrify; <strong>Haber-Bosch early 1900s, 1–2% energy</strong></td>
+</tr>
+<tr>
+  <td>O₂ cycle</td>
+  <td><strong>21% O₂</strong>; photosynthesis produces, respiration/combustion consume</td>
+</tr>
+<tr>
+  <td>People/places</td>
+  <td><strong>Anna Mani + Rangarajan 1982</strong>, <strong>Ramanathan 1934 18,000 ft</strong>, <strong>IITM Pune</strong>, <strong>Montreal (success) / Kyoto+Paris (less)</strong>, <strong>Mission LiFE 2021</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 class="fade-in">Important Notes to Remember</h3>
+<ul class="fade-in">
+<li>Spheres are <strong>interconnected</strong> — use Arabian Sea→monsoon, snow→lake→grass, melt→sea→cities chains.</li>
+<li>Insolation ≠ solar constant: <strong>1.4 at top → ~1.0 at surface</strong> due to absorption/scattering/reflection.</li>
+<li><strong>High albedo = cool; low albedo = warm.</strong> Snow/ice vs black soil/ocean.</li>
+<li>Weather lives in <strong>troposphere</strong> because it is heated from below (temp falls with height); stratosphere calm because temp rises with height.</li>
+<li><strong>Venus &gt; Mercury</strong> proves atmosphere can outweigh distance via greenhouse.</li>
+<li>Winds/ocean both bend by rotation — memorise <strong>right-N / left-S</strong> and <strong>clockwise-N gyres</strong>.</li>
+<li>Fast carbon (days–years) vs slow carbon (millions) — burning short-circuits slow store.</li>
+<li><strong>Ground ozone harms, stratospheric ozone protects.</strong> Do not confuse.</li>
+<li>Eutrophication = <strong>excess nitrates → algal blooms → O₂ depletion → fish kill</strong>.</li>
+</ul>
+
+</section>
+
+  </div>
+</main>
+
+</div>
+
+<script>
+// Sidebar toggle
+document.getElementById('menuToggle').addEventListener('click', function(){
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Close sidebar on link click (mobile)
+document.querySelectorAll('.sidebar nav a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
+
+// Intersection Observer for fade-in
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
+
+// Active section highlighting
+var sections = document.querySelectorAll('section');
+var links = document.querySelectorAll('.sidebar nav a');
+
+window.addEventListener('scroll', function(){
+  var current = '';
+  sections.forEach(function(sec){
+    var top = sec.offsetTop - 120;
+    if(window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  links.forEach(function(a){
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Re-render KaTeX after page load
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });
+  }
+});
+</script>
+
+</body>
+</html>
